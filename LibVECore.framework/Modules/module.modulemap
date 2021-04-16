@@ -1,0 +1,11 @@
+framework module LibVECore {
+  umbrella header "LibVECore.h"
+
+  export *
+  module * { export * }
+}
+
+module LibVECore.Swift {
+    header "LibVECore-Swift.h"
+    requires objc
+}
