@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 #import <LibVECore/Scene.h>
 #import <LibVECore/CameraManager.h>
+
 @class MusicInfo;
 @class FilterAttribute;
 @class VECore;
@@ -644,7 +645,7 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
                 videoSpeed:(float)speed
              progressBlock:(void (^)(NSNumber *prencent))progressBlock
              callbackBlock:(void (^)(void))finishBlock
-                      fail:(void (^)(void))failBlock
+                      fail:(void (^)(NSError *error))failBlock
                     cancel:(BOOL *)cancel;
 /** 从视频中提取音频
     @abstract   Extract audio from the video.
@@ -730,8 +731,6 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
               failedHandler:(void (^)(NSError *error))failedHandler
                      cancel:(BOOL *)cancel;
 
-
-
 /** 创建音频数据处理上下文（变声 降噪） （需要保存上下文指针，一个上下文指针只能针对同一音频的数据）
  *  返回0:上下文指针为空
  @return 上下文指针
@@ -769,6 +768,6 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
 /** 音频数据处理上下文释放（变声 降噪）
  *params: context  上下文指针
  */
-+(void)audioProces_freedContext:(id)context;
++(void)audioProces_FreedContext:(id)context;
 
 @end
