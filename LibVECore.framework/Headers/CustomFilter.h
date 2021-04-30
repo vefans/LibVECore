@@ -76,7 +76,20 @@
 @end
 
 
+typedef NS_ENUM(NSInteger, CustomFilterType) {
+    CustomFilterTypeNormal,         //滤镜
+    CustomFilterTypeSpecialEffect,  //特效
+};
+
 @interface CustomFilter : NSObject
+
+/**资源文件夹地址
+ */
+@property (nonatomic, strong) NSString *folderPath;
+
+/** 类型
+ */
+@property (nonatomic, assign) CustomFilterType type;
 
 /**  自定义滤镜名称
  */

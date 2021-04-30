@@ -56,6 +56,10 @@
 
 @interface MaskObject : NSObject
 
+/**资源文件夹地址
+ */
+@property (nonatomic, strong) NSString *folderPath;
+
 /**  名称
  */
 @property (nonatomic, copy) NSString* name;

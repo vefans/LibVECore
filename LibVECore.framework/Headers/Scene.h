@@ -67,6 +67,13 @@ typedef NS_ENUM(NSInteger, VECoreStatus) {
     kVECoreStatusFailed
 };
 
+typedef NS_ENUM(NSInteger, JsonAnimationMediaType) {
+    JsonAnimationMediaType_Irreplaceable,           //不可替换
+    JsonAnimationMediaType_ReplaceableText,         //可替换文字
+    JsonAnimationMediaType_ReplaceablePic,          //可替换图片
+    JsonAnimationMediaType_ReplaceableVideoOrPic,   //可替换视频或图片
+};
+
 @class Transition;
 @class MediaAsset;
 @class CurvedSpeedPoint;
@@ -112,11 +119,24 @@ typedef NS_ENUM(NSInteger, VECoreStatus) {
 
 @end
 
+typedef NS_ENUM(NSInteger, SceneType) {
+    SceneTypeNormal,    //默认
+    SceneTypeEnd,       //片尾
+};
+
 @interface Scene : NSObject
 
 /** 标识符
  */
 @property (nonatomic,strong) NSString*  identifier;
+
+/** 类型
+ */
+@property (nonatomic, assign) SceneType type;
+
+/** 组Id
+ */
+@property (nonatomic, assign) int groupId;
 
 /** 场景背景色
 */
@@ -134,13 +154,20 @@ typedef NS_ENUM(NSInteger, VECoreStatus) {
 
 @end
 
+typedef NS_ENUM(NSInteger, MusicType) {
+    MusicTypeNormal,            //配乐
+    MusicTypeDubbing,           //配音
+    MusicTypeSoundEffect,       //音效
+};
+
 @interface MusicInfo : NSObject<NSCopying,NSMutableCopying>
 /** 标识符 
  */
 @property (nonatomic,strong) NSString*  identifier;
-/** 音乐ID
+
+/** 类型
  */
-@property (nonatomic,assign) long long  musicId;
+@property (nonatomic, assign) MusicType type;
 
 /**使用音乐地址
  */
@@ -545,6 +572,10 @@ typedef NS_ENUM(NSInteger, FilterBlendType) {
 /**  资源类型 图片 或者 视频
  */
 @property (nonatomic,assign) MediaAssetType      type;
+
+/** 可替换类型，默认为JsonAnimationMediaType_ReplaceableVideoOrPic
+ */
+@property (nonatomic, assign) JsonAnimationMediaType replaceType;
 
 /**  图片填充类型
  *   设置顶点坐标(pointsInVideoArray)时，需设置为ImageMediaFillTypeFull
@@ -1022,6 +1053,10 @@ typedef NS_ENUM(NSInteger, CaptionTextAlignment) {
 
 @interface Caption : NSObject
 
+/** 组Id
+ */
+@property (nonatomic, assign) int groupId;
+
 /**字幕背景色，默认无
  */
 @property (nonatomic ,strong) UIColor *  backgroundColor;
@@ -1240,74 +1275,6 @@ typedef NS_ENUM(NSInteger, CaptionTextAlignment) {
 /**Y轴翻转
  */
 @property (nonatomic ,assign) BOOL flipY;
-
-/******************************以下参数已废弃******************************/
-
-/** 字幕图片文件路径
- */
-@property (nonatomic ,copy) NSString * imagePath        DEPRECATED_MSG_ATTRIBUTE("Use imageFolderPath instead.");
-
-/**图片数量
- */
-@property (nonatomic ,assign) NSInteger imageCounts     DEPRECATED_ATTRIBUTE;
-
-/**字幕中心坐标点比例
- */
-@property (nonatomic ,assign) CGPoint captionCenter     DEPRECATED_ATTRIBUTE;
-
-/**字幕宽度点比例
- */
-@property (nonatomic ,assign) CGFloat widthProportion   DEPRECATED_ATTRIBUTE;
-
-/** 字幕图片文件路径
- */
-@property (nonatomic ,copy) NSString * path    DEPRECATED_MSG_ATTRIBUTE("Use imagePath instead.");
-
-/**图片前缀名字
- */
-@property (nonatomic ,copy) NSString * name    DEPRECATED_MSG_ATTRIBUTE("Use imageName instead.");
-
-/**多少图片
- */
-@property (nonatomic ,assign) NSInteger count           DEPRECATED_MSG_ATTRIBUTE("Use imageCounts instead.");
-
-/**字幕区域
- */
-@property (nonatomic ,assign) CGRect frame              DEPRECATED_MSG_ATTRIBUTE("Use position instead.");
-
-/** 字幕是否需要拉伸
- */
-@property (nonatomic, assign) BOOL tStretching          DEPRECATED_MSG_ATTRIBUTE("Use isStretch instead.");
-
-/**字幕拉伸的区域
- */
-@property (nonatomic ) CGRect contentsCenter            DEPRECATED_MSG_ATTRIBUTE("Use stretchRect instead.");
-
-/**id
- */
-@property (nonatomic ,assign) NSInteger pid             DEPRECATED_ATTRIBUTE;
-
-/**字幕帧率
- */
-@property (nonatomic ,assign) CGFloat fps               DEPRECATED_ATTRIBUTE;
-
-/**文字开始时间
- */
-@property (nonatomic ,assign) float  tBegin             DEPRECATED_ATTRIBUTE;
-
-/**文字结束时间
- */
-@property (nonatomic ,assign) float  tEnd               DEPRECATED_ATTRIBUTE;
-
-/**帧动画
- */
-@property (nonatomic ,strong) NSArray * frames DEPRECATED_MSG_ATTRIBUTE("Use frameArray instead.");
-
-/**时间动画
- */
-@property (nonatomic ,strong) NSArray * times  DEPRECATED_MSG_ATTRIBUTE("Use timeArray instead.");
-
-/***********************************************************************/
 
 @end
 
@@ -1606,16 +1573,9 @@ typedef NS_ENUM(NSInteger, CaptionTextAlignment) {
 
 @end
 
-typedef NS_ENUM(NSInteger, JsonAnimationMediaType) {
-    JsonAnimationMediaType_Irreplaceable,           //不可替换
-    JsonAnimationMediaType_ReplaceableText,         //可替换文字
-    JsonAnimationMediaType_ReplaceablePic,          //可替换图片
-    JsonAnimationMediaType_ReplaceableVideoOrPic,   //可替换视频或图片
-};
-
 @interface JsonAnimationMediaInfo : NSObject
 
-/** 资源名称
+/** 资源类型
  */
 @property (nonatomic, assign) JsonAnimationMediaType type;
 
@@ -1678,9 +1638,24 @@ UIKIT_EXTERN API_DEPRECATED("Watermark is deprecated. Use Overlay instead", ios(
 
 @end
 
+typedef NS_ENUM(NSInteger, OverlayType) {
+    OverlayTypeNormal,  //画中画
+    OverlayTypeDoodle,  //涂鸦
+    OverlayTypeCover,   //封面
+    OverlayTypeLogo,    //水印
+};
+
 /** 视频水印
  */
 @interface Overlay : NSObject
+
+/** 组Id
+ */
+@property (nonatomic, assign) int groupId;
+
+/** 类型
+ */
+@property (nonatomic, assign) OverlayType type;
 
 /** 持续时间范围
  */
