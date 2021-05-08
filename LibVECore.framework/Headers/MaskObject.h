@@ -50,6 +50,14 @@
 */
 @property (nonatomic, assign) BOOL invert;
 
+/**Set mask edge color
+*/
+@property (nonatomic, strong) UIColor* edgeColor;
+
+/**Set mask edge size (0-1.0)
+*/
+@property (nonatomic, assign) float edgeSize;
+
 @end
 
 
@@ -116,5 +124,13 @@
 /**Decide whether to invert the mask
 */
 @property (nonatomic, assign) BOOL invert;
+
+/**Set mask edge color
+*/
+@property (nonatomic, strong) UIColor* edgeColor;
+
+/**Set mask edge size (0-1.0)
+*/
+@property (nonatomic, assign) float edgeSize;
 
 @end
