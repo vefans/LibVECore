@@ -821,7 +821,11 @@ typedef NS_ENUM(NSInteger, FilterBlendType) {
 
 /**设置媒体自定义滤镜。
  */
-@property (nonatomic, strong) CustomFilter* customFilter;
+@property (nonatomic, strong) CustomFilter* customFilter DEPRECATED_MSG_ATTRIBUTE("Use customFilterArray instead.");
+
+/**设置媒体自定义滤镜数组。
+ */
+@property (nonatomic, strong) NSMutableArray <CustomFilter*>* customFilterArray;
 
 /**设置媒体自定义动画。
  */
