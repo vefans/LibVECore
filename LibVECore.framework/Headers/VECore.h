@@ -731,43 +731,4 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
               failedHandler:(void (^)(NSError *error))failedHandler
                      cancel:(BOOL *)cancel;
 
-/** 创建音频数据处理上下文（变声 降噪） （需要保存上下文指针，一个上下文指针只能针对同一音频的数据）
- *  返回0:上下文指针为空
- @return 上下文指针
- */
-+(id)audioProces_ClearContext;
-/** 设置变声
- *params:  volume 音量
- **params: pitch  音调
- **params: type   变声类型
- ***params: context  上下文指针
- */
-+(void)audioProces_setAudioFilter:(float) volume atPitch:(float) pitch atFilterType:(AudioFilterType) type atContext:(id) context;
-/** 设置降噪等级
- *params:  deniseLevel 降噪等级 （0~4）
- **params: context  上下文指针
- */
-+(void)audioProces_setContextDeniseLevel:(int) deniseLevel atContext:(id) context;
-
-/** 初始化音频数据处理上下文（变声 降噪）
- *params:  sampleRate 码率
- *params: channelsPerFrame  声道数
- *params: formatID   音频数据格式
- *params: context  上下文指针
- */
-+(void)audioProces_Initcontext:(Float64) sampleRate atChannelsPerFrame:(UInt32) channelsPerFrame atAudioFormatID:(AudioFormatID) formatID atContext:(id) context;
-
-/** buffer音频数据处理（变声 降噪）
- *params: bufferListInOut AudioBufferList buffer数据
- *params: numberFrames  buffer大小
- *params: numberFramesOut   处理后buffer大小（指针）
- *params: context  上下文指针
- */
-+(void)audioProces_processBuffer:(AudioBufferList *)bufferListInOut atNumberFrames:(CMItemCount)numberFrames atNumberFramesOut:(CMItemCount *)numberFramesOut atContext:(id) context;
-
-/** 音频数据处理上下文释放（变声 降噪）
- *params: context  上下文指针
- */
-+(void)audioProces_FreedContext:(id)context;
-
 @end

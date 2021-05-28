@@ -69,7 +69,7 @@
 
 
 
-@interface CustomTransition : NSObject
+@interface CustomTransition : NSObject<NSCopying, NSMutableCopying>
 
 /**资源文件夹地址
  */

@@ -74,13 +74,32 @@ typedef NS_ENUM(NSInteger, JsonAnimationMediaType) {
     JsonAnimationMediaType_ReplaceableVideoOrPic,   //可替换视频或图片
 };
 
+typedef NS_ENUM(NSInteger ,CurveSpeedType) {
+    CurveSpeedType_None,        //无
+    CurveSpeedType_Custom,      //自定义
+    CurveSpeedType_Montage,     //蒙太奇
+    CurveSpeedType_Hero,        //英雄时刻
+    CurveSpeedType_Bullet,      //子弹时刻
+    CurveSpeedType_Jump,        //跳接
+    CurveSpeedType_FlashIn,     //闪进
+    CurveSpeedType_FlashOut,    //闪出
+};
+
+typedef NS_ENUM(NSInteger, MediaReplaceableType) {
+    MediaReplaceableType_Irreplaceable, //不可替换
+    MediaReplaceableType_Picture,       //可替换图片
+    MediaReplaceableType_Video,         //可替换视频
+    MediaReplaceableType_VideoOrPic,    //可替换视频或图片
+};
+
 @class Transition;
 @class MediaAsset;
 @class CurvedSpeedPoint;
+@class AudioVolumePosition;
 
 /** 调色
 */
-@interface ToningInfo : NSObject
+@interface ToningInfo : NSObject<NSCopying, NSMutableCopying>
 
 /** 亮度 ranges from -1.0 to 1.0, with 0.0 as the normal level
  *  设置媒体动画后，该属性无效，以动画中的brightness值为准
@@ -189,11 +208,18 @@ typedef NS_ENUM(NSInteger, MusicType) {
 /**音乐名称
  */
 @property (nonatomic, strong) NSString * name;
-
+/**音频关键帧
+ *  设置该属性后，volume无效
+ */
+@property (nonatomic, strong) NSMutableArray <AudioVolumePosition *> *volumePointArray;
 /** 曲线变速
  *  设置该属性后，speed无效
  */
 @property (nonatomic, strong) NSMutableArray <CurvedSpeedPoint *>*curvedSpeedPointArray;
+
+/** 曲线变速类型
+ */
+@property (nonatomic, assign) CurveSpeedType curveSpeedType;
 
 //曲线变速 操作界面 播放进度的显示
 /** 原始时间点
@@ -306,13 +332,21 @@ typedef NS_ENUM(NSInteger, MVEffectType) {
 
 @end
 
-@interface Transition : NSObject
+@interface Transition : NSObject<NSCopying, NSMutableCopying>
 /* 转场属性 描述的是 当前场景如何向后一个场景过渡
  */
 
 /**  转场类型
  */
 @property (nonatomic,assign)  TransitionType   type;
+
+/**资源分类ID
+ */
+@property (nonatomic, strong) NSString *networkCategoryId;
+
+/**资源ID
+ */
+@property (nonatomic, strong) NSString *networkResourceId;
 
 /**  持续时间
  */
@@ -389,7 +423,7 @@ typedef NS_ENUM(NSInteger, MediaAssetBlurType) {
     
 };
 
-@interface MediaAssetBlur : NSObject
+@interface MediaAssetBlur : NSObject<NSCopying, NSMutableCopying>
 
 /** 设置模糊类型，现只支持MediaAssetBlurTypeNormal
  */
@@ -527,6 +561,22 @@ typedef NS_ENUM(NSInteger, MediaAssetBlurType) {
                              
 @end
 
+/**音频
+ */
+@interface AudioVolumePosition : NSObject
+
+/**
+ *  time factor (0~1)
+ */
+@property (nonatomic, assign) float timeFactor;
+
+/**
+ *  Curve speed (0~2)
+ */
+@property (nonatomic, assign) float vloume;
+
+@end
+
 /**曲线变速
  */
 @interface CurvedSpeedPoint : NSObject
@@ -559,7 +609,7 @@ typedef NS_ENUM(NSInteger, FilterBlendType) {
     FilterBlendTypeColorDodge,      //颜色减淡
 };
 
-@interface MediaAsset : NSObject
+@interface MediaAsset : NSObject<NSCopying, NSMutableCopying>
 
 /** 标识符
  */
@@ -573,9 +623,9 @@ typedef NS_ENUM(NSInteger, FilterBlendType) {
  */
 @property (nonatomic,assign) MediaAssetType      type;
 
-/** 可替换类型，默认为JsonAnimationMediaType_ReplaceableVideoOrPic
+/** 可替换类型，默认为MediaReplaceableType_VideoOrPic
  */
-@property (nonatomic, assign) JsonAnimationMediaType replaceType;
+@property (nonatomic, assign) MediaReplaceableType replaceType;
 
 /**  图片填充类型
  *   设置顶点坐标(pointsInVideoArray)时，需设置为ImageMediaFillTypeFull
@@ -605,6 +655,10 @@ typedef NS_ENUM(NSInteger, FilterBlendType) {
  */
 @property (nonatomic, assign) BOOL isRepeat;
 
+/**是否倒序
+ */
+@property (nonatomic, assign) BOOL isReverse;
+
 /** 在整个视频中的持续时间范围
  *  只在isRepeat为YES时有效
  */
@@ -623,6 +677,10 @@ typedef NS_ENUM(NSInteger, FilterBlendType) {
  *  设置该属性后，speed无效
  */
 @property (nonatomic, strong) NSMutableArray <CurvedSpeedPoint *>*curvedSpeedPointArray;
+
+/** 曲线变速类型
+ */
+@property (nonatomic, assign) CurveSpeedType curveSpeedType;
 
 //曲线变速 操作界面 播放进度的显示
 /** 原始时间点
@@ -714,6 +772,14 @@ typedef NS_ENUM(NSInteger, FilterBlendType) {
  *  设置媒体动画后，该属性无效，以动画中的whiteBalance值为准
  */
 @property (nonatomic, assign) float whiteBalance;
+
+/**滤镜资源分类ID
+ */
+@property (nonatomic, strong) NSString *filterNetworkCategoryId;
+
+/**滤镜资源ID
+ */
+@property (nonatomic, strong) NSString *filterNetworkResourceId;
 
 /** 滤镜类型
  */
@@ -892,6 +958,10 @@ typedef NS_ENUM(NSInteger, FilterBlendType) {
  */
 @property (nonatomic, strong) MaskObject *mask;
 
+/**智能抠像
+ */
+@property (nonatomic, assign) BOOL autoSegment;
+
 @end
 
 
@@ -931,7 +1001,7 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
     CaptionAnimationTypeFadeInOut,          //淡入淡出
 };
 
-@interface CaptionAnimation : NSObject
+@interface CaptionAnimation : NSObject<NSCopying, NSMutableCopying>
 
 /**是否淡入淡出，默认YES
  */
@@ -1047,7 +1117,7 @@ typedef NS_ENUM(NSInteger, CaptionTextAlignment) {
 
 @end
 
-@interface DoodleLayer : CALayer
+@interface DoodleLayer : CALayer<NSCopying, NSMutableCopying>
 
 @property (nonatomic,copy)NSString *path;
 
@@ -1055,11 +1125,19 @@ typedef NS_ENUM(NSInteger, CaptionTextAlignment) {
 
 @end
 
-@interface Caption : NSObject
+@interface Caption : NSObject<NSCopying, NSMutableCopying>
 
 /** 组Id
  */
 @property (nonatomic, assign) int groupId;
+
+/**资源分类ID
+ */
+@property (nonatomic, strong) NSString *networkCategoryId;
+
+/**资源ID
+ */
+@property (nonatomic, strong) NSString *networkResourceId;
 
 /**字幕背景色，默认无
  */
@@ -1252,7 +1330,7 @@ typedef NS_ENUM(NSInteger, CaptionTextAlignment) {
 /** 字幕动画组
  * 设置该动画后，textAnimate、imageAnimate均无效
  */
-@property (nonatomic, strong) NSArray<CaptionCustomAnimation*>* animate;
+@property (nonatomic, strong) NSMutableArray<CaptionCustomAnimation*>* animate;
 
 /** 字幕自定义动画
  * 设置该动画后，textAnimate、imageAnimate均无效 
@@ -1318,7 +1396,7 @@ typedef NS_ENUM(NSInteger, CaptionTextAlignment) {
 
 /** 非矩形字幕
  */
-@interface CaptionLight : NSObject
+@interface CaptionLight : NSObject<NSCopying, NSMutableCopying>
 
 /** 字幕时间范围
  */
@@ -1464,7 +1542,7 @@ typedef NS_ENUM(NSInteger, CaptionTextAlignment) {
 
 /** AE生成json文件动画所需要的背景资源(视频或图片)
  */
-@interface JsonAnimationBGSource : NSObject
+@interface JsonAnimationBGSource : NSObject<NSCopying, NSMutableCopying>
 
 /** 标识符
  */
@@ -1519,7 +1597,7 @@ typedef NS_ENUM(NSInteger, CaptionTextAlignment) {
 
 /** AE生成json文件动画
  */
-@interface JsonAnimation : NSObject
+@interface JsonAnimation : NSObject<NSCopying, NSMutableCopying>
 
 /** 动画唯一名称
  */
@@ -1601,7 +1679,7 @@ typedef NS_ENUM(NSInteger, CaptionTextAlignment) {
 
 @end
 
-@interface TransitionPostion : NSObject
+@interface TransitionPostion : NSObject<NSCopying, NSMutableCopying>
 
 @property(nonatomic,assign)float postion;
 @property(nonatomic,assign)float atTime;
@@ -1651,7 +1729,7 @@ typedef NS_ENUM(NSInteger, OverlayType) {
 
 /** 视频水印
  */
-@interface Overlay : NSObject
+@interface Overlay : NSObject<NSCopying, NSMutableCopying>
 
 /** 组Id
  */
@@ -1677,7 +1755,7 @@ typedef NS_ENUM(NSInteger, OverlayType) {
 
 /** 马赛克
  */
-@interface Mosaic : NSObject
+@interface Mosaic : NSObject<NSCopying, NSMutableCopying>
 
 /** 时间范围
  */
@@ -1685,7 +1763,8 @@ typedef NS_ENUM(NSInteger, OverlayType) {
 
 /** 马赛克大小(0.0~1.0)，默认为0.1
  */
-@property (nonatomic, assign) float mosaicSize;
+@property (nonatomic, assign) float mosaicSize DEPRECATED_MSG_ATTRIBUTE("Use size instead.");
+@property (nonatomic, assign) float size;
 
 /**在video中四个顶点的坐标，可设置非矩形。
  * (0, 0)为左上角 (1, 1)为右下角

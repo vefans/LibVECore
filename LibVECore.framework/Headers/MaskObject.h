@@ -58,6 +58,43 @@
 */
 @property (nonatomic, assign) float edgeSize;
 
+
+/**Set top left point
+    (0.5,0.5) means in the media center,
+    (0, 0) means in the upper left corner of the media,
+    (1, 1) means in the lower right corner of the media
+        
+    top left  point (0.0 ,0.0) - (1.0 ,1.0)
+*/
+@property (nonatomic, assign) CGPoint topLeft;
+
+/**Set top right point
+    (0.5,0.5) means in the media center,
+    (0, 0) means in the upper left corner of the media,
+    (1, 1) means in the lower right corner of the media
+        
+    top right point (0.0 ,0.0) - (1.0 ,1.0)
+*/
+@property (nonatomic, assign) CGPoint topRight;
+
+/**Set top bottom right point
+    (0.5,0.5) means in the media center,
+    (0, 0) means in the upper left corner of the media,
+    (1, 1) means in the lower right corner of the media
+        
+    bottom right point (0.0 ,0.0) - (1.0 ,1.0)
+*/
+@property (nonatomic, assign) CGPoint bottomRight;
+
+/**Set bottom left point
+    (0.5,0.5) means in the media center,
+    (0, 0) means in the upper left corner of the media,
+    (1, 1) means in the lower right corner of the media
+        
+    bottom left point (0.0 ,0.0) - (1.0 ,1.0)
+*/
+@property (nonatomic, assign) CGPoint bottomLeft;
+
 @end
 
 
@@ -132,5 +169,43 @@
 /**Set mask edge size (0-1.0)
 */
 @property (nonatomic, assign) float edgeSize;
+
+
+
+/**Set top left point
+    (0.5,0.5) means in the media center,
+    (0, 0) means in the upper left corner of the media,
+    (1, 1) means in the lower right corner of the media
+        
+    top left  point (0.0 ,0.0) - (1.0 ,1.0)
+*/
+@property (nonatomic, assign) CGPoint topLeft;
+
+/**Set top right point
+    (0.5,0.5) means in the media center,
+    (0, 0) means in the upper left corner of the media,
+    (1, 1) means in the lower right corner of the media
+        
+    top right point (0.0 ,0.0) - (1.0 ,1.0)
+*/
+@property (nonatomic, assign) CGPoint topRight;
+
+/**Set top bottom right point
+    (0.5,0.5) means in the media center,
+    (0, 0) means in the upper left corner of the media,
+    (1, 1) means in the lower right corner of the media
+        
+    bottom right point (0.0 ,0.0) - (1.0 ,1.0)
+*/
+@property (nonatomic, assign) CGPoint bottomRight;
+
+/**Set bottom left point
+    (0.5,0.5) means in the media center,
+    (0, 0) means in the upper left corner of the media,
+    (1, 1) means in the lower right corner of the media
+        
+    bottom left point (0.0 ,0.0) - (1.0 ,1.0)
+*/
+@property (nonatomic, assign) CGPoint bottomLeft;
 
 @end

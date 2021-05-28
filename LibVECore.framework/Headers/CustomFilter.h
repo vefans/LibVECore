@@ -75,10 +75,15 @@
 
 @end
 
-
-typedef NS_ENUM(NSInteger, CustomFilterType) {
-    CustomFilterTypeNormal,         //滤镜
-    CustomFilterTypeSpecialEffect,  //特效
+typedef NS_ENUM(NSInteger, CustomFilterOverlayType) {
+    CustomFilterOverlayTypeMainVideo,        //主视频
+    CustomFilterOverlayTypePIP,              //画中画
+    CustomFilterOverlayTypeVirtualVideo,     //虚拟视频
+};
+typedef NS_ENUM(NSInteger, CustomAnimationType) {
+    CustomAnimationTypeIn,          //入场
+    CustomAnimationTypeOut,         //出场
+    CustomAnimationTypeCombined,    //组合
 };
 
 @interface CustomFilter : NSObject
@@ -87,9 +92,21 @@ typedef NS_ENUM(NSInteger, CustomFilterType) {
  */
 @property (nonatomic, strong) NSString *folderPath;
 
-/** 类型
+/**资源分类ID
  */
-@property (nonatomic, assign) CustomFilterType type;
+@property (nonatomic, strong) NSString *networkCategoryId;
+
+/**资源ID
+ */
+@property (nonatomic, strong) NSString *networkResourceId;
+
+/** 特效覆盖类型
+ */
+@property (nonatomic, assign) CustomFilterOverlayType overlayType;
+
+/** 自定义动画类型
+ */
+@property (nonatomic, assign) CustomAnimationType animateType;
 
 /**  自定义滤镜名称
  */

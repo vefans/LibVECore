@@ -67,8 +67,6 @@
 
 @end
 
-@interface Filter : NSObject
-
 typedef NS_ENUM(NSInteger, CameraSwipeDirection) {
     kCameraSwipeDirectionNone    = -1,
     kCameraSwipeDirectionLeft    = 0,
@@ -77,6 +75,15 @@ typedef NS_ENUM(NSInteger, CameraSwipeDirection) {
     kCameraSwipeDirectionDown    = 3,
 };
 
+@interface Filter : NSObject
+
+/**资源分类ID
+ */
+@property (nonatomic, strong) NSString *networkCategoryId;
+
+/**资源ID
+ */
+@property (nonatomic, strong) NSString *networkResourceId;
 /**滤镜类型
  */
 @property (nonatomic,assign)FilterType type;
@@ -99,12 +106,7 @@ typedef NS_ENUM(NSInteger, CameraSwipeDirection) {
 /**网络滤镜资源地址
  */
 @property (nonatomic,copy  )NSString *netFile;
-/**素材分类ID
- */
-@property (nonatomic, assign)int categoryId;
-/**素材下标
- */
-@property (nonatomic, assign)int index;
+
 /**滤镜acv地址
  */
 @property (nonatomic,copy  )NSString *acvPath       DEPRECATED_MSG_ATTRIBUTE("Use filterPath instead.");
