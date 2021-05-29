@@ -399,6 +399,12 @@ typedef NS_ENUM(NSUInteger, VEExportVideoProfileLevelType) {
  */
 - (void)removeEndLogoMark;
 
+/** 添加片尾媒体，仅导出时有效
+ *  @param media 片尾资源
+ *  @param isChangeTimeline 是否改变虚拟视频时间线
+ */
+- (void)setEndingMedia:(MediaAsset *)media isChangeTimeline:(BOOL)isChangeTimeline;
+
 /**构建虚拟视频 用于播放和导出，build后自动seek到当前帧
     @abstract   Build virtual video for playback and export.
  */
