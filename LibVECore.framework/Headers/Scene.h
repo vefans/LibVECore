@@ -188,6 +188,14 @@ typedef NS_ENUM(NSInteger, MusicType) {
  */
 @property (nonatomic, assign) MusicType type;
 
+/**资源分类ID
+ */
+@property (nonatomic, strong) NSString *networkCategoryId;
+
+/**资源ID
+ */
+@property (nonatomic, strong) NSString *networkResourceId;
+
 /**使用音乐地址
  */
 @property (nonatomic, strong) NSURL *  url;
