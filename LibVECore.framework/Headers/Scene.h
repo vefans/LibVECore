@@ -86,10 +86,10 @@ typedef NS_ENUM(NSInteger ,CurveSpeedType) {
 };
 
 typedef NS_ENUM(NSInteger, MediaReplaceableType) {
-    MediaReplaceableType_Irreplaceable, //不可替换
+    MediaReplaceableType_VideoOrPic,    //可替换视频或图片
     MediaReplaceableType_Picture,       //可替换图片
     MediaReplaceableType_Video,         //可替换视频
-    MediaReplaceableType_VideoOrPic,    //可替换视频或图片
+    MediaReplaceableType_Irreplaceable, //不可替换
 };
 
 @class Transition;
@@ -1135,6 +1135,10 @@ typedef NS_ENUM(NSInteger, CaptionTextAlignment) {
 
 @interface Caption : NSObject<NSCopying, NSMutableCopying>
 
+/** 标识符
+ */
+@property (nonatomic,strong) NSString*  identifier;
+
 /** 组Id
  */
 @property (nonatomic, assign) int groupId;
@@ -1738,6 +1742,10 @@ typedef NS_ENUM(NSInteger, OverlayType) {
 /** 视频水印
  */
 @interface Overlay : NSObject<NSCopying, NSMutableCopying>
+
+/** 标识符
+ */
+@property (nonatomic,strong) NSString*  identifier;
 
 /** 组Id
  */
