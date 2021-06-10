@@ -737,4 +737,14 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
               failedHandler:(void (^)(NSError *error))failedHandler
                      cancel:(BOOL *)cancel;
 
+/** caf文件转mp3文件 （ 采样率为11025 省道数为2 ） 注意：MIC录制为caf文件转mp3专用
+@abstract   CAF file transfer MP3 file
+ @param cafFilePath    caf文件路径
+ @param mp3FilePath    mp3保存路径
+ @param voiceChanger   变声
+ @param noise          降噪
+ @param volume         音量
+ @param sampleRate     音频采样率
+*/
++(void)audio_CafToMP3:( NSString * ) cafFilePath atMP3FilePath:( NSString * ) mp3FilePath atVoiceChanger:(NSInteger) voiceChanger atNoise:(NSInteger) noise atVolume:(NSInteger) volume  atSampleRate:(float) sampleRate;
 @end
