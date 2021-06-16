@@ -747,4 +747,10 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
  @param sampleRate     音频采样率
 */
 +(void)audio_CafToMP3:( NSString * ) cafFilePath atMP3FilePath:( NSString * ) mp3FilePath atVoiceChanger:(NSInteger) voiceChanger atNoise:(NSInteger) noise atVolume:(NSInteger) volume  atSampleRate:(float) sampleRate;
+/** m4a文件转mp3文件
+@abstract   CAF file transfer MP3 file
+ @param m4aFilePath    m4a文件路径
+ @param mp3FilePath    mp3保存路径
+*/
++(void)audio_M4aToMP3:( NSString * ) m4aFilePath atMP3FilePath:( NSString * ) mp3FilePath atSampleRate:(float) sampleRate  FinishBlock:(void (^)(bool isFinish)) FinishBlock;
 @end
