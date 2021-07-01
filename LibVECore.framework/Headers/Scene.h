@@ -146,16 +146,29 @@ typedef NS_ENUM(NSInteger, SceneType) {
 @interface Scene : NSObject
 
 /** 标识符
+ *  导出模板用
  */
-@property (nonatomic,strong) NSString*  identifier;
+@property (nonatomic,strong) NSString *identifier;
 
 /** 类型
+ *  导出模板用
  */
 @property (nonatomic, assign) SceneType type;
 
 /** 组Id
+ *  导出模板用
  */
 @property (nonatomic, assign) int groupId;
+
+/** 是否是默认场景
+ *  导出模板用
+ */
+@property (nonatomic, assign) BOOL isDefault;
+
+/** 是否是旁白，默认为NO
+ *  导出模板用 
+ */
+@property (nonatomic, assign) BOOL isNarrator;
 
 /** 场景背景色
 */
@@ -1133,23 +1146,33 @@ typedef NS_ENUM(NSInteger, CaptionTextAlignment) {
 
 @end
 
+
 @interface Caption : NSObject<NSCopying, NSMutableCopying>
 
 /** 标识符
+ *  导出模板用
  */
-@property (nonatomic,strong) NSString*  identifier;
+@property (nonatomic,strong) NSString *identifier;
 
 /** 组Id
+ *  导出模板用
  */
 @property (nonatomic, assign) int groupId;
 
 /**资源分类ID
+ *  导出模板用
  */
 @property (nonatomic, strong) NSString *networkCategoryId;
 
 /**资源ID
+ *  导出模板用
  */
 @property (nonatomic, strong) NSString *networkResourceId;
+
+/** 花字类型
+ *  导出模板用
+ */
+@property (nonatomic, assign) NSInteger flowerTextType;
 
 /**字幕背景色，默认无
  */
@@ -1369,6 +1392,18 @@ typedef NS_ENUM(NSInteger, CaptionTextAlignment) {
 /**Y轴翻转
  */
 @property (nonatomic ,assign) BOOL flipY;
+
+
+/**高级动画
+ * 设置该动画后，textAnimate、imageAnimate customAnimate customOutAnimate 均无效
+ */
+@property (nonatomic, strong) CustomFilter *templateAnimate;
+
+
+/**当前控件是否正在编辑
+ *编辑状态要全部显示文字
+ */
+@property (nonatomic, assign) BOOL editing;
 
 @end
 

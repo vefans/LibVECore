@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 #import <LibVECore/Scene.h>
 #import <LibVECore/CameraManager.h>
+#import <LibVECore/VECoreTemplateInfo.h>
 
 @class MusicInfo;
 @class FilterAttribute;
@@ -736,6 +737,40 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
           completionHandler:(void (^)(NSString *exportPath))completionHandler
               failedHandler:(void (^)(NSError *error))failedHandler
                      cancel:(BOOL *)cancel;
+
+/** 导出模板
+@abstract   Export template.
+ @param isExportPreviewVideo    是否导出预览视频
+ @param previewVideoBitrate      视频码率(例：设置为5M码率，传值为5)
+ @param size                                        分辨率大小
+ @param previewVideoFps          视频帧率
+ @param previewVideoAudioBitRate 音频码率(单位：Kbps 默认为128)
+ @param previewVideoAudioChannelNumbers   音频通道数   默认为：1
+ @param previewVideoMaxExportDuration 最大导出时长 默认为0 不限制
+ @param outputPath                  输出路径
+           Output path.
+ @param progressHandler       导出进度
+ @param completionHandler   完成
+ @param failedHandler            失败
+*/
+- (void)exportTemplateWithOutputPath:(NSString *)outputPath
+                                size:(CGSize)size
+                      isHasFragments:(BOOL)isHasFragments
+                isExportPreviewVideo:(BOOL)isExportPreviewVideo
+                 previewVideoBitrate:(float)previewVideoBitrate
+                     previewVideoFps:(int)previewVideoFps
+            previewVideoAudioBitRate:(int)previewVideoAudioBitRate
+     previewVideoAudioChannelNumbers:(int)previewVideoAudioChannelNumbers
+       previewVideoMaxExportDuration:(float)previewVideoMaxExportDuration
+                previewVideoMetadata:(NSArray<AVMetadataItem*>*)previewVideoMetadata
+                     progressHandler:(void (^)(float progress))progressHandler
+                   completionHandler:(void (^)(NSString *exportPath, VECoreTemplateInfo *templateInfo))completionHandler
+                       failedHandler:(void (^)(NSError *error))failedHandler;
+
+/** 取消导出模板
+@abstract   Cancel export template.
+*/
+- (void)cancelExportTemplate:(void(^)(void))cancelHandler;
 
 /** caf文件转mp3文件 （ 采样率为11025 省道数为2 ） 注意：MIC录制为caf文件转mp3专用
 @abstract   CAF file transfer MP3 file

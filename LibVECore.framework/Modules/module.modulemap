@@ -1,5 +1,5 @@
 framework module LibVECore {
-  umbrella header "LibVECore.h"
+  umbrella header "LibVECore-umbrella.h"
 
   export *
   module * { export * }
