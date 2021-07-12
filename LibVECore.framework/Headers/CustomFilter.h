@@ -64,6 +64,10 @@
  */
 @property (nonatomic, copy)NSString* name;
 
+/** 如果 shader 需要多个输入纹理，index 用于 name 和 inputFilterName 对应
+    如果 shader 只需要一个输入纹理，index 可以不需要设置
+ */
+@property (nonatomic, assign) int index;
 
 /** 纹理warp模式
  */
@@ -155,6 +159,13 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
  */
 @property (nonatomic, assign)float lookUpFilterIntensity;
 
+
+/** 当前作为输入源的特效名字，如果当前特效由多个特效组成时，
+    会根据 inputFilterName 将上一个或者多个特效的结果作为输入继续处理，默认为 nil
+ */
+@property (nonatomic, copy) NSMutableArray*  inputFilterName;
+
+
 /**  设置shader中 uniform sampler2D 类型参数（纹理参数）
  */
 - (NSError *) setShaderTextureParams:(TextureParams *)textureParams;
@@ -170,5 +181,41 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
                           forUniform:(NSString *)uniform;
 
 @end
+
+
+
+/** 同时支持多个特效
+ */
+
+@interface CustomMultipleFilter : NSObject
+
+/**资源文件夹地址
+ */
+@property (nonatomic, strong) NSString *folderPath;
+
+/**资源分类ID
+ */
+@property (nonatomic, strong) NSString *networkCategoryId;
+
+/**资源ID
+ */
+@property (nonatomic, strong) NSString *networkResourceId;
+
+/**  设置滤镜持续时间
+ */
+@property (nonatomic,assign) CMTimeRange timeRange;
+
+/** 特效覆盖类型
+ */
+@property (nonatomic, assign) CustomFilterOverlayType overlayType;
+
+/** 特效数组
+ */
+- (instancetype)initWithFilterArray:(NSMutableArray<CustomFilter*>*)filterArray;
+
+@property (nonatomic, strong) NSMutableArray<CustomFilter*>* filterArray;
+
+@end
+
 
 #endif /* Header_h */

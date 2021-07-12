@@ -149,9 +149,19 @@ typedef NS_ENUM(NSUInteger, VEExportVideoProfileLevelType) {
  */
 @property (nonatomic, assign) BOOL enableAudioEffect;
 
+//#ifdef USE_MULTIPLE_SHADER
 /** 自定义滤镜
  */
 @property (nonatomic, strong) NSMutableArray <CustomFilter*>* customFilterArray;
+
+/**设置媒体自定义多滤镜数组，一个滤镜可以由多个滤镜组合而成。
+ */
+@property (nonatomic, strong) NSMutableArray <CustomMultipleFilter*>* customMultipleFilterArray;
+//#else
+///** 自定义滤镜
+// */
+//@property (nonatomic, strong) NSMutableArray <CustomFilter*>* customFilterArray;
+//#endif
 
 /** 水印，支持视频/图片
  *  适用于整个虚拟视频添加多个水印的情况，可用于画中画、涂鸦等
