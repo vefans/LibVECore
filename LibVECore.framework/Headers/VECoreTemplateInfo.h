@@ -337,6 +337,14 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 */
 @property (nonatomic, strong) NSMutableArray <VECoreTemplateSpecialEffect*>* specialEffects;
 
+/** 滤镜
+*/
+@property (nonatomic, strong) NSMutableArray <VECoreTemplateCustomMultipleFilter*>* customMultipleFilters;
+
+/** 特效
+*/
+@property (nonatomic, strong) NSMutableArray <VECoreTemplateMultipleSpecialEffect*>* multipleSpecialEffects;
+
 /** 调色
 */
 @property (nonatomic, strong) NSMutableArray <VECoreTemplateToningInfo*>* tonings;

@@ -90,6 +90,10 @@
  */
 @property (nonatomic, strong) NSMutableArray <VECoreTemplateSpecialEffect*>* specialEffects;
 
+/** 设置媒体自定义多脚本特效
+*/
+@property (nonatomic, strong) NSMutableArray <VECoreTemplateMultipleSpecialEffect*>* multipleSpecialEffects;
+
 /**设置媒体自定义动画（入场、出场、组合）
  */
 @property (nonatomic, strong) NSMutableArray <VECoreTemplateCustomAnimation*>* customAnimations;

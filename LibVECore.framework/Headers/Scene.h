@@ -910,8 +910,6 @@ typedef NS_ENUM(NSInteger, FilterBlendType) {
  */
 @property (nonatomic, strong) CustomFilter* customFilter DEPRECATED_MSG_ATTRIBUTE("Use customFilterArray instead.");
 
-//#ifdef USE_MULTIPLE_SHADER
-
 /**设置媒体自定义滤镜数组。
  */
 @property (nonatomic, strong) NSMutableArray <CustomFilter*>* customFilterArray DEPRECATED_MSG_ATTRIBUTE("Use customMultipleFilterArray instead.");
@@ -919,17 +917,6 @@ typedef NS_ENUM(NSInteger, FilterBlendType) {
 /**设置媒体自定义多滤镜数组，一个滤镜可以由多个滤镜组合而成。
  */
 @property (nonatomic, strong) NSMutableArray <CustomMultipleFilter*>* customMultipleFilterArray;
-
-//#else
-//
-///**设置媒体自定义滤镜数组。
-// */
-//@property (nonatomic, strong) NSMutableArray <CustomFilter*>* customFilterArray;
-//
-//#endif
-
-
-
 
 /**设置媒体自定义动画。
  */
