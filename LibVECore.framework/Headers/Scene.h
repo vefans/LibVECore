@@ -96,6 +96,7 @@ typedef NS_ENUM(NSInteger, MediaReplaceableType) {
 @class MediaAsset;
 @class CurvedSpeedPoint;
 @class AudioVolumePosition;
+@class FaceAttribute;
 
 /** 调色
 */
@@ -947,6 +948,16 @@ typedef NS_ENUM(NSInteger, FilterBlendType) {
     只支持iOS11.0以上
  */
 @property (nonatomic, assign) float beautyBigEyeIntensity;
+
+/** 五官美颜,如果设置了该参数，瘦脸beautyThinFaceIntensity / 大眼beautyBigEyeIntensity 参数无效,
+    如果检测到有多张脸，检测到的所有脸都会应用该设置,只支持iOS11.0以上
+ */
+@property (nonatomic, strong) FaceAttribute* faceAttribute;
+
+/** 五官美颜,如果设置了该参数，瘦脸beautyThinFaceIntensity / 大眼beautyBigEyeIntensity 参数无效,
+    如果检测到多张脸，根据 faceID 匹配对应的脸，并设置对应参数,只支持iOS11.0以上
+ */
+@property (nonatomic, strong)  NSMutableArray<FaceAttribute*>* multipleFaceAttribute;
 
 /**美颜细节，0.0~1.0,默认为0.5
  */

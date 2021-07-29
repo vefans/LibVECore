@@ -512,7 +512,7 @@ typedef NS_ENUM(NSUInteger, VEExportVideoProfileLevelType) {
  */
 - (void)getImageWithTime:(CMTime) outputTime
                    scale:(float) scale
-       completionHandler:(void (^)(UIImage* image))completionHandler;
+       completionHandler:(void (^)(UIImage* image))completionHandler DEPRECATED_MSG_ATTRIBUTE("Use copyCGImageAtTime:actualTime:maximumSize:error: instead.");
 
 /**获取某个时间点的缩略图，包含视频及MV、字幕、贴纸等
  @abstract  Returns thumbnails of the specified times, including videos and MVs, subtitles, stickers, etc.
@@ -521,12 +521,12 @@ typedef NS_ENUM(NSUInteger, VEExportVideoProfileLevelType) {
  */
 - (void)getImageWithTimes:(NSMutableArray *) outputTimes
                     scale:(float) scale
-        completionHandler:(void (^)(UIImage* image, NSInteger idx))completionHandler;
+        completionHandler:(void (^)(UIImage* image, NSInteger idx))completionHandler DEPRECATED_MSG_ATTRIBUTE("Use generateCGImagesAsynchronouslyForTimes:maximumSize:completionHandler: instead.");
 
 /**取消获取缩略图
  @abstract  Cancels all outstanding image generation requests.
  */
-- (void)cancelImage;
+- (void)cancelImage DEPRECATED_MSG_ATTRIBUTE("Use cancelAllCGImageGeneration instead.");
 
 /**获取某个时间点的缩略图，只包含视频及MV，不包含字幕、贴纸等
  @abstract  Returns a thumbnail of the specified time, including only videos and MVs, no subtitles, stickers, etc.
@@ -534,16 +534,16 @@ typedef NS_ENUM(NSUInteger, VEExportVideoProfileLevelType) {
  *param: scale          与原始尺寸的缩放比例
  */
 - (UIImage*)getImageAtTime:(CMTime) outputTime
-                     scale:(float) scale;
+                     scale:(float) scale DEPRECATED_MSG_ATTRIBUTE("Use copyCGImageAtTime:actualTime:maximumSize:error: instead.");
 - (void)getImageAtTime:(CMTime) outputTime
                  scale:(float) scale
-            completion:(void (^)(UIImage *image))completionHandler;
+            completion:(void (^)(UIImage *image))completionHandler DEPRECATED_MSG_ATTRIBUTE("Use copyCGImageAtTime:actualTime:maximumSize:error: instead.");
 
 /**获取当前时间点的缩略图
  @abstract  Returns a thumbnail of the current time.
  *param: scale          与原始尺寸的缩放比例
  */
-- (UIImage *)getCurrentFrameWithScale:(float) scale;
+- (UIImage *)getCurrentFrameWithScale:(float) scale DEPRECATED_MSG_ATTRIBUTE("Use copyCurrentCGImage instead.");
 
 /** @abstract Set the authored size of the virtual video.
  */

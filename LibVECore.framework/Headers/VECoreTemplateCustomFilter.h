@@ -31,30 +31,6 @@
 
 @end
 
-@interface VECoreTemplateCustomMultipleFilter : CustomMultipleFilter
-
-/** 特效覆盖类型
- */
-@property (nonatomic, assign) NSInteger nApplyRange;
-
-/** 在虚拟视频中的开始时间
- */
-@property (nonatomic, assign) float timelineFrom;
-
-/** 在虚拟视频中的结束时间
- */
-@property (nonatomic, assign) float timelineTo;
-
-/** 特效数组
- */
-@property (nonatomic, strong) NSMutableArray<VECoreTemplateCustomFilter*>* filters;
-
-- (instancetype)initWithCustomMultipleFilter:(CustomMultipleFilter *)filter;
-
-- (CustomMultipleFilter *)getCustomMultipleFilterWithFolderPath:(NSString *)folderPath;
-
-@end
-
 #pragma mark - 特效
 @interface VECoreTemplateSpecialEffect : CustomFilter
 
@@ -77,30 +53,6 @@
 - (instancetype)initWithCustomFilter:(CustomFilter *)filter;
 
 - (CustomFilter *)getCustomFilterWithFolderPath:(NSString *)folderPath;
-
-- (CustomMultipleFilter *)getCustomMultipleFilterWithFolderPath:(NSString *)folderPath;
-
-@end
-
-@interface VECoreTemplateMultipleSpecialEffect : CustomMultipleFilter
-
-/** 特效覆盖类型
- */
-@property (nonatomic, assign) NSInteger nApplyRange;
-
-/** 在虚拟视频中的开始时间
- */
-@property (nonatomic, assign) float timelineFrom;
-
-/** 在虚拟视频中的结束时间
- */
-@property (nonatomic, assign) float timelineTo;
-
-/** 特效数组
- */
-@property (nonatomic, strong) NSMutableArray<VECoreTemplateSpecialEffect*>* effects;
-
-- (instancetype)initWithCustomMultipleFilter:(CustomMultipleFilter *)filter;
 
 - (CustomMultipleFilter *)getCustomMultipleFilterWithFolderPath:(NSString *)folderPath;
 

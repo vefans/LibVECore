@@ -12,58 +12,161 @@
 #import <Accelerate/Accelerate.h>
 #import <LibVECore/CameraFile.h>
 
+
+@interface FaceAttribute : NSObject
+
+/** 五官美颜  脸的宽度 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float faceWidth;
+/** 五官美颜  额头高度（暂无功能） ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float forehead;
+/** 五官美颜  下颚的宽度 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float chinWidth;
+/** 五官美颜  下巴的高度 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float chinHeight;
+/** 五官美颜  眼睛宽度 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float eyeWidth;
+/** 五官美颜  眼睛高度 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float eyeHeight;
+/** 五官美颜  眼睛倾斜 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float eyeSlant;
+/** 五官美颜  眼睛距离 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float eyeDistance;
+/** 五官美颜  鼻子宽度 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float noseWidth;
+/** 五官美颜  鼻子高度 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float noseHeight;
+/** 五官美颜  嘴巴宽度 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float mouthWidth;
+/** 五官美颜  上嘴唇 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float lipUpper;
+/** 五官美颜  下嘴唇 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float lipLower;
+/** 五官美颜  微笑 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float smile;
+
+/** 五官美颜  该脸的唯一标识
+ */
+@property (nonatomic,assign) int faceID;
+
+@end
+
+
 @interface FaceRecognition : NSObject
 
 /**
- 面部轮廓左耳上方
+ 瘦脸大眼，面部轮廓左耳上方 (参考坐标点：0)
  */
 @property (nonatomic,assign)CGPoint left0;
 /**
- 面部轮廓左耳下方
+ 瘦脸大眼，面部轮廓左耳下方 (参考坐标点：5)
  */
 @property (nonatomic,assign)CGPoint left1;
 /**
- 面部轮廓嘴巴左边
+ 瘦脸大眼，面部轮廓嘴巴左边 (参考坐标点：8)
  */
 @property (nonatomic,assign)CGPoint left2;
 /**
- 面部轮廓嘴巴左下侧
+ 瘦脸大眼，面部轮廓嘴巴左下侧 (参考坐标点：12)
  */
 @property (nonatomic,assign)CGPoint left3;
 /**
- 面部轮廓下巴底部中间
+ 瘦脸大眼，面部轮廓下巴底部中间 (参考坐标点：16)
  */
 @property (nonatomic,assign)CGPoint bottom;
 /**
- 面部轮廓右耳上方
+ 瘦脸大眼，面部轮廓右耳上方 (参考坐标点：32)
  */
 @property (nonatomic,assign)CGPoint right0;
 /**
- 面部轮廓右耳下方
+ 瘦脸大眼，面部轮廓右耳下方 (参考坐标点：27)
  */
 @property (nonatomic,assign)CGPoint right1;
 /**
- 面部轮廓嘴巴右边
+ 瘦脸大眼，面部轮廓嘴巴右边 (参考坐标点：23)
  */
 @property (nonatomic,assign)CGPoint right2;
 /**
- 面部轮廓嘴巴右下侧
+ 瘦脸大眼，面部轮廓嘴巴右下侧 (参考坐标点：19)
  */
 @property (nonatomic,assign)CGPoint right3;
 
 /**
- 面部轮廓鼻尖
+ 瘦脸大眼，面部轮廓鼻尖 (参考坐标点：46)
  */
 @property(nonatomic,assign) CGPoint nose;
+
 /**
-  左瞳孔
+ 瘦脸大眼，左瞳孔 (参考坐标点：74)
  */
 @property(nonatomic,assign) CGPoint leftPupil;
+
 /**
-  右瞳孔
+ 瘦脸大眼，右瞳孔 (参考坐标点：77)
  */
 @property(nonatomic,assign) CGPoint rightPupil;
 
+/**
+ 五官美颜，左眼相关坐标点 (参考坐标点：55，54，53，52，57，56)，如果设置该参数，需要通过 FaceAttribute 控制效果
+ */
+@property (nonatomic,strong) NSMutableArray* eyeLeftPoints;
+
+/**
+ 五官美颜，右眼相关坐标点 (参考坐标点：58，59，60，61，62，63)，如果设置该参数，需要通过 FaceAttribute 控制效果
+ */
+@property (nonatomic,strong) NSMutableArray* eyeRightPoints;
+
+/**
+ 五官美颜，左脸相关坐标点 (参考坐标点：0，4，9，12)，如果设置该参数，需要通过 FaceAttribute 控制效果
+ */
+@property (nonatomic,strong) NSMutableArray* cheekLeftPoints;
+
+/**
+ 五官美颜，右脸相关坐标点 (参考坐标点：32，27，22，20)，如果设置该参数，需要通过 FaceAttribute 控制效果
+ */
+@property (nonatomic,strong) NSMutableArray* cheekRightPoints;
+
+/**
+ 五官美颜，下巴底部相关坐标点 (参考坐标点：16)，如果设置该参数，需要通过 FaceAttribute 控制效果
+ */
+@property (nonatomic,strong) NSMutableArray* chinLowerPoints;
+
+/**
+ 五官美颜，嘴唇外圈相关坐标点 (参考坐标点：84，86，88，90，92，94)，如果设置该参数，需要通过 FaceAttribute 控制效果
+ */
+@property (nonatomic,strong) NSMutableArray* lipOuterPoints;
+
+/**
+ 五官美颜，上唇下沿中间相关坐标点 (参考坐标点：98)，如果设置该参数，需要通过 FaceAttribute 控制效果
+ */
+@property (nonatomic,strong) NSMutableArray* lipUpperLowPoints;
+
+/**
+ 五官美颜，下唇上沿中间相关坐标点 (参考坐标点：102)，如果设置该参数，需要通过 FaceAttribute 控制效果
+ */
+@property (nonatomic,strong) NSMutableArray* lipLowerUppPoints;
+
+/**
+ 五官美颜，鼻子相关坐标点 (参考坐标点：47，51)，如果设置该参数，需要通过 FaceAttribute 控制效果
+ */
+@property (nonatomic,strong) NSMutableArray* nosePoints;
+
+/** 五官美颜  该脸的唯一标识，该标识和 FaceAttribute 一致
+ */
+@property (nonatomic,assign) int faceID;
 
 @end
 
@@ -303,6 +406,7 @@ typedef NS_ENUM(NSUInteger, CameraFillMode) {
     只支持iOS11.0以上
  */
 @property (nonatomic, assign) float beautyThinFace;
+
 
 
 /** 摄像头方向，默认为kUP

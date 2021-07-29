@@ -11,6 +11,7 @@
 
 @interface CameraFile : NSObject
 @property (nonatomic , copy) NSString  * fileName;
+@property (nonatomic , copy) NSURL  * url;
 @property (nonatomic , copy) NSURL  * fileReversUrl;
 
 @property (nonatomic , assign) double duration;
