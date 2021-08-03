@@ -12,59 +12,6 @@
 #import <Accelerate/Accelerate.h>
 #import <LibVECore/CameraFile.h>
 
-
-@interface FaceAttribute : NSObject
-
-/** 五官美颜  脸的宽度 ，取值范围 0.0 - 1.0 默认 0.5
- */
-@property (nonatomic,assign) float faceWidth;
-/** 五官美颜  额头高度（暂无功能） ，取值范围 0.0 - 1.0 默认 0.5
- */
-@property (nonatomic,assign) float forehead;
-/** 五官美颜  下颚的宽度 ，取值范围 0.0 - 1.0 默认 0.5
- */
-@property (nonatomic,assign) float chinWidth;
-/** 五官美颜  下巴的高度 ，取值范围 0.0 - 1.0 默认 0.5
- */
-@property (nonatomic,assign) float chinHeight;
-/** 五官美颜  眼睛宽度 ，取值范围 0.0 - 1.0 默认 0.5
- */
-@property (nonatomic,assign) float eyeWidth;
-/** 五官美颜  眼睛高度 ，取值范围 0.0 - 1.0 默认 0.5
- */
-@property (nonatomic,assign) float eyeHeight;
-/** 五官美颜  眼睛倾斜 ，取值范围 0.0 - 1.0 默认 0.5
- */
-@property (nonatomic,assign) float eyeSlant;
-/** 五官美颜  眼睛距离 ，取值范围 0.0 - 1.0 默认 0.5
- */
-@property (nonatomic,assign) float eyeDistance;
-/** 五官美颜  鼻子宽度 ，取值范围 0.0 - 1.0 默认 0.5
- */
-@property (nonatomic,assign) float noseWidth;
-/** 五官美颜  鼻子高度 ，取值范围 0.0 - 1.0 默认 0.5
- */
-@property (nonatomic,assign) float noseHeight;
-/** 五官美颜  嘴巴宽度 ，取值范围 0.0 - 1.0 默认 0.5
- */
-@property (nonatomic,assign) float mouthWidth;
-/** 五官美颜  上嘴唇 ，取值范围 0.0 - 1.0 默认 0.5
- */
-@property (nonatomic,assign) float lipUpper;
-/** 五官美颜  下嘴唇 ，取值范围 0.0 - 1.0 默认 0.5
- */
-@property (nonatomic,assign) float lipLower;
-/** 五官美颜  微笑 ，取值范围 0.0 - 1.0 默认 0.5
- */
-@property (nonatomic,assign) float smile;
-
-/** 五官美颜  该脸的唯一标识
- */
-@property (nonatomic,assign) int faceID;
-
-@end
-
-
 @interface FaceRecognition : NSObject
 
 /**
@@ -164,9 +111,9 @@
  */
 @property (nonatomic,strong) NSMutableArray* nosePoints;
 
-/** 五官美颜  该脸的唯一标识，该标识和 FaceAttribute 一致
+/** 五官美颜  该脸的位置
  */
-@property (nonatomic,assign) int faceID;
+@property (nonatomic,assign) CGRect faceRect;
 
 @end
 

@@ -139,6 +139,58 @@ typedef NS_ENUM(NSInteger, MediaReplaceableType) {
 
 @end
 
+
+@interface FaceAttribute : NSObject
+
+/** 五官美颜  脸的宽度 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float faceWidth;
+/** 五官美颜  额头高度（暂无功能） ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float forehead;
+/** 五官美颜  下颚的宽度 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float chinWidth;
+/** 五官美颜  下巴的高度 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float chinHeight;
+/** 五官美颜  眼睛宽度 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float eyeWidth;
+/** 五官美颜  眼睛高度 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float eyeHeight;
+/** 五官美颜  眼睛倾斜 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float eyeSlant;
+/** 五官美颜  眼睛距离 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float eyeDistance;
+/** 五官美颜  鼻子宽度 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float noseWidth;
+/** 五官美颜  鼻子高度 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float noseHeight;
+/** 五官美颜  嘴巴宽度 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float mouthWidth;
+/** 五官美颜  上嘴唇 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float lipUpper;
+/** 五官美颜  下嘴唇 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float lipLower;
+/** 五官美颜  微笑 ，取值范围 0.0 - 1.0 默认 0.5
+ */
+@property (nonatomic,assign) float smile;
+
+/** 五官美颜  该脸的位置
+ */
+@property (nonatomic,assign) CGRect faceRect;
+
+@end
+
 typedef NS_ENUM(NSInteger, SceneType) {
     SceneTypeNormal,    //默认
     SceneTypeEnd,       //片尾
@@ -950,12 +1002,9 @@ typedef NS_ENUM(NSInteger, FilterBlendType) {
 @property (nonatomic, assign) float beautyBigEyeIntensity;
 
 /** 五官美颜,如果设置了该参数，瘦脸beautyThinFaceIntensity / 大眼beautyBigEyeIntensity 参数无效,
-    如果检测到有多张脸，检测到的所有脸都会应用该设置,只支持iOS11.0以上
- */
-@property (nonatomic, strong) FaceAttribute* faceAttribute;
-
-/** 五官美颜,如果设置了该参数，瘦脸beautyThinFaceIntensity / 大眼beautyBigEyeIntensity 参数无效,
-    如果检测到多张脸，根据 faceID 匹配对应的脸，并设置对应参数,只支持iOS11.0以上
+    如果是图片并且检测到多张脸，根据 faceRect 匹配对应的脸，并设置对应参数（一张脸对应一份参数设置）；
+    如果是视频并且检测到多张脸，默认使用数组中的第一个 FaceAttribute 参数设置到全部脸部数据（所有脸部五官参数共用一份参数设置）；
+    只支持iOS11.0以上
  */
 @property (nonatomic, strong)  NSMutableArray<FaceAttribute*>* multipleFaceAttribute;
 
