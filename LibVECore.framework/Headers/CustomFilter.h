@@ -130,6 +130,8 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
 /**  script
  */
 @property (nonatomic, copy) NSString* script;
+
+@property (nonatomic, copy) NSString* scriptName;
 /**
  *  动画在视频中的显示位置
  */

@@ -329,6 +329,10 @@ typedef NS_ENUM(NSInteger, MosaicType) {
  */
 @property (nonatomic, strong) VECoreTemplateLogo *logoOverlay;
 
+/** 封面
+ */
+@property (nonatomic, strong) VECoreTemplateOverlay *coverOverlay;
+
 /** 滤镜
 */
 @property (nonatomic, strong) NSMutableArray <VECoreTemplateCustomFilter*>* customFilters;

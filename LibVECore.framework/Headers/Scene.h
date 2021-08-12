@@ -1178,7 +1178,6 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
 
 @end
 
-#pragma mark - Caption
 
 //字幕类型
 typedef NS_ENUM(NSInteger, CaptionType) {
@@ -1192,6 +1191,354 @@ typedef NS_ENUM(NSInteger, CaptionTextAlignment) {
     CaptionTextAlignmentCenter,
     CaptionTextAlignmentRight
 };
+
+#pragma mark - Caption effect color
+
+struct CGVec3 {
+    float x;
+    float y;
+    float z;
+};
+typedef struct CGVec3 CGVec3;
+
+
+@interface CaptionEffectColor : NSObject<NSCopying, NSMutableCopying>
+
+/**文字颜色
+ */
+@property (nonatomic ,strong) UIColor *  color;
+
+/**
+ * 如果gradient为true时，代表指定位置颜色渐变范围:
+*       如两个颜色，需要设置第一个颜色factor为0.0,第二个颜色factor为1.0，
+ *       如果第一个颜色factor大于了0.1,第二个颜色factor小于了1.0，则渐变范围会缩短，而且会移动位置
+ * 如果gradient为false时，代表指定位置颜色具体占比;
+ *      如两个颜色，只需要设置第一个颜色factor为0.5即可
+ */
+
+@property (nonatomic, assign) float factor;
+
+@end
+
+#pragma mark - 文字颜色配置通用参数
+
+@interface CaptionEffectColorParam : NSObject<NSCopying, NSMutableCopying>
+
+/**
+ * 是否为渐变色，
+ * true代表渐变色，否则代表分段色，即过度很直接
+ */
+@property (nonatomic, assign) bool gradient;
+
+/**
+* 轮廓宽度(0-1.0)；
+ *      如果第一层和第二层outline都设置为0.2时,第一层是看不见的，除非颜色是半透的
+*/
+@property (nonatomic, assign) float outlineWidth;
+
+/**
+ * 颜色角度向量，多个颜色时可支持一定角度偏移
+ */
+@property (nonatomic, assign) CGVec3 colorAngleFactor;
+
+
+/**
+ * 颜色定义,gradient为false时最大支持三个颜色，为true时最大支持五个颜色
+ */
+@property (nonatomic, strong) NSMutableArray<CaptionEffectColor*>* colors;
+
+@end
+
+#pragma mark - Caption shadow
+
+@interface CaptionShadow : NSObject<NSCopying, NSMutableCopying>
+
+/**文字阴影自适应颜色, true时,shadowColors设置无效
+ */
+@property (nonatomic ,assign) bool shadowAutoColor;
+
+
+/**文字阴影颜色【纯色】
+ */
+@property (nonatomic ,strong) UIColor* shadowColor;
+
+/**
+ * 文字阴影颜色【多种颜色】与shadowColor互斥
+ */
+@property (nonatomic, strong) CaptionEffectColorParam *shadowColors;
+
+/**
+ *  (轮廓)文字阴影颜色配置,最大支持3层轮廓
+ */
+@property (nonatomic, strong) NSMutableArray<CaptionEffectColorParam*>* shadowStrokes;
+
+/**文字阴影偏移量
+ */
+@property (nonatomic ,assign) float shadowDistance;
+
+/**文字阴影角度 （默认-45）范围(-180 ---> 180)
+ */
+@property (nonatomic ,assign) float shadowAngle;
+
+/**文字阴影模糊度
+ */
+@property (nonatomic ,assign) float shadowBlur;
+
+@end
+
+
+
+#pragma mark - 文字花子配置
+@interface CaptionEffectCfg : NSObject<NSCopying, NSMutableCopying>
+
+/**
+ * 普通文字颜色配置
+ */
+@property (nonatomic, strong) CaptionEffectColorParam *normal;
+
+
+/**
+ *  (轮廓)文字颜色配置,最大支持3层轮廓
+ */
+@property (nonatomic, strong) NSMutableArray<CaptionEffectColorParam*>* strokes;
+
+
+/**
+ * 阴影配置
+ */
+@property (nonatomic, strong) CaptionShadow* shadow;
+
+@end
+
+
+
+#pragma mark - 单个文字
+
+@interface CaptionItem : NSObject<NSCopying, NSMutableCopying>
+
+/** 花字类型
+ *  导出模板用
+ */
+@property (nonatomic, assign) NSInteger flowerTextType;
+
+/**单个文字时间范围(相对于CaptionEx)
+ * 0,0  表示在整个CaptionEx的timeRange内显示
+ */
+@property (nonatomic ,assign) CMTimeRange timeRange;
+
+/**字幕背景色，默认无
+ */
+@property (nonatomic ,strong) UIColor *  backgroundColor;
+
+/**文字内容
+ */
+@property (nonatomic ,copy) NSString * text;
+
+/** 文字区域(相对于CaptionEx)
+ */
+@property (nonatomic ,assign) CGRect  frame;
+
+/** 文字区域(相对于CaptionEx, isStretch有效)(0-->1.0)
+ */
+@property (nonatomic ,assign) CGRect  padding;
+
+/**文字字体名称
+ */
+@property (nonatomic ,copy) NSString * fontName;
+
+/**文字字体路径
+ */
+@property (nonatomic ,copy) NSString * fontPath;
+
+/**文字字体大小
+ */
+@property (nonatomic ,assign) float fontSize;
+
+/**文字字体加粗，默认为NO
+ */
+@property (nonatomic ,assign) BOOL bold;
+
+/**文字字体斜体，默认为NO
+ */
+@property (nonatomic ,assign) BOOL italic;
+
+/** 文字竖排，默认为NO
+ */
+@property (nonatomic ,assign) BOOL vertical;
+
+/** 文字下划线，默认为NO
+ */
+@property (nonatomic ,assign) BOOL underline;
+
+/**文字对齐方式 默认为CaptionTextAlignmentCenter
+ */
+@property (nonatomic ,assign) CaptionTextAlignment alignment;
+
+/** 文字旋转度数
+ */
+@property (nonatomic ,assign) float angle;
+
+/**文字颜色，默认为whiteColor
+ */
+@property (nonatomic ,strong) UIColor * color;
+
+/** 文字透明度(0.0〜1.0),默认为1.0
+ */
+@property (nonatomic ,assign) float alpha;
+
+/**文字阴影
+ */
+@property (nonatomic ,strong) CaptionShadow *shadow;
+
+/**文字描边
+ */
+@property (nonatomic ,strong) CaptionEffectColorParam *stroke;
+
+/**文字花字
+ */
+@property (nonatomic ,strong) CaptionEffectCfg *effectCfg;
+
+/**动画
+ */
+@property (nonatomic, strong) CustomFilter *animate;
+
+/**出场动画
+ */
+@property (nonatomic, strong) CustomFilter *animateOut;
+
+
+@end
+
+#pragma mark - 字幕
+@class CaptionEx;
+
+@protocol CaptionExDelegate<NSObject>
+
+@optional
+- (void)sizeChanged:(CaptionEx *)sender size:(CGSize)size;
+
+@end
+
+//(由0-1个底图+多个文字组成)
+
+@interface CaptionEx : NSObject<NSCopying, NSMutableCopying>
+
+/** 标识符
+ *  导出模板用
+ */
+@property (nonatomic,strong) NSString *identifier;
+
+/** 组Id
+ *  导出模板用
+ */
+@property (nonatomic, assign) int groupId;
+
+/**资源分类ID
+ *  导出模板用
+ */
+@property (nonatomic, strong) NSString *networkCategoryId;
+
+/**资源ID
+ *  导出模板用
+ */
+@property (nonatomic, strong) NSString *networkResourceId;
+
+/**字幕时间范围
+ */
+@property (nonatomic ,assign) CMTimeRange timeRange;
+
+/**字幕旋转角度
+ * 设置字幕动画组后，该属性无效，以动画中的rotate值为准
+ */
+@property (nonatomic ,assign) float angle;
+
+/**字幕缩放大小，默认为1.0
+ * 设置字幕动画组后，该属性无效，以动画中的scale值为准
+ */
+@property (nonatomic ,assign) float scale;
+
+/**透明度(0.0~1.0)，默认1.0
+ * 设置字幕动画组后，该属性无效，以动画中的opacity值为准
+ */
+@property (nonatomic,assign) CGFloat opacity;
+
+/** 字幕图片路径
+ *   单张图片的情况，只设置该属性即可
+ */
+@property (nonatomic ,copy) NSString * captionImagePath;
+
+/** 字幕图片文件夹路径
+ *  多张图片的情况，与imageName、timeArray及frameArray配合使用
+ */
+@property (nonatomic ,copy) NSString * imageFolderPath;
+
+/**图片前缀名字
+ */
+@property (nonatomic ,copy) NSString * imageName;
+
+/**字幕位置，默认为视频中心CGPointMake(0.5, 0.5)
+ * 设置字幕动画组后，该属性无效，以动画中的rect值为准
+ */
+@property (nonatomic ,assign) CGPoint position;
+
+/**字幕大小，相对于实际视频size的字幕大小(CGPointMake(0, 0)〜CGPointMake(1, 1))
+ * 设置字幕动画组后，该属性无效，以动画中的rect值为准
+ */
+@property (nonatomic ,assign) CGSize size;
+
+/**帧动画
+ */
+@property (nonatomic ,strong) NSArray * frameArray;
+
+/**时间动画
+ */
+@property (nonatomic ,strong) NSArray * timeArray;
+
+/**动画持续时间
+ */
+@property (nonatomic ,assign) float duration;
+
+/** 字幕是否需要拉伸
+ */
+@property (nonatomic, assign) BOOL isStretch;
+
+/**字幕拉伸的区域(0-->1)
+ */
+@property (nonatomic,assign) CGRect stretchRect;
+
+/**字幕拉伸配置时候，文字个数变化引起的大小变化
+ */
+@property (nonatomic,weak) id<CaptionExDelegate> delegate;
+
+/** 文字
+ */
+@property (nonatomic, strong) NSMutableArray<CaptionItem*>* texts;
+
+/** 普通动画
+ *  与keyFrameAnimate互斥
+ */
+@property (nonatomic, strong) CaptionAnimation * normalAnimate;
+
+/** 关键帧动画
+ * 与normalAnimate互斥
+ */
+@property (nonatomic, strong) NSMutableArray<CaptionCustomAnimation*>* keyFrameAnimate;
+
+/**高级动画(脚本)
+ *
+ */
+@property (nonatomic, strong) CustomFilter *animate;
+
+/**高级动画(脚本)
+ *
+ */
+@property (nonatomic, strong) CustomFilter *animateOut;
+
+@end
+
+#pragma mark - Caption
+
+
 
 @interface Doodle :NSObject
 
@@ -1949,5 +2296,50 @@ typedef NS_ENUM(NSInteger, OverlayType) {
 /** 是否循环播放，默认为YES
 */
 @property (nonatomic, assign) BOOL isRepeat;
+
+@end
+
+@interface TemplateExportInfo : NSObject
+
+/** 是否导出素材，默认为NO
+ */
+@property (nonatomic, assign) BOOL isHasFragments;
+
+/** 是否导出片段信息，默认为NO
+ */
+@property (nonatomic, assign) BOOL isExportTemplateMedias;
+
+/** 是否导出封面，默认为NO
+ */
+@property (nonatomic, assign) BOOL isExportCoverMedia;
+
+/** 是否导出预览视频，默认为NO
+ */
+@property (nonatomic, assign) BOOL isExportPreviewVideo;
+
+/** 视频码率，单位为M (例：设置为5M码率，传值为5)
+ */
+@property (nonatomic, assign) float previewVideoBitrate;
+
+/** 视频帧率
+ */
+@property (nonatomic, assign) int previewVideoFps;
+
+/** 音频码率(单位：Kbps 默认为128)
+ */
+@property (nonatomic, assign) int previewVideoAudioBitRate;
+
+/** 音频通道数   默认为：1
+ */
+@property (nonatomic, assign) int previewVideoAudioChannelNumbers;
+
+/** 最大导出时长 默认为0 不限制
+ */
+@property (nonatomic, assign) float previewVideoMaxExportDuration;
+
+/** 视频的元信息
+ */
+@property (nonatomic, strong) NSArray <AVMetadataItem*>*previewVideoMetadata;
+
 
 @end
