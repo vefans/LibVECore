@@ -123,6 +123,132 @@
 
 @end
 
+@interface VECoreTemplateWordItem : CaptionItem
+
+/** 花字类型
+ */
+@property (nonatomic, assign) NSInteger flowerCategoryId;
+
+/** 在VECoreTemplateSubtitleEx中的开始时间
+ */
+@property (nonatomic, assign) float startTime;
+
+/** 在VECoreTemplateSubtitleEx中的显示时长
+ * 0,0  表示在整个VECoreTemplateSubtitleEx的timeRange内显示
+ */
+@property (nonatomic, assign) float duration;
+
+/** 文字区域(相对于CaptionEx)
+ */
+@property (nonatomic, assign) CGRect showRectF;
+
+/** 文字透明度(0.0〜1.0),默认为1.0
+ */
+@property (nonatomic ,assign) float opacity;
+
+/**文字阴影颜色【纯色】
+ */
+@property (nonatomic ,strong) UIColor* shadowColor;
+
+/**文字阴影偏移量
+ */
+@property (nonatomic ,assign) float shadowDistance;
+
+/**文字阴影角度 （默认-45）范围(-180 ---> 180)
+ */
+@property (nonatomic ,assign) float shadowAngle;
+
+/**文字阴影模糊度
+ */
+@property (nonatomic ,assign) float shadowBlur;
+
+/**文字描边颜色，默认黑色blackColor
+ */
+@property (nonatomic ,strong) UIColor *strokeColor;
+
+/**文字描边宽度,默认为0.0
+ */
+@property (nonatomic ,assign) float strokeWidth;
+
+/** 入场/出场/组合动画
+ *
+ */
+@property (nonatomic, strong) NSMutableArray<VECoreTemplateCustomAnimation *>*animates;
+
+- (instancetype)initWithCaptionItem:(CaptionItem *)captionItem videoSize:(CGSize)videoSize;
+
+- (CaptionItem *)getCaptionItemWithFolderPath:(NSString *)folderPath videoSize:(CGSize)videoSize;
+
+@end
+
+@interface VECoreTemplateSubtitleEx : CaptionEx
+
+/** 在虚拟视频中的开始时间
+ */
+@property (nonatomic, assign) float timelineFrom;
+
+/** 在虚拟视频中的结束时间
+ */
+@property (nonatomic, assign) float timelineTo;
+
+/** 显示区域
+ */
+@property (nonatomic, assign) CGRect showRectF;
+
+/** 字幕图片文件夹路径
+ *  多张图片的情况，与imageName、timeArray及frameArray配合使用
+ */
+@property (nonatomic ,copy) NSString *folderPath;
+
+/** 文字
+ */
+@property (nonatomic, strong) NSMutableArray<VECoreTemplateWordItem*>* wordItem;
+
+/** 关键帧动画
+ * 与normalAnimate互斥
+ */
+@property (nonatomic, strong) NSMutableArray<VECoreTemplateCaptionCustomAnimation*>* keyFrameAnimates;
+
+/**高级动画(脚本)
+ *
+ */
+@property (nonatomic, strong) NSMutableArray<VECoreTemplateCustomAnimation *>*animates;
+
+- (instancetype)initWithCaption:(CaptionEx *)caption videoSize:(CGSize)videoSize;
+
+- (CaptionEx *)getSubtitleWithFolderPath:(NSString *)folderPath videoSize:(CGSize)videoSize;
+
+@end
+
+@interface VECoreTemplateSubtitleTemplate : CaptionEx
+
+/** 在虚拟视频中的开始时间
+ */
+@property (nonatomic, assign) float timelineFrom;
+
+/** 在虚拟视频中的结束时间
+ */
+@property (nonatomic, assign) float timelineTo;
+
+/** 显示区域
+ */
+@property (nonatomic, assign) CGRect showRectF;
+
+/** 字幕图片文件夹路径
+ *  多张图片的情况，与imageName、timeArray及frameArray配合使用
+ */
+@property (nonatomic ,copy) NSString *folderPath;
+
+/**文字内容
+ */
+@property (nonatomic ,copy) NSMutableArray<NSString *>*content;
+
+- (instancetype)initWithCaption:(CaptionEx *)caption videoSize:(CGSize)videoSize;
+
+- (CaptionEx *)getSubtitleWithFolderPath:(NSString *)folderPath videoSize:(CGSize)videoSize;
+
+@end
+
 @interface VECoreTemplateSticker : Caption
 
 /** 在虚拟视频中的开始时间

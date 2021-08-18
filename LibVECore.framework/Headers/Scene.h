@@ -1288,7 +1288,7 @@ typedef struct CGVec3 CGVec3;
 
 
 
-#pragma mark - 文字花子配置
+#pragma mark - 文字花字配置
 @interface CaptionEffectCfg : NSObject<NSCopying, NSMutableCopying>
 
 /**
@@ -1356,23 +1356,23 @@ typedef struct CGVec3 CGVec3;
 
 /**文字字体加粗，默认为NO
  */
-@property (nonatomic ,assign) BOOL bold;
+@property (nonatomic ,assign) BOOL isBold;
 
 /**文字字体斜体，默认为NO
  */
-@property (nonatomic ,assign) BOOL italic;
+@property (nonatomic ,assign) BOOL isItalic;
 
 /** 文字竖排，默认为NO
  */
-@property (nonatomic ,assign) BOOL vertical;
+@property (nonatomic ,assign) BOOL isVertical;
 
 /** 文字下划线，默认为NO
  */
-@property (nonatomic ,assign) BOOL underline;
+@property (nonatomic ,assign) BOOL isUnderline;
 
 /**文字对齐方式 默认为CaptionTextAlignmentCenter
  */
-@property (nonatomic ,assign) CaptionTextAlignment alignment;
+@property (nonatomic ,assign) CaptionTextAlignment textAlignment;
 
 /** 文字旋转度数
  */
@@ -1380,7 +1380,7 @@ typedef struct CGVec3 CGVec3;
 
 /**文字颜色，默认为whiteColor
  */
-@property (nonatomic ,strong) UIColor * color;
+@property (nonatomic ,strong) UIColor * textColor;
 
 /** 文字透明度(0.0〜1.0),默认为1.0
  */
@@ -1405,6 +1405,15 @@ typedef struct CGVec3 CGVec3;
 /**出场动画
  */
 @property (nonatomic, strong) CustomFilter *animateOut;
+
+/** 文字行间距(-1.0〜1.0),默认为0.0
+ */
+@property (nonatomic ,assign) float lineSpacing;
+
+/** 文字字间距(-1.0〜1.0),默认为0.0
+ */
+@property (nonatomic ,assign) float wordSpacing;
+
 
 
 @end
@@ -1442,6 +1451,11 @@ typedef struct CGVec3 CGVec3;
  *  导出模板用
  */
 @property (nonatomic, strong) NSString *networkResourceId;
+
+/** 是否是文字模板
+ *  导出模板用
+ */
+@property (nonatomic, assign) BOOL isTextTemplate;
 
 /**字幕时间范围
  */
@@ -1484,7 +1498,11 @@ typedef struct CGVec3 CGVec3;
 /**字幕大小，相对于实际视频size的字幕大小(CGPointMake(0, 0)〜CGPointMake(1, 1))
  * 设置字幕动画组后，该属性无效，以动画中的rect值为准
  */
-@property (nonatomic ,assign) CGSize size;
+@property (nonatomic ,assign) CGSize originalSize;
+
+/**拉伸缩放后字幕大小(isStretch 为 YES 时，拉伸之后的真实大小 )
+ */
+@property (nonatomic ,readonly) CGSize stretchSize;
 
 /**帧动画
  */
