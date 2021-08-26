@@ -121,13 +121,15 @@
 
 - (Caption *)getSubtitleWithFolderPath:(NSString *)folderPath videoSize:(CGSize)videoSize;
 
+- (CaptionEx *)getSubtitleExWithFolderPath:(NSString *)folderPath videoSize:(CGSize)videoSize;
+
 @end
 
 @interface VECoreTemplateWordItem : CaptionItem
 
 /** 花字类型
  */
-@property (nonatomic, assign) NSInteger flowerCategoryId;
+@property (nonatomic, strong) NSString *flowerCategoryId;
 
 /** 在VECoreTemplateSubtitleEx中的开始时间
  */
@@ -175,9 +177,9 @@
  */
 @property (nonatomic, strong) NSMutableArray<VECoreTemplateCustomAnimation *>*animates;
 
-- (instancetype)initWithCaptionItem:(CaptionItem *)captionItem videoSize:(CGSize)videoSize;
+- (instancetype)initWithCaptionItem:(CaptionItem *)captionItem;
 
-- (CaptionItem *)getCaptionItemWithFolderPath:(NSString *)folderPath videoSize:(CGSize)videoSize;
+- (CaptionItem *)getCaptionItemWithFolderPath:(NSString *)folderPath;
 
 @end
 
@@ -242,6 +244,11 @@
 /**文字内容
  */
 @property (nonatomic ,copy) NSMutableArray<NSString *>*content;
+
+/** 关键帧动画
+ * 与normalAnimate互斥
+ */
+@property (nonatomic, strong) NSMutableArray<VECoreTemplateCaptionCustomAnimation*>* keyFrameAnimates;
 
 - (instancetype)initWithCaption:(CaptionEx *)caption videoSize:(CGSize)videoSize;
 

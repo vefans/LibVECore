@@ -1321,6 +1321,11 @@ typedef struct CGVec3 CGVec3;
  */
 @property (nonatomic, assign) NSInteger flowerTextType;
 
+/** 花字资源地址
+ *  导出模板用
+ */
+@property (nonatomic, strong) NSString *flowerPath;
+
 /**单个文字时间范围(相对于CaptionEx)
  * 0,0  表示在整个CaptionEx的timeRange内显示
  */
