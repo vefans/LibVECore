@@ -1525,7 +1525,7 @@ typedef struct CGVec3 CGVec3;
  */
 @property (nonatomic, assign) BOOL isStretch;
 
-/**字幕拉伸的区域(0-->1)
+/**字幕拉伸的区域(x，y左上角，0-->1)
  */
 @property (nonatomic,assign) CGRect stretchRect;
 
