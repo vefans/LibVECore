@@ -339,7 +339,7 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 
 /** 封面
  */
-@property (nonatomic, strong) VECoreTemplateOverlay *coverOverlay;
+@property (nonatomic, strong) NSString *coverPath;
 
 /** 滤镜
 */

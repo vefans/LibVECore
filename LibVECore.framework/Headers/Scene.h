@@ -185,6 +185,16 @@ typedef NS_ENUM(NSInteger, MediaReplaceableType) {
  */
 @property (nonatomic,assign) float smile;
 
+/**瘦脸，0.0~1.0,默认为0.0
+    只支持iOS11.0以上
+ */
+@property (nonatomic, assign) float beautyThinFaceIntensity;
+
+/**大眼，0.0~1.0,默认为0.0
+    只支持iOS11.0以上
+ */
+@property (nonatomic, assign) float beautyBigEyeIntensity;
+
 /** 五官美颜  该脸的位置
  */
 @property (nonatomic,assign) CGRect faceRect;
@@ -2335,6 +2345,10 @@ typedef NS_ENUM(NSInteger, OverlayType) {
 /** 是否导出封面，默认为NO
  */
 @property (nonatomic, assign) BOOL isExportCoverMedia;
+
+/** 是否导出的五官美颜参数，默认为NO
+ */
+@property (nonatomic, assign) BOOL isExportMediaMultipleFaceAttribute;
 
 /** 是否导出预览视频，默认为NO
  */
