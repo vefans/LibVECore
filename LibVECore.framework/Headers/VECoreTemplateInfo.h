@@ -277,6 +277,11 @@ typedef NS_ENUM(NSInteger, MosaicType) {
  */
 @property (nonatomic, assign) CGSize size;
 
+/** 模板资源大小，单位M
+ *  不导出媒体资源时才返回
+ */
+@property (nonatomic, assign) float fileSize;
+
 /** 媒体信息，仅包含可替换媒体
  */
 @property (nonatomic, strong) NSMutableArray<VECoreTemplateMediaInfo*> *mediaInfo;

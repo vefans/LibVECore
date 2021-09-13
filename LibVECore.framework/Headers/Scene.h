@@ -260,6 +260,16 @@ typedef NS_ENUM(NSInteger, MusicType) {
  */
 @property (nonatomic,strong) NSString*  identifier;
 
+/** 对应的字幕标识符
+ *  导出模板用
+ */
+@property (nonatomic,strong) NSString *captionIdentifier;
+
+/** 标识符
+ *  导出模板用
+ */
+@property (nonatomic,strong) NSString *speechUserId;
+
 /** 类型
  */
 @property (nonatomic, assign) MusicType type;
@@ -1349,7 +1359,7 @@ typedef struct CGVec3 CGVec3;
  */
 @property (nonatomic ,copy) NSString * text;
 
-/** 文字区域(相对于CaptionEx)
+/** 文字区域(相对于CaptionEx,注意：origin为中心位置,并非左上角)
  */
 @property (nonatomic ,assign) CGRect  frame;
 
@@ -2334,12 +2344,12 @@ typedef NS_ENUM(NSInteger, OverlayType) {
 
 @interface TemplateExportInfo : NSObject
 
-/** 是否导出素材，默认为NO
+/** 是否导出片段信息，默认为NO
  */
 @property (nonatomic, assign) BOOL isHasFragments;
 
-/** 是否导出片段信息，默认为NO
- */
+/** 是否导出素材，默认为NO
+*/
 @property (nonatomic, assign) BOOL isExportTemplateMedias;
 
 /** 是否导出封面，默认为NO
