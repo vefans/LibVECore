@@ -29,6 +29,7 @@
 #import "NSObject+VECoreYYModel.h"
 #import "VECoreYYClassInfo.h"
 #import "VECoreYYModel.h"
+#import "VEAudioRecorder.h"
 
 FOUNDATION_EXPORT double LibVECoreVersionNumber;
 FOUNDATION_EXPORT const unsigned char LibVECoreVersionString[];
