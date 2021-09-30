@@ -480,6 +480,8 @@ typedef NS_ENUM(NSUInteger, VEExportVideoProfileLevelType) {
     @param            actualTime
                     A pointer to a CMTime to receive the time at which the image was actually generated. If you are not interested
                     in this information, pass NULL.
+    @param          maximumSize
+                    Specifies the maximum dimensions for generated image.  Default (CGSizeZero) is the virtual video's dimensions.
     @param            outError
                     An error object describing the reason for failure, in the event that this method returns NULL.
     @result            A CGImageRef.
@@ -492,6 +494,8 @@ typedef NS_ENUM(NSUInteger, VEExportVideoProfileLevelType) {
     @abstract        Returns a series of CGImageRefs for an asset at or near the specified times.
     @param            requestedTimes
                     An NSArray of NSValues, each containing a CMTime, specifying the asset times at which an image is requested.
+    @param          maximumSize
+                    Specifies the maximum dimensions for generated image.  Default (CGSizeZero) is the virtual video's dimensions.
     @param            handler
                     A block that will be called when an image request is complete.
     @discussion        Employs an efficient "batch mode" for getting images in time order.

@@ -255,12 +255,35 @@ typedef NS_ENUM(NSInteger, MusicType) {
     MusicTypeSoundEffect,       //音效
 };
 
+@interface CvDataInfo : NSObject <NSCopying,NSMutableCopying>
+/**虚拟CV的作者ID*/
+@property (nonatomic, strong) NSString*  userId ;
+/**虚拟CV的语速*/
+@property (nonatomic, assign) double rateConifg ;
+/**虚拟CV的音高*/
+@property (nonatomic, assign) double pitchConifg ;
+/**虚拟CV的音量*/
+@property (nonatomic, assign) double volumeConifg ;
+/**虚拟CV情绪文本内容*/
+@property (nonatomic, strong) NSString*  text ;
+/**虚拟CV情绪名称*/
+@property (nonatomic, strong) NSString*  emotionDes;
+/**虚拟CV情绪Code*/
+@property (nonatomic, strong) NSString*  emotionCode;
+/**虚拟CV情绪下标*/
+@property (nonatomic, assign) int emotionPosition ;
+/**虚拟CV作者名字*/
+@property (nonatomic, strong) NSString*  showName ;
+/**神经语音人物*/
+@property (nonatomic, strong) NSString*  languageStyle ;
+@end
+
 @interface MusicInfo : NSObject<NSCopying,NSMutableCopying>
-/** 标识符 
+/** 标识符
  */
 @property (nonatomic,strong) NSString*  identifier;
 
-/** 对应的字幕标识符
+/** CV对应的字幕标识符
  *  导出模板用
  */
 @property (nonatomic,strong) NSString *captionIdentifier;
@@ -269,6 +292,10 @@ typedef NS_ENUM(NSInteger, MusicType) {
  *  导出模板用
  */
 @property (nonatomic,strong) NSString *speechUserId;
+/** 虚拟CV信息
+ *  导出模板用
+ */
+@property (nonatomic,strong) CvDataInfo*  mCvDataInfo;
 
 /** 类型
  */
@@ -1066,6 +1093,7 @@ typedef NS_ENUM(NSInteger, FilterBlendType) {
 /**智能抠像
  */
 @property (nonatomic, assign) BOOL autoSegment;
+@property (nonatomic, strong)UIImage *autoSegmentImage;
 
 @end
 
@@ -1212,6 +1240,14 @@ typedef NS_ENUM(NSInteger, CaptionTextAlignment) {
     CaptionTextAlignmentRight
 };
 
+//字幕遮罩类型
+typedef NS_ENUM(NSInteger, CaptionTextmMaskType) {
+    CaptionTextMaskNone = 0,       //无效果
+    CaptionTextMaskHollow,         //镂空效果
+    
+};
+
+
 #pragma mark - Caption effect color
 
 struct CGVec3 {
@@ -1326,7 +1362,12 @@ typedef struct CGVec3 CGVec3;
 /**
  * 阴影配置
  */
-@property (nonatomic, strong) CaptionShadow* shadow;
+@property (nonatomic, strong) CaptionShadow* shadow; DEPRECATED_MSG_ATTRIBUTE("Use shadows instead.");
+
+/**
+ * 多层阴影配置
+ */
+@property (nonatomic, strong) NSMutableArray<CaptionShadow*>* shadows;
 
 @end
 
@@ -1379,6 +1420,14 @@ typedef struct CGVec3 CGVec3;
  */
 @property (nonatomic ,assign) float fontSize;
 
+/** 文字行间距(-1.0〜1.0),默认为0.0
+ */
+@property (nonatomic ,assign) float lineSpacing;
+
+/** 文字字间距(-1.0〜1.0),默认为0.0
+ */
+@property (nonatomic ,assign) float wordSpacing;
+
 /**文字字体加粗，默认为NO
  */
 @property (nonatomic ,assign) BOOL isBold;
@@ -1407,9 +1456,25 @@ typedef struct CGVec3 CGVec3;
  */
 @property (nonatomic ,strong) UIColor * textColor;
 
+/** 卡拉ok文字颜色
+ */
+@property (nonatomic ,strong) UIColor * ktvColor;
+
+/** 卡拉ok描边颜色
+ */
+@property (nonatomic ,strong) UIColor * ktvOutlineColor;
+
+/** 卡拉ok阴影颜色
+ */
+@property (nonatomic ,strong) UIColor * ktvShadowColor;
+
 /** 文字透明度(0.0〜1.0),默认为1.0
  */
 @property (nonatomic ,assign) float alpha;
+
+/** 遮罩类型
+ */
+@property (nonatomic ,assign) CaptionTextmMaskType maskType;
 
 /**文字阴影
  */
@@ -1431,13 +1496,9 @@ typedef struct CGVec3 CGVec3;
  */
 @property (nonatomic, strong) CustomFilter *animateOut;
 
-/** 文字行间距(-1.0〜1.0),默认为0.0
+/**其他动画，例如：爱心跳动
  */
-@property (nonatomic ,assign) float lineSpacing;
-
-/** 文字字间距(-1.0〜1.0),默认为0.0
- */
-@property (nonatomic ,assign) float wordSpacing;
+@property (nonatomic, strong) NSMutableArray<CustomFilter*> *otherAnimates;
 
 
 

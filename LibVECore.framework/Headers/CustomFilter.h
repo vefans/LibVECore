@@ -146,6 +146,10 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
  */
 @property (nonatomic,assign) float cycleDuration;
 
+/*
+ * 是否重复循环，如果持续时间大于周期时间，假如 repeatMode 设置为 YES ,只循环1次；假如 repeatMode 设置为 NO,重复循环；默认为 NO
+ */
+@property (nonatomic,assign) BOOL repeatMode;
 
 
 /** 内置滤镜类型
