@@ -90,7 +90,7 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
     CustomAnimationTypeCombined,    //组合
 };
 
-@interface CustomFilter : NSObject
+@interface CustomFilter : NSObject<NSCopying, NSMutableCopying>
 
 /**资源文件夹地址
  */
@@ -193,7 +193,7 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
 /** 同时支持多个特效
  */
 
-@interface CustomMultipleFilter : NSObject
+@interface CustomMultipleFilter : NSObject<NSCopying, NSMutableCopying>
 
 /**资源文件夹地址
  */

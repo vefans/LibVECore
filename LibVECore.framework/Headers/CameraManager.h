@@ -170,6 +170,10 @@ typedef NS_ENUM(NSInteger, CameraSwipeDirection) {
  */
 - (NSArray<FaceRecognition*>*)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer;
 
+/** 摄像头捕获帧回调，可对帧进行处理 - 人脸道具贴纸
+ */
+- (void)willOutputStickerSampleBuffer:(CMSampleBufferRef)sampleBuffer;
+
 /** 滑动切换到的当前滤镜Index
  */
 - (void) swipeCurrentFilter:(Filter *) filter;
