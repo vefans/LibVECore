@@ -109,6 +109,8 @@
  */
 @property (nonatomic, copy) NSString* name;
 
+@property (nonatomic, copy) NSString* maskName;
+
 /**  顶点着色器脚本
  */
 @property (nonatomic, copy) NSString* vert;

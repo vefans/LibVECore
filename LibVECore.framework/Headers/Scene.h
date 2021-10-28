@@ -133,6 +133,16 @@ typedef NS_ENUM(NSInteger, MediaReplaceableType) {
  */
 @property (nonatomic, assign) float whiteBalance;
 
+/** 色调 ranges from -1.0 to 1.0 , with 0.0 as the normal level
+ *  设置媒体动画后，该属性无效，以动画中的tint值为准
+ */
+@property (nonatomic, assign) float tint;
+
+/** 阴影 ranges from 0.0 to 1.0 , with 0.0 as the normal level
+ *  设置媒体动画后，该属性无效，以动画中的shadows值为准
+ */
+@property (nonatomic, assign) float shadows;
+
 /** 持续时间
  */
 @property (nonatomic,assign) CMTimeRange timeRange;
@@ -635,6 +645,14 @@ typedef NS_ENUM(NSInteger, MediaAssetBlurType) {
  */
 @property (nonatomic, assign) float whiteBalance;
 
+/** 色调 ranges from -1.0 to 1.0 (max tint) , with 0.0 as the normal level
+ */
+@property (nonatomic, assign) float tint;
+
+/** 阴影 ranges from 0.0 to 1.0 (max tint), with 0.0 as the normal level
+ */
+@property (nonatomic, assign) float shadows;
+
 /**动画类型
  */
 @property (nonatomic,assign) AnimationInterpolationType type;
@@ -894,6 +912,16 @@ typedef NS_ENUM(NSInteger, FilterBlendType) {
  */
 @property (nonatomic, assign) float whiteBalance;
 
+/** 色调 ranges from -1.0 to 1.0 , with 0.0 as the normal level
+ *  设置媒体动画后，该属性无效，以动画中的tint值为准
+ */
+@property (nonatomic, assign) float tint;
+
+/** 阴影 ranges from 0.0 to 1.0 , with 0.0 as the normal level
+ *  设置媒体动画后，该属性无效，以动画中的shadows值为准
+ */
+@property (nonatomic, assign) float shadows;
+
 /**滤镜资源分类ID
  */
 @property (nonatomic, strong) NSString *filterNetworkCategoryId;
@@ -973,7 +1001,7 @@ typedef NS_ENUM(NSInteger, FilterBlendType) {
 /** 设置媒体边框羽化宽度(0.0-1.0f),默认开启（0.1f)
  *  该属性只有设置blurIntensity时才有效
  */
-@property (nonatomic, assign) float borderBlurIntensity;
+@property (nonatomic, assign) float borderBlurIntensity DEPRECATED_ATTRIBUTE; 
 
 /** 设置媒体边框模糊效果，默认为NO
  */
@@ -1094,6 +1122,10 @@ typedef NS_ENUM(NSInteger, FilterBlendType) {
  */
 @property (nonatomic, assign) BOOL autoSegment;
 @property (nonatomic, strong)UIImage *autoSegmentImage;
+
+/**景深
+ */
+@property (nonatomic, assign) BOOL isDOF;
 
 @end
 
