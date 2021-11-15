@@ -37,6 +37,7 @@
 - (void)tapPlayerView;
 
 - (NSArray<FaceRecognition*>*)willOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer asset:(MediaAsset*)asset;
+- (NSArray<FaceRecognition*>*)willOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer asset:(MediaAsset*)asset currentTime:(CMTime)currentTime;
 
 @end
 

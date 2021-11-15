@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 #import <Accelerate/Accelerate.h>
 #import <LibVECore/CameraFile.h>
+#import <LibVECore/Common.h>
 
 @interface FaceRecognition : NSObject
 
@@ -125,43 +126,6 @@ typedef NS_ENUM(NSInteger, CameraSwipeDirection) {
     kCameraSwipeDirectionDown    = 3,
 };
 
-@interface Filter : NSObject
-
-/**资源分类ID
- */
-@property (nonatomic, strong) NSString *networkCategoryId;
-
-/**资源ID
- */
-@property (nonatomic, strong) NSString *networkResourceId;
-/**滤镜类型
- */
-@property (nonatomic,assign)FilterType type;
-
-/**滤镜名称
- */
-@property (nonatomic,copy  )NSString *name;
-
-/**滤镜资源地址
- */
-@property (nonatomic,copy  )NSString *filterPath;
-
-/**滤镜强度，kFilterType_LookUp时有效,默认为1.0
- */
-@property (nonatomic, assign)float intensity;
-
-/**网络封面地址
- */
-@property (nonatomic,copy  )NSString *netCover;
-/**网络滤镜资源地址
- */
-@property (nonatomic,copy  )NSString *netFile;
-
-/**滤镜acv地址
- */
-@property (nonatomic,copy  )NSString *acvPath       DEPRECATED_MSG_ATTRIBUTE("Use filterPath instead.");
-
-@end
 
 @protocol CameraManagerDelegate <NSObject>
 @optional
