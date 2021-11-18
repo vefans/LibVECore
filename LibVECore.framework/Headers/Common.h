@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class CustomFilter;
-
+typedef void(^LoadTracksFinishBlock)(void);
 
 typedef NS_ENUM(NSInteger, ImageMediaFillType) {
     ImageMediaFillTypeFull, // 全填充
@@ -814,17 +814,20 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
  */
 @property (nonatomic ,assign) BOOL flipY;
 
-
 /**高级动画
  * 设置该动画后，textAnimate、imageAnimate customAnimate customOutAnimate 均无效
  */
-@property (nonatomic, strong) CustomFilter *templateAnimate;
+@property (nonatomic, strong) CustomFilter *templateAnimate DEPRECATED_ATTRIBUTE;
 
+
+@property (nonatomic, strong) NSMutableArray<CustomFilter*> *otherAnimates;
 
 /**当前控件是否正在编辑
  *编辑状态要全部显示文字
  */
 @property (nonatomic, assign) BOOL editing;
+
+
 
 @end
 
@@ -1256,29 +1259,39 @@ typedef NS_ENUM(NSUInteger, FlowTrackType) {
  */
 @property (nonatomic,assign) double radius;
 
-
 /** 当涂抹遮罩轨迹时，表示涂抹的画笔透明度，0.0 ～ 1.0，默认0.5
  *  当动画轨迹时，表示动画压力强度，0.0 ～ 1.0，默认0.5
  *  当擦除轨迹时，表示擦除强度，0.0 ～ 1.0，默认0.5
  */
 @property (nonatomic,assign) double intensity;
 
+/** 轨迹边缘硬度，硬度越小则边缘越柔和，0.0 ～ 1.0，默认0.5
+ */
+@property (nonatomic,assign) double  hardness;
 
+/** 步长，计算轨迹上的一系列点，步长表示点的密度（间距），该值为半径 radius 比例，0.0 ～ 1.0，默认0.5
+ */
+@property (nonatomic,assign) double  stepRatio;
 
 @end
 
 #pragma mark - FlowEffect 流动效果
 
+
+
+
 @interface FlowEffect  : NSObject<NSCopying, NSMutableCopying>
 
 /** 涂抹遮罩/擦除轨迹(根据用户操作涂抹/擦除的顺序设置)
+ *  如果设置 maskImage 涂抹遮罩/擦除图片，该参数无效
  */
 @property (nonatomic,strong) NSMutableArray<FlowTrack*>* maskTracks;
 
 
 /** 涂抹遮罩/擦除图片
+ *  如果设置遮罩/擦除图片，则不需要设置 maskTracks 涂抹遮罩/擦除轨迹
  */
-@property (nonatomic,assign) UIImage* maskImage;
+@property (nonatomic,strong) UIImage* maskImage;
 
 
 /** 动画轨迹
@@ -1286,10 +1299,13 @@ typedef NS_ENUM(NSUInteger, FlowTrackType) {
 @property (nonatomic,strong) NSMutableArray<FlowTrack*>* animationTracks;
 
 
-
-
 /** 流动效果持续时间
  */
 @property (nonatomic,assign) float  duration;
+
+
+/** 加载轨迹完成回调
+ */
+@property (nonatomic, copy) LoadTracksFinishBlock loadTracksFinishBlock;
 
 @end
