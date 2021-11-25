@@ -788,6 +788,10 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
  */
 @property (nonatomic, strong) NSMutableArray<CaptionCustomAnimation*>* animate;
 
+/** 字幕是否开启跟踪，默认为NO
+ */
+@property (nonatomic, assign) BOOL isEnableTracking;
+
 /** 字幕自定义动画
  * 设置该动画后，textAnimate、imageAnimate均无效
  */
@@ -946,6 +950,10 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
  * 与normalAnimate互斥
  */
 @property (nonatomic, strong) NSMutableArray<CaptionCustomAnimation*>* keyFrameAnimate;
+
+/** 字幕是否开启跟踪，默认为NO
+ */
+@property (nonatomic, assign) BOOL isEnableTracking;
 
 /**高级动画(脚本)
  *
