@@ -38,6 +38,36 @@
  */
 @property (nonatomic, assign) CGRect cropRect;
 
+/** 色调 ranges from -1.0 to 1.0 , with 0.0 as the normal level
+ *  设置媒体动画后，该属性无效，以动画中的tint值为准
+ */
+@property (nonatomic, assign) float tint;
+
+/** 阴影 ranges from 0.0 to 1.0 , with 0.0 as the normal level
+ *  设置媒体动画后，该属性无效，以动画中的shadows值为准
+ */
+@property (nonatomic, assign) float shadows;
+
+/** 颗粒 ranges from 0.0 to 1.0 , with 0.0 as the normal level
+ *  设置媒体动画后，该属性无效，以动画中的graininess值为准
+ */
+@property (nonatomic, assign) float graininess;
+
+/** 高光 ranges from -1.0 to 1.0 , with 0.0 as the normal level
+ *  设置媒体动画后，该属性无效，以动画中的highlight值为准
+ */
+@property (nonatomic, assign) float highlight;
+
+/** 光感 ranges from -1.0 to 1.0 , with 0.0 as the normal level
+ *  设置媒体动画后，该属性无效，以动画中的lightSensation值为准
+ */
+@property (nonatomic, assign) float lightSensation;
+
+/** 褪色 ranges from 0.0 to 1.0 (max fade) , with 0.0 as the normal level
+ *  设置媒体动画后，该属性无效，以动画中的fade值为准
+ */
+@property (nonatomic, assign) float fade;
+
 - (instancetype)initWithMediaAnimate:(MediaAssetAnimatePosition *)animate;
 
 - (MediaAssetAnimatePosition *)getMediaAssetAnimatePosition;
@@ -81,6 +111,36 @@
 /**滤镜资源地址
  */
 @property (nonatomic, strong) NSString *filterPath;
+
+/** 色调 ranges from -1.0 to 1.0 , with 0.0 as the normal level
+ *  设置媒体动画后，该属性无效，以动画中的tint值为准
+ */
+@property (nonatomic, assign) float tint;
+
+/** 阴影 ranges from 0.0 to 1.0 , with 0.0 as the normal level
+ *  设置媒体动画后，该属性无效，以动画中的shadows值为准
+ */
+@property (nonatomic, assign) float shadows;
+
+/** 颗粒 ranges from 0.0 to 1.0 , with 0.0 as the normal level
+ *  设置媒体动画后，该属性无效，以动画中的graininess值为准
+ */
+@property (nonatomic, assign) float graininess;
+
+/** 高光 ranges from -1.0 to 1.0 , with 0.0 as the normal level
+ *  设置媒体动画后，该属性无效，以动画中的highlight值为准
+ */
+@property (nonatomic, assign) float highlight;
+
+/** 光感 ranges from -1.0 to 1.0 , with 0.0 as the normal level
+ *  设置媒体动画后，该属性无效，以动画中的lightSensation值为准
+ */
+@property (nonatomic, assign) float lightSensation;
+
+/** 褪色 ranges from 0.0 to 1.0 (max fade) , with 0.0 as the normal level
+ *  设置媒体动画后，该属性无效，以动画中的fade值为准
+ */
+@property (nonatomic, assign) float fade;
 
 /** 媒体动画组
  */

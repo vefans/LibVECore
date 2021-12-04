@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class CustomFilter;
-typedef void(^LoadTracksFinishBlock)(void);
+typedef void(^LoadTracksFinishBlock)(float progress);
 
 typedef NS_ENUM(NSInteger, ImageMediaFillType) {
     ImageMediaFillTypeFull, // 全填充
@@ -832,9 +832,49 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
 @property (nonatomic, assign) BOOL editing;
 
 
-
 @end
 
+
+@interface CaptionImage : NSObject<NSCopying, NSMutableCopying>
+
+
+/** 图片路径
+ *   单张图片的情况，只设置该属性即可
+ */
+@property (nonatomic ,copy) NSString * captionImagePath;
+
+/** 图片文件夹路径
+ *  多张图片的情况，与imageName、timeArray及frameArray配合使用
+ */
+@property (nonatomic ,copy) NSString * imageFolderPath;
+
+
+/**图片前缀名字
+ */
+@property (nonatomic ,copy) NSString * imageName;
+
+/**帧动画
+ */
+@property (nonatomic ,strong) NSArray * frameArray;
+
+/**时间动画
+ */
+@property (nonatomic ,strong) NSArray * timeArray;
+
+/**入场动画
+ */
+@property (nonatomic, strong) CustomFilter *animate;
+
+/**出场动画
+ */
+@property (nonatomic, strong) CustomFilter *animateOut;
+
+/**其他动画，例如：手绘
+ */
+@property (nonatomic, strong) CustomFilter *otherAnimates;
+
+
+@end
 
 
 //(由0-1个底图+多个文字组成)
@@ -898,6 +938,11 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
 /**图片前缀名字
  */
 @property (nonatomic ,copy) NSString * imageName;
+
+/** 贴纸/气泡
+ */
+@property (nonatomic ,strong) CaptionImage * captionImage;
+
 
 /**字幕位置，默认为视频中心CGPointMake(0.5, 0.5)
  * 设置字幕动画组后，该属性无效，以动画中的rect值为准
@@ -965,6 +1010,15 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
  */
 @property (nonatomic, strong) CustomFilter *animateOut;
 
+
+/**X轴翻转
+ */
+@property (nonatomic ,assign) BOOL flipX;
+
+/**Y轴翻转
+ */
+@property (nonatomic ,assign) BOOL flipY;
+
 @end
 
 
@@ -1015,9 +1069,9 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
 @property (nonatomic, assign) float shadows;
 
 /** 颗粒 ranges from 0.0 to 1.0 , with 0.0 as the normal level
- *  设置媒体动画后，该属性无效，以动画中的particles值为准
+ *  设置媒体动画后，该属性无效，以动画中的graininess值为准
  */
-@property (nonatomic, assign) float particles;
+@property (nonatomic, assign) float graininess;
 
 /** 高光 ranges from -1.0 to 1.0 , with 0.0 as the normal level
  *  设置媒体动画后，该属性无效，以动画中的highlight值为准
@@ -1305,6 +1359,11 @@ typedef NS_ENUM(NSUInteger, FlowTrackType) {
 /** 动画轨迹
  */
 @property (nonatomic,strong) NSMutableArray<FlowTrack*>* animationTracks;
+
+
+/** 分割点，由多个点连接的折线把画面分为多块区域
+ */
+@property (nonatomic,strong) NSMutableArray<NSMutableArray*>* splitPoints;
 
 
 /** 流动效果持续时间
