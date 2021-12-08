@@ -874,6 +874,10 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
 @property (nonatomic, strong) CustomFilter *otherAnimates;
 
 
+/** 混合模式
+*/
+@property (nonatomic, assign) FilterBlendType blendType;
+
 @end
 
 
