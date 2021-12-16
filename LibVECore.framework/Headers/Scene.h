@@ -154,6 +154,7 @@ typedef NS_ENUM(NSInteger, MusicType) {
     MusicTypeNormal,            //配乐
     MusicTypeDubbing,           //配音
     MusicTypeSoundEffect,       //音效
+    MusicTypeSpeech,            //文字转语音
 };
 
 @interface CvDataInfo : NSObject <NSCopying,NSMutableCopying>
@@ -845,6 +846,10 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 /**设置媒体自定义出场动画
  */
 @property (nonatomic, strong) CustomFilter* customOutAnimate;
+
+/**设置媒体其他动画（例如：手绘画笔）
+ */
+@property (nonatomic, strong) CustomFilter* customOtherAnimate;
 
 /**美颜磨皮，0.0~1.0,默认为0.0
  */

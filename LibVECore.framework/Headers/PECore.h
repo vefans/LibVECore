@@ -241,5 +241,10 @@ typedef NS_ENUM(NSUInteger, PECoreViewFillMode) {
  */
 + (UIImage *)getFilteredImage:(UIImage *)inputImage filter:(Filter *)filter;
 
-
+/** 获取消除后的图像 （消除笔）
+ @abstract  Obtain the erased image (elimination pen)
+ @param originalImage    原始图像
+ @param grayscaleImage    灰度图(需要擦除的地方)
+ */
+-(UIImage *)getImageWithDeLogoProcess:( UIImage * ) originalImage atGrayscaleImage:( UIImage * ) grayscaleImage;
 @end

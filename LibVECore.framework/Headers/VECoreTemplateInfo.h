@@ -326,6 +326,10 @@ typedef NS_ENUM(NSInteger, MosaicType) {
  */
 @property (nonatomic, strong) NSMutableArray <VECoreTemplateMusic*> *soundEffects;
 
+/** 文字转语音
+ */
+@property (nonatomic, strong) NSMutableArray <VECoreTemplateMusic*> *speechs;
+
 /** 马赛克、去水印、高斯模糊
 */
 @property (nonatomic, strong) NSMutableArray<VECoreTemplateMosaic*>* mosaics;

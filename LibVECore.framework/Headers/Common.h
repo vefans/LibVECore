@@ -1023,6 +1023,10 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
  */
 @property (nonatomic ,assign) BOOL flipY;
 
+/** 文本朗读音频文件地址
+ */
+@property (nonatomic ,strong) NSString *speechPath;
+
 @end
 
 

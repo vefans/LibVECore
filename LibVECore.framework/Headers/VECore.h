@@ -794,4 +794,11 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
  @param mp3FilePath    mp3保存路径
 */
 +(void)audio_M4aToMP3:( NSString * ) m4aFilePath atMP3FilePath:( NSString * ) mp3FilePath atSampleRate:(float) sampleRate  FinishBlock:(void (^)(bool isFinish)) FinishBlock;
+
+/** 获取消除后的图像 （消除笔）
+ @abstract  Obtain the erased image (elimination pen)
+ @param originalImage    原始图像
+ @param grayscaleImage    灰度图(需要擦除的地方)
+ */
+-(UIImage *)getImageWithDeLogoProcess:( UIImage * ) originalImage atGrayscaleImage:( UIImage * ) grayscaleImage;
 @end
