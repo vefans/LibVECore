@@ -58,7 +58,10 @@
  */
 @property (nonatomic,assign) ImageMediaFillType  fillType;
 
-
+/**  是否有人像
+ *
+ */
+@property(nonatomic, assign)BOOL        isPortrait;
 
 /**图片裁剪范围。默认为CGRectMake(0, 0, 1, 1)
  */
