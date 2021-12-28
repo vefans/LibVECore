@@ -11,7 +11,7 @@
 #import <UIKit/UIKit.h>
 #import <LibVECore/PEAssetManager.h>
 #import <LibVECore/Common.h>
-
+#import <LibVECore/PECoreTemplateInfo.h>
 
 @class PECore;
 @class FaceRecognition;
@@ -187,6 +187,9 @@ typedef NS_ENUM(NSUInteger, PECoreViewFillMode) {
  */
 - (void) build;
 
+/** @abstract   clear.
+ */
+-(void)clear;
 
 
 /**获取缩略图
@@ -246,5 +249,17 @@ typedef NS_ENUM(NSUInteger, PECoreViewFillMode) {
  @param originalImage    原始图像
  @param grayscaleImage    灰度图(需要擦除的地方)
  */
--(UIImage *)getImageWithDeLogoProcess:( UIImage * ) originalImage atGrayscaleImage:( UIImage * ) grayscaleImage;
+-(void)getImageWithDeLogoProcess:( UIImage * ) originalImage atGrayscaleImage:( UIImage * ) grayscaleImage  atFailBlock:(void(^)(UIImage * image))failBlock;
+
+/** 导出模板
+@abstract   Export template.
+ @param outputPath                  输出路径
+ @param progressHandler       导出进度
+ @param completionHandler   完成
+ @param failedHandler            失败
+*/
+- (void)exportTemplateWithOutputPath:(NSString *)outputPath
+                     progressHandler:(void (^)(float))progressHandler
+                   completionHandler:(void (^)(NSString *exportPath, PECoreTemplateInfo *templateInfo))completionHandler
+                       failedHandler:(void (^)(NSError *))failedHandler;
 @end

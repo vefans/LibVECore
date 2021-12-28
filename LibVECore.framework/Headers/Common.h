@@ -57,6 +57,8 @@ typedef NS_ENUM(NSInteger, OverlayType) {
     OverlayTypeDoodle,  //涂鸦
     OverlayTypeCover,   //封面
     OverlayTypeLogo,    //水印
+    OverlayTypeFrame,    //边框
+    OverlayTypeSuperposi, //叠加
 };
 
 //字幕类型
@@ -880,6 +882,12 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
 
 @end
 
+typedef NS_ENUM(NSInteger, CaptionExType) {
+    CaptionExTypeNormal,    //普通字幕
+    CaptionExTypeTemplate,  //文字模板
+    CaptionExTypeSpeech,    //语音识别字幕
+    CaptionExeTypStickers,    //贴纸
+};
 
 //(由0-1个底图+多个文字组成)
 
@@ -905,10 +913,10 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
  */
 @property (nonatomic, strong) NSString *networkResourceId;
 
-/** 是否是文字模板
+/** 字幕类型
  *  导出模板用
  */
-@property (nonatomic, assign) BOOL isTextTemplate;
+@property (nonatomic, assign) CaptionExType type;
 
 /**字幕时间范围（ PECore 默认与虚拟视频一致，不需设置）
  */
@@ -1056,7 +1064,7 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
  */
 @property (nonatomic, assign) float vignette;
 
-/** 锐化 ranges from -4.0 to 4.0 , with 0.0 as the normal level
+/** 锐化 ranges from -4.0 to 4.0 , with -4.0 as the normal level
  *  设置媒体动画后，该属性无效，以动画中的sharpness值为准
  */
 @property (nonatomic, assign) float sharpness;

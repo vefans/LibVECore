@@ -217,6 +217,7 @@
 @property (nonatomic, strong) NSMutableArray<VECoreTemplateCustomAnimation *>*animates;
 
 - (instancetype)initWithCaption:(CaptionEx *)caption videoSize:(CGSize)videoSize;
+- (instancetype)initWithCaption:(CaptionEx *)caption videoSize:(CGSize)videoSize rootPath:(NSString *)rootPath;
 
 - (CaptionEx *)getSubtitleWithFolderPath:(NSString *)folderPath videoSize:(CGSize)videoSize;
 
@@ -256,7 +257,7 @@
 
 @end
 
-@interface VECoreTemplateSticker : Caption
+@interface VECoreTemplateSticker : CaptionEx
 
 /** 在虚拟视频中的开始时间
  */
@@ -275,6 +276,10 @@
  * 设置贴纸动画组后，该属性无效，以动画中的rect值为准
  */
 @property (nonatomic, assign) CGSize sizeF;
+
+/** 混合模式
+*/
+@property (nonatomic, assign) NSInteger blendType;
 
 /** 贴纸动画组
  */
@@ -295,5 +300,10 @@
 - (instancetype)initWithCaption:(Caption *)caption;
 
 - (Caption *)getStickerWithFolderPath:(NSString *)folderPath;
+
+- (instancetype)initWithCaptionEx:(CaptionEx *)caption;
+- (instancetype)initWithCaptionEx:(CaptionEx *)caption rootPath:(NSString *)rootPath;
+
+- (CaptionEx *)getStickerExWithFolderPath:(NSString *)folderPath;
 
 @end

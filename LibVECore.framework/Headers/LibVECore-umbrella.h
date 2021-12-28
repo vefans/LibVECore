@@ -33,6 +33,11 @@
 #import "VECoreYYClassInfo.h"
 #import "VECoreYYModel.h"
 #import "VEAudioRecorder.h"
+#import "PECoreTemplateAssetManager.h"
+#import "PECoreTemplateAssetManagerBackground.h"
+#import "PECoreTemplateImageAsset.h"
+#import "PECoreTemplateInfo.h"
+#import "PECoreTemplateOverlay.h"
 
 FOUNDATION_EXPORT double LibVECoreVersionNumber;
 FOUNDATION_EXPORT const unsigned char LibVECoreVersionString[];

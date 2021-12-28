@@ -24,6 +24,9 @@
  */
 @property (nonatomic,strong) NSString *identifier;
 
+/** 组Id
+ */
+@property (nonatomic, assign) int groupId;
 
 /** 媒体管理器背景色
 */
@@ -50,8 +53,6 @@
  */
 @property (nonatomic,strong) NSURL*  url;
 @property (nonatomic,strong) NSString* localIdentifier;
-
-
 
 /**  图片填充类型
  *   设置顶点坐标(pointsInImageArray)时，需设置为ImageMediaFillTypeFull

@@ -800,5 +800,5 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
  @param originalImage    原始图像
  @param grayscaleImage    灰度图(需要擦除的地方)
  */
--(UIImage *)getImageWithDeLogoProcess:( UIImage * ) originalImage atGrayscaleImage:( UIImage * ) grayscaleImage;
+-(void)getImageWithDeLogoProcess:( UIImage * ) originalImage atGrayscaleImage:( UIImage * ) grayscaleImage  atFailBlock:(void(^)(UIImage * image))failBlock;
 @end

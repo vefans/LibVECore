@@ -306,6 +306,10 @@ typedef NS_ENUM(NSInteger, MosaicType) {
  */
 @property (nonatomic, strong) NSMutableArray<VECoreTemplateSubtitleEx*>* subtitleExs;
 
+/** 语音转字幕
+ */
+@property (nonatomic, strong) NSMutableArray<VECoreTemplateSubtitleEx*>* speechSubtitles;
+
 /** 字幕模板
  */
 @property (nonatomic, strong) NSMutableArray<VECoreTemplateSubtitleTemplate*>* subtitlesTemplate;
