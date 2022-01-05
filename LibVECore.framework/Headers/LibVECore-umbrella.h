@@ -38,6 +38,7 @@
 #import "PECoreTemplateImageAsset.h"
 #import "PECoreTemplateInfo.h"
 #import "PECoreTemplateOverlay.h"
+#import "PETemplateExportInfo.h"
 
 FOUNDATION_EXPORT double LibVECoreVersionNumber;
 FOUNDATION_EXPORT const unsigned char LibVECoreVersionString[];

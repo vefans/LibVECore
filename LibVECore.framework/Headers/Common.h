@@ -61,6 +61,12 @@ typedef NS_ENUM(NSInteger, OverlayType) {
     OverlayTypeSuperposi, //叠加
 };
 
+typedef NS_ENUM(NSInteger, kAutoSegmentType) {
+    kAutoSegmentType_None = 0,  //无
+    kAutoSegmentType_Portrait,    //人像
+    kAutoSegmentType_Sky,    //天空
+};
+
 //字幕类型
 typedef NS_ENUM(NSInteger, CaptionType) {
     CaptionTypeHasText = 0,   //带文字
@@ -309,7 +315,7 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
 /**
  * 阴影配置
  */
-@property (nonatomic, strong) CaptionShadow* shadow; DEPRECATED_MSG_ATTRIBUTE("Use shadows instead.");
+@property (nonatomic, strong) CaptionShadow* shadow DEPRECATED_MSG_ATTRIBUTE("Use shadows instead.");
 
 /**
  * 多层阴影配置

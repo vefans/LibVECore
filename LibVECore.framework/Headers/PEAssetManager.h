@@ -235,7 +235,10 @@
 
 /**智能抠像
  */
-@property (nonatomic, assign) BOOL autoSegment;
+
+/**智能抠像(天空)
+ */
+@property (nonatomic, assign) kAutoSegmentType autoSegmentType;
 @property (nonatomic, strong)UIImage *autoSegmentImage;
 
 /**景深
