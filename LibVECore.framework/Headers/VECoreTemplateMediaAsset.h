@@ -158,6 +158,10 @@
  */
 @property (nonatomic, strong) VECoreTemplateMask *maskObject;
 
+/**智能抠像
+ */
+@property (nonatomic, assign) BOOL autoSegment;
+
 - (instancetype)initWithMediaAsset:(MediaAsset *)asset;
 
 - (MediaAsset *)getMediaAssetWithFolderPath:(NSString *)folderPath;
