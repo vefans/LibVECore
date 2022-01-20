@@ -30,9 +30,15 @@
 
 /**在video中的位置大小，默认CGRectMake(0, 0, 1, 1)
  * (0, 0)为左上角 (1, 1)为右下角
- * rect与pointsArray只有一个有效，以最后设置的为准
+ * showRectF与pointsF只有一个有效，以最后设置的为准
  */
 @property (nonatomic, assign) CGRect showRectF;
+
+/**在video中四个顶点(左上,右上,右下,左下)的坐标，可设置非矩形。
+ * (0, 0)为左上角 (1, 1)为右下角
+ * showRectF与pointsF只有一个有效，以最后设置的为准
+ */
+@property (nonatomic, strong) NSArray *pointsF;
 
 /**视频(或图片)裁剪范围。默认为CGRectMake(0, 0, 1, 1)
  */
@@ -95,10 +101,17 @@
 
 /**在video中的范围。默认为CGRectMake(0, 0, 1, 1)
  * (0, 0)为左上角 (1, 1)为右下角
- * rectInVideo与pointsInVideoArray只有一个有效，以最后设置的为准
- * 设置媒体动画后，该属性及pointsInVideoArray属性均无效，以动画中的rect或pointsArray值为准
+ * showRectF与pointsF只有一个有效，以最后设置的为准
+ * 设置媒体动画后，该属性及pointsF属性均无效，以动画中的showRectF或pointsF值为准
  */
 @property (nonatomic, assign) CGRect showRectF;
+
+/**在video中四个顶点(左上,右上,右下,左下)的坐标，可设置非矩形。
+ * (0, 0)为左上角 (1, 1)为右下角
+ * showRectF与pointsF只有一个有效，以最后设置的为准
+ * 设置媒体动画后，该属性及showRectF属性均无效，以动画中的showRectF或pointsF值为准
+ */
+@property (nonatomic, strong) NSArray *pointsF;
 
 /**抠图精度，0.0~1.0,默认为0.5
  */

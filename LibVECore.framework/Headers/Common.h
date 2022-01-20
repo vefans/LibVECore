@@ -34,6 +34,7 @@ typedef NS_ENUM(NSInteger, FilterBlendType) {
     FilterBlendTypeLinearBurn,      //线性加深
     FilterBlendTypeColorBurn,       //颜色加深
     FilterBlendTypeColorDodge,      //颜色减淡
+    FilterBlendTypeMask,            //左右结构mask
 };
 
 
