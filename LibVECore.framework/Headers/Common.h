@@ -60,6 +60,7 @@ typedef NS_ENUM(NSInteger, OverlayType) {
     OverlayTypeLogo,    //水印
     OverlayTypeFrame,    //边框
     OverlayTypeSuperposi, //叠加
+    OverlayTypeBackground, //画中画背景
 };
 
 typedef NS_ENUM(NSInteger, kAutoSegmentType) {

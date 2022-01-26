@@ -39,6 +39,9 @@ NS_ASSUME_NONNULL_BEGIN
 /** 画中画
  */
 @property (nonatomic, strong) NSMutableArray <PECoreTemplateOverlay*>* overlays;
+/** 画中画背景
+ */
+@property (nonatomic, strong) NSMutableArray <PECoreTemplateOverlay*>* overlayBackgrounds;
 /** 边框
  */
 @property (nonatomic, strong) NSMutableArray <PECoreTemplateOverlay*>* boxs;
