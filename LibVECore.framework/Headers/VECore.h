@@ -110,6 +110,10 @@ typedef NS_ENUM(NSUInteger, VEExportVideoProfileLevelType) {
  */
 @property (nonatomic,readonly) BOOL isPlaying;
 
+/** 预览或者导出支持的最大分辨率
+ */
+@property (nonatomic,readonly) CGSize supportMaxSize;
+
 /** 字幕
  */
 @property (nonatomic, strong) NSMutableArray<Caption*>* captions;
@@ -801,4 +805,6 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
  @param grayscaleImage    灰度图(需要擦除的地方)
  */
 -(void)getImageWithDeLogoProcess:( UIImage * ) originalImage atGrayscaleImage:( UIImage * ) grayscaleImage  atFailBlock:(void(^)(UIImage * image))failBlock;
+
+-(BOOL)getSdkDisabled;
 @end

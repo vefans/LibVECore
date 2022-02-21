@@ -9,8 +9,10 @@
 #import "PECoreTemplateAssetManager.h"
 #import "PECoreTemplateOverlay.h"
 #import "VECoreTemplateInfo.h"
+#import "PECoreTemplateOverlayMedia.h"
 #import <LibVECore/PEAssetManager.h>
 #import <LibVECore/VECoreTemplateCaption.h>
+#import "PECoreTemplateMediaInfo.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PECoreTemplateInfo : NSObject
@@ -26,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) float fileSize;
 /** 媒体信息，仅包含可替换媒体
  */
-@property (nonatomic, strong) NSMutableArray<PECoreTemplateImageAsset*> *mediaInfo;
+@property (nonatomic, strong) NSMutableArray<PECoreTemplateMediaInfo*> *mediaInfo;
 /** 场景
  */
 @property (nonatomic, strong) NSMutableArray<PECoreTemplateAssetManager*>*scenes;
@@ -38,16 +40,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSMutableArray<VECoreTemplateSticker*>* stickers;
 /** 画中画
  */
-@property (nonatomic, strong) NSMutableArray <PECoreTemplateOverlay*>* overlays;
-/** 画中画背景
- */
-@property (nonatomic, strong) NSMutableArray <PECoreTemplateOverlay*>* overlayBackgrounds;
+@property (nonatomic, strong) NSMutableArray <PECoreTemplateOverlay*>* pips;
+///** 画中画背景
+// */
+//@property (nonatomic, strong) NSMutableArray <PECoreTemplateOverlay*>* overlayBackgrounds;
 /** 边框
  */
-@property (nonatomic, strong) NSMutableArray <PECoreTemplateOverlay*>* boxs;
+@property (nonatomic, strong) NSMutableArray <PECoreTemplateOverlayMedia*>* frames;
 /** 叠加
  */
-@property (nonatomic, strong) NSMutableArray <PECoreTemplateOverlay*>* superposis;
+@property (nonatomic, strong) NSMutableArray <PECoreTemplateOverlayMedia*>* overlays;
 /** 画笔
  */
 @property (nonatomic, strong) NSMutableArray <PECoreTemplateOverlay*>* doodles;

@@ -16,6 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 /** 是否导出素材，默认为NO
 */
 @property (nonatomic, assign) BOOL isExportTemplate;
+
+/** 是否导出片段信息，默认为NO
+ */
+@property (nonatomic, assign) BOOL isHasFragments;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -918,7 +918,9 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 /**智能抠像
  */
 @property (nonatomic, assign) kAutoSegmentType autoSegmentType;
+@property (nonatomic, strong) NSURL *autoSegmentImageUrl;
 @property (nonatomic, strong)UIImage *autoSegmentImage;
+@property (nonatomic, assign) BOOL isGIF;
 
 /**景深
  */

@@ -37,7 +37,9 @@
 #import "PECoreTemplateAssetManagerBackground.h"
 #import "PECoreTemplateImageAsset.h"
 #import "PECoreTemplateInfo.h"
+#import "PECoreTemplateMediaInfo.h"
 #import "PECoreTemplateOverlay.h"
+#import "PECoreTemplateOverlayMedia.h"
 #import "PETemplateExportInfo.h"
 
 FOUNDATION_EXPORT double LibVECoreVersionNumber;

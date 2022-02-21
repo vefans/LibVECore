@@ -63,6 +63,9 @@ typedef NS_ENUM(NSUInteger, PECoreViewFillMode) {
  */
 @property (nonatomic,assign) PECoreViewFillMode fillMode;
 
+/** 预览或者导出支持的最大分辨率
+ */
+@property (nonatomic,readonly) CGSize supportMaxSize;
 
 /** 字幕
  */
@@ -254,11 +257,13 @@ typedef NS_ENUM(NSUInteger, PECoreViewFillMode) {
 /** 导出模板
 @abstract   Export template.
  @param outputPath                  输出路径
+ @param exportInfo                  导出信息
  @param progressHandler       导出进度
  @param completionHandler   完成
  @param failedHandler            失败
 */
 - (void)exportTemplateWithOutputPath:(NSString *)outputPath
+                          exportInfo:(TemplateExportInfo *)exportInfo
                      progressHandler:(void (^)(float))progressHandler
                    completionHandler:(void (^)(NSString *exportPath, PECoreTemplateInfo *templateInfo))completionHandler
                        failedHandler:(void (^)(NSError *))failedHandler;

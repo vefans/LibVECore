@@ -24,6 +24,11 @@
  */
 @property (nonatomic,strong) NSString *identifier;
 
+/** 是否是默认场景
+ *  导出模板用
+ */
+@property (nonatomic, assign) BOOL isDefault;
+
 /** 组Id
  */
 @property (nonatomic, assign) int groupId;
@@ -240,6 +245,10 @@
  */
 @property (nonatomic, assign) kAutoSegmentType autoSegmentType;
 @property (nonatomic, strong)UIImage *autoSegmentImage;
+
+/** 可替换类型，默认为MediaReplaceableType_VideoOrPic
+ */
+@property (nonatomic, assign) NSInteger replaceType;
 
 /**景深
  */

@@ -7,6 +7,7 @@
 
 #import <LibVECore/PEAssetManager.h>
 #import "PECoreTemplateImageAsset.h"
+#import "PECoreTemplateAssetManagerBackground.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,6 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
 /** 媒体
  */
 @property (nonatomic, strong) PECoreTemplateImageAsset *media;
+/** 背景
+ */
+@property (nonatomic, strong) PECoreTemplateAssetManagerBackground *background;
+
 - (instancetype)initWithOverlay:(PEOverlay *)overlay;
 - (PEOverlay *)getOverlayWithFolderPath:(NSString *)folderPath;
 @end

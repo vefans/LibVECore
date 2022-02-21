@@ -28,6 +28,17 @@ typedef NS_ENUM(NSInteger, PEBackgroundType) {
  */
 @property (nonatomic, assign) float blurIntensity;
 
+///** 图片地址
+// */
+//@property (nonatomic, copy) NSString *imageFolderPath;
+/**在图片中的范围。默认为CGRectMake(0, 0, 1, 1)
+ * (0, 0)为左上角 (1, 1)为右下角
+ */
+@property (nonatomic, assign) CGRect showRectF;
+/** 旋转角度
+ */
+@property (nonatomic, assign) float rotate;
+
 /** 图片地址
  */
 @property (nonatomic, copy) NSString *imagePath;
