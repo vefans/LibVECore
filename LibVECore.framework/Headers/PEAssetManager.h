@@ -254,6 +254,9 @@
  */
 @property (nonatomic, assign) BOOL isDOF;
 
+
+@property (nonatomic, strong) NSURL * manualKeyPath;
+
 @end
 
 
@@ -278,7 +281,6 @@
 /** 媒体
  */
 @property (nonatomic,strong) PEImageAsset*  asset;
-
 
 
 @end
