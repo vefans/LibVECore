@@ -12,7 +12,9 @@
 #import "PECoreTemplateOverlayMedia.h"
 #import <LibVECore/PEAssetManager.h>
 #import <LibVECore/VECoreTemplateCaption.h>
+#import "PECoreTemplateBackground.h"
 #import "PECoreTemplateMediaInfo.h"
+#import "PECoreTemplateFilter.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PECoreTemplateInfo : NSObject
@@ -29,6 +31,10 @@ NS_ASSUME_NONNULL_BEGIN
 /** 媒体信息，仅包含可替换媒体
  */
 @property (nonatomic, strong) NSMutableArray<PECoreTemplateMediaInfo*> *mediaInfo;
+/** 底图
+ */
+@property (nonatomic, strong) PECoreTemplateBackground *bg;
+
 /** 场景
  */
 @property (nonatomic, strong) NSMutableArray<PECoreTemplateAssetManager*>*scenes;
@@ -55,13 +61,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSMutableArray <PECoreTemplateOverlay*>* doodles;
 /** 滤镜
 */
-@property (nonatomic, strong) NSMutableArray <VECoreTemplateCustomFilter*>* customFilters;
+@property (nonatomic, strong) PECoreTemplateFilter* filter;
 /** 特效
 */
 @property (nonatomic, strong) NSMutableArray <VECoreTemplateSpecialEffect*>* specialEffects;
 /** 调色
 */
-@property (nonatomic, strong) NSMutableArray <VECoreTemplateToningInfo*>* tonings;
+@property (nonatomic, strong) VECoreTemplateToningInfo  *adjust;
 
 /**
  Creates and returns a new instance of the receiver from a json.

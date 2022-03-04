@@ -15,7 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PECoreTemplateImageAsset : PEImageAsset
 
-
+/** 组Id
+ */
+@property (nonatomic, assign) int groupId;
 
 @property (nonatomic, strong) NSString *path;
 

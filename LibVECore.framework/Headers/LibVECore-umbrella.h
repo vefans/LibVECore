@@ -35,6 +35,8 @@
 #import "VEAudioRecorder.h"
 #import "PECoreTemplateAssetManager.h"
 #import "PECoreTemplateAssetManagerBackground.h"
+#import "PECoreTemplateBackground.h"
+#import "PECoreTemplateFilter.h"
 #import "PECoreTemplateImageAsset.h"
 #import "PECoreTemplateInfo.h"
 #import "PECoreTemplateMediaInfo.h"
