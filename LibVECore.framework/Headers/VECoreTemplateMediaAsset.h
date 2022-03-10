@@ -175,6 +175,7 @@
  */
 @property (nonatomic, assign) BOOL autoSegment;
 
+
 - (instancetype)initWithMediaAsset:(MediaAsset *)asset;
 
 - (MediaAsset *)getMediaAssetWithFolderPath:(NSString *)folderPath;

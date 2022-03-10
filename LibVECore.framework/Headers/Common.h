@@ -64,9 +64,11 @@ typedef NS_ENUM(NSInteger, OverlayType) {
 };
 
 typedef NS_ENUM(NSInteger, kAutoSegmentType) {
-    kAutoSegmentType_None = 0,  //无
-    kAutoSegmentType_Portrait,    //人像
-    kAutoSegmentType_Sky,    //天空
+    kAutoSegmentType_None       = 0,    //无
+    kAutoSegmentType_Portrait   = 1,    //人像
+    kAutoSegmentType_Reverse    = 2,    //反向抠图
+    kAutoSegmentType_Sky        = 3,    //天空
+    
 };
 
 //字幕类型

@@ -806,5 +806,12 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
  */
 -(void)getImageWithDeLogoProcess:( UIImage * ) originalImage atGrayscaleImage:( UIImage * ) grayscaleImage  atFailBlock:(void(^)(UIImage * image))failBlock;
 
+/** 获取消除后的图像 （消除笔）
+ @abstract  Obtain the erased image (elimination pen)
+ @param originalImage    原始图像
+ @param grayscaleBuffer    灰度图(需要擦除的地方)
+ */
+-(void)getImageWithDeLogoProcess:( UIImage * ) originalImage atGrayscaleBuffer:( CVPixelBufferRef  ) grayscaleBuffer atFailBlock:(void(^)(UIImage * image))failBlock;
+
 -(BOOL)getSdkDisabled;
 @end
