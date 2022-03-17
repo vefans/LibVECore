@@ -388,6 +388,10 @@ typedef NS_ENUM(NSUInteger, VEExportVideoProfileLevelType) {
  */
 - (float)setAudioFilter:(AudioFilterType)type identifier:(NSString *)identifier;
 
+/** 改变均衡器参数
+ */
+- (void)setEq:(NSMutableArray <EqObject*> *) eq identifier:(NSString *)identifier;
+
 /** 改变去噪级别 
  */
 - (void)setDenoiseLevel:(float)level identifier:(NSString *)identifier;
@@ -805,6 +809,9 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
  @param grayscaleImage    灰度图(需要擦除的地方)
  */
 -(void)getImageWithDeLogoProcess:( UIImage * ) originalImage atGrayscaleImage:( UIImage * ) grayscaleImage  atFailBlock:(void(^)(UIImage * image))failBlock;
+/** 获取消除后的图像 （消除笔）同步擦除
+ */
+-(UIImage*)getImageWithDeLogoSynchronizeProcess:( UIImage * ) originalImage atGrayscaleImage:( UIImage * ) grayscaleImage;
 
 /** 获取消除后的图像 （消除笔）
  @abstract  Obtain the erased image (elimination pen)

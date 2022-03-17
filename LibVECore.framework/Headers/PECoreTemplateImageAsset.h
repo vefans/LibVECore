@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *path;
 
+@property (nonatomic, strong) NSString * segmentManualKeyPath;
+
 /**滤镜资源地址
  */
 @property (nonatomic, strong) NSString *filterPath;

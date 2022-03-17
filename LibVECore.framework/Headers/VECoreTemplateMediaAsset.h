@@ -174,6 +174,7 @@
 /**智能抠像
  */
 @property (nonatomic, assign) BOOL autoSegment;
+@property (nonatomic, assign) kAutoSegmentType segmentType;
 
 
 - (instancetype)initWithMediaAsset:(MediaAsset *)asset;

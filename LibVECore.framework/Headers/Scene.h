@@ -99,9 +99,6 @@ typedef NS_ENUM(NSInteger, MediaReplaceableType) {
 @class AudioVolumePosition;
 @class FaceAttribute;
 
-
-
-
 typedef NS_ENUM(NSInteger, SceneType) {
     SceneTypeNormal,    //默认
     SceneTypeEnd,       //片尾
@@ -178,6 +175,12 @@ typedef NS_ENUM(NSInteger, MusicType) {
 @property (nonatomic, strong) NSString*  showName ;
 /**神经语音人物*/
 @property (nonatomic, strong) NSString*  languageStyle ;
+@end
+
+//MARK: 均衡器数值
+@interface EqObject : NSObject<NSCopying,NSMutableCopying>
+@property(nonatomic, assign)int frequecy;
+@property(nonatomic, assign)float gain;
 @end
 
 @interface MusicInfo : NSObject<NSCopying,NSMutableCopying>
@@ -291,7 +294,9 @@ typedef NS_ENUM(NSInteger, MusicType) {
 /** 音乐滤镜
  */
 @property (nonatomic, assign) AudioFilterType audioFilterType;
-
+/** 均衡器数值数组
+ */
+@property (nonatomic, strong) NSMutableArray <EqObject*>* eq;
 @end
 
 
@@ -918,7 +923,6 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 /**智能抠像
  */
 @property (nonatomic, assign) kAutoSegmentType autoSegmentType;
-@property (nonatomic, assign) kAutoSegmentType segmentType;
 @property (nonatomic, strong) NSURL *autoSegmentImageUrl;
 @property (nonatomic, strong)UIImage *autoSegmentImage;
 @property (nonatomic, assign) BOOL isGIF;
@@ -931,9 +935,10 @@ typedef NS_ENUM(NSInteger, BlendEquation)
  */
 @property (nonatomic, strong) FlowEffect* flowEffect;
 
+/** 均衡器数值数组
+ */
+@property (nonatomic, strong) NSMutableArray <EqObject*>* eq;
 @end
-
-
 
 // Mask 用于异形
 @interface MaskAsset : NSObject
@@ -1347,6 +1352,5 @@ UIKIT_EXTERN API_DEPRECATED("Watermark is deprecated. Use Overlay instead", ios(
 /** 视频的元信息
  */
 @property (nonatomic, strong) NSArray <AVMetadataItem*>*previewVideoMetadata;
-
 
 @end
