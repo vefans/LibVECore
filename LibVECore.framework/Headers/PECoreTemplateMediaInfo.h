@@ -2,7 +2,7 @@
 //  PECoreTemplateMediaInfo.h
 //  PESDK
 //
-//  Created by mac on 2022/1/29.
+//  Created by iOS VESDK Team on 2022/1/29.
 //
 
 #import <Foundation/Foundation.h>

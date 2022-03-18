@@ -2,7 +2,7 @@
 //  PETemplateExportInfo.h
 //  LibVECore
 //
-//  Created by mac on 2021/12/27.
+//  Created by iOS VESDK Team on 2021/12/27.
 //
 
 #import <Foundation/Foundation.h>

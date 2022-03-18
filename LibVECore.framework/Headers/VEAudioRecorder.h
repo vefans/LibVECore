@@ -2,7 +2,7 @@
 //  VEAudioRecorder.h
 //  LibVECore
 //
-//  Created by mac on 2021/9/10.
+//  Created by iOS VESDK Team on 2021/9/10.
 //
 
 #import <Foundation/Foundation.h>

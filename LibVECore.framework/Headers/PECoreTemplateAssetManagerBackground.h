@@ -2,7 +2,7 @@
 //  PECoreTemplateAssetManagerBackground.h
 //  LibVECore
 //
-//  Created by mac on 2021/12/21.
+//  Created by iOS VESDK Team on 2021/12/21.
 //
 
 #import <Foundation/Foundation.h>

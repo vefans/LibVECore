@@ -2,7 +2,7 @@
 //  PECoreTemplateFilter.h
 //  LibVECore
 //
-//  Created by mac on 2022/3/1.
+//  Created by iOS VESDK Team on 2022/3/1.
 //
 
 #import <Foundation/Foundation.h>

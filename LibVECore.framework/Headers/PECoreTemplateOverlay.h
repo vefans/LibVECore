@@ -2,7 +2,7 @@
 //  PECoreTemplateOverlay.h
 //  LibVECore
 //
-//  Created by mac on 2021/12/20.
+//  Created by iOS VESDK Team on 2021/12/20.
 //
 
 #import <LibVECore/PEAssetManager.h>
