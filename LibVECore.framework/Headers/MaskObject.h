@@ -101,6 +101,11 @@
 
 @interface MaskObject : NSObject
 
+/**资源ID
+ *  导出模板用
+ */
+@property (nonatomic, strong) NSString *networkResourceId;
+
 /**资源文件夹地址
  */
 @property (nonatomic, strong) NSString *folderPath;

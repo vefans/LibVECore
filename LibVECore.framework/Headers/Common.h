@@ -1121,18 +1121,44 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
 
 @end
 
-typedef NS_ENUM(NSInteger, MediaAssetBlurType) {
-    MediaAssetBlurTypeNone,            // 无效果
-    MediaAssetBlurTypeZoomOut,         // 渐变模糊，由中心像四周扩散
-    MediaAssetBlurTypeNormal,          // 高斯模糊
-    
+
+typedef NS_ENUM(NSInteger, BlurType) {
+    BlurTypeNone,            // 无效果
+    BlurTypeEdge,            // 边缘模糊
+    BlurTypeGauss,           // 高斯模糊
+    BlurTypeRadial,          // 径向模糊
 };
+
+@interface Blur : NSObject<NSCopying, NSMutableCopying>
+
+/** 设置模糊强度0.0~1.0，默认为0.0
+ */
+@property (nonatomic, assign)BlurType blurType;
+
+
+/** 设置模糊强度0.0~1.0，默认为0.0
+ */
+@property (nonatomic, assign)float intensity;
+
+
+/** 设置模糊中心，默认为屏幕中心 (0.5,0.5)
+ */
+@property (nonatomic, assign)CGPoint centerPoint;
+
+
+/** 设置模糊半径，默认为0.0
+ */
+@property (nonatomic, assign)float radius;
+
+
+@end
+
 
 @interface MediaAssetBlur : NSObject<NSCopying, NSMutableCopying>
 
-/** 设置模糊类型，现只支持MediaAssetBlurTypeNormal
+/** 设置模糊类型，现只支持BlurTypeGauss
  */
-@property (nonatomic, assign)MediaAssetBlurType type   DEPRECATED_ATTRIBUTE;
+@property (nonatomic, assign)BlurType type   DEPRECATED_ATTRIBUTE;
 
 /** 设置模糊强度0.0~1.0，默认为0.5
  */

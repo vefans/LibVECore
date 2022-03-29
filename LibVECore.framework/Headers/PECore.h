@@ -268,5 +268,5 @@ typedef NS_ENUM(NSUInteger, PECoreViewFillMode) {
                    completionHandler:(void (^)(NSString *exportPath, PECoreTemplateInfo *templateInfo))completionHandler
                        failedHandler:(void (^)(NSError *))failedHandler;
 
-- (int)getSDKVersion;
++ (int)getSDKVersion;
 @end

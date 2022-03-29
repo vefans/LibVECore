@@ -171,6 +171,8 @@
  */
 @property (nonatomic, strong) VECoreTemplateMask *maskObject;
 
+
+
 /**智能抠像
  */
 @property (nonatomic, assign) BOOL autoSegment;

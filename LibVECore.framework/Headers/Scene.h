@@ -482,9 +482,14 @@ typedef NS_ENUM(NSInteger, BlendEquation)
  */
 @property (nonatomic,assign) CGFloat fillScale;
 
-/** 设置模糊效果
+
+/** 设置模糊强度0.0~1.0，默认为0.0
  */
-@property (nonatomic, strong) MediaAssetBlur *blur;
+@property (nonatomic, assign) float blurIntensity  DEPRECATED_MSG_ATTRIBUTE("Use blur instead.");
+
+/** 设置模糊效果（关键帧中模糊类型必须一致）
+ */
+@property (nonatomic, strong) Blur *blur;
 
 /**视频(或图片)裁剪范围。默认为CGRectMake(0, 0, 1, 1)
  */
@@ -786,15 +791,17 @@ typedef NS_ENUM(NSInteger, BlendEquation)
  */
 @property (nonatomic, assign) BlendEquation blendModel;
 
-/** 设置模糊效果
- *  设置媒体动画后，该属性无效，以动画中的blur为准
- */
-@property (nonatomic, strong) MediaAssetBlur *blur;
-
 /** 设置模糊强度0.0~1.0，默认为0.0
- *  blur是对整个视频有效，而该属性仅对单个媒体有效
+ *  设置媒体动画后，该属性无效，以动画中的 blurIntensity 为准
  */
-@property (nonatomic, assign) float blurIntensity;
+@property (nonatomic, assign) float blurIntensity DEPRECATED_MSG_ATTRIBUTE("Use blur instead.");
+
+
+/** 设置模糊效果
+ *  设置媒体动画后，该属性无效，以动画中的 blur 为准
+ */
+@property (nonatomic, strong) Blur *blur;
+
 
 /** 设置媒体边框羽化宽度(0.0-1.0f),默认开启（0.1f)
  *  该属性只有设置blurIntensity时才有效
