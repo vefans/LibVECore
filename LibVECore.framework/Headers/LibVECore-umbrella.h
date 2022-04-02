@@ -36,6 +36,7 @@
 #import "PECoreTemplateAssetManager.h"
 #import "PECoreTemplateAssetManagerBackground.h"
 #import "PECoreTemplateBackground.h"
+#import "PECoreTemplateFaceRecognition.h"
 #import "PECoreTemplateFilter.h"
 #import "PECoreTemplateImageAsset.h"
 #import "PECoreTemplateInfo.h"

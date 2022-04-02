@@ -11,6 +11,7 @@
 #import <LibVECore/CustomFilter.h>
 #import <LibVECore/MaskObject.h>
 #import <LibVECore/Common.h>
+#import <LibVECore/CameraManager.h>
 
 
 
@@ -58,6 +59,12 @@
  */
 @property (nonatomic,strong) NSURL*  url;
 @property (nonatomic,strong) NSString* localIdentifier;
+
+/** 换发
+ */
+@property (nonatomic, strong) NSURL *hairOriginalUrl;
+@property (nonatomic, strong) NSMutableArray * hairArray;
+@property (nonatomic, strong) NSMutableArray* faces;
 
 /**  图片填充类型
  *   设置顶点坐标(pointsInImageArray)时，需设置为ImageMediaFillTypeFull

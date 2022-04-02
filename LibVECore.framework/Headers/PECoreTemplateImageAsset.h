@@ -111,10 +111,15 @@ NS_ASSUME_NONNULL_BEGIN
 /**蒙版
  */
 @property (nonatomic, strong) VECoreTemplateMask *maskObject;
-
+ 
 - (instancetype)initWithMediaAsset:(PEImageAsset *)asset;
 
 - (PEImageAsset *)getMediaAssetWithFolderPath:(NSString *)folderPath;
+
+/**
+ 五官美颜，左眼相关坐标点 (参考坐标点：55，54，53，52，57，56)，如果设置该参数，需要通过 FaceAttribute 控制效果
+ */
+@property (nonatomic,strong) NSMutableArray* facesPoints;
 
 @end
 
