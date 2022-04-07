@@ -151,8 +151,12 @@
  *  blur是对整个视频有效，而该属性仅对单个媒体有效
  */
 @property (nonatomic, assign) float blurIntensity;
- 
 
+/** 设置模糊效果
+ *  设置媒体动画后，该属性无效，以动画中的 blur 为准
+ */
+@property (nonatomic, strong) Blur *blur;
+ 
 /**在 image 中四个顶点的坐标，可设置非矩形。
  * (0, 0)为左上角 (1, 1)为右下角
  * rectInImage与pointsInImageArray只有一个有效，以最后设置的为准
