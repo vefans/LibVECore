@@ -93,6 +93,7 @@ typedef NS_ENUM(NSInteger, BuiltInFilter_TYPE)
     BuiltInFilter_colorCrosspoint,              //彩色交叉
     BuiltInFilter_freezeFrame,                  //画面定格
     BuiltInFilter_lookUp,                       //lookUp滤镜
+    BuiltInFilter_Mosaic,                       //mosaic滤镜
 };
 
 

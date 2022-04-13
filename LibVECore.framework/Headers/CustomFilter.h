@@ -165,6 +165,10 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
  */
 @property (nonatomic, assign)float lookUpFilterIntensity;
 
+/**滤镜条纹启用，builtInType为BuiltInFilter_Mosaic时有效,默认为YES
+ */
+@property (nonatomic, assign)BOOL isStrip;
+
 
 /** 当前作为输入源的特效名字，如果当前特效由多个特效组成时，
     会根据 inputFilterName 将上一个或者多个特效的结果作为输入继续处理，默认为 nil

@@ -7,8 +7,21 @@
 //
 
 #import <LibVECore/CustomFilter.h>
+#import <LibVECore/Common.h>
 
 #pragma mark - 滤镜
+@interface VECoreTemplateCustomFilterExtra : NSObject
+
+/** 滤镜类型
+ */
+@property (nonatomic, assign) FilterType type;
+
+/**滤镜条纹启用，kFilterType_Mosaic时有效,默认为YES
+ */
+@property (nonatomic, assign)BOOL strip;
+
+@end
+
 @interface VECoreTemplateCustomFilter : CustomFilter
 
 /** 在虚拟视频中的开始时间
@@ -22,6 +35,8 @@
 /** 内置滤镜素材
  */
 @property (nonatomic, copy) NSString *lookUpFilterPath;
+
+@property (nonatomic, strong) VECoreTemplateCustomFilterExtra *extra;
 
 - (instancetype)initWithCustomFilter:(CustomFilter *)filter;
 

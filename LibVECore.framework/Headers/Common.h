@@ -50,7 +50,8 @@ typedef NS_ENUM(NSInteger, FilterType) {
     kFilterType_Sketch,             // 素描
     kFilterType_DistortingMirror,   // 哈哈镜
     kFilterType_ACV,                // acv滤镜
-    kFilterType_LookUp              // lookup滤镜
+    kFilterType_LookUp,             // lookup滤镜
+    kFilterType_Mosaic              // 马赛克像素化
 };
 
 typedef NS_ENUM(NSInteger, OverlayType) {

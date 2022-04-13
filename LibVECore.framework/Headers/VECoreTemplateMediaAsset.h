@@ -125,6 +125,10 @@
  */
 @property (nonatomic, strong) NSString *filterPath;
 
+/**滤镜条纹启用，kFilterType_Mosaic时有效,默认为YES
+ */
+@property (nonatomic, assign)BOOL strip;
+
 /** 色调 ranges from -1.0 to 1.0 , with 0.0 as the normal level
  *  设置媒体动画后，该属性无效，以动画中的tint值为准
  */

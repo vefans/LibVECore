@@ -741,9 +741,13 @@ typedef NS_ENUM(NSInteger, BlendEquation)
  */
 @property (nonatomic , strong)  NSURL*   filterUrl;
 
-/**滤镜强度，kFilterType_LookUp时有效,默认为1.0
+/**滤镜强度，kFilterType_LookUp/kFilterType_Mosaic 时有效,默认为1.0
  */
 @property (nonatomic, assign)float filterIntensity;
+
+/**滤镜条纹启用，kFilterType_Mosaic时有效,默认为YES
+ */
+@property (nonatomic, assign)BOOL isStrip;
 
 /**滤镜时间(相对于媒体时间),默认和媒体时间一样
  */
