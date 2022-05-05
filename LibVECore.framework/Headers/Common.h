@@ -1052,7 +1052,7 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
 /** 调色
 */
 @interface ToningInfo : NSObject<NSCopying, NSMutableCopying>
-
+@property (nonatomic, assign) NSInteger tag;
 /** 亮度 ranges from -1.0 to 1.0, with 0.0 as the normal level
  *  设置媒体动画后，该属性无效，以动画中的brightness值为准
  */
@@ -1253,7 +1253,6 @@ typedef NS_ENUM(NSInteger, BlurType) {
 
 
 @interface Filter : NSObject
-
 /**资源分类ID
  */
 @property (nonatomic, strong) NSString *networkCategoryId;

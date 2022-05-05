@@ -125,7 +125,9 @@
 /**滤镜强度，FilterType_LookUp时有效,默认为1.0
  */
 @property (nonatomic, assign)float filterIntensity;
-
+/**滤镜条纹启用，kFilterType_Mosaic时有效,默认为YES
+ */
+@property (nonatomic, assign)BOOL isStrip;
 
 
 /**mask资源地址，可实现不规则媒体显示

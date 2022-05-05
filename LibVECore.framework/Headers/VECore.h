@@ -821,4 +821,6 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
 -(void)getImageWithDeLogoProcess:( UIImage * ) originalImage atGrayscaleBuffer:( CVPixelBufferRef  ) grayscaleBuffer atFailBlock:(void(^)(UIImage * image))failBlock;
 
 -(BOOL)getSdkDisabled;
+
++(UIImage *)getImageFromPath:( NSURL * ) path;
 @end

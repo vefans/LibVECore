@@ -199,6 +199,8 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
 
 @interface CustomMultipleFilter : NSObject<NSCopying, NSMutableCopying>
 
+@property (nonatomic, assign) NSInteger tag;
+@property (nonatomic, strong) NSString *name;
 /**资源文件夹地址
  */
 @property (nonatomic, strong) NSString *folderPath;

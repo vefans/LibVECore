@@ -146,6 +146,10 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 
 - (Overlay *)getOverlayWithFolderPath:(NSString *)folderPath;
 
+/** 多轨界面显示层级坐标
+ */
+@property(nonatomic,assign)float          fRailLevelY;
+
 @end
 
 #pragma mark - 水印

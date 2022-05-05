@@ -74,6 +74,26 @@
  */
 @property (nonatomic, assign) float fade;
 
+/** 设置模糊强度0.0~1.0，默认为0.0
+ */
+@property (nonatomic, assign)BlurType blurType;
+
+
+/** 设置模糊强度0.0~1.0，默认为0.0
+ */
+@property (nonatomic, assign)float intensity;
+
+
+/** 设置模糊中心，默认为屏幕中心 (0.5,0.5)
+ */
+@property (nonatomic, assign)CGPoint centerPoint;
+
+
+/** 设置模糊半径，默认为0.0
+ */
+@property (nonatomic, assign)float radius;
+
+
 - (instancetype)initWithMediaAnimate:(MediaAssetAnimatePosition *)animate;
 
 - (MediaAssetAnimatePosition *)getMediaAssetAnimatePosition;
@@ -170,6 +190,10 @@
 /**设置媒体自定义动画（入场、出场、组合）
  */
 @property (nonatomic, strong) NSMutableArray <VECoreTemplateCustomAnimation*>* customAnimations;
+
+/**3D动画
+ */
+@property (nonatomic, strong) VECoreTemplateAnimation3D *animate3D;
 
 /**蒙版
  */

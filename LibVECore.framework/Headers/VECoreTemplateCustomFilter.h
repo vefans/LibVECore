@@ -8,6 +8,7 @@
 
 #import <LibVECore/CustomFilter.h>
 #import <LibVECore/Common.h>
+#import <LibVECore/Scene.h>
 
 #pragma mark - 滤镜
 @interface VECoreTemplateCustomFilterExtra : NSObject
@@ -23,6 +24,8 @@
 @end
 
 @interface VECoreTemplateCustomFilter : CustomFilter
+
+@property (nonatomic, assign) float tag;
 
 /** 在虚拟视频中的开始时间
  */
@@ -87,5 +90,22 @@
 - (instancetype)initWithCustomFilter:(CustomFilter *)filter;
 
 - (CustomFilter *)getCustomFilterWithFolderPath:(NSString *)folderPath;
+
+@end
+
+#pragma mark - 3D动画
+@interface VECoreTemplateAnimation3D : Animation3D
+
+/**  json资源地址
+ */
+@property (nonatomic,strong) NSString *path;
+
+/** 动画时长
+ */
+@property (nonatomic, assign) float duration;
+
+- (instancetype)initWithAnimation3D:(Animation3D *)animate;
+
+- (Animation3D *)getAnimation3DWithFolderPath:(NSString *)folderPath;
 
 @end

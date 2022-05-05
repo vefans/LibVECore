@@ -554,6 +554,27 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 
 @end
 
+@interface Animation3D : NSObject<NSCopying, NSMutableCopying>
+
+/**资源分类ID
+ */
+@property (nonatomic, strong) NSString *networkCategoryId;
+
+/**资源ID
+ */
+@property (nonatomic, strong) NSString *networkResourceId;
+
+/**  json资源地址
+ */
+@property (nonatomic,strong) NSURL*  url;
+
+/** 动画  开始 与 持续时间
+ */
+@property (nonatomic,assign) CMTimeRange timeRange;
+
+@end
+
+
 @interface MediaAsset : NSObject<NSCopying, NSMutableCopying>
 
 /** 标识符
@@ -682,6 +703,9 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 /** 视频(或图片)透明度(0.0〜1.0),默认为1.0
  */
 @property (nonatomic,assign) float alpha;
+/** 媒体是否隐藏
+ */
+@property (nonatomic, assign) BOOL isMediaHide;
 
 /** 显示时长
  */
@@ -867,6 +891,11 @@ typedef NS_ENUM(NSInteger, BlendEquation)
  */
 @property (nonatomic, strong) CustomFilter* customOtherAnimate;
 
+/**3d动画
+ */
+@property (nonatomic, strong) Animation3D*  animation3D;
+
+
 /**美颜磨皮，0.0~1.0,默认为0.0
  */
 @property (nonatomic, assign) float beautyBlurIntensity;
@@ -949,6 +978,9 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 /** 均衡器数值数组
  */
 @property (nonatomic, strong) NSMutableArray <EqObject*>* eq;
+/** 音频分离 true为分离
+ */
+@property(nonatomic, assign)BOOL    audioSeparate;
 @end
 
 // Mask 用于异形
@@ -1263,6 +1295,10 @@ UIKIT_EXTERN API_DEPRECATED("Watermark is deprecated. Use Overlay instead", ios(
 /**是否循环播放，默认为YES
  */
 @property (nonatomic, assign) BOOL isRepeat;
+
+/** 多轨界面显示层级坐标
+ */
+@property(nonatomic,assign)float          fOverlayRailLevelY;
 
 @end
 
