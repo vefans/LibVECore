@@ -188,6 +188,12 @@ typedef NS_ENUM(NSUInteger, VEExportVideoProfileLevelType) {
 */
 @property (nonatomic, strong) NSMutableArray <ToningInfo*>* toningArray;
 
+
+/** 粒子
+*/
+@property (nonatomic, strong) NSMutableArray <Particle*>* particleArray;
+
+
 /** 片尾黑视频时长，默认为kCMTimeZero
  *  用于画中画、配乐等素材时长可大于主视频的情况
 */

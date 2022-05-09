@@ -114,6 +114,10 @@ typedef NS_ENUM(NSUInteger, PECoreViewFillMode) {
 @property (nonatomic, strong) NSMutableArray <ToningInfo*>* adjustmentsArray;
 
 
+/** 粒子
+*/
+@property (nonatomic, strong) NSMutableArray <Particle*>* particlesArray;
+
 /** 代理
 */
 @property (nonatomic,weak) id<PECoreDelegate> delegate;
