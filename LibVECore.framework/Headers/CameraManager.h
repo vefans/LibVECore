@@ -323,6 +323,10 @@ typedef NS_ENUM(NSUInteger, CameraFillMode) {
 @property (nonatomic, assign) float beautyThinFace;
 
 
+/** 粒子
+*/
+@property (nonatomic, strong) NSMutableArray <Particle*>* particleArray;
+
 
 /** 摄像头方向，默认为kUP
  */

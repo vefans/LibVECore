@@ -1470,7 +1470,7 @@ typedef NS_ENUM(NSUInteger, EMITTER_TYPE)
 
 /**粒子素材路径
  */
-@property (nonatomic,strong)NSString *filePath;
+@property (nonatomic,strong)NSString *textureFileName;
 
 
 /**遮罩素材路径
@@ -1483,28 +1483,14 @@ typedef NS_ENUM(NSUInteger, EMITTER_TYPE)
 @property (nonatomic,assign)BOOL maskAtlas;
 
 
-/**最大粒子数量，默认50
+/**mask
  */
-@property (nonatomic,assign)int maxParticles;
-
-/**生命周期，单位：秒
- */
-@property (nonatomic,assign)float life;
-
-
-/**持续时间，默认为 -1，永久显示，单位：秒
- */
-@property (nonatomic,assign)float duration;
-
-
-/**重力位置，左上角（0.0，0.0），右下角（1.0，1.0），默认（0.5，0.5）
- */
-@property (nonatomic,assign)CGPoint gravityPoint;
+@property (nonatomic,assign)BOOL mask;
 
 
 /**混合方式，参考 enum BLEND_FUNC，默认 BLEND_FUNC_DEFAULT
  */
-@property (nonatomic,assign)int blendFunc;
+@property (nonatomic,assign)int blendFuncSource;
 
 
 /**源呈现模式，参考 enum SOURCE_RENDER_MODE，默认 SOURCE_RENDER_MODE_NORMAL
@@ -1514,7 +1500,27 @@ typedef NS_ENUM(NSUInteger, EMITTER_TYPE)
 
 /**粒子触发类型，参考 enum EMITTER_TYPE，默认 EMITTER_TYPE_GRAVITY_LEAP_LIKE
  */
-@property (nonatomic,assign)int emitterMode;
+@property (nonatomic,assign)int emitterType;
+
+
+/**生命周期，单位：秒, 默认 1.0
+ */
+@property (nonatomic,assign)float particleLifespan;
+
+
+/**生命周期变化幅度，单位：秒，默认为 0 ，particleLifespan = particleLifespan +/- particleLifespanVariance
+ */
+@property (nonatomic,assign)float particleLifespanVariance;
+
+
+/**持续时间，默认为 -1，永久显示，单位：秒
+ */
+@property (nonatomic,assign)float duration;
+
+
+/**最大粒子数量，默认50
+ */
+@property (nonatomic,assign)int maxParticles;
 
 
 /**角度 0 ～ 360，默认为 0
@@ -1526,55 +1532,83 @@ typedef NS_ENUM(NSUInteger, EMITTER_TYPE)
  */
 @property (nonatomic,assign)float angleVariance;
 
-
-/**开始时粒子大小，默认为 0.5
- */
-@property (nonatomic,assign)float startSize;
-
-
-/**开始时粒子大小变化幅度，默认为 0 ，startSize = startSize +/- startSizeVariance
- */
-@property (nonatomic,assign)float startSizeVariance;
-
-
-/**结束时粒子大小，默认为 0
- */
-@property (nonatomic,assign)float endSize;
-
-
-/**结束时粒子大小变化幅度，默认为 0 ，endSize = endSize +/- endSizeVariance
- */
-@property (nonatomic,assign)float endSizeVariance;
-
-
 /**开始时粒子自旋角度，默认为 0.0
  */
-@property (nonatomic,assign)float startSpin;
+@property (nonatomic,assign)float rotationStart;
 
 
-/**开始时粒子自旋角度变化幅度，默认为 0 ，startSpin = startSpin +/- startSpinVariance
+/**开始时粒子自旋角度变化幅度，默认为 0 ，rotationStart = rotationStart +/- rotationStartVariance
  */
-@property (nonatomic,assign)float startSpinVariance;
+@property (nonatomic,assign)float rotationStartVariance;
 
 
 /**结束时粒子自旋角度，默认为 0
  */
-@property (nonatomic,assign)float endSpin;
+@property (nonatomic,assign)float rotationEnd;
 
 
-/**结束时粒子自旋角度变化幅度，默认为 0 ，endSpin = endSpin +/- endSpinVariance
+/**结束时粒子自旋角度变化幅度，默认为 0 ，rotationEnd = rotationEnd +/- rotationEndVariance
  */
-@property (nonatomic,assign)float endSpinVariance;
+@property (nonatomic,assign)float rotationEndVariance;
 
 
-/**翻转，默认为 NO
+
+/**颜色
  */
-@property (nonatomic,assign)BOOL yCoordFlipped;
+@property (nonatomic,assign)float startColorAlpha;
+@property (nonatomic,assign)float startColorRed;
+@property (nonatomic,assign)float startColorGreen;
+@property (nonatomic,assign)float startColorBlue;
+@property (nonatomic,assign)float startColorVarianceAlpha;
+@property (nonatomic,assign)float startColorVarianceRed;
+@property (nonatomic,assign)float startColorVarianceGreen;
+@property (nonatomic,assign)float startColorVarianceBlue;
+@property (nonatomic,assign)float finishColorAlpha;
+@property (nonatomic,assign)float finishColorRed;
+@property (nonatomic,assign)float finishColorGreen;
+@property (nonatomic,assign)float finishColorBlue;
+@property (nonatomic,assign)float finishColorVarianceAlpha;
+@property (nonatomic,assign)float finishColorVarianceRed;
+@property (nonatomic,assign)float finishColorVarianceGreen;
+@property (nonatomic,assign)float finishColorVarianceBlue;
 
 
-/**是否自转，默认为 NO
+
+/**开始时粒子大小，默认为 0.5
  */
-@property (nonatomic,assign)BOOL rotationIsDir;
+@property (nonatomic,assign)float startParticleSize;
+
+
+/**开始时粒子大小变化幅度，默认为 0 ，startSize = startSize +/- startSizeVariance
+ */
+@property (nonatomic,assign)float startParticleSizeVariance;
+
+
+/**结束时粒子大小，默认为 0
+ */
+@property (nonatomic,assign)float finishParticleSize;
+
+
+/**结束时粒子大小变化幅度，默认为 0 ，endSize = endSize +/- endSizeVariance
+ */
+@property (nonatomic,assign)float finishParticleSizeVariance;
+
+
+/**重心位置，左上角（0.0，0.0），右下角（1.0，1.0），默认 0.5
+ */
+@property (nonatomic,assign)float gravityx;
+
+
+/**重心位置，左上角（0.0，0.0），右下角（1.0，1.0），默认 0.5
+ */
+@property (nonatomic,assign)float gravityy;
+
+
+@property (nonatomic,assign)float sourcePositionVariancex;
+
+
+@property (nonatomic,assign)float sourcePositionVariancey;
+
 
 
 /**运动距离，默认为 0.5
@@ -1589,42 +1623,45 @@ typedef NS_ENUM(NSUInteger, EMITTER_TYPE)
 
 /**向心加速度，默认为 0.0
  */
-@property (nonatomic,assign)float radialAccel;
+@property (nonatomic,assign)float radialAcceleration;
 
 
-/**向心加速度变化幅度，默认为 0 ，radialAccel = radialAccel +/- radialAccelVariance
+/**向心加速度变化幅度，默认为 0 ，radialAcceleration = radialAcceleration +/- radialAccelVariance
  */
 @property (nonatomic,assign)float radialAccelVariance;
 
 
+
 /**切线加速度，默认为 0.0
  */
-@property (nonatomic,assign)float tangentialAccel;
+@property (nonatomic,assign)float tangentialAcceleration;
 
 
-/**切线加速度变化幅度，默认为 0 ，tangentialAccel = tangentialAccel +/- tangentialAccelVariance
+/**切线加速度变化幅度，默认为 0 ，tangentialAcceleration = tangentialAcceleration +/- tangentialAccelVariance
  */
 @property (nonatomic,assign)float tangentialAccelVariance;
 
 
-/**起始半径，默认为 0.0
+
+/**最小半径，默认为 0.0
  */
-@property (nonatomic,assign)float startRadius;
+@property (nonatomic,assign)float minRadius;
 
 
-/**起始半径变化幅度，默认为 0 ，startRadius = startRadius +/- startRadiusVariance
+/**最小半径变化幅度，默认为 0 ，minRadius = minRadius +/- minRadiusVariance
  */
-@property (nonatomic,assign)float startRadiusVariance;
+@property (nonatomic,assign)float minRadiusVariance;
 
 
-/**结束半径，默认为 0.0
+/**最大半径，默认为 0.0
  */
-@property (nonatomic,assign)float endRadius;
+@property (nonatomic,assign)float maxRadius;
 
 
-/**结束半径变化幅度，默认为 0 ，endRadius = endRadius +/- endRadiusVariance
+/**最大半径变化幅度，默认为 0 ，maxRadius = maxRadius +/- maxRadiusVariance
  */
-@property (nonatomic,assign)float endRadiusVariance;
+@property (nonatomic,assign)float maxRadiusVariance;
+
 
 
 /**每秒旋转多少度，默认为 0.0
@@ -1637,26 +1674,14 @@ typedef NS_ENUM(NSUInteger, EMITTER_TYPE)
 @property (nonatomic,assign)float rotatePerSecondVariance;
 
 
-
-/**开始颜色，默认为 （1.0，1.0，1.0，1.0）
+/**是否自转，默认为 NO
  */
-@property (nonatomic,strong)UIColor* startColor;
+@property (nonatomic,assign)BOOL rotationIsDir;
 
 
-/**每秒旋转度数变化幅度，默认为（0.0，0.0，0.0，0.0） ，startColor = startColor +/- startColorVariance
+/**翻转，默认为 1
  */
-@property (nonatomic,strong)UIColor* startColorVariance;
-
-
-
-/**结束颜色，默认为（0.0，0.0，0.0，0.0）
- */
-@property (nonatomic,strong)UIColor* endColor;
-
-
-/**结束颜色变化幅度，默认为（0.0，0.0，0.0，0.0） ，endColor = endColor +/- endColorVariance
- */
-@property (nonatomic,strong)UIColor* endColorVariance;
+@property (nonatomic,assign)int yCoordFlipped;
 
 
 
