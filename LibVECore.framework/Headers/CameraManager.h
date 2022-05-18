@@ -323,6 +323,15 @@ typedef NS_ENUM(NSUInteger, CameraFillMode) {
 @property (nonatomic, assign) float beautyThinFace;
 
 
+/** VECore五官美颜  检测到的所有人脸都使用当前设置
+    只支持iOS11.0以上
+ */
+@property (nonatomic, strong)  FaceAttribute* faceAttribute;
+
+/** 调色
+*/
+@property (nonatomic, strong) ToningInfo *toningInfo;
+
 /** 粒子
 */
 @property (nonatomic, strong) NSMutableArray <Particle*>* particleArray;

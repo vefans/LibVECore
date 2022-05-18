@@ -1603,10 +1603,22 @@ typedef NS_ENUM(NSUInteger, EMITTER_TYPE)
  */
 @property (nonatomic,assign)float gravityy;
 
+/**粒子发射位置，左上角（0.0，0.0），右下角（1.0，1.0），默认 0.5
+ */
+@property (nonatomic,assign)float sourcePositionx;
 
+/**粒子发射位置，左上角（0.0，0.0），右下角（1.0，1.0），默认 0.0
+ */
 @property (nonatomic,assign)float sourcePositionVariancex;
 
 
+/**粒子发射位置，左上角（0.0，0.0），右下角（1.0，1.0），默认 0.5
+ */
+@property (nonatomic,assign)float sourcePositiony;
+
+
+/**粒子发射位置，左上角（0.0，0.0），右下角（1.0，1.0），默认 0.0
+ */
 @property (nonatomic,assign)float sourcePositionVariancey;
 
 
