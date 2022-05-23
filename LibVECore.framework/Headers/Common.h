@@ -10,6 +10,7 @@
 
 @class CustomFilter;
 typedef void(^LoadTracksFinishBlock)(float progress);
+typedef NSData*(^GetParticleHistoryDataBlock)(int* dataLen);
 
 typedef NS_ENUM(NSInteger, ImageMediaFillType) {
     ImageMediaFillTypeFull, // 全填充
@@ -1603,7 +1604,7 @@ typedef NS_ENUM(NSUInteger, EMITTER_TYPE)
  */
 @property (nonatomic,assign)float gravityy;
 
-/**粒子发射位置，左上角（0.0，0.0），右下角（1.0，1.0），默认 0.5
+/**当 emitterType 为 EMITTER_TYPE_GRAVITY 时， 粒子发射位置，左上角（0.0，0.0），右下角（1.0，1.0），默认 0.5
  */
 @property (nonatomic,assign)float sourcePositionx;
 
@@ -1612,7 +1613,7 @@ typedef NS_ENUM(NSUInteger, EMITTER_TYPE)
 @property (nonatomic,assign)float sourcePositionVariancex;
 
 
-/**粒子发射位置，左上角（0.0，0.0），右下角（1.0，1.0），默认 0.5
+/**当 emitterType 为 EMITTER_TYPE_GRAVITY 时，粒子发射位置，左上角（0.0，0.0），右下角（1.0，1.0），默认 0.5
  */
 @property (nonatomic,assign)float sourcePositiony;
 
@@ -1696,6 +1697,24 @@ typedef NS_ENUM(NSUInteger, EMITTER_TYPE)
 @property (nonatomic,assign)int yCoordFlipped;
 
 
+/**是否记录粒子数据，默认为 NO
+ */
+@property (nonatomic,assign)BOOL enableHistory;
+
+
+/**历史数据，粒子根据历史数据运动
+ */
+@property (nonatomic,strong)NSData *historyData;
+
+
+/**历史数据长度
+ */
+@property (nonatomic,assign)int historyDataLength;
+
+
+/**获取粒子历史数据，供下次使用，如果要记录历史数据 enableHistory 必须置为 YES
+ */
+@property (nonatomic, copy) GetParticleHistoryDataBlock getHistoryDataBlock;
 
 @end
 

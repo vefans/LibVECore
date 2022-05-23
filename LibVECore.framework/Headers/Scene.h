@@ -940,7 +940,7 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 
 /**抠图精度，0.0~1.0,默认为0.5
  */
-@property (nonatomic, assign) float factor;
+@property (nonatomic, assign) float factor DEPRECATED_ATTRIBUTE;
 
 /**抠图透明度低阀值，0.0~1.0,默认为0.1
  */
