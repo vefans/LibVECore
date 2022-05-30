@@ -1460,101 +1460,116 @@ typedef NS_ENUM(NSUInteger, EMITTER_TYPE)
 @interface Particle  : NSObject<NSCopying, NSMutableCopying>
 
 /** 时间范围
+ *  @abstract   timeRange.
  */
 @property (nonatomic ,assign) CMTimeRange timeRange;
 
 
 /** 涂抹坐标点数组，0.0 ～ 1.0（相对于虚拟视频）
+ *  @abstract   array of painted coordinate points, 0.0 to 1.0 (relative to virtual video)
  */
 @property (nonatomic,strong) NSMutableArray* points;
 
 
-/**粒子素材路径
+/**粒子图片路径
+ *  @abstract   particle image path
  */
 @property (nonatomic,strong)NSString *textureFileName;
 
 
-/**遮罩素材路径
+/**遮罩图片路径
+ *  @abstract   mask image path
  */
 @property (nonatomic,strong)NSString *maskPath;
 
 
-/**遮罩素材是否为图片集
+/**遮罩图片是否为图片集
+ *  @abstract   whether the masked image is a multiple image set
  */
 @property (nonatomic,assign)BOOL maskAtlas;
 
 
-/**mask
- */
-@property (nonatomic,assign)BOOL mask;
-
 
 /**混合方式，参考 enum BLEND_FUNC，默认 BLEND_FUNC_DEFAULT
+ *  @abstract   blend mode, see enum BLEND_FUNC, default BLEND_FUNC_DEFAULT
  */
 @property (nonatomic,assign)int blendFuncSource;
 
 
 /**源呈现模式，参考 enum SOURCE_RENDER_MODE，默认 SOURCE_RENDER_MODE_NORMAL
+ *  @abstract    source rendering mode, see enum SOURCE_RENDER_MODE, default SOURCE_RENDER_MODE_NORMAL
  */
 @property (nonatomic,assign)int sourceRendingMode;
 
 
 /**粒子触发类型，参考 enum EMITTER_TYPE，默认 EMITTER_TYPE_GRAVITY_LEAP_LIKE
+ *  @abstract    particle emitter type, see enum EMITTER_TYPE, default EMITTER_TYPE_GRAVITY_LEAP_LIKE
  */
 @property (nonatomic,assign)int emitterType;
 
 
 /**生命周期，单位：秒, 默认 1.0
+ *  @abstract    life cycle, in seconds, default 1.0
  */
 @property (nonatomic,assign)float particleLifespan;
 
 
 /**生命周期变化幅度，单位：秒，默认为 0 ，particleLifespan = particleLifespan +/- particleLifespanVariance
+ *  @abstract    lifespan variance in seconds, default 0, particleLifespan = particleLifespan +/- particleLifespanVariance
  */
 @property (nonatomic,assign)float particleLifespanVariance;
 
 
 /**持续时间，默认为 -1，永久显示，单位：秒
+ *  @abstract     duration, default to - 1, permanently displayed, unit: seconds
  */
 @property (nonatomic,assign)float duration;
 
 
 /**最大粒子数量，默认50
+ *  @abstract     maximum number of particles, default 50
  */
 @property (nonatomic,assign)int maxParticles;
 
 
 /**角度 0 ～ 360，默认为 0
+ *  @abstract     the angle is 0 ~ 360, and the default is 0
  */
 @property (nonatomic,assign)float angle;
 
 
 /**角度变化幅度，默认为 0 ，angle = angle +/- angleVariance
+ *  @abstract     angle variance, default is 0, angle = angle +/- angleVariance
  */
 @property (nonatomic,assign)float angleVariance;
 
-/**开始时粒子自旋角度，默认为 0.0
+/**开始时粒子角度，默认为 0.0
+ *  @abstract     particle angle at start, default 0.0
  */
 @property (nonatomic,assign)float rotationStart;
 
 
-/**开始时粒子自旋角度变化幅度，默认为 0 ，rotationStart = rotationStart +/- rotationStartVariance
+/**开始时粒子角度变化幅度，默认为 0 ，rotationStart = rotationStart +/- rotationStartVariance
+ *  @abstract     start of particle angle variance, default is 0, rotationStart = rotationStart +/- rotationStartVariance
  */
 @property (nonatomic,assign)float rotationStartVariance;
 
 
-/**结束时粒子自旋角度，默认为 0
+/**结束时粒子角度，默认为 0
+ *  @abstract      ending particle angle, default is 0
  */
 @property (nonatomic,assign)float rotationEnd;
 
 
-/**结束时粒子自旋角度变化幅度，默认为 0 ，rotationEnd = rotationEnd +/- rotationEndVariance
+/**结束时粒子角度变化幅度，默认为 0 ，rotationEnd = rotationEnd +/- rotationEndVariance
+ *  @abstract      end of particle angle variance, default is 0, rotationEnd = rotationEnd +/- rotationEndVariance
  */
 @property (nonatomic,assign)float rotationEndVariance;
 
 
 
 /**颜色
+ *  @abstract      color
  */
 @property (nonatomic,assign)float startColorAlpha;
 @property (nonatomic,assign)float startColorRed;
@@ -1576,143 +1591,177 @@ typedef NS_ENUM(NSUInteger, EMITTER_TYPE)
 
 
 /**开始时粒子大小，默认为 0.5
+ *  @abstract    start particle size, default is 0.5
  */
 @property (nonatomic,assign)float startParticleSize;
 
 
 /**开始时粒子大小变化幅度，默认为 0 ，startSize = startSize +/- startSizeVariance
+ *  @abstract    start particle size variance, default is 0, startSize = startSize +/- startSizeVariance
  */
 @property (nonatomic,assign)float startParticleSizeVariance;
 
 
 /**结束时粒子大小，默认为 0
+ *  @abstract    particle size at end, default to 0
  */
 @property (nonatomic,assign)float finishParticleSize;
 
 
 /**结束时粒子大小变化幅度，默认为 0 ，endSize = endSize +/- endSizeVariance
+ *  @abstract    the size of the particle change at the end, default is 0. endSize = endSize +/- endSizeVariance
  */
 @property (nonatomic,assign)float finishParticleSizeVariance;
 
 
 /**重心位置，左上角（0.0，0.0），右下角（1.0，1.0），默认 0.5
+ *  @abstract    gravity x-position, upper left corner (0.0, 0.0), lower right corner (1.0, 1.0), default 0.5
  */
 @property (nonatomic,assign)float gravityx;
 
 
 /**重心位置，左上角（0.0，0.0），右下角（1.0，1.0），默认 0.5
+ *  @abstract    gravity y-position, upper left corner (0.0, 0.0), lower right corner (1.0, 1.0), default 0.5
  */
 @property (nonatomic,assign)float gravityy;
 
 /**当 emitterType 为 EMITTER_TYPE_GRAVITY 时， 粒子发射位置，左上角（0.0，0.0），右下角（1.0，1.0），默认 0.5
+ *  @abstract    when emitterType is EMITTER_TYPE_GRAVITY, the particle emission x-position,
+ *               top left (0.0, 0.0), bottom right (1.0, 1.0), default 0.5
  */
 @property (nonatomic,assign)float sourcePositionx;
 
-/**粒子发射位置，左上角（0.0，0.0），右下角（1.0，1.0），默认 0.0
+/**粒子发射位置变化幅度，左上角（0.0，0.0），右下角（1.0，1.0），默认 0.0
+ *  @abstract    the variation range of the x-particle emission position,
+ *               the upper left corner (0.0, 0.0), the lower right corner (1.0, 1.0), the default is 0.0
  */
 @property (nonatomic,assign)float sourcePositionVariancex;
 
 
 /**当 emitterType 为 EMITTER_TYPE_GRAVITY 时，粒子发射位置，左上角（0.0，0.0），右下角（1.0，1.0），默认 0.5
+ *  @abstract    when emitterType is EMITTER_TYPE_GRAVITY, the particle emission y-position,
+ *               top left (0.0, 0.0), bottom right (1.0, 1.0), default 0.5
  */
 @property (nonatomic,assign)float sourcePositiony;
 
 
 /**粒子发射位置，左上角（0.0，0.0），右下角（1.0，1.0），默认 0.0
+ *  @abstract    the variation range of the y-particle emission position,
+ *               the upper left corner (0.0, 0.0), the lower right corner (1.0, 1.0), the default is 0.0
  */
 @property (nonatomic,assign)float sourcePositionVariancey;
 
 
 
-/**运动距离，默认为 0.5
+/**运动速度，默认为 0.5
+ *  @abstract    speed, default is 0.5
  */
 @property (nonatomic,assign)float speed;
 
 
-/**运动距离变化幅度，默认为 0 ，speed = speed +/- speedVariance
+/**运动速度变化幅度，默认为 0 ，speed = speed +/- speedVariance
+ *  @abstract    speed variance, default is 0, speed = speed +/- speedVariance
  */
 @property (nonatomic,assign)float speedVariance;
 
 
 /**向心加速度，默认为 0.0
+ *  @abstract    acceleration, default 0.0
  */
 @property (nonatomic,assign)float radialAcceleration;
 
 
 /**向心加速度变化幅度，默认为 0 ，radialAcceleration = radialAcceleration +/- radialAccelVariance
+ *  @abstract    acceleration variance, default is 0, radialAcceleration = radialAcceleration +/- radialAccelVariance
  */
 @property (nonatomic,assign)float radialAccelVariance;
 
 
 
 /**切线加速度，默认为 0.0
+ *  @abstract    tangential acceleration, default 0.0
  */
 @property (nonatomic,assign)float tangentialAcceleration;
 
 
 /**切线加速度变化幅度，默认为 0 ，tangentialAcceleration = tangentialAcceleration +/- tangentialAccelVariance
+ *  @abstract    tangential acceleration variation, default is 0，tangentialAcceleration = tangentialAcceleration +/- tangentialAccelVariance
  */
 @property (nonatomic,assign)float tangentialAccelVariance;
 
 
 
 /**最小半径，默认为 0.0
+ *  @abstract    min radius, default is 0.0
  */
 @property (nonatomic,assign)float minRadius;
 
 
 /**最小半径变化幅度，默认为 0 ，minRadius = minRadius +/- minRadiusVariance
+ *  @abstract    min radius variation, default is 0，minRadius = minRadius +/- minRadiusVariance
  */
 @property (nonatomic,assign)float minRadiusVariance;
 
 
 /**最大半径，默认为 0.0
+ *  @abstract    max radius, default is 0.0
  */
 @property (nonatomic,assign)float maxRadius;
 
 
 /**最大半径变化幅度，默认为 0 ，maxRadius = maxRadius +/- maxRadiusVariance
+ *  @abstract    max radius variation, default is 0，maxRadius = maxRadius +/- maxRadiusVariance
  */
 @property (nonatomic,assign)float maxRadiusVariance;
 
 
 
 /**每秒旋转多少度，默认为 0.0
+ *  @abstract    the number of degrees of rotation per second, default is 0.0
  */
 @property (nonatomic,assign)float rotatePerSecond;
 
 
 /**每秒旋转度数变化幅度，默认为 0 ，rotatePerSecond = rotatePerSecond +/- rotatePerSecondVariance
+ *  @abstract    the number of degrees variation of rotation per second, default is 0，
+ *               rotatePerSecond = rotatePerSecond +/- rotatePerSecondVariance
  */
 @property (nonatomic,assign)float rotatePerSecondVariance;
 
 
 /**是否自转，默认为 NO
+ *  @abstract    whether to rotate or not, default is NO
  */
 @property (nonatomic,assign)BOOL rotationIsDir;
 
 
-/**翻转，默认为 1
+/**翻转，默认为 1, 1 表示不翻转，-1表示翻转
+ *  @abstract    y-direction flip, default 1, 1 means no flip, -1 means flip
  */
 @property (nonatomic,assign)int yCoordFlipped;
 
 
 /**是否记录粒子数据，默认为 NO
+ *  @abstract    whether to record particle data, default is NO
  */
 @property (nonatomic,assign)BOOL enableHistory;
 
 
 /**历史数据，粒子根据历史数据运动
+ *  @abstract    historical data, particle movement based on historical data
  */
 @property (nonatomic,strong)NSData *historyData;
 
 
 /**历史数据长度
+ *  @abstract    historical data length
  */
 @property (nonatomic,assign)int historyDataLength;
 
 
 /**获取粒子历史数据，供下次使用，如果要记录历史数据 enableHistory 必须置为 YES
+ *  @abstract    Get the particle history data for next time, if you want to record the history data,
+ *               enableHistory must be set to YES
  */
 @property (nonatomic, copy) GetParticleHistoryDataBlock getHistoryDataBlock;
 
