@@ -230,6 +230,12 @@ typedef NS_ENUM(NSUInteger, CameraFillMode) {
     kCameraFillModeScaleAspectFill
 };
 
+typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
+    kCameraSegmentNormal,
+    kCameraSegmentBySystem,
+    kCameraSegmentByGoogle,
+};
+
 @interface CameraManager : NSObject
 
 /** 录制预览视图
@@ -361,6 +367,11 @@ typedef NS_ENUM(NSUInteger, CameraFillMode) {
 /** 设置MV特效速度，默认为1.0；
  */
 @property (nonatomic, assign) float mvSpeed;
+
+/** 抠图模式,默认kCameraSegmentNormal
+ */
+@property (nonatomic, assign) CameraSegmentMode segmentMode;
+
 
 @property (nonatomic , weak) id<CameraManagerDelegate> delegate;
 
@@ -525,6 +536,10 @@ typedef NS_ENUM(NSUInteger, CameraFillMode) {
  *  @abstract   Set current filter strength.
  */
 - (void) setCurrentFilterIntensity:(float)intensity;
+
+/**滤镜条纹启用，kFilterType_Mosaic时有效,默认为YES
+ */
+- (void) setMosaicPixelStrip:(BOOL)isStrip;
 
 /** 移除滤镜组
  */

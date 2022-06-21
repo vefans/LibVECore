@@ -1747,16 +1747,16 @@ typedef NS_ENUM(NSUInteger, EMITTER_TYPE)
 @property (nonatomic,assign)BOOL enableHistory;
 
 
-/**历史数据，粒子根据历史数据运动
- *  @abstract    historical data, particle movement based on historical data
+/**粒子轨迹，粒子根据设置的轨迹数据运动
+ *  @abstract    track data, particle movement based on track data
  */
-@property (nonatomic,strong)NSData *historyData;
+@property (nonatomic,strong)NSData *trackData;
 
 
-/**历史数据长度
- *  @abstract    historical data length
+/**粒子轨迹数据长度
+ *  @abstract    track data length
  */
-@property (nonatomic,assign)int historyDataLength;
+@property (nonatomic,assign)int trackDataLength;
 
 
 /**获取粒子历史数据，供下次使用，如果要记录历史数据 enableHistory 必须置为 YES

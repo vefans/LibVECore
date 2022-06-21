@@ -19,6 +19,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign) MediaReplaceableType replaceType;
 
+/** 在虚拟视频中的开始时间
+ */
+@property (nonatomic, assign) float timelineFrom;
+
+/** 在虚拟视频中的结束时间
+ */
+@property (nonatomic, assign) float timelineTo;
+
 /**  资源地址 图片  视频
  */
 @property (nonatomic, strong) NSString *path;

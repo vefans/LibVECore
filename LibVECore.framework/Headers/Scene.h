@@ -187,6 +187,10 @@ typedef NS_ENUM(NSInteger, MusicType) {
 /** 标识符
  */
 @property (nonatomic,strong) NSString*  identifier;
+/** 踩点
+ */
+@property (nonatomic,strong) NSMutableArray*  time_list;
+
 
 /** CV对应的字幕标识符
  *  导出模板用
