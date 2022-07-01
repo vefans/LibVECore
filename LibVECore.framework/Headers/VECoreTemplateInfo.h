@@ -10,6 +10,7 @@
 #import <LibVECore/VECoreTemplateMediaAsset.h>
 #import <LibVECore/VECoreTemplateCaption.h>
 #import <LibVECore/VECoreTemplateMusic.h>
+#import <LibVECore/VECoreTemplateParticle.h>
 
 #pragma mark - 转场
 @interface VECoreTemplateTransition : Transition
@@ -369,6 +370,10 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 /** 调色
 */
 @property (nonatomic, strong) NSMutableArray <VECoreTemplateToningInfo*>* tonings;
+
+/** 粒子
+*/
+@property (nonatomic, strong) NSMutableArray <VECoreTemplateParticle *>*particles;
 
 /**
  Creates and returns a new instance of the receiver from a json.

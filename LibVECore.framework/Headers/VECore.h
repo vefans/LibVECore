@@ -38,7 +38,7 @@
 
 - (NSArray<FaceRecognition*>*)willOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer asset:(MediaAsset*)asset;
 - (NSArray<FaceRecognition*>*)willOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer asset:(MediaAsset*)asset currentTime:(CMTime)currentTime;
-
+- (void)willOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer currentTime:(CMTime)currentTime;
 @end
 
 typedef NS_ENUM(NSInteger, ReverseAudioType) {

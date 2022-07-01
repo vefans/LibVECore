@@ -10,7 +10,7 @@
 
 @class CustomFilter;
 typedef void(^LoadTracksFinishBlock)(float progress);
-typedef NSData*(^GetParticleHistoryDataBlock)(int* dataLen);
+typedef NSData*(^GetParticleHistoryDataBlock)(void);
 
 typedef NS_ENUM(NSInteger, ImageMediaFillType) {
     ImageMediaFillTypeFull, // 全填充
@@ -1155,6 +1155,23 @@ typedef NS_ENUM(NSInteger, BlurType) {
 
 @end
 
+@interface KeyFrameAnimate : NSObject
+
+/**开始时间
+ */
+@property (nonatomic,assign) CGFloat atTime;
+
+/**在video中的位置大小，默认CGRectMake(0, 0, 1, 1),其中(0, 0)为左上角 (1, 1)为右下角
+
+ */
+@property (nonatomic,assign) CGRect rect;
+
+
+/**强度
+ */
+@property (nonatomic,assign) float intensity;
+
+@end
 
 @interface MediaAssetBlur : NSObject<NSCopying, NSMutableCopying>
 
@@ -1162,7 +1179,7 @@ typedef NS_ENUM(NSInteger, BlurType) {
  */
 @property (nonatomic, assign)BlurType type   DEPRECATED_ATTRIBUTE;
 
-/** 设置模糊强度0.0~1.0，默认为0.5
+/** 设置模糊强度0.0~1.0，默认为0.5,设置关键帧动画后，以关键帧动画值为准
  */
 @property (nonatomic, assign)float intensity;
 
@@ -1172,13 +1189,13 @@ typedef NS_ENUM(NSInteger, BlurType) {
  */
 @property (nonatomic, assign)CGRect unblurryRect DEPRECATED_MSG_ATTRIBUTE("Use setPointsLeftTop:rightTop:rightBottom:leftBottom: instead.");
 
-/** 设置模糊时长（ PECore 默认与虚拟视频一致，不需设置）
+/** 设置模糊时长（ PECore 默认与虚拟视频一致，不需设置）,设置关键帧动画后，以关键帧动画值为准
  *  设置媒体动画后，该属性无效，以动画中的atTime为准
  */
 @property (nonatomic, assign)CMTimeRange timeRange;
 
 
-/**在video中四个顶点的坐标，可设置非矩形。
+/**在video中四个顶点的坐标，可设置非矩形。,设置关键帧动画后，以关键帧动画值为准
  * (0, 0)为左上角 (1, 1)为右下角
  * 默认为({0, 0},{1, 0},{1, 1},{0, 1})
  */
@@ -1197,28 +1214,33 @@ typedef NS_ENUM(NSInteger, BlurType) {
                   rightBottom:(CGPoint)rightBottom
                    leftBottom:(CGPoint)leftBottom;
 
+
+/** 关键帧动画
+ */
+@property (nonatomic, strong) NSArray<KeyFrameAnimate*>*  animate;
+
 @end
 
 /** 马赛克
  */
 @interface Mosaic : NSObject<NSCopying, NSMutableCopying>
 
-/** 时间范围（ PECore 默认与虚拟视频一致，不需设置）
+/** 时间范围（ PECore 默认与虚拟视频一致，不需设置）,设置关键帧动画后，以关键帧动画值为准
  */
 @property (nonatomic ,assign) CMTimeRange timeRange;
 
-/** 马赛克大小(0.0~1.0)，默认为0.1
+/** 马赛克大小(0.0~1.0)，默认为0.1，,设置关键帧动画后，以关键帧动画值为准
  */
 @property (nonatomic, assign) float mosaicSize DEPRECATED_MSG_ATTRIBUTE("Use size instead.");
 @property (nonatomic, assign) float size;
 
-/**在video中四个顶点的坐标，可设置非矩形。
+/**在video中四个顶点的坐标，可设置非矩形，设置关键帧动画后，以关键帧动画值为准
  * (0, 0)为左上角 (1, 1)为右下角
  */
 @property (nonatomic, readonly) NSArray *pointsArray;
 
 
-/**在video中四个顶点的坐标，可设置非矩形，设置的值将赋给pointsArray属性。
+/**在video中四个顶点的坐标，可设置非矩形，设置的值将赋给pointsArray属性。设置关键帧动画后，以关键帧动画值为准
  * (0, 0)为左上角 (1, 1)为右下角
  *  @param leftTop      媒体在video中的 左上角 顶点坐标
  *  @param rightTop     媒体在video中的 右上角 顶点坐标
@@ -1230,20 +1252,28 @@ typedef NS_ENUM(NSInteger, BlurType) {
                   rightBottom:(CGPoint)rightBottom
                    leftBottom:(CGPoint)leftBottom;
 
+/** 关键帧动画
+ */
+@property (nonatomic, strong) NSArray<KeyFrameAnimate*>*  animate;
+
 @end
 
 /** 去水印
  */
 @interface Dewatermark : NSObject
 
-/** 去水印时间范围（ PECore 默认与虚拟视频一致，不需设置）
+/** 去水印时间范围（ PECore 默认与虚拟视频一致，不需设置）,设置关键帧动画后，以关键帧动画值为准
  */
 @property (nonatomic ,assign) CMTimeRange timeRange;
 
-/**在video中的位置大小，默认CGRectMake(0, 0, 1, 1)
+/**在video中的位置大小，默认CGRectMake(0, 0, 1, 1)，设置关键帧动画后，以关键帧动画值为准
  * (0, 0)为左上角 (1, 1)为右下角
  */
 @property (nonatomic,assign) CGRect rect;
+
+/** 关键帧动画
+ */
+@property (nonatomic, strong) NSArray<KeyFrameAnimate*>*  animate;
 
 @end
 
@@ -1458,6 +1488,26 @@ typedef NS_ENUM(NSUInteger, EMITTER_TYPE)
 
 #pragma mark - Particle 粒子
 @interface Particle  : NSObject<NSCopying, NSMutableCopying>
+/**
+ */
+@property (nonatomic, assign)  float fRailLevelY;
+/**粒子名字
+ */
+@property (nonatomic, strong) NSString *name;
+/**资源路径
+ *  导出模板用
+ */
+@property (nonatomic, strong) NSString *folderPath;
+
+/**资源分类ID
+ *  导出模板用
+ */
+@property (nonatomic, strong) NSString *networkCategoryId;
+
+/**资源ID
+ *  导出模板用
+ */
+@property (nonatomic, strong) NSString *networkResourceId;
 
 /** 时间范围
  *  @abstract   timeRange.
@@ -1753,11 +1803,6 @@ typedef NS_ENUM(NSUInteger, EMITTER_TYPE)
 @property (nonatomic,strong)NSData *trackData;
 
 
-/**粒子轨迹数据长度
- *  @abstract    track data length
- */
-@property (nonatomic,assign)int trackDataLength;
-
 
 /**获取粒子历史数据，供下次使用，如果要记录历史数据 enableHistory 必须置为 YES
  *  @abstract    Get the particle history data for next time, if you want to record the history data,
@@ -1765,5 +1810,24 @@ typedef NS_ENUM(NSUInteger, EMITTER_TYPE)
  */
 @property (nonatomic, copy) GetParticleHistoryDataBlock getHistoryDataBlock;
 
+
+
+/**获取时间，根据粒子返回的数据，获取该粒子的时间线
+ *  @abstract    Obtain the time, and obtain the time line of the particle according to the data returned by the particle
+ */
+-(CMTimeRange) getTimeRangeFromData:(NSData*)data;
+
+
+
+
+
+
 @end
 
+
+#pragma mark - doodleEx 涂鸦
+@interface DoodleEx  : NSObject<NSCopying, NSMutableCopying>
+
+
+
+@end
