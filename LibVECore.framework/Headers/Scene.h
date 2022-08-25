@@ -997,6 +997,7 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 @property(nonatomic, assign)BOOL    audioSeparate;
 
 @property (nonatomic, strong) NSURL *antiShakeUrl;
+@property (nonatomic, strong) NSURL *antiShakeTrf;
 @property (nonatomic, assign) AntiShakeType   antiShakeType;
 @end
 

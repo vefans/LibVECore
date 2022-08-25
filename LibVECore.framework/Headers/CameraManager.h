@@ -632,5 +632,9 @@ typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
 
 -(void)setCameraScreenCornerRadius:( float )cornerRadius;
 
+-(CGRect)getCameraManagerFrame;
+
+-(void)addCameraScreenWithView:( UIView * ) view;
+
 @end
 
