@@ -630,5 +630,7 @@ typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
                   Filter:(Filter *)obj
    withCompletionHandler:(void (^)(UIImage *processedImage))block;
 
+-(void)setCameraScreenCornerRadius:( float )cornerRadius;
+
 @end
 

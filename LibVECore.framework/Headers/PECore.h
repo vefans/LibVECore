@@ -118,6 +118,10 @@ typedef NS_ENUM(NSUInteger, PECoreViewFillMode) {
 */
 @property (nonatomic, strong) NSMutableArray <Particle*>* particlesArray;
 
+/** 涂鸦笔
+*/
+@property (nonatomic, strong) NSMutableArray <DoodleEx *>* doodleArray;
+
 /** 代理
 */
 @property (nonatomic,weak) id<PECoreDelegate> delegate;
@@ -199,7 +203,7 @@ typedef NS_ENUM(NSUInteger, PECoreViewFillMode) {
 -(void)clear;
 
 
-/**获取缩略图
+/**导出图片
 @abstract  Returns a CFRetained CGImageRef for an asset .
 */
 - (CGImageRef)copyCurrentCGImage;

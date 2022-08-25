@@ -31,6 +31,13 @@ typedef NS_ENUM(NSInteger, AudioFilterType) {
     AudioFilterTypeCustom,       // 自定义//调整媒体的pitch实现
 };
 
+typedef NS_ENUM(NSInteger, AntiShakeType) {
+    antiShakeTypeNormal,        //无
+    antiShakeTypeLeast,           //裁切最少
+    antiShakeTypeRecommend,//推荐
+    antiShakeTypeMostStable,  //最稳定
+};
+
 typedef NS_ENUM(NSInteger, VideoRealTimeFilterType) {
     VideoRealTimeFilterTypeNone = 0,  //无
     VideoRealTimeFilterTypeDazzled,   //颤抖
@@ -190,6 +197,7 @@ typedef NS_ENUM(NSInteger, MusicType) {
 /** 踩点
  */
 @property (nonatomic,strong) NSMutableArray*  time_list;
+@property (nonatomic,assign) BOOL  isAutoClick;
 
 
 /** CV对应的字幕标识符
@@ -395,6 +403,8 @@ typedef NS_ENUM(NSInteger, MVEffectType) {
 @property (nonatomic,strong) NSURL*  maskURL;
 
 @property (nonatomic,assign) CMTimeRange timeRange;
+
+
 
 @end
 
@@ -985,6 +995,9 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 /** 音频分离 true为分离
  */
 @property(nonatomic, assign)BOOL    audioSeparate;
+
+@property (nonatomic, strong) NSURL *antiShakeUrl;
+@property (nonatomic, assign) AntiShakeType   antiShakeType;
 @end
 
 // Mask 用于异形
@@ -1403,5 +1416,5 @@ UIKIT_EXTERN API_DEPRECATED("Watermark is deprecated. Use Overlay instead", ios(
 /** 视频的元信息
  */
 @property (nonatomic, strong) NSArray <AVMetadataItem*>*previewVideoMetadata;
-
+ 
 @end

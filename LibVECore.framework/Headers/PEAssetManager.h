@@ -58,6 +58,12 @@
 /**  资源地址 图片  视频
  */
 @property (nonatomic,strong) NSURL*  url;
+/** networkCategoryId
+ */
+@property (nonatomic,strong) NSString*  networkCategoryId;
+/** networkResourceId
+ */
+@property (nonatomic,strong) NSString*  networkResourceId;
 @property (nonatomic,strong) NSString* localIdentifier;
 
 /** 换发

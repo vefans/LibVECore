@@ -217,6 +217,7 @@
 @property (nonatomic, strong) NSMutableArray<VECoreTemplateCustomAnimation *>*animates;
 
 - (instancetype)initWithCaption:(CaptionEx *)caption videoSize:(CGSize)videoSize;
+- (instancetype)initWithCaption:(CaptionEx *)caption videoSize:(CGSize)videoSize rootPath:(NSString *)rootPath isExportResources:(BOOL)isExportResources;
 - (instancetype)initWithCaption:(CaptionEx *)caption videoSize:(CGSize)videoSize rootPath:(NSString *)rootPath;
 
 - (CaptionEx *)getSubtitleWithFolderPath:(NSString *)folderPath videoSize:(CGSize)videoSize;

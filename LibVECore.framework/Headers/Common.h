@@ -12,6 +12,7 @@
 typedef void(^LoadTracksFinishBlock)(float progress);
 typedef NSData*(^GetParticleHistoryDataBlock)(void);
 
+
 typedef NS_ENUM(NSInteger, ImageMediaFillType) {
     ImageMediaFillTypeFull, // 全填充
     ImageMediaFillTypeFit,  // 适配 静止
@@ -897,7 +898,9 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
     CaptionExTypeNormal,    //普通字幕
     CaptionExTypeTemplate,  //文字模板
     CaptionExTypeSpeech,    //语音识别字幕
-    CaptionExeTypStickers,    //贴纸
+    CaptionExTypeStickers,  //贴纸
+    CaptionExTypeCoverTemplate, //封面模板
+    CaptionExTypeCover,     //封面普通字幕
 };
 
 //(由0-1个底图+多个文字组成)
@@ -1194,6 +1197,9 @@ typedef NS_ENUM(NSInteger, BlurType) {
  */
 @property (nonatomic, assign)CMTimeRange timeRange;
 
+/** 高斯模糊是否开启跟踪，默认为NO
+ */
+@property (nonatomic, assign) BOOL isEnableTracking;
 
 /**在video中四个顶点的坐标，可设置非矩形。,设置关键帧动画后，以关键帧动画值为准
  * (0, 0)为左上角 (1, 1)为右下角
@@ -1239,6 +1245,9 @@ typedef NS_ENUM(NSInteger, BlurType) {
  */
 @property (nonatomic, readonly) NSArray *pointsArray;
 
+/** 马赛克是否开启跟踪，默认为NO
+ */
+@property (nonatomic, assign) BOOL isEnableTracking;
 
 /**在video中四个顶点的坐标，可设置非矩形，设置的值将赋给pointsArray属性。设置关键帧动画后，以关键帧动画值为准
  * (0, 0)为左上角 (1, 1)为右下角
@@ -1270,7 +1279,9 @@ typedef NS_ENUM(NSInteger, BlurType) {
  * (0, 0)为左上角 (1, 1)为右下角
  */
 @property (nonatomic,assign) CGRect rect;
-
+/** 去水印是否开启跟踪，默认为NO
+ */
+@property (nonatomic, assign) BOOL isEnableTracking;
 /** 关键帧动画
  */
 @property (nonatomic, strong) NSArray<KeyFrameAnimate*>*  animate;
@@ -1804,12 +1815,23 @@ typedef NS_ENUM(NSUInteger, EMITTER_TYPE)
 
 
 
-/**获取粒子历史数据，供下次使用，如果要记录历史数据 enableHistory 必须置为 YES
+/**获取粒子轨迹数据，供下次使用，如果要记录轨迹数据 enableHistory 必须置为 YES
  *  @abstract    Get the particle history data for next time, if you want to record the history data,
  *               enableHistory must be set to YES
  */
-@property (nonatomic, copy) GetParticleHistoryDataBlock getHistoryDataBlock;
+@property (nonatomic, copy) GetParticleHistoryDataBlock getHistoryTrackDataBlock;
 
+
+/**粒子数据
+ *  @abstract    particle data
+ */
+@property (nonatomic,strong)NSData *particleData;
+
+/**获取粒子所有数据，供下次使用，如果要记录数据 enableHistory 必须置为 YES
+ *  @abstract    Get the particle history data for next time, if you want to record the history data,
+ *               enableHistory must be set to YES
+ */
+@property (nonatomic, copy) GetParticleHistoryDataBlock getHistoryParticleDataBlock;
 
 
 /**获取时间，根据粒子返回的数据，获取该粒子的时间线
@@ -1825,9 +1847,537 @@ typedef NS_ENUM(NSUInteger, EMITTER_TYPE)
 @end
 
 
+typedef NS_ENUM(NSUInteger, BRUSH_MODE)
+{
+    BRUSH_MODE_DEFAULT = 0,
+    BRUSH_MODE_RANDOM,
+    BRUSH_MODE_INCREMENTAL,
+    BRUSH_MODE_ANGULAR,
+    BRUSH_MODE_PRESSURE,
+    BRUSH_MODE_XTILT,
+    BRUSH_MODE_YTILT,
+    BRUSH_MODE_VELOCITY,
+
+};
+
+typedef NS_ENUM(NSUInteger, BRUSH_APPLICATION)
+{
+    BRUSH_APPLICATION_ALPHAMASK = 0,    //透明度蒙版，会显示已配置画刷颜色
+    BRUSH_APPLICATION_IMAGESTAMP,       //按原始位图显示
+    BRUSH_APPLICATION_LIGHTNESSMAP,     //亮度图，会显示已配置画刷颜色
+
+};
+
+
+typedef NS_ENUM(NSInteger, SHAPE_MODE)
+{
+    SHAPE_MODE_NORMAL = -1,     //根据设置的坐标点绘制（手指滑动轨迹）
+    SHAPE_MODE_LINE,            //直线
+    SHAPE_MODE_TRIANGLE,        //三角形
+    SHAPE_MODE_RECT,            //矩形
+    SHAPE_MODE_oval,            //椭圆形
+    SHAPE_MODE_HEXAGON,         //六角形
+    SHAPE_MODE_PATH,            //指定轨迹（暂时不支持）
+
+};
+
+typedef NS_ENUM(NSInteger, DOODLEOP_TYPE)
+{
+    DOODLEOP_TYPE_BRUSH = 0,     //普通画刷
+    DOODLEOP_TYPE_CLEAR_COLOR,   //指定颜色显示
+    DOODLEOP_TYPE_FILL_COLOR,    //填充区域（暂时支持颜色填充）
+    DOODLEOP_TYPE_FILL_IMAGE,    //填充图片
+};
+
+typedef NS_ENUM(NSInteger, DOODLEOP_PAINT_TYPE)
+{
+    DOODLEOP_PAINT_TYPE_START = 0,      //手指按下，绘制开始
+    DOODLEOP_PAINT_TYPE_PAINTING,       //手指按下过程中移动
+    DOODLEOP_PAINT_TYPE_END,            //手指松开，绘制结束
+};
+
+#pragma mark - doodleEx 涂鸦png画刷
+@interface PNGBrush  : NSObject<NSCopying, NSMutableCopying>
+
+/**  素材路径，默认为 NULL
+ *   @abstract   file name，default is NULL
+ */
+@property (nonatomic,strong)NSString* filename;
+
+/**  素材被分割的单元数量，默认为 0
+ *   @abstract   number of units in which the material is divided，default is 0
+ */
+@property (nonatomic,assign)int cells;
+
+/**  每个单元的宽，默认为 0
+ *   @abstract   width of cell，default is 0
+ */
+@property (nonatomic,assign)int cellWidth;
+
+/**  每个单元的高，默认为 0
+ *   @abstract   height of cell，default is 0
+ */
+@property (nonatomic,assign)int cellHeight;
+
+/**  画刷模式 ，参考 BRUSH_MODE ，默认 BRUSH_MODE_DEFAULT
+ *   @abstract   mode，Default is BRUSH_MODE_DEFAULT
+ */
+@property (nonatomic,assign)int mode;
+
+/**  画刷应用类型 ，参考 BRUSH_APPLICATION ，默认为 BRUSH_APPLICATION_ALPHAMASK
+ *   @abstract   brush application type ，default is BRUSH_APPLICATION_ALPHAMASK
+ */
+@property (nonatomic,assign)int brushApplication;
+
+/**  是否自动调整 ，默认为 NO
+ *   @abstract  auto adjust，default is NO
+ */
+@property (nonatomic,assign)BOOL active;
+
+/**  自动间隔 ，默认为 1.0
+ *   @abstract  auto spacing，default is 1.0
+ */
+@property (nonatomic,assign)float spacingCoeff;
+
+/**  间隔 ，默认为 1.0
+ *   @abstract  spacing，default is 1.0
+ */
+@property (nonatomic,assign)float spacing;
+
+/**  颜色反转 ，默认 NO
+ *   @abstract  color revert，default is NO
+ */
+@property (nonatomic,assign)BOOL revertMask;
+
+
+/**  颜色自动调节 ，默认 NO
+ *   @abstract  auto adjust ,depend resource color stat，default is NO
+ */
+@property (nonatomic,assign)BOOL autoAdjustMidPoint;
+
+/**  调节系数 ，0-255，默认 0
+ *   @abstract  auto adjust ,depend resource color stat，default is 0.0
+ */
+@property (nonatomic,assign)int adjustmentMidPoint;
+
+/**  亮度调节 ，-1.0 ~ 1.0 ，默认 0
+ *   @abstract  brightness adjustment -1 to 1，default is 0.0
+ */
+@property (nonatomic,assign)float brightnessAdjustment;
+
+/**  对比度调整 ，-1.0 ~ 1.0 ，默认 0
+ *   @abstract  contrast adjustment，default is 0.0
+ */
+@property (nonatomic,assign)float contrastAdjustment;
+
+
+/**  颜色设置为蒙版 ，默认 NO
+ *   @abstract  Color is set to mask , default NO
+ */
+@property (nonatomic,assign)BOOL colorAsMask;
+
+/**  缩放
+ *   @abstract  scale , default 1.0
+ */
+@property (nonatomic,assign)float scale;
+
+/**  画刷硬度，淡入淡出 ，默认为 0.0
+ *   @abstract  fade，default is 0.0
+ */
+@property (nonatomic,assign)float fade;
+
+
+/**  distMask，默认为 NULL
+ *   @abstract   distMask，default is NULL
+ */
+@property (nonatomic,strong)NSString* distMask;
+
+@end
+
+
+#define AUTO_BRUSH_CIRCLE (@"circle")
+#define AUTO_BRUSH_RECT (@"rect")
+
+
+#pragma mark - doodleEx 涂鸦自动画刷
+@interface AutoBrush  : NSObject<NSCopying, NSMutableCopying>
+
+/**  画刷应用类型 ，参考 BRUSH_APPLICATION ，默认为 BRUSH_APPLICATION_ALPHAMASK
+ *   @abstract   brush application type ，default is BRUSH_APPLICATION_ALPHAMASK
+ */
+@property (nonatomic,assign)int brushApplication;
+
+/**  是否自动调整 ，默认为 NO
+ *   @abstract  auto adjust，default is NO
+ */
+@property (nonatomic,assign)BOOL active;
+
+/**  自动间隔 ，默认为 1.0
+ *   @abstract  auto spacing，default is 1.0
+ */
+@property (nonatomic,assign)float spacingCoeff;
+
+/**  间隔 ，默认为 1.0
+ *   @abstract  spacing，default is 1.0
+ */
+@property (nonatomic,assign)float spacing;
+
+/**  缩放 ，默认为 1.0
+ *   @abstract  scale，default is 1.0
+ */
+@property (nonatomic,assign)float scale;
+
+/**  自动画笔类型 ，默认为 AUTO_BRUSH_CIRCLE
+ *   @abstract  mask type，default is AUTO_BRUSH_CIRCLE
+ */
+@property (nonatomic,strong)NSString* maskType;
+
+/**  画刷直径 ，默认为 0.0
+ *   @abstract  diameter，default is 0.0
+ */
+@property (nonatomic,assign)float diameter;
+
+/**  画刷硬度，淡入淡出 ，默认为 0.0
+ *   @abstract  fade，default is 0.0
+ */
+@property (nonatomic,assign)float fade;
+
+/**  比例 ，默认为 0.0
+ *   @abstract  ratio，default is 0.0
+ */
+@property (nonatomic,assign)float ratio;
+
+/**  随机性 ，默认为 0.0
+ *   @abstract  randomness，default is 0.0
+ */
+@property (nonatomic,assign)float randomness;
+
+/**  密度 ，默认为 0.0
+ *   @abstract  density，default is 0.0
+ */
+@property (nonatomic,assign)float density;
+
+
+/**  描边颜色
+ *   @abstract  outline color
+ */
+@property (nonatomic ,strong) UIColor* outlineColor;
+
+/**  描边大小 0.0 ~ 1.0
+ *   @abstract  outline size
+ */
+@property (nonatomic,assign)float outlineSize;
+
+
+/**  荧光笔
+ *   @abstract  glowCenterColor
+ */
+@property (nonatomic,assign)int glowCenterColor;
+
+@end
+
+#pragma mark - doodleEx 涂鸦纹理
+@interface TextureGrain  : NSObject<NSCopying, NSMutableCopying>
+
+/**  素材路径，默认为 NULL
+ *   @abstract   file name，default is NULL
+ */
+@property (nonatomic,strong)NSString* filename;
+
+/**  画刷模式 ，参考 BRUSH_MODE ，默认 BRUSH_MODE_DEFAULT
+ *   @abstract   mode，Default is BRUSH_MODE_DEFAULT
+ */
+@property (nonatomic,assign)int mode;
+
+/**  颜色反转 ，默认 NO
+ *   @abstract  color revert，default is NO
+ */
+@property (nonatomic,assign)BOOL revert;
+
+/**  x方向偏移 ，默认为 0.0
+ *   @abstract  offsetX，default is 0.0
+ */
+@property (nonatomic,assign)float offsetX;
+
+/**  y方向偏移 ，默认为 0.0
+ *   @abstract  offsetY，default is 0.0
+ */
+@property (nonatomic,assign)float offsetY;
+
+/**  缩放 ，默认为 1.0
+ *   @abstract  scale，default is 1.0
+ */
+@property (nonatomic,assign)float scale;
+
+/**  角度 ，默认为 0.0
+ *   @abstract  angle，default is 0.0
+ */
+@property (nonatomic,assign)float angle;
+
+/**  比例 ，默认为 1.0
+ *   @abstract  ratio，default is 1.0
+ */
+@property (nonatomic,assign)float ratio;
+
+@end
+
+
+
+@interface DoodleOptionEvent : NSObject<NSCopying, NSMutableCopying>
+
+/**  当前坐标点，0.0 ~ 1.0 ,左上角（0，0），右下角（1.0，1.0）
+ *   @abstract   Current coordinate point
+ */
+@property (nonatomic,assign)CGPoint pt;
+
+/**  压力，0.0 ~ 1.0 ，默认 1.0
+ *   @abstract   pressure, 0.0 ~ 1.0, default 1.0
+ */
+@property (nonatomic,assign)float pressure;
+
+/**  当前时间，单位：毫秒
+ *   @abstract   time, in milliseconds
+ */
+@property (nonatomic,assign)int64_t time;
+
+/**  绘制状态，参考 DOODLEOP_PAINT_TYPE ，默认 DOODLEOP_PAINT_TYPE_START
+ *   @abstract   point type, default DOODLEOP_PAINT_TYPE_START
+ */
+@property (nonatomic,assign)int type;
+
+@end
+
+
+@interface DoodleOption : NSObject<NSCopying, NSMutableCopying>
+
+/**资源分类ID
+ *  导出模板用
+ */
+@property (nonatomic, strong) NSString *networkCategoryId;
+
+/**资源ID
+ *  导出模板用
+ */
+@property (nonatomic, strong) NSString *networkResourceId;
+
+/** 资源文件夹路径
+ *  导出模板用
+ *  @abstract Resources folder path.
+ */
+@property (nonatomic ,copy) NSString * folderPath;
+
+/** 透明度 ，0.0 ~ 1.0 ，默认 1.0
+ *  @abstract   opacityValue, 0.0 ~ 1.0, default 1.0
+ */
+@property (nonatomic,assign)float opacityValue;
+
+
+/** 画笔粗细 ，0.0 ~ 1.0 ，默认 0.5
+ *  @abstract   paint Size, 0.0 ~ 1.0, default 0.5,
+ */
+@property (nonatomic,assign)float paintSize;
+
+
+/** 画笔颜色 ，默认为白色
+ *  @abstract   color, default white
+ */
+@property (nonatomic ,strong) UIColor* color;
+
+
+/** 混合方式，参考 enum BLEND_FUNC，默认 BLEND_FUNC_DEFAULT, 如果是擦除操作，必须设置为 BLEND_FUNC_CLEAR
+ *  @abstract   blend mode, see enum BLEND_FUNC, default BLEND_FUNC_DEFAULT；
+ *              If it is erase operation, it must be set to BLEND_FUNC_CLEAR；
+ */
+@property (nonatomic,assign)int blendFunc;
+
+
+/** 角度传感 ，默认为 NO
+ *  @abstract   angle sensor, default NO
+ */
+@property (nonatomic,assign)BOOL angleSensor;
+
+/** 距离传感器 默认 NO
+ *  @abstract   distance sensor, default NO
+ */
+@property (nonatomic,assign)BOOL distanceSensor;
+
+
+/** 硬度是否可用 默认 NO
+ *  @abstract   hardness, default NO
+ */
+@property (nonatomic,assign) BOOL  hardness;
+
+
+/** 纹理质地画刷 ，默认为 NULL
+ *  @abstract   texture grain brush, default NULL
+ */
+@property (nonatomic,strong) TextureGrain* textureGrain;
+
+
+/** 基础画刷 ，默认为 NULL
+ *  @abstract   auto brush, default NULL
+ */
+@property (nonatomic,strong) AutoBrush* autoBrush;
+
+
+/** png画刷 ，默认为 NULL
+ *  @abstract   png brush, default NULL
+ */
+@property (nonatomic,strong) PNGBrush* pngBrush;
+
+
+/** 形状 ，支持如线、矩形、圆等，参考 SHAPE_MODE ，默认为 SHAPE_MODE_NORMAL
+ *  @abstract   shape mode,like line,rect,oval etc...see enum SHAPE_MODE，default SHAPE_MODE_NORMAL
+ */
+@property (nonatomic,assign) int shapeMode;
+
+/** 指令类型，可以用于颜色或者图像填充，参考 DOODLEOP_TYPE ，默认为 DOODLEOP_TYPE_BRUSH
+ *  @abstract   option type,see enum DOODLEOP_TYPE，default DOODLEOP_TYPE_BRUSH
+ */
+@property (nonatomic,assign) int optionType;
+
+
+/** 填充图像的文件路径，需要将 optionType 设置为 DOODLEOP_TYPE_FILL_IMAGE
+ */
+@property (nonatomic , strong) NSURL*  fillImageURL;
+
+
+/**填充图像裁剪位置，默认为(0.0,0.0,1.0,1.0)
+ */
+@property (nonatomic ,assign) CGRect crop;
+
+/**填充图像显示位置，默认为(0.0,0.0,1.0,1.0)
+ */
+@property (nonatomic ,assign) CGRect show;
+
+/** 位置信息
+ *  @abstract   event array
+ */
+@property (nonatomic,strong) NSMutableArray<DoodleOptionEvent*>* eventArray;
+
+
+
+
+@end
+
+
+@interface AnimationEx  : NSObject<NSCopying, NSMutableCopying>
+
+
+/**开始时间
+ *  @abstract  time
+ */
+@property (nonatomic,assign) CGFloat atTime;
+
+
+/** 显示位置 ，(0, 0)为左上角 (1, 1)为右下角，默认为 （0，0，1，1）
+ *  @abstract   rect, (0, 0) is the upper left corner (1, 1) is the lower right corner.default is (0, 0, 1, 1)
+ */
+@property (nonatomic,assign) CGRect rect;
+
+
+/** 旋转角度,默认为 0
+ *  @abstract   angle.default is 0.
+ */
+@property (nonatomic,assign) int angle;
+
+
+/** 缩放，默认为 1.0
+ *  @abstract   scale.default is 1.0.
+ */
+@property (nonatomic,assign) float scale;
+
+
+/** 透明度，默认为 1.0
+ *  @abstract   alpha.default is 1.0.
+ */
+@property (nonatomic,assign) float alpha;
+
+@end
+
+
 #pragma mark - doodleEx 涂鸦
 @interface DoodleEx  : NSObject<NSCopying, NSMutableCopying>
 
+/** 时间范围
+ *  @abstract   timeRange.
+ */
+@property (nonatomic ,assign) CMTimeRange timeRange;
 
+
+/** 涂鸦操作 - 用于撤销/恢复
+ *  @abstract   option.
+ */
+@property (nonatomic,strong) NSMutableArray<DoodleOption*>* optionArrays;
+
+
+
+/** 涂鸦操作 - 用于当前正在绘制的操作
+ *  @abstract   option.
+ */
+@property (nonatomic,strong) DoodleOption* paintOption;
+
+
+/** 涂鸦画面
+ *  @abstract   doodle image.
+ */
+@property (nonatomic,strong) UIImage* image;
+
+
+/** 涂鸦显示位置 ，(0, 0)为左上角 (1, 1)为右下角，默认为 （0，0，1，1），如果有设置关键帧动画 animation ，以关键帧动画参数为准
+ *  @abstract   doodle rect, (0, 0) is the upper left corner (1, 1) is the lower right corner.default is (0, 0, 1, 1)
+ */
+@property (nonatomic,assign) CGRect rect;
+
+
+/** 涂鸦旋转角度,默认为 0，如果有设置关键帧动画 animation ，以关键帧动画参数为准
+ *  @abstract   doodle angle.
+ */
+@property (nonatomic,assign) int angle;
+
+
+/** 涂鸦缩放，默认为 1.0，如果有设置关键帧动画 animation ，以关键帧动画参数为准
+ *  @abstract   doodle scale.
+ */
+@property (nonatomic,assign) float scale;
+
+
+/** 透明度，默认为 1.0
+ *  @abstract   alpha.default is 1.0.
+ */
+@property (nonatomic,assign) float alpha;
+
+/** 涂鸦关键帧动画
+ *  @abstract   doodle animations.
+ */
+@property (nonatomic,strong) NSMutableArray<AnimationEx*>* animations;
+
+
+@end
+
+#pragma mark - 封面模板
+@interface VECoreCoverTemplate  : NSObject<NSCopying, NSMutableCopying>
+
+/** 资源分类ID
+ *  导出模板用
+ */
+@property (nonatomic, strong) NSString *networkCategoryId;
+
+/** 资源ID
+ *  导出模板用
+ */
+@property (nonatomic, strong) NSString *networkResourceId;
+
+/** 模板资源路径
+ */
+@property (nonatomic ,copy) NSString *path;
+
+/** 封面模板字幕
+ */
+@property (nonatomic, strong) NSMutableArray<CaptionEx*>* subtitleExs;
+
+/** 使用该模板时，视频分辨率
+ */
+@property (nonatomic, assign) CGSize size;
 
 @end

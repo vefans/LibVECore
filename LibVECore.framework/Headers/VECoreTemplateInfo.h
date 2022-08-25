@@ -84,6 +84,15 @@ typedef NS_ENUM(NSInteger, BackgroundType) {
 @end
 
 #pragma mark - 马赛克
+
+@interface VECoreTemplateMosaicKeyFrameAnimate : KeyFrameAnimate
+
+- (instancetype)initWithMosaicKeyFrameAnimate:(KeyFrameAnimate *)animate;
+
+- (KeyFrameAnimate *)getKeyFrameAnimate;
+
+@end
+
 typedef NS_ENUM(NSInteger, MosaicType) {
     MosaicTypeNormal,       //马赛克
     MosaicTypeBlur,         //高斯模糊
@@ -118,7 +127,17 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 
 - (id)getMosaicWithFolderPath:(NSString *)folderPath;
 
+/** 高斯模糊是否开启跟踪，默认为NO
+ */
+@property (nonatomic, assign) BOOL isEnableTracking;
+
+/** 关键帧动画
+ */
+@property (nonatomic, strong) NSMutableArray<VECoreTemplateMosaicKeyFrameAnimate*>*  animates;
+
 @end
+
+
 
 #pragma mark - 画中画
 @interface VECoreTemplateOverlay : NSObject
@@ -150,6 +169,108 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 /** 多轨界面显示层级坐标
  */
 @property(nonatomic,assign)float          fRailLevelY;
+
+@end
+
+#pragma mark - 涂鸦笔
+@interface VECoreTemplateDoodleItem : NSObject
+
+/** 资源文件夹路径
+ */
+@property (nonatomic ,copy) NSString * folderPath;
+
+/** 资源分类ID
+ */
+@property (nonatomic, strong) NSString *networkCategoryId;
+
+/** 资源ID
+ */
+@property (nonatomic, strong) NSString *networkResourceId;
+
+/** 透明度 ，0.0 ~ 1.0 ，默认 1.0
+ *  @abstract   opacity, 0.0 ~ 1.0, default 1.0
+ */
+@property (nonatomic, assign) float opacity;
+
+/** 画笔粗细 ，0.0 ~ 1.0 ，默认 0.5
+ *  @abstract   size, 0.0 ~ 1.0, default 0.5,
+ */
+@property (nonatomic, assign) float size;
+
+/**  画刷硬度，淡入淡出 ，默认为 0.0
+ *   @abstract  hardness，default is 0.0
+ */
+@property (nonatomic,assign)float hardness;
+
+/** 画笔颜色 ，默认为白色
+ *  @abstract   color, default white
+ */
+@property (nonatomic, strong) UIColor* color;
+
+/** 形状 ，支持如线、矩形、圆等，参考 SHAPE_MODE ，默认为 SHAPE_MODE_NORMAL
+ *  @abstract   shape mode,like line,rect,oval etc...see enum SHAPE_MODE，default SHAPE_MODE_NORMAL
+ */
+@property (nonatomic, assign) int shapeMode;
+
+/** 位置信息的json文件地址
+ *  @abstract   points info
+ */
+@property (nonatomic, strong) NSString *points;
+
+@end
+
+@interface VECoreTemplateDoodleExAnimation : NSObject
+
+/**开始时间
+ *  @abstract  time
+ */
+@property (nonatomic,assign) CGFloat atTime;
+
+/** 显示位置 ，(0, 0)为左上角 (1, 1)为右下角，默认为 （0，0，1，1）
+ *  @abstract   rect, (0, 0) is the upper left corner (1, 1) is the lower right corner.default is (0, 0, 1, 1)
+ */
+@property (nonatomic,assign) CGRect showRectF;
+
+/** 旋转角度,默认为 0
+ *  @abstract   angle.default is 0.
+ */
+@property (nonatomic,assign) int rotate;
+
+@end
+
+@interface VECoreTemplateDoodleEx : NSObject
+
+/** 在虚拟视频中的开始时间
+ */
+@property (nonatomic, assign) float timelineFrom;
+
+/** 在虚拟视频中的结束时间
+ */
+@property (nonatomic, assign) float timelineTo;
+
+/** 涂鸦显示位置 ，(0, 0)为左上角 (1, 1)为右下角，默认为 （0，0，1，1），如果有设置关键帧动画 animation ，以关键帧动画参数为准
+ *  @abstract   doodle rect, (0, 0) is the upper left corner (1, 1) is the lower right corner.default is (0, 0, 1, 1)
+ */
+@property (nonatomic,assign) CGRect showRectF;
+
+/** 涂鸦旋转角度,默认为 0，如果有设置关键帧动画 animation ，以关键帧动画参数为准
+ *  @abstract   doodle angle.
+ */
+@property (nonatomic,assign) int angle;
+
+/** 涂鸦关键帧动画
+ *  @abstract   doodle animations.
+ */
+@property (nonatomic,strong) NSMutableArray<VECoreTemplateDoodleExAnimation*>* keyFrameAnimates;
+
+/** 涂鸦操作
+ *  @abstract   option.
+ */
+@property (nonatomic,strong) NSMutableArray<VECoreTemplateDoodleItem*>* item;
+
+- (instancetype)initWithDoodleEx:(DoodleEx *)doodleEx;
+
+- (DoodleEx *)getDoodleExWithFolderPath:(NSString *)folderPath;
 
 @end
 
@@ -197,6 +318,37 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 - (instancetype)initWithTone:(ToningInfo *)tone;
 
 - (ToningInfo *)getToningInfo;
+
+@end
+
+#pragma mark - 封面模板
+@interface VECoreTemplateCoverTemplate : NSObject
+
+/** 资源分类ID
+ *  导出模板用
+ */
+@property (nonatomic, strong) NSString *networkCategoryId;
+
+/** 资源ID
+ *  导出模板用
+ */
+@property (nonatomic, strong) NSString *networkResourceId;
+
+/** 模板资源路径
+ */
+@property (nonatomic ,copy) NSString *path;
+
+/** 封面模板字幕
+ */
+@property (nonatomic, strong) NSMutableArray<VECoreTemplateSubtitleEx*>* subtitleExs;
+
+/** 使用该模板时，视频分辨率
+ */
+@property (nonatomic, assign) CGSize size;
+
+- (instancetype)initWithCoverTemplate:(VECoreCoverTemplate *)coverTemplate videoSize:(CGSize)videoSize;
+
+- (VECoreCoverTemplate *)getCoverTemplateWithFolderPath:(NSString *)folderPath videoSize:(CGSize)videoSize;
 
 @end
 
@@ -351,6 +503,10 @@ typedef NS_ENUM(NSInteger, MosaicType) {
  */
 @property (nonatomic, strong) NSMutableArray <VECoreTemplateOverlay*>* doodles;
 
+/** 涂鸦笔
+ */
+@property (nonatomic, strong) NSMutableArray <VECoreTemplateDoodleEx*>* doodlePens;
+
 /** 水印
  */
 @property (nonatomic, strong) VECoreTemplateLogo *logoOverlay;
@@ -358,6 +514,14 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 /** 封面
  */
 @property (nonatomic, strong) NSString *coverPath;
+
+/** 封面普通字幕
+ */
+@property (nonatomic, strong) NSMutableArray<VECoreTemplateSubtitleEx*>* coverSubtitleExs;
+
+/** 封面模板字幕
+ */
+@property (nonatomic, strong) VECoreTemplateCoverTemplate *coverTemplate;
 
 /** 滤镜
 */

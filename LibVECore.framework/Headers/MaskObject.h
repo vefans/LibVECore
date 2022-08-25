@@ -131,7 +131,7 @@
 
 /** 动画组
  */
-@property (nonatomic, strong) NSArray<AnimatePosition*>*  animate;
+@property (nonatomic, strong) NSMutableArray<AnimatePosition*>*  animate;
 
 
 

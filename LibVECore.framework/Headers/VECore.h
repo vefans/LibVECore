@@ -57,11 +57,102 @@ typedef NS_ENUM(NSUInteger, VEExportVideoCodecType) {
     VEExportVideoCodecTypeHEVC  API_DEPRECATED_WITH_REPLACEMENT("VEExportVideoCodecTypeHEVC",ios(11.0, 11.0)),
 };
 
+//画质级别
 typedef NS_ENUM(NSUInteger, VEExportVideoProfileLevelType) {
-    VEExportVideoProfileLevelTypeBaseline,
-    VEExportVideoProfileLevelTypeMain,
-    VEExportVideoProfileLevelTypeHigh,
+    VEExportVideoProfileLevelTypeBaseline,  //基本
+    VEExportVideoProfileLevelTypeMain,      //主流
+    VEExportVideoProfileLevelTypeHigh,      //高级
 };
+
+/*!
+ @class VECoreVideoExportSettings
+ @abstract
+    导出视频时的设置
+    The settings used for encoding the video.
+ */
+@interface VECoreVideoExportSettings : NSObject
+
+/*!
+ @property size
+ @abstract
+    分辨率
+    Resolution set for exported video.
+ */
+@property (nonatomic, assign) CGSize size;
+
+/*!
+ @property videoBitRate
+ @abstract
+    码率
+    Bitrate set for exported video. The default value is 4.
+ */
+@property (nonatomic, assign) NSInteger videoBitRate;
+
+/*!
+ @property fps
+ @abstract
+    帧率
+    Frame rate set for exported video.
+ */
+@property (nonatomic, assign) NSInteger fps;
+
+/*!
+ @property metadata
+ @abstract
+    视频元数据
+    A collection of metadata to be written to the video.
+ */
+@property (nonatomic, strong) NSArray<AVMetadataItem*> *metadata;
+
+/*!
+ @property audioBitRate
+ @abstract
+    音频码率(单位：Kbps 默认为128)
+    Audio bit rate set for exported video. The default value is 128Kbps.
+ */
+@property (nonatomic, assign) NSInteger audioBitRate;
+
+/*!
+ @property audioChannelNumbers
+ @abstract
+    音频通道数，默认为：1
+    Number of audio channels set for exported video. The default value is 1.
+ */
+@property (nonatomic, assign) NSInteger audioChannelNumbers;
+
+/*!
+ @property maxExportVideoDuration
+ @abstract
+    最大导出时长，默认为0 ：不限制
+    Maximum export duration set for exported video. The default value is 0. 0 means no limit.
+ */
+@property (nonatomic, assign) float maxExportVideoDuration;
+
+/*!
+ @property videoCodecType
+ @abstract
+    编码类型，默认为 VEExportVideoCodecTypeH264
+    Encoding type set for exported video. The default value is VEExportVideoCodecTypeH264.
+ */
+@property (nonatomic, assign) VEExportVideoCodecType videoCodecType;
+
+/*!
+ @property videoProfileLevelType
+ @abstract
+    画质级别，默认为 VEExportVideoProfileLevelTypeBaseline
+    Quality level set for exported video. The default value is VEExportVideoProfileLevelTypeBaseline.
+ */
+@property (nonatomic, assign) VEExportVideoProfileLevelType videoProfileLevelType;
+
+/*!
+ @property fileType
+ @abstract
+    文件类型，默认为 mp4
+    A UTI indicating the format of the file to be written. The default value is AVFileTypeMPEG4.
+ */
+@property (nonatomic, assign) AVFileType fileType;
+
+@end
 
 @interface VECore : NSObject<NSCopying,NSMutableCopying>
 
@@ -121,6 +212,10 @@ typedef NS_ENUM(NSUInteger, VEExportVideoProfileLevelType) {
 /** 字幕
  */
 @property (nonatomic, strong) NSMutableArray<CaptionEx*>* captionExs;
+
+/** 封面模板字幕
+ */
+@property (nonatomic, strong) VECoreCoverTemplate* coverTemplate;
 
 /** 非矩形字幕
  */
@@ -193,6 +288,9 @@ typedef NS_ENUM(NSUInteger, VEExportVideoProfileLevelType) {
 */
 @property (nonatomic, strong) NSMutableArray <Particle*>* particleArray;
 
+/** 涂鸦
+*/
+@property (nonatomic, strong) NSMutableArray <DoodleEx *>* doodleArray;
 
 /** 片尾黑视频时长，默认为kCMTimeZero
  *  用于画中画、配乐等素材时长可大于主视频的情况
@@ -660,6 +758,13 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
               progress:(void(^)(float progress))progress
                success:(void(^)(void))success
                   fail:(void(^)(NSError *error))fail;
+
+- (void)exportVideoUrl:(NSURL *)url
+              settings:(VECoreVideoExportSettings *)settings
+              progress:(void(^)(float progress))progress
+               success:(void(^)(void))success
+                  fail:(void(^)(NSError *error))fail;
+
 /** 取消导出
     @abstract   Cancel export.
  */
@@ -829,4 +934,6 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
 -(BOOL)getSdkDisabled;
 
 +(UIImage *)getImageFromPath:( NSURL * ) path;
+
++(bool)getMusicBeatIsAvailable:( NSString * ) musicPath;
 @end
