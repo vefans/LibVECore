@@ -102,6 +102,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign) float fade;
 
+/** 曝光 ranges from -1.0 to 1.0 (max exposure) , with 0.0 as the normal level
+ *  设置媒体动画后，该属性无效，以动画中的fade值为准
+ */
+@property (nonatomic, assign) float exposure;
+
 @property (nonatomic, assign) kAutoSegmentType segementType;
 
 /**设置媒体自定义特效。

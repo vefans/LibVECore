@@ -1078,7 +1078,7 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
  */
 @property (nonatomic, assign) float vignette;
 
-/** 锐化 ranges from -4.0 to 4.0 , with -4.0 as the normal level
+/** 锐化 ranges from 0.0 to 1.0 , with 0.0 as the normal level
  *  设置媒体动画后，该属性无效，以动画中的sharpness值为准
  */
 @property (nonatomic, assign) float sharpness;
@@ -1119,6 +1119,11 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
  */
 @property (nonatomic, assign) float fade;
 
+/** 曝光 ranges from -1.0 to 1.0 (max exposure) , with 0.0 as the normal level
+ *  设置媒体动画后，该属性无效，以动画中的fade值为准
+ */
+@property (nonatomic, assign) float exposure;
+
 
 /** 持续时间（ PECore 默认与虚拟视频一致，不需设置）
  */
@@ -1139,6 +1144,10 @@ typedef NS_ENUM(NSInteger, BlurType) {
 /** 设置模糊强度0.0~1.0，默认为0.0
  */
 @property (nonatomic, assign)BlurType blurType;
+
+/** 模糊遮罩图片（黑白图，白色区域模糊）
+ */
+@property (nonatomic , strong) NSURL*  maskImageURL;
 
 
 /** 设置模糊强度0.0~1.0，默认为0.0
@@ -1200,6 +1209,11 @@ typedef NS_ENUM(NSInteger, BlurType) {
 /** 高斯模糊是否开启跟踪，默认为NO
  */
 @property (nonatomic, assign) BOOL isEnableTracking;
+
+/** 模糊遮罩图片（黑白图，白色区域模糊）
+ */
+@property (nonatomic , strong) NSURL*  maskImageURL;
+
 
 /**在video中四个顶点的坐标，可设置非矩形。,设置关键帧动画后，以关键帧动画值为准
  * (0, 0)为左上角 (1, 1)为右下角
@@ -1333,46 +1347,46 @@ typedef NS_ENUM(NSInteger, BlurType) {
 
 @interface FaceAttribute : NSObject
 
-/** 五官美颜  脸的宽度 ，取值范围 0.0 - 1.0 默认 0.5
+/** 五官美颜  脸的宽度 ，取值范围 -1.0 - 1.0 默认 0.0
  */
 @property (nonatomic,assign) float faceWidth;
-/** 五官美颜  额头高度（暂无功能） ，取值范围 0.0 - 1.0 默认 0.5
+/** 五官美颜  额头高度（暂无功能） ，取值范围 -1.0 - 1.0 默认 0.0
  */
 @property (nonatomic,assign) float forehead;
-/** 五官美颜  下颚的宽度 ，取值范围 0.0 - 1.0 默认 0.5
+/** 五官美颜  下颚的宽度 ，取值范围 -1.0 - 1.0 默认 0.0
  */
 @property (nonatomic,assign) float chinWidth;
-/** 五官美颜  下巴的高度 ，取值范围 0.0 - 1.0 默认 0.5
+/** 五官美颜  下巴的高度 ，取值范围 -1.0 - 1.0 默认 0.0
  */
 @property (nonatomic,assign) float chinHeight;
-/** 五官美颜  眼睛宽度 ，取值范围 0.0 - 1.0 默认 0.5
+/** 五官美颜  眼睛宽度 ，取值范围 -1.0 - 1.0 默认 0.0
  */
 @property (nonatomic,assign) float eyeWidth;
-/** 五官美颜  眼睛高度 ，取值范围 0.0 - 1.0 默认 0.5
+/** 五官美颜  眼睛高度 ，取值范围 -1.0 - 1.0 默认 0.0
  */
 @property (nonatomic,assign) float eyeHeight;
-/** 五官美颜  眼睛倾斜 ，取值范围 0.0 - 1.0 默认 0.5
+/** 五官美颜  眼睛倾斜 ，取值范围 -1.0 - 1.0 默认 0.0
  */
 @property (nonatomic,assign) float eyeSlant;
-/** 五官美颜  眼睛距离 ，取值范围 0.0 - 1.0 默认 0.5
+/** 五官美颜  眼睛距离 ，取值范围 -1.0 - 1.0 默认 0.0
  */
 @property (nonatomic,assign) float eyeDistance;
-/** 五官美颜  鼻子宽度 ，取值范围 0.0 - 1.0 默认 0.5
+/** 五官美颜  鼻子宽度 ，取值范围 -1.0 - 1.0 默认 0.0
  */
 @property (nonatomic,assign) float noseWidth;
-/** 五官美颜  鼻子高度 ，取值范围 0.0 - 1.0 默认 0.5
+/** 五官美颜  鼻子高度 ，取值范围 -1.0 - 1.0 默认 0.0
  */
 @property (nonatomic,assign) float noseHeight;
-/** 五官美颜  嘴巴宽度 ，取值范围 0.0 - 1.0 默认 0.5
+/** 五官美颜  嘴巴宽度 ，取值范围 -1.0 - 1.0 默认 0.0
  */
 @property (nonatomic,assign) float mouthWidth;
-/** 五官美颜  上嘴唇 ，取值范围 0.0 - 1.0 默认 0.5
+/** 五官美颜  上嘴唇 ，取值范围 -1.0 - 1.0 默认 0.0
  */
 @property (nonatomic,assign) float lipUpper;
-/** 五官美颜  下嘴唇 ，取值范围 0.0 - 1.0 默认 0.5
+/** 五官美颜  下嘴唇 ，取值范围 -1.0 - 1.0 默认 0.0
  */
 @property (nonatomic,assign) float lipLower;
-/** 五官美颜  微笑 ，取值范围 0.0 - 1.0 默认 0.5
+/** 五官美颜  微笑 ，取值范围 -1.0 - 1.0 默认 0.0
  */
 @property (nonatomic,assign) float smile;
 

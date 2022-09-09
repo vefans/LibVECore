@@ -155,6 +155,8 @@ typedef NS_ENUM(NSInteger, CameraSwipeDirection) {
  */
 - (void) currentTime:(float) time;
 
+-(void)pinchZoom:( float ) videoZoomFactor;
+
 /** 滑动录制预览视图开始
  *  @params swipDirection 滑动方向
  */
@@ -519,6 +521,11 @@ typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
  */
 - (void) updateCropRegion: (float) rate;
 
+/** 设置截取区域 0.0 ~ 1.0 默认（0.0，0.0，1.0，1.0）
+ */
+- (BOOL) updateCropRect: (CGRect) cropRect;
+
+
 /** 设置录制预览视图位置大小
  */
 - (void) setVideoViewFrame:(CGRect ) rect;
@@ -565,7 +572,7 @@ typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
  */
 - (void) exposure:(CGFloat) iso;
 
-/** 焦距
+/** 焦距( 0.0 ~ 5.0 )
  */
 - (void) zoom:(CGFloat) zoom;
 
@@ -635,6 +642,8 @@ typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
 -(CGRect)getCameraManagerFrame;
 
 -(void)addCameraScreenWithView:( UIView * ) view;
+
+-(float)getZoomFactor;
 
 @end
 

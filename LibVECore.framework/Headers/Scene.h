@@ -472,7 +472,7 @@ typedef NS_ENUM(NSInteger, BlendEquation)
  */
 @property (nonatomic, assign) float vignette;
 
-/** 锐化 ranges from -4.0 to 4.0 (max sharpness) , with 0.0 as the normal level
+/** 锐化 ranges from 0.0 to 1.0 (max sharpness) , with 0.0 as the normal level
  */
 @property (nonatomic, assign) float sharpness;
 
@@ -1302,7 +1302,7 @@ UIKIT_EXTERN API_DEPRECATED("Watermark is deprecated. Use Overlay instead", ios(
  */
 @property (nonatomic, assign) OverlayType type;
 
-/** 持续时间范围
+/** 在虚拟视频中的持续时间范围
  */
 @property (nonatomic ,assign) CMTimeRange timeRange;
 

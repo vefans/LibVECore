@@ -74,6 +74,11 @@
  */
 @property (nonatomic, assign) float fade;
 
+/** 曝光 ranges from -1.0 to 1.0 (max exposure) , with 0.0 as the normal level
+ *  设置媒体动画后，该属性无效，以动画中的fade值为准
+ */
+@property (nonatomic, assign) float exposure;
+
 /** 设置模糊强度0.0~1.0，默认为0.0
  */
 @property (nonatomic, assign)BlurType blurType;
@@ -178,6 +183,11 @@
  *  设置媒体动画后，该属性无效，以动画中的fade值为准
  */
 @property (nonatomic, assign) float fade;
+
+/** 曝光 ranges from -1.0 to 1.0 (max exposure) , with 0.0 as the normal level
+ *  设置媒体动画后，该属性无效，以动画中的fade值为准
+ */
+@property (nonatomic, assign) float exposure;
 
 /** 媒体动画组
  */
