@@ -588,6 +588,18 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 
 @end
 
+// HDR
+@interface HDR : NSObject<NSCopying, NSMutableCopying>
+
+/** hdr 文件路径
+ */
+@property (nonatomic, strong) NSURL *filePath;
+
+/** hdr 强度设置
+ */
+@property(nonatomic, assign) float  intensity;
+
+@end
 
 @interface MediaAsset : NSObject<NSCopying, NSMutableCopying>
 
@@ -780,8 +792,13 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 @property (nonatomic , strong)  NSURL*   filterUrl;
 
 /**滤镜强度，kFilterType_LookUp/kFilterType_Mosaic 时有效,默认为1.0
+ * 如果有设置 filterAnimation 动画，以 filterAnimation 参数为准，该参数无效
  */
 @property (nonatomic, assign)float filterIntensity;
+
+/** 滤镜动画组
+ */
+@property (nonatomic, strong) NSArray<KeyFrameAnimate*>*  filterAnimation;
 
 /**滤镜条纹启用，kFilterType_Mosaic时有效,默认为YES
  */
@@ -999,7 +1016,14 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 @property (nonatomic, strong) NSURL *antiShakeUrl;
 @property (nonatomic, strong) NSURL *antiShakeTrf;
 @property (nonatomic, assign) AntiShakeType   antiShakeType;
+
+/**HDR
+ */
+@property (nonatomic, strong) HDR* hdr;
+
 @end
+
+
 
 // Mask 用于异形
 @interface MaskAsset : NSObject

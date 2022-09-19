@@ -301,6 +301,11 @@ typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
  */
 @property (nonatomic , assign) int audioChannelNumbers;
 
+/** 只支持拍照  默认为：NO
+ *  拍照支持4K
+ */
+@property (nonatomic , assign) BOOL isOnlyTakePhoto;
+
 /** 录制是否静音(不录制声音)  默认为：NO
  */
 @property (nonatomic , assign) BOOL isMute;

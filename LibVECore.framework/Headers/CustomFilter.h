@@ -165,6 +165,8 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
  */
 @property (nonatomic, assign)float lookUpFilterIntensity;
 
+//@property (nonatomic, strong) NSArray<KeyFrameAnimate*>*  filterAnimation;
+
 /**滤镜条纹启用，builtInType为BuiltInFilter_Mosaic时有效,默认为YES
  */
 @property (nonatomic, assign)BOOL isStrip;
