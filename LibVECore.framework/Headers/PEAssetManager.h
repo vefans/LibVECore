@@ -276,6 +276,10 @@
 
 @property (nonatomic, strong) NSURL * manualKeyPath;
 
+/**HDR
+ */
+@property (nonatomic, strong) HDR* hdr;
+
 @end
 
 

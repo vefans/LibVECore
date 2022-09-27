@@ -906,7 +906,10 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
 //(由0-1个底图+多个文字组成)
 
 @interface CaptionEx : NSObject<NSCopying, NSMutableCopying>
-
+/** 标识符
+ *  记录最后操作的时间,用于二次build时排序依据 (最后操作的置顶)
+ */
+@property (nonatomic, assign)long nLatestZOrderOnTopTime;
 /** 标识符
  *  导出模板用
  */
@@ -1051,7 +1054,7 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
 
 @end
 
-
+@class KeyFrameAnimate;
 
 /** 调色
 */
@@ -1125,6 +1128,10 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
 @property (nonatomic, assign) float exposure;
 
 
+/** 关键帧动画
+ */
+@property (nonatomic, strong) NSArray<KeyFrameAnimate*>*  animate;
+
 /** 持续时间（ PECore 默认与虚拟视频一致，不需设置）
  */
 @property (nonatomic,assign) CMTimeRange timeRange;
@@ -1182,6 +1189,11 @@ typedef NS_ENUM(NSInteger, BlurType) {
 /**强度
  */
 @property (nonatomic,assign) float intensity;
+
+
+/**关键帧（该对象中 timeRange 无效）
+ */
+@property (nonatomic, strong) ToningInfo* adjustments;
 
 @end
 

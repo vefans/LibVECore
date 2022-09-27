@@ -116,6 +116,10 @@ NS_ASSUME_NONNULL_BEGIN
 /**蒙版
  */
 @property (nonatomic, strong) VECoreTemplateMask *maskObject;
+
+/** hdr 强度设置
+ */
+@property(nonatomic, assign) float  hdrIntensity;
  
 - (instancetype)initWithMediaAsset:(PEImageAsset *)asset;
 

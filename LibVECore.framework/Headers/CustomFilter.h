@@ -14,7 +14,7 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <AVFoundation/AVFoundation.h>
 #import <LibVECore/CustomShader.h>
-
+#import <LibVECore/Common.h>//
 
 @interface ShaderParams : NSObject
 
@@ -162,10 +162,13 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
 @property (nonatomic, copy) NSString*  path;
 
 /**滤镜强度，builtInType为BuiltInFilter_lookUp时有效,默认为1.0
+ * 如果有设置 filterAnimation 动画，以 filterAnimation 参数为准，该参数无效
  */
 @property (nonatomic, assign)float lookUpFilterIntensity;
 
-//@property (nonatomic, strong) NSArray<KeyFrameAnimate*>*  filterAnimation;
+/** 滤镜动画组
+ */
+@property (nonatomic, strong) NSArray<KeyFrameAnimate*>*  filterAnimation;
 
 /**滤镜条纹启用，builtInType为BuiltInFilter_Mosaic时有效,默认为YES
  */

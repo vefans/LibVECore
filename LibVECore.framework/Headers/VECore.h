@@ -936,4 +936,15 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
 +(UIImage *)getImageFromPath:( NSURL * ) path;
 
 +(bool)getMusicBeatIsAvailable:( NSString * ) musicPath;
+
+/**  获取HDR图片
+ *  @abstract Get HDR pictures.
+ *
+ *  @param originalImage        原图
+ *  @param outPutFilePath     输出图片路径
+ *
+ *  成功返回 YES，失败返回 NO；
+ */
+- (BOOL)getHDRImageFromImage:(UIImage *)originalImage outPutFilePath:(NSString*)outPutFilePath;
+
 @end
