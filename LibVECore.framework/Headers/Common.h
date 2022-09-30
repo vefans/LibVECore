@@ -1915,6 +1915,17 @@ typedef NS_ENUM(NSInteger, DOODLEOP_TYPE)
     DOODLEOP_TYPE_FILL_IMAGE,    //填充图片
 };
 
+typedef NS_ENUM(NSInteger, DOODLEOP_STROKE_MASK_TYPE)
+{
+    DOODLEOP_STROKE_MASK_NONE = 0,              //无
+    DOODLEOP_STROKE_MASK_MOSAIC,                //正方形马赛克
+    DOODLEOP_STROKE_MASK_TRIANGLE_PIXELATION,   //三角形马赛克
+    DOODLEOP_STROKE_MASK_HEXAGON_PIXELATION,    //六边形马赛克
+    DOODLEOP_STROKE_MASK_BLUR_GAUSSIAN,         //高斯模糊马赛克
+    DOODLEOP_STROKE_MASK_BLUR_MOTION,           //运动模糊马赛克
+    DOODLEOP_STROKE_MASK_WATERCOLOR,            //水彩画马赛克
+};
+
 typedef NS_ENUM(NSInteger, DOODLEOP_PAINT_TYPE)
 {
     DOODLEOP_PAINT_TYPE_START = 0,      //手指按下，绘制开始
@@ -2275,6 +2286,14 @@ typedef NS_ENUM(NSInteger, DOODLEOP_PAINT_TYPE)
 /**填充图像显示位置，默认为(0.0,0.0,1.0,1.0)
  */
 @property (nonatomic ,assign) CGRect show;
+
+/** 马赛克类型，参考 DOODLEOP_STROKE_MASK_TYPE ，默认为 DOODLEOP_STROKE_MASK_NONE
+ */
+@property (nonatomic,assign) int strokeMask;
+
+/** 是否使用涂鸦设置的颜色，默认为 NO
+ */
+@property (nonatomic,assign) BOOL usePaintedColor;
 
 /** 位置信息
  *  @abstract   event array

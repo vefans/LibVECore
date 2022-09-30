@@ -47,6 +47,8 @@
 
 - (CustomMultipleFilter *)getCustomMultipleFilterWithFolderPath:(NSString *)folderPath;
 
+@property (nonatomic, strong) NSMutableArray * animates;
+
 @end
 
 #pragma mark - 特效

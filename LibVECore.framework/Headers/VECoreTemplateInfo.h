@@ -315,11 +315,34 @@ typedef NS_ENUM(NSInteger, MosaicType) {
  */
 @property (nonatomic, assign) float timelineTo;
 
+/** 关键帧动画
+ */
+@property (nonatomic, strong) NSMutableArray
+*  keyAnimates;
+
 - (instancetype)initWithTone:(ToningInfo *)tone;
 
 - (ToningInfo *)getToningInfo;
 
 @end
+
+#pragma mark - 滤镜 调节 关键帧
+@interface VECoreTemplateKeyFrameAnimate : NSObject
+
+- (instancetype)initWithKeyAnimate:(KeyFrameAnimate *) keyAnimate;
+
+- (KeyFrameAnimate *)getKeyAnimate;
+
+/**开始时间
+ */
+@property (nonatomic,assign) CGFloat atTime;
+/**强度
+ */
+@property (nonatomic,assign) float intensity;
+
+@property (nonatomic, strong) VECoreTemplateToningInfo *  toningInfo;
+@end
+
 
 #pragma mark - 封面模板
 @interface VECoreTemplateCoverTemplate : NSObject

@@ -878,6 +878,11 @@ typedef NS_ENUM(NSInteger, BlendEquation)
  */
 @property (nonatomic, readonly) NSArray *pointsInVideoArray;
 
+/** 是否通过导入文件生成的animate，Default is NO.
+ *  Whether to generate animation by importing files
+ */
+@property (nonatomic, assign) BOOL importMorph;
+
 /** 是否使用rectInVideo，默认为YES
  *  YES:使用rectInVideo   NO:使用pointsInVideoArray
  */
@@ -1020,6 +1025,13 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 /**HDR
  */
 @property (nonatomic, strong) HDR* hdr;
+
+/** 马赛克涂鸦
+ *操作步骤：
+ *  1.先将当前媒体设置为填充图片（optionType/fillImageURL）
+ *  2.设置马赛克类型（strokeMask），将画刷设置为常规画刷（optionType），更新坐标点（eventArray）
+*/
+@property (nonatomic, strong) NSMutableArray <DoodleEx *>* maskDoodleArray;
 
 @end
 
