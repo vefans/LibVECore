@@ -1913,6 +1913,7 @@ typedef NS_ENUM(NSInteger, DOODLEOP_TYPE)
     DOODLEOP_TYPE_CLEAR_COLOR,   //指定颜色显示
     DOODLEOP_TYPE_FILL_COLOR,    //填充区域（暂时支持颜色填充）
     DOODLEOP_TYPE_FILL_IMAGE,    //填充图片
+    DOODLEOP_TYPE_FILL_TEXTURE,  //填充纹理
 };
 
 typedef NS_ENUM(NSInteger, DOODLEOP_STROKE_MASK_TYPE)
@@ -2369,7 +2370,7 @@ typedef NS_ENUM(NSInteger, DOODLEOP_PAINT_TYPE)
 @property (nonatomic,strong) UIImage* image;
 
 
-/** 涂鸦显示位置 ，(0, 0)为左上角 (1, 1)为右下角，默认为 （0，0，1，1），如果有设置关键帧动画 animation ，以关键帧动画参数为准
+/** 涂鸦显示位置 ，(0, 0)为左上角 (1, 1)为右下角，默认为 （0，0，1，1），如果有设置关键帧动画 animation ，以关键帧动画参数为准（注意：缩放前的显示区域）
  *  @abstract   doodle rect, (0, 0) is the upper left corner (1, 1) is the lower right corner.default is (0, 0, 1, 1)
  */
 @property (nonatomic,assign) CGRect rect;

@@ -271,6 +271,11 @@ typedef NS_ENUM(NSInteger, MusicType) {
  */
 @property (nonatomic,assign) float speed;
 
+/**  是否音调校正，设置曲线变速后无效，Default is NO。
+ *   Tone correction, invalid after setting curve speed change.
+ */
+@property (nonatomic,assign) BOOL speedHoldPitch;
+
 /**音量(0.0-1.0)，默认为1.0
  */
 @property (nonatomic, assign) float volume;
@@ -664,6 +669,11 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 /**  播放速度 作用在图片段只会表现为播放时间改变 作用在视频上可以加速或者减速
  */
 @property (nonatomic,assign) float            speed;
+
+/**  是否音调校正，设置曲线变速后无效，Default is NO。
+ *   Tone correction, invalid after setting curve speed change.
+ */
+@property (nonatomic,assign) BOOL speedHoldPitch;
 
 /** 曲线变速
  *  设置该属性后，speed无效
