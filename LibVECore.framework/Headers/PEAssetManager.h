@@ -280,6 +280,13 @@
  */
 @property (nonatomic, strong) HDR* hdr;
 
+/** 马赛克涂鸦
+ *操作步骤：
+ *  1.先将当前媒体设置为填充图片（optionType/fillImageURL）
+ *  2.设置马赛克类型（strokeMask），将画刷设置为常规画刷（optionType），更新坐标点（eventArray）
+*/
+@property (nonatomic, strong) NSMutableArray <DoodleEx *>* maskDoodleArray;
+
 @end
 
 

@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 /** 版本号
  */
 @property (nonatomic, assign) float ver;
+
+@property (nonatomic, strong) NSString *verName;
 /** 分辨率
  */
 @property (nonatomic, assign) CGSize size;
@@ -72,6 +74,10 @@ NS_ASSUME_NONNULL_BEGIN
 /** 涂鸦笔
  */
 @property (nonatomic, strong) NSMutableArray <VECoreTemplateDoodleEx*>* doodlePens;
+
+/** 涂鸦笔
+ */
+@property (nonatomic, strong) NSMutableArray <VECoreTemplateDoodleEx*>* maskdoodleArray;
 
 /**
  Creates and returns a new instance of the receiver from a json.

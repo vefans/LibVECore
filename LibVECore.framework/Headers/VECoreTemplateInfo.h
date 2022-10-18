@@ -449,6 +449,8 @@ typedef NS_ENUM(NSInteger, MosaicType) {
  */
 @property (nonatomic, assign) float ver;
 
+@property (nonatomic, strong) NSString *verName;
+
 /** 时长
  */
 @property (nonatomic, assign) float duration;

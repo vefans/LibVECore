@@ -124,7 +124,7 @@
  */
 @property (nonatomic, copy) NSString *frag;
 
-/**  mask图片路径
+/**  mask图片/视频路径
  */
 @property (nonatomic, copy) NSString *maskImagePath;
 
