@@ -181,6 +181,11 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
 @property (nonatomic, copy) NSMutableArray*  inputFilterName;
 
 
+/** 配置信息，例如：手绘模式/手绘笔比例/缩放值/笔尖偏移等等
+ */
+@property (nonatomic, strong) NSMutableDictionary* configure;
+
+
 /**  设置shader中 uniform sampler2D 类型参数（纹理参数）
  */
 - (NSError *) setShaderTextureParams:(TextureParams *)textureParams;

@@ -987,6 +987,10 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
  */
 @property (nonatomic ,readonly) CGSize stretchSize;
 
+/**拉伸缩放后文字大小(isStretch 为 YES 时，拉伸之后的真实大小 
+ */
+@property (nonatomic ,readonly) CGSize stretchTextSize;
+
 /**帧动画
  */
 @property (nonatomic ,strong) NSArray * frameArray;
@@ -1866,7 +1870,10 @@ typedef NS_ENUM(NSUInteger, EMITTER_TYPE)
 -(CMTimeRange) getTimeRangeFromData:(NSData*)data;
 
 
-
+/**获取灰度图坐标点
+ *  @abstract    Get the coordinate points of gray scale image
+ */
+-(NSMutableArray*)getPointsFromFilePath:(NSURL*)filePath;
 
 
 

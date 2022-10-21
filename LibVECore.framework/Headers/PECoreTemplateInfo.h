@@ -74,11 +74,6 @@ NS_ASSUME_NONNULL_BEGIN
 /** 涂鸦笔
  */
 @property (nonatomic, strong) NSMutableArray <VECoreTemplateDoodleEx*>* doodlePens;
-
-/** 涂鸦笔
- */
-@property (nonatomic, strong) NSMutableArray <VECoreTemplateDoodleEx*>* maskdoodleArray;
-
 /**
  Creates and returns a new instance of the receiver from a json.
  This method is thread-safe.
