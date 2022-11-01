@@ -128,6 +128,9 @@
  */
 @property (nonatomic, copy) NSString *maskImagePath;
 
+/** 视频mask是否重复播放，默认为NO
+ */
+@property (nonatomic, assign) BOOL isRepeat;
 
 /** 动画组
  */

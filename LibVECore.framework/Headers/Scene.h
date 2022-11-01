@@ -616,6 +616,11 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 @property (nonatomic,strong) NSURL*  url;
 @property (nonatomic,strong) NSString* localIdentifier;
 
+/** 视频帧回调，实现该回调后，url无效
+ *  Video frame callback. After implementing the callback, the url is invalid.
+ */
+@property (nonatomic, copy) void(^videoPixelBufferRefHandler) (CVPixelBufferRef *pixelBufferRef);
+
 /**  资源类型 图片 或者 视频
  */
 @property (nonatomic,assign) MediaAssetType      type;
@@ -1042,6 +1047,10 @@ typedef NS_ENUM(NSInteger, BlendEquation)
  *  2.设置马赛克类型（strokeMask），将画刷设置为常规画刷（optionType），更新坐标点（eventArray）
 */
 @property (nonatomic, strong) NSMutableArray <DoodleEx *>* maskDoodleArray;
+
+/** 全景图
+ */
+@property (nonatomic, strong) Panorama* panorama;
 
 @end
 

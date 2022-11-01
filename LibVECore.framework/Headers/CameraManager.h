@@ -130,9 +130,19 @@ typedef NS_ENUM(NSInteger, CameraSwipeDirection) {
 @protocol CameraManagerDelegate <NSObject>
 @optional
 
+/** 摄像头捕获帧回调，最后处理的结果(抠图/美颜/滤镜/....设置之后的最终效果)
+ */
+- (void)getOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer;
+
+
 /** 摄像头捕获帧回调，可对帧进行处理
  */
 - (NSArray<FaceRecognition*>*)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer;
+
+/** 摄像头捕获帧回调，可对帧进行处理,
+ *  通过 autoSegment 判断是否对画面抠像
+ */
+- (NSArray<FaceRecognition*>*)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer autoSegment:(BOOL)autoSegment;
 
 /** 摄像头捕获帧回调，可对帧进行处理 - 人脸道具贴纸
  */

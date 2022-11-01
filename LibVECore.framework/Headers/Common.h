@@ -2405,6 +2405,10 @@ typedef NS_ENUM(NSInteger, DOODLEOP_PAINT_TYPE)
  */
 @property (nonatomic,strong) NSMutableArray<AnimationEx*>* animations;
 
+/** 是否释放内存，默认为 NO, 如果为 YES ,刷新后释放内存
+ *  @abstract   auto release memory.
+ */
+@property (nonatomic,assign) BOOL autoRelease;
 
 @end
 
@@ -2432,5 +2436,21 @@ typedef NS_ENUM(NSInteger, DOODLEOP_PAINT_TYPE)
 /** 使用该模板时，视频分辨率
  */
 @property (nonatomic, assign) CGSize size;
+
+@end
+
+
+
+#pragma mark - 全景视图相关
+@interface Panorama  : NSObject<NSCopying, NSMutableCopying>
+
+/** 表示绕x轴旋转，视角在垂直方向移动，取值范围：-1.0 ～ 1.0，(0，0)表示正对球体的中心，即原全景图片的中间
+ */
+@property (nonatomic,assign) float x;
+
+/** 表示绕y轴旋转，视角在水平方向移动，取值范围：-1.0 ～ 1.0，(0，0)表示正对球体的中心，即原全景图片的中间
+*/
+@property (nonatomic,assign) float y;
+
 
 @end
