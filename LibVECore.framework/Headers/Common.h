@@ -987,7 +987,7 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
  */
 @property (nonatomic ,readonly) CGSize stretchSize;
 
-/**拉伸缩放后文字大小(isStretch 为 YES 时，拉伸之后的真实大小 
+/**拉伸缩放后文字大小(isStretch 为 YES 时，拉伸之后的真实大小 ，注意：仅仅用于和安卓测试 2022.10.18)
  */
 @property (nonatomic ,readonly) CGSize stretchTextSize;
 

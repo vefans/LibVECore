@@ -130,6 +130,19 @@ typedef NS_ENUM(NSInteger, CameraSwipeDirection) {
 @protocol CameraManagerDelegate <NSObject>
 @optional
 
+/** 虚拟直播间,获取音频数据
+ */
+- (CMSampleBufferRef)getAudioSampleBufferFromTime:(float)time;
+
+/** 虚拟直播间,获取视频数据
+ */
+- (CVPixelBufferRef)getPixelBufferFromTime:(float)time;
+
+
+/** 摄像头捕获音频帧回调，可对帧进行处理
+ */
+- (void)willOutputCameraAudioSampleBuffer:(CMSampleBufferRef)sampleBuffer;
+
 /** 摄像头捕获帧回调，最后处理的结果(抠图/美颜/滤镜/....设置之后的最终效果)
  */
 - (void)getOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer;

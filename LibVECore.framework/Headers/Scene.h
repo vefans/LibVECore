@@ -13,6 +13,12 @@
 #import <LibVECore/MaskObject.h>
 #import <LibVECore/Common.h>
 
+typedef NS_ENUM(NSInteger, VEAudioSampleBits) {
+    VEAudioSampleBits_16i,       //16位 short
+    VEAudioSampleBits_32i,      //32位 int
+    VEAudioSampleBits_32f      //32位 float
+};
+
 typedef NS_ENUM(NSInteger, AudioFilterType) {
     AudioFilterTypeNormal,       // 无效果
     AudioFilterTypeBoy,          // 男声

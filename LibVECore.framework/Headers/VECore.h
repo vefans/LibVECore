@@ -39,6 +39,7 @@
 - (NSArray<FaceRecognition*>*)willOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer asset:(MediaAsset*)asset;
 - (NSArray<FaceRecognition*>*)willOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer asset:(MediaAsset*)asset currentTime:(CMTime)currentTime;
 - (void)willOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer currentTime:(CMTime)currentTime;
+
 @end
 
 typedef NS_ENUM(NSInteger, ReverseAudioType) {
@@ -155,6 +156,21 @@ typedef NS_ENUM(NSUInteger, VEExportVideoProfileLevelType) {
 @end
 
 @interface VECore : NSObject<NSCopying,NSMutableCopying>
+
+/*!
+ @property audioSampleRate
+ @abstract
+    启用音频数据实时回调 （）
+    Bitrate set for exported video. The default value is 4.
+ */
+@property (nonatomic, assign) BOOL enableAudioSampleBuffer;
+/*!
+ @property audioSampleRate
+ @abstract
+    音频采样率 (默认44100)
+    Bitrate set for exported video. The default value is 4.
+ */
+@property (nonatomic, assign) Float64 audioSampleRate;
 
 /** 用于获取视频截图
  */
@@ -692,6 +708,14 @@ typedef NS_ENUM(NSUInteger, VEExportVideoProfileLevelType) {
  */
 - (void) setSceneBgColor:(UIColor *)bgColor identifier:(NSString*) identifier;
 
+-(NSMutableData *)getPushAudioData;
+
+-(CMSampleBufferRef)getAudioData;
+
+-(BOOL)getAudioMix;
+
+-(BOOL)inputAudioMIC:( NSMutableData * ) audioData;
+
 /**获取视频的音频码率
  @abstract  Returns the audio bitrate of the video.
  */
@@ -769,6 +793,19 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
     @abstract   Cancel export.
  */
 - (void)cancelExportMovie:(void(^)(void))cancelBlock;
+
+/** 导出音频
+ @abstract   Export audio.
+ *@params: fileType    输出音频类型，目前支持三种（AVFileTypeMPEGLayer3，AVFileTypeAppleM4A，AVFileTypeWAVE）
+                             Output audio type, currently supports three.
+ */
+- (void)exportAudioUrl:(NSURL *)url
+          audioBitRate:(int)audioBitRate
+   audioChannelNumbers:(int)audioChannelNumbers
+              fileType:(AVFileType)fileType
+              progress:(void(^)(float progress))progress
+               success:(void(^)(void))success
+                  fail:(void(^)(NSError *error))fail;
 
 /** 倒序
     @abstract   Reverse.
@@ -947,4 +984,27 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
  */
 - (BOOL)getHDRImageFromImage:(UIImage *)originalImage outPutFilePath:(NSString*)outPutFilePath;
 
+/**  音频数据转码
+ *  @abstract Audio data transcoding
+ *
+ *  @param data        音频数据
+ *  @param originalSamepleRate     原始采样数
+ *  @param originalSampleBit        原始采样位数 （ VEAudioSampleBits ）
+ *  @param originalChannels     原始通道数
+ *  @param outSamepleRate     输出采样数   （ VEAudioSampleBits ）
+ *  @param outSampleBit        输出采样位数
+ *  @param outChannels     输出通道数
+ *
+ *  转换后的音频数据
+ */
++( NSMutableData * )audioTranscod:( NSMutableData * ) data atOriginalSamepleRate:( Float64 ) originalSamepleRate atOriginalSampleBit:( VEAudioSampleBits ) originalSampleBit atOriginalChannels:( int ) originalChannels   atOutSamepleRate:( Float64 ) outSamepleRate atOutSampleBit:( VEAudioSampleBits ) outSampleBit atOutChannels:( int ) outChannels;
+/**  音频混音
+ *  @abstract audio mixing
+ *
+ *  @param bufferArray        音频数据组( 元素结构为 NSData * )
+ *  @param sampleBit     采样位数
+ *
+ *  转换后的音频数据
+ */
++(NSMutableData *)audioRemixWithBufferArray:( NSMutableArray * ) bufferArray atSampleBit:( VEAudioSampleBits ) sampleBit;
 @end
