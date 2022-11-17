@@ -200,6 +200,8 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
                             isRepeat:(BOOL)isRepeat
                           forUniform:(NSString *)uniform;
 
+
+@property(nonatomic,assign)NSInteger            writingMode;
 @end
 
 

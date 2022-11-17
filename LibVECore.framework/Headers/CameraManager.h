@@ -275,7 +275,13 @@ typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
  *  使用该功能时，须所有滤镜资源都在本地，不能是网络资源
  */
 @property (nonatomic, assign) BOOL swipeScreenIsChangeFilter;
-
+/** 白平衡
+ */
+@property (nonatomic , assign) int whiteBalanceMode;
+/*
+ *temperature 取值一般在1000k-30000k之间；tint表示色度值，取值范围-150-150，越低越偏蓝，越高越偏红
+ */
+-(void)setWhiteBlanceUseTemperature:(CGFloat)temperature;
 /** 前后置摄像头
  */
 @property (nonatomic , assign) AVCaptureDevicePosition position;
