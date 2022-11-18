@@ -2444,13 +2444,18 @@ typedef NS_ENUM(NSInteger, DOODLEOP_PAINT_TYPE)
 #pragma mark - 全景视图相关
 @interface Panorama  : NSObject<NSCopying, NSMutableCopying>
 
-/** 表示绕x轴旋转，视角在垂直方向移动，取值范围：-1.0 ～ 1.0，(0，0)表示正对球体的中心，即原全景图片的中间
+/** 表示绕x轴旋转，视角在垂直方向移动，取值范围：-180.0 ～ 180.0，(0，0)表示正对球体的中心，即原全景图片的中间
  */
 @property (nonatomic,assign) float x;
 
-/** 表示绕y轴旋转，视角在水平方向移动，取值范围：-1.0 ～ 1.0，(0，0)表示正对球体的中心，即原全景图片的中间
+/** 表示绕y轴旋转，视角在水平方向移动，取值范围：-180.0 ～ 180.0，(0，0)表示正对球体的中心，即原全景图片的中间
 */
 @property (nonatomic,assign) float y;
+
+
+/** 表示横向/纵向视角范围，视角不能不大于180°，通常应该小于120°，默认 (90°,90°)
+ */
+@property (nonatomic,assign) CGPoint viewRange;
 
 
 @end
