@@ -2453,9 +2453,14 @@ typedef NS_ENUM(NSInteger, DOODLEOP_PAINT_TYPE)
 @property (nonatomic,assign) float y;
 
 
-/** 表示横向/纵向视角范围，视角不能不大于180°，通常应该小于120°，默认 (90°,90°)
+/** 缩放比例，取值范围：1.0 ～ 10.0，默认为 1.0
  */
-@property (nonatomic,assign) CGPoint viewRange;
+@property (nonatomic,assign) float scale;
+
+
+/** 视口比例，默认为 2.0
+ */
+@property (nonatomic,assign) float aspectRatio;
 
 
 @end

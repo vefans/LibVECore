@@ -405,7 +405,13 @@ typedef NS_ENUM(NSInteger, MVEffectType) {
 /** 上下左右推过程中的点
  */
 @property (nonatomic,strong) NSArray *positions;
-/**  自定义转场
+
+
+/**设置多脚本转场，一个转场可以由多个滤镜组合而成
+ */
+@property (nonatomic, strong) CustomMultipleFilter* customMultipleFilter;
+
+/**  自定义转场（单个脚本转场）
  */
 @property (nonatomic,strong) CustomTransition* customTransition;
 
