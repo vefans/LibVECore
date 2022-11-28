@@ -1055,7 +1055,9 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
 /** 文本朗读音频文件地址
  */
 @property (nonatomic ,strong) NSString *speechPath;
-
+/** 是否为主题中的字幕的标识符
+ */
+@property (nonatomic,assign) BOOL isTemplateTheme;
 @end
 
 @class KeyFrameAnimate;

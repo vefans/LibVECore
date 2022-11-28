@@ -202,6 +202,7 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
 
 
 @property(nonatomic,assign)NSInteger            writingMode;
+@property(nonatomic,assign)BOOL isTemplateTheme;
 @end
 
 
@@ -238,7 +239,7 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
 - (instancetype)initWithFilterArray:(NSMutableArray<CustomFilter*>*)filterArray;
 
 @property (nonatomic, strong) NSMutableArray<CustomFilter*>* filterArray;
-
+@property (nonatomic, assign) BOOL isTemplateTheme;
 @end
 
 

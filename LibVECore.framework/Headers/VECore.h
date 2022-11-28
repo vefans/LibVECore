@@ -184,6 +184,7 @@ typedef NS_ENUM(NSUInteger, VEExportVideoProfileLevelType) {
 /** 设置播放速度，不会真正使视频变速。默认为1.0
  */
 @property (nonatomic, assign) float playRate;
+@property (nonatomic,assign) BOOL isAlwaysPlay;
 
 /** 可播放状态
  */
@@ -796,7 +797,7 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
 
 /** 导出音频
  @abstract   Export audio.
- *@params: fileType    输出音频类型，目前支持三种（AVFileTypeMPEGLayer3，AVFileTypeAppleM4A，AVFileTypeWAVE）
+ *@params fileType    输出音频类型，目前支持三种（AVFileTypeMPEGLayer3，AVFileTypeAppleM4A，AVFileTypeWAVE）
                              Output audio type, currently supports three.
  */
 - (void)exportAudioUrl:(NSURL *)url

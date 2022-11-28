@@ -11,6 +11,15 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <AVFoundation/AVFoundation.h>
 
+typedef NS_ENUM(NSInteger, VECoreTextAlignment){
+    VECoreTextAlignment_Horizontal_Left     = 0,    //横排居左
+    VECoreTextAlignment_Horizontal_Center   = 1,    //横排居中
+    VECoreTextAlignment_Horizontal_Right    = 2,    //横排居右
+    VECoreTextAlignment_Vertical_Top        = 3,    //竖排居顶
+    VECoreTextAlignment_Vertical_Center     = 4,    //竖排居中
+    VECoreTextAlignment_Vertical_Bottom     = 5,    //竖排居底
+};
+
 @interface AnimatePosition : NSObject
 
 /**time
@@ -217,5 +226,23 @@
     bottom left point (0.0 ,0.0) - (1.0 ,1.0)
 */
 @property (nonatomic, assign) CGPoint bottomLeft;
+
+@property (nonatomic, strong) NSString *text;
+
+/** 文字行间距(-1.0〜1.0),默认为0.0
+ */
+@property (nonatomic ,assign) float lineSpacing;
+
+/** 文字字间距(-1.0〜1.0),默认为0.0
+ */
+@property (nonatomic ,assign) float wordSpacing;
+
+/**文字字体大小
+ */
+@property (nonatomic ,assign) float fontSize;
+
+/**文字对齐方式
+ */
+@property (nonatomic ,assign) VECoreTextAlignment textAlignment;
 
 @end

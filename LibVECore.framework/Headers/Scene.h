@@ -320,6 +320,10 @@ typedef NS_ENUM(NSInteger, MusicType) {
 /** 均衡器数值数组
  */
 @property (nonatomic, strong) NSMutableArray <EqObject*>* eq;
+
+/** 是否为主题中的音乐的标识符
+ */
+@property (nonatomic,assign) BOOL isTemplateTheme;
 @end
 
 
@@ -420,6 +424,7 @@ typedef NS_ENUM(NSInteger, MVEffectType) {
 @property (nonatomic,strong) NSURL*  maskURL;
 
 @property (nonatomic,assign) CMTimeRange timeRange;
+@property (nonatomic,assign) BOOL isTemplateTheme;
 
 
 
@@ -1027,7 +1032,7 @@ typedef NS_ENUM(NSInteger, BlendEquation)
  */
 @property (nonatomic, assign) kAutoSegmentType autoSegmentType;
 @property (nonatomic, strong) NSURL *autoSegmentImageUrl;
-@property (nonatomic, strong)UIImage *autoSegmentImage;
+@property (nonatomic, strong) UIImage *autoSegmentImage;
 @property (nonatomic, assign) BOOL isGIF;
 
 /**景深
@@ -1385,6 +1390,9 @@ UIKIT_EXTERN API_DEPRECATED("Watermark is deprecated. Use Overlay instead", ios(
  */
 @property(nonatomic,assign)float          fOverlayRailLevelY;
 
+/** 是否为主题中的画中画的标识符
+ */
+@property (nonatomic,assign) BOOL isTemplateTheme;
 @end
 
 

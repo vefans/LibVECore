@@ -6,6 +6,6 @@ framework module LibVECore {
 }
 
 module LibVECore.Swift {
-  header "LibVECore-Swift.h"
-  requires objc
+    header "LibVECore-Swift.h"
+    requires objc
 }

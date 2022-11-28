@@ -30,6 +30,7 @@
 #import "VECoreTemplateMediaAsset.h"
 #import "VECoreTemplateMusic.h"
 #import "VECoreTemplateParticle.h"
+#import "VECoreTemplateTheme.h"
 #import "NSObject+VECoreYYModel.h"
 #import "VECoreYYClassInfo.h"
 #import "VECoreYYModel.h"

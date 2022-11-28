@@ -11,6 +11,7 @@
 #import <LibVECore/VECoreTemplateCaption.h>
 #import <LibVECore/VECoreTemplateMusic.h>
 #import <LibVECore/VECoreTemplateParticle.h>
+#import <LibVECore/VECoreTemplateTheme.h>
 
 #pragma mark - 转场
 @interface VECoreTemplateTransition : Transition
@@ -585,5 +586,7 @@ typedef NS_ENUM(NSInteger, MosaicType) {
  the inner object to json object.
  */
 - (id)objectToJSONObject;
-
+/** 主题
+*/
+@property (nonatomic, strong) VECoreTemplateTheme *theme;
 @end
