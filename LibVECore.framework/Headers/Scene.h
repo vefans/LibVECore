@@ -638,6 +638,8 @@ typedef NS_ENUM(NSInteger, BlendEquation)
  */
 @property (nonatomic, copy) void(^videoPixelBufferRefHandler) (CVPixelBufferRef *pixelBufferRef);
 
+@property (nonatomic, copy) void(^audioDateHandler) (NSMutableData **audioDate);
+
 /**  资源类型 图片 或者 视频
  */
 @property (nonatomic,assign) MediaAssetType      type;

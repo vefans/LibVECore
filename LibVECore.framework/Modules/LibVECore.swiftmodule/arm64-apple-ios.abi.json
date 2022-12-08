@@ -3,7 +3,311 @@
     "kind": "Root",
     "name": "TopLevel",
     "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "CoreAudioKit",
+        "printedName": "CoreAudioKit",
+        "declKind": "Import",
+        "moduleName": "LibVECore",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "CoreAudio",
+        "printedName": "CoreAudio",
+        "declKind": "Import",
+        "moduleName": "LibVECore"
+      },
+      {
+        "kind": "Import",
+        "name": "AVFoundation",
+        "printedName": "AVFoundation",
+        "declKind": "Import",
+        "moduleName": "LibVECore"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "LibVECore"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ReverManager",
+        "printedName": "ReverManager",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ReverManager",
+                "printedName": "LibVECore.ReverManager",
+                "usr": "c:@M@LibVECore@objc(cs)ReverManager"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@LibVECore@objc(cs)ReverManager(im)init",
+            "mangledName": "$s9LibVECore12ReverManagerCACycfc",
+            "moduleName": "LibVECore",
+            "overriding": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override",
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "reverseVideo",
+            "printedName": "reverseVideo(inURL:outURL:queue:completionBlock:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DispatchQueue",
+                "printedName": "Dispatch.DispatchQueue",
+                "usr": "c:objc(cs)OS_dispatch_queue"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((Swift.Bool) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.Bool) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Bool",
+                        "printedName": "Swift.Bool",
+                        "usr": "s:Sb"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@LibVECore@objc(cs)ReverManager(im)reverseVideoInURL:outURL:queue:completionBlock:",
+            "mangledName": "$s9LibVECore12ReverManagerC12reverseVideo5inURL03outH05queue15completionBlocky10Foundation0H0V_AKSo012OS_dispatch_J0CySbcSgtF",
+            "moduleName": "LibVECore",
+            "objc_name": "reverseVideoInURL:outURL:queue:completionBlock:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "cancelReverseAudio",
+            "printedName": "cancelReverseAudio()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@LibVECore@objc(cs)ReverManager(im)cancelReverseAudio",
+            "mangledName": "$s9LibVECore12ReverManagerC18cancelReverseAudioyyF",
+            "moduleName": "LibVECore",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "reverseAudio",
+            "printedName": "reverseAudio(asset:audioTrack:reader:outURL:queue:completionBlock:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "AVURLAsset",
+                "printedName": "AVFoundation.AVURLAsset",
+                "usr": "c:objc(cs)AVURLAsset"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "AVAssetTrack",
+                "printedName": "AVFoundation.AVAssetTrack",
+                "usr": "c:objc(cs)AVAssetTrack"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "AVAssetReader",
+                "printedName": "AVFoundation.AVAssetReader",
+                "usr": "c:objc(cs)AVAssetReader"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DispatchQueue",
+                "printedName": "Dispatch.DispatchQueue",
+                "usr": "c:objc(cs)OS_dispatch_queue"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((Swift.Bool) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.Bool) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Bool",
+                        "printedName": "Swift.Bool",
+                        "usr": "s:Sb"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@LibVECore@objc(cs)ReverManager(im)reverseAudioWithAsset:audioTrack:reader:outURL:queue:completionBlock:",
+            "mangledName": "$s9LibVECore12ReverManagerC12reverseAudio5asset10audioTrack6reader6outURL5queue15completionBlockySo10AVURLAssetC_So07AVAssetI0CSo0Q6ReaderC10Foundation0L0VSo012OS_dispatch_M0CySbcSgtF",
+            "moduleName": "LibVECore",
+            "objc_name": "reverseAudioWithAsset:audioTrack:reader:outURL:queue:completionBlock:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@LibVECore@objc(cs)ReverManager",
+        "mangledName": "$s9LibVECore12ReverManagerC",
+        "moduleName": "LibVECore",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      }
+    ],
     "json_format_version": 8
   },
-  "ConstValues": []
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2636,
+      "length": 5,
+      "value": "false"
+    }
+  ]
 }

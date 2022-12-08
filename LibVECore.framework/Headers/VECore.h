@@ -39,6 +39,7 @@
 - (NSArray<FaceRecognition*>*)willOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer asset:(MediaAsset*)asset;
 - (NSArray<FaceRecognition*>*)willOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer asset:(MediaAsset*)asset currentTime:(CMTime)currentTime;
 - (void)willOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer currentTime:(CMTime)currentTime;
+- (void)willOutputAudioBuffer:(CMSampleBufferRef)audioBuffer finish:(BOOL)finish;
 
 @end
 
@@ -184,7 +185,6 @@ typedef NS_ENUM(NSUInteger, VEExportVideoProfileLevelType) {
 /** 设置播放速度，不会真正使视频变速。默认为1.0
  */
 @property (nonatomic, assign) float playRate;
-@property (nonatomic,assign) BOOL isAlwaysPlay;
 
 /** 可播放状态
  */

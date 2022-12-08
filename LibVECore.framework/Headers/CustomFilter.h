@@ -203,6 +203,10 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
 
 @property(nonatomic,assign)NSInteger            writingMode;
 @property(nonatomic,assign)BOOL isTemplateTheme;
+
+/**  设置解密字符串，如果该值没有设置，默认使用 name解密（该值适用于json ver >= 8版本，否则无效）
+ */
+@property (nonatomic, copy) NSString* decodeName;
 @end
 
 
