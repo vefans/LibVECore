@@ -39,8 +39,8 @@
 - (NSArray<FaceRecognition*>*)willOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer asset:(MediaAsset*)asset;
 - (NSArray<FaceRecognition*>*)willOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer asset:(MediaAsset*)asset currentTime:(CMTime)currentTime;
 - (void)willOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer currentTime:(CMTime)currentTime;
-- (void)willOutputAudioBuffer:(CMSampleBufferRef)audioBuffer finish:(BOOL)finish;
-
+- (void)willOutputAudioBuffer:(CMSampleBufferRef)audioBuffer asset:(MediaAsset*)asset finish:(BOOL)finish;
+- (void)willOutputAudioData:(NSMutableData*)audioData ;
 @end
 
 typedef NS_ENUM(NSInteger, ReverseAudioType) {
@@ -185,6 +185,7 @@ typedef NS_ENUM(NSUInteger, VEExportVideoProfileLevelType) {
 /** 设置播放速度，不会真正使视频变速。默认为1.0
  */
 @property (nonatomic, assign) float playRate;
+@property (nonatomic,assign) BOOL isAlwaysPlay;
 
 /** 可播放状态
  */
@@ -367,6 +368,8 @@ typedef NS_ENUM(NSUInteger, VEExportVideoProfileLevelType) {
  */
 - (NSMutableArray <Scene *>*) getScenes;
 
+- (NSMutableArray <MusicInfo *>*) getMusics;
+- (NSMutableArray <MusicInfo *>*) getDubbingMusics;
 /**添加音乐
  *  @abstract   Add musics.
  */
@@ -1008,4 +1011,8 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
  *  转换后的音频数据
  */
 +(NSMutableData *)audioRemixWithBufferArray:( NSMutableArray * ) bufferArray atSampleBit:( VEAudioSampleBits ) sampleBit;
+
+#pragma mark- 虚拟直播间 音频处理
+- (void)willOutputAudioData:(NSMutableData*)audioData;
+- (void)willAudioBuffer:(CMSampleBufferRef)audioBuffer  asset:(MediaAsset*)asset  finish:(BOOL)finish;
 @end

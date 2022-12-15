@@ -241,7 +241,7 @@ typedef NS_ENUM(NSInteger, VECoreTextAlignment){
  */
 @property (nonatomic ,assign) float fontSize;
 
-/**文字对齐方式
+/**文字对齐方式,default is VECoreTextAlignment_Horizontal_Center.
  */
 @property (nonatomic ,assign) VECoreTextAlignment textAlignment;
 

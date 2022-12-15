@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class CustomFilter;
+@class MusicInfo;
 typedef void(^LoadTracksFinishBlock)(float progress);
 typedef NSData*(^GetParticleHistoryDataBlock)(void);
 
@@ -1055,9 +1056,13 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
 /** 文本朗读音频文件地址
  */
 @property (nonatomic ,strong) NSString *speechPath;
+
 /** 是否为主题中的字幕的标识符
  */
 @property (nonatomic,assign) BOOL isTemplateTheme;
+
+@property (nonatomic, strong) NSMutableArray <MusicInfo *>*musics;
+
 @end
 
 @class KeyFrameAnimate;

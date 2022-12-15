@@ -126,6 +126,11 @@ typedef NS_ENUM(NSInteger, CameraSwipeDirection) {
     kCameraSwipeDirectionDown    = 3,
 };
 
+typedef NS_ENUM(NSInteger, CameraRecordType) {
+    kCameraRecordTypeWriteFile   = 0,
+    kCameraRecordTypeLivePush    = 1,
+};
+
 
 @protocol CameraManagerDelegate <NSObject>
 @optional
@@ -136,7 +141,7 @@ typedef NS_ENUM(NSInteger, CameraSwipeDirection) {
 
 /** 虚拟直播间,获取视频数据
  */
-- (CVPixelBufferRef)getPixelBufferFromTime:(float)time;
+- (CVPixelBufferRef)getPixelBufferFromTime:(float*)time;
 
 
 /** 摄像头捕获音频帧回调，可对帧进行处理
@@ -394,6 +399,10 @@ typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
 /** 设置录制文件路径，默认为Documents/videos
  */
 @property (nonatomic , strong) NSString *tempVideoFolderPath;
+
+/** 设置录制类型，默认为录制写入文件 kCameraRecordTypeWriteFile，参考：CameraRecordType
+ */
+@property (nonatomic , assign) CameraRecordType recordType;
 
 /** 设置Mask资源路径，可实现不规则显示
  *  改变录制预览视图位置大小后，都需要重新设置
