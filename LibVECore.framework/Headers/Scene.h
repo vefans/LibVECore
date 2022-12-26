@@ -282,7 +282,7 @@ typedef NS_ENUM(NSInteger, MusicType) {
  */
 @property (nonatomic,assign) BOOL speedHoldPitch;
 
-/**音量(0.0-1.0)，默认为1.0
+/**音量，默认为1.0
  */
 @property (nonatomic, assign) float volume;
 
@@ -568,9 +568,9 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 @property (nonatomic, assign) float timeFactor;
 
 /**
- *  Curve speed (0~2)
+ *  音量
  */
-@property (nonatomic, assign) float vloume;
+@property (nonatomic, assign) float volume;
 
 @end
 
@@ -637,6 +637,8 @@ typedef NS_ENUM(NSInteger, BlendEquation)
  *  Video frame callback. After implementing the callback, the url is invalid.
  */
 @property (nonatomic, copy) void(^videoPixelBufferRefHandler) (CVPixelBufferRef *pixelBufferRef);
+
+@property (nonatomic, copy) void(^audioDateHandler) (NSMutableData **audioDate);
 
 /**  资源类型 图片 或者 视频
  */
@@ -1365,6 +1367,12 @@ UIKIT_EXTERN API_DEPRECATED("Watermark is deprecated. Use Overlay instead", ios(
 /** 标识符
  */
 @property (nonatomic,strong) NSString*  identifier;
+
+/** 绑定场景标识符
+ *  绑定场景后，转场也作用于该画中画
+ *  After binding the scene, the transition also apply on the overlay.
+ */
+@property (nonatomic,strong) NSString*  identifierScene;
 
 /** 组Id
  */

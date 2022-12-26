@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class CustomFilter;
+@class MusicInfo;
 typedef void(^LoadTracksFinishBlock)(float progress);
 typedef NSData*(^GetParticleHistoryDataBlock)(void);
 
@@ -87,7 +88,7 @@ typedef NS_ENUM(NSInteger, CaptionTextAlignment) {
 };
 
 //字幕遮罩类型
-typedef NS_ENUM(NSInteger, CaptionTextmMaskType) {
+typedef NS_ENUM(NSInteger, CaptionTextMaskType) {
     CaptionTextMaskNone = 0,       //无效果
     CaptionTextMaskHollow,         //镂空效果
     
@@ -433,7 +434,7 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
 
 /** 遮罩类型
  */
-@property (nonatomic ,assign) CaptionTextmMaskType maskType;
+@property (nonatomic ,assign) CaptionTextMaskType maskType;
 
 /**文字阴影
  */
@@ -580,8 +581,8 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
 
 @end
 
-
 #pragma mark - Caption
+UIKIT_EXTERN API_DEPRECATED("Caption is deprecated. Use CaptionEx instead", ios(9.0, 9.0))
 @interface Caption : NSObject<NSCopying, NSMutableCopying>
 
 /** 标识符
@@ -848,7 +849,6 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
 
 @end
 
-
 @interface CaptionImage : NSObject<NSCopying, NSMutableCopying>
 
 
@@ -1055,10 +1055,23 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
 /** 文本朗读音频文件地址
  */
 @property (nonatomic ,strong) NSString *speechPath;
+
 /** 是否为主题中的字幕的标识符
  */
 @property (nonatomic,assign) BOOL isTemplateTheme;
+
+@property (nonatomic, strong) NSMutableArray <MusicInfo *>*musics;
+
+/**蒙版色，默认[UIColor clearColor]
+ */
+@property (nonatomic ,strong) UIColor *maskColor;
+
+/** 蒙版透明度(0.0〜1.0),默认为1.0
+ */
+@property (nonatomic ,assign) float maskAlpha;
+
 @end
+
 
 @class KeyFrameAnimate;
 

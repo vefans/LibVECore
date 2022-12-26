@@ -298,6 +298,14 @@
  */
 @property (nonatomic, assign) BOOL isHorizontalMirror;
 
+/** 配乐音量
+ */
+@property (nonatomic, assign) float volume;
+
+/** 配乐音量关键帧
+ */
+@property (nonatomic, strong) NSMutableArray <AudioVolumePosition *> *volumePointArray;
+
 - (instancetype)initWithCaption:(Caption *)caption;
 
 - (Caption *)getStickerWithFolderPath:(NSString *)folderPath;
