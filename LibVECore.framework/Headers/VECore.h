@@ -41,6 +41,7 @@
 - (void)willOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer currentTime:(CMTime)currentTime;
 - (void)willOutputAudioBuffer:(CMSampleBufferRef)audioBuffer asset:(MediaAsset*)asset finish:(BOOL)finish;
 - (void)willOutputAudioData:(NSMutableData*)audioData ;
+
 @end
 
 typedef NS_ENUM(NSInteger, ReverseAudioType) {
@@ -1015,4 +1016,6 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
 #pragma mark- 虚拟直播间 音频处理
 - (void)willOutputAudioData:(NSMutableData*)audioData;
 - (void)willAudioBuffer:(CMSampleBufferRef)audioBuffer  asset:(MediaAsset*)asset  finish:(BOOL)finish;
+- (void)deleteOverlay:(Overlay*)overlay;
+- (void)deleteMusic:(MusicInfo*)music;
 @end

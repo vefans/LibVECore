@@ -1070,6 +1070,10 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
  */
 @property (nonatomic ,assign) float maskAlpha;
 
+/** 是否是镂空文字蒙版
+ */
+@property (nonatomic, assign) BOOL mask;
+
 @end
 
 
