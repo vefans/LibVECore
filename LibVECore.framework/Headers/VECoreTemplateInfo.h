@@ -147,6 +147,12 @@ typedef NS_ENUM(NSInteger, MosaicType) {
  */
 @property (nonatomic,strong) NSString *identifier;
 
+/** 绑定场景标识符
+ *  绑定场景后，转场也作用于该画中画
+ *  After binding the scene, the transition also apply on the overlay.
+ */
+@property (nonatomic,strong) NSString*  identifierScene;
+
 /** 在虚拟视频中的开始时间
  */
 @property (nonatomic, assign) float timelineFrom;

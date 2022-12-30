@@ -1016,6 +1016,12 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
 #pragma mark- 虚拟直播间 音频处理
 - (void)willOutputAudioData:(NSMutableData*)audioData;
 - (void)willAudioBuffer:(CMSampleBufferRef)audioBuffer  asset:(MediaAsset*)asset  finish:(BOOL)finish;
+
+/** 仅当 isAlwaysPlay 为YES时有效
+ */
 - (void)deleteOverlay:(Overlay*)overlay;
+
+/** 仅当 isAlwaysPlay 为YES时有效
+ */
 - (void)deleteMusic:(MusicInfo*)music;
 @end
