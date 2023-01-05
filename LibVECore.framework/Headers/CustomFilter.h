@@ -207,6 +207,10 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
 /**  设置解密字符串，如果该值没有设置，默认使用 name解密（该值适用于json ver >= 8版本，否则无效）
  */
 @property (nonatomic, copy) NSString* decodeName;
+
+/**  为 YES 代表不含有内置纹理，默认 NO（该值适用于json ver >= 8版本，否则无效）
+ */
+@property(nonatomic,assign)BOOL isNit;
 @end
 
 
