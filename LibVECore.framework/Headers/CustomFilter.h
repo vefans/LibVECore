@@ -46,6 +46,8 @@
  */
 @property (nonatomic,strong) NSMutableArray<NSNumber *>*array;
 
+@property (nonatomic, strong) NSString *name;
+
 @end
 
 
@@ -200,6 +202,7 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
                             isRepeat:(BOOL)isRepeat
                           forUniform:(NSString *)uniform;
 
+@property (nonatomic, strong) NSMutableArray <ShaderParams *>*uniformParams;
 
 @property(nonatomic,assign)NSInteger            writingMode;
 @property(nonatomic,assign)BOOL isTemplateTheme;
