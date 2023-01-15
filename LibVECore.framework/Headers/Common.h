@@ -1074,6 +1074,10 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
  */
 @property (nonatomic, assign) BOOL mask;
 
+/** 层次，数值越大，越靠前，0 为最底层，默认为 0
+ */
+@property(nonatomic,assign) int level;
+
 @end
 
 
@@ -1158,6 +1162,10 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
 /** 持续时间（ PECore 默认与虚拟视频一致，不需设置）
  */
 @property (nonatomic,assign) CMTimeRange timeRange;
+
+/** 层次，数值越大，越靠前，0 为最底层，默认为 0
+ */
+@property(nonatomic,assign) int level;
 
 @end
 
@@ -1274,6 +1282,10 @@ typedef NS_ENUM(NSInteger, BlurType) {
  */
 @property (nonatomic, strong) NSArray<KeyFrameAnimate*>*  animate;
 
+/** 层次，数值越大，越靠前，0 为最底层，默认为 0
+ */
+@property(nonatomic,assign) int level;
+
 @end
 
 /** 马赛克
@@ -1314,6 +1326,11 @@ typedef NS_ENUM(NSInteger, BlurType) {
  */
 @property (nonatomic, strong) NSArray<KeyFrameAnimate*>*  animate;
 
+
+/** 层次，数值越大，越靠前，0 为最底层，默认为 0
+ */
+@property(nonatomic,assign) int level;
+
 @end
 
 /** 去水印
@@ -1334,6 +1351,10 @@ typedef NS_ENUM(NSInteger, BlurType) {
 /** 关键帧动画
  */
 @property (nonatomic, strong) NSArray<KeyFrameAnimate*>*  animate;
+
+/** 层次，数值越大，越靠前，0 为最底层，默认为 0
+ */
+@property(nonatomic,assign) int level;
 
 @end
 
@@ -1894,7 +1915,9 @@ typedef NS_ENUM(NSUInteger, EMITTER_TYPE)
  */
 -(NSMutableArray*)getPointsFromFilePath:(NSURL*)filePath;
 
-
+/** 层次，数值越大，越靠前，0 为最底层，默认为 0
+ */
+@property(nonatomic,assign) int level;
 
 @end
 
@@ -2428,6 +2451,10 @@ typedef NS_ENUM(NSInteger, DOODLEOP_PAINT_TYPE)
  *  @abstract   auto release memory.
  */
 @property (nonatomic,assign) BOOL autoRelease;
+
+/** 层次，数值越大，越靠前，0 为最底层，默认为 0
+ */
+@property(nonatomic,assign) int level;
 
 @end
 

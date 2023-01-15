@@ -1071,6 +1071,11 @@ typedef NS_ENUM(NSInteger, BlendEquation)
  */
 @property (nonatomic, strong) Panorama* panorama;
 
+
+/** 层次，数值越大，越靠前，0 为最底层，默认为 0
+ */
+@property(nonatomic,assign) int level;
+
 @end
 
 
@@ -1401,6 +1406,9 @@ UIKIT_EXTERN API_DEPRECATED("Watermark is deprecated. Use Overlay instead", ios(
 /** 是否为主题中的画中画的标识符
  */
 @property (nonatomic,assign) BOOL isTemplateTheme;
+
+
+
 @end
 
 

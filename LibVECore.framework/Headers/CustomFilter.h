@@ -251,6 +251,10 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
 
 @property (nonatomic, strong) NSMutableArray<CustomFilter*>* filterArray;
 @property (nonatomic, assign) BOOL isTemplateTheme;
+
+/** 层次，数值越大，越靠前，0 为最底层，默认为 0
+ */
+@property(nonatomic,assign) int level;
 @end
 
 
