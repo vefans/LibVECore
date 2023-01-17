@@ -159,7 +159,8 @@ typedef NS_ENUM(NSUInteger, VEExportVideoProfileLevelType) {
 
 @interface VECore : NSObject<NSCopying,NSMutableCopying>
 
-/*!
+-(void)setVirtualLiveAudio:( BOOL ) isSilence;
+ /*!
  @property audioSampleRate
  @abstract
     启用音频数据实时回调 （）
@@ -1020,8 +1021,10 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
 /** 仅当 isAlwaysPlay 为YES时有效
  */
 - (void)deleteOverlay:(Overlay*)overlay;
+- (void)replaceOverlay:(Overlay *)overlay withNewOverlay:(Overlay *)newOverlay;
 
 /** 仅当 isAlwaysPlay 为YES时有效
  */
 - (void)deleteMusic:(MusicInfo*)music;
+
 @end

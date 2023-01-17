@@ -324,6 +324,11 @@ typedef NS_ENUM(NSInteger, MusicType) {
 /** 是否为主题中的音乐的标识符
  */
 @property (nonatomic,assign) BOOL isTemplateTheme;
+
+/** 是否静音，只有 isAlwaysPlay 为 YES 时该属性生效，默认为：NO
+ */
+@property (nonatomic , assign) BOOL isMute;
+
 @end
 
 
@@ -1075,6 +1080,10 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 /** 层次，数值越大，越靠前，0 为最底层，默认为 0
  */
 @property(nonatomic,assign) int level;
+
+/** 是否静音，只有 isAlwaysPlay 为 YES 时该属性生效，默认为：NO
+ */
+@property (nonatomic , assign) BOOL isMute;
 
 @end
 
