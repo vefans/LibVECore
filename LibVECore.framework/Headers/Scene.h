@@ -105,7 +105,11 @@ typedef NS_ENUM(NSInteger, MediaReplaceableType) {
     MediaReplaceableType_Video,         //可替换视频
     MediaReplaceableType_Irreplaceable, //不可替换
 };
-
+typedef NS_ENUM(NSInteger, ThemeMediaType) {
+    ThemeMediaType_Loop,    //循环
+    ThemeMediaType_Head,    //片头
+    ThemeMediaType_End,     //片尾
+};
 @class Transition;
 @class MediaAsset;
 @class CurvedSpeedPoint;
@@ -1416,7 +1420,9 @@ UIKIT_EXTERN API_DEPRECATED("Watermark is deprecated. Use Overlay instead", ios(
  */
 @property (nonatomic,assign) BOOL isTemplateTheme;
 
-
+/**主题的画中画使用改参数： 0:循环 1:片头 2:片尾
+ */
+@property (nonatomic , assign)ThemeMediaType themeMaterialType;
 
 @end
 

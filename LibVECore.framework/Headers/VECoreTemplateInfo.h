@@ -177,6 +177,9 @@ typedef NS_ENUM(NSInteger, MosaicType) {
  */
 @property(nonatomic,assign)float          fRailLevelY;
 
+/**主题的画中画使用改参数： 0:循环 1:片头 2:片尾
+ */
+@property (nonatomic , assign)ThemeMediaType themeMaterialType;
 @end
 
 #pragma mark - 涂鸦笔

@@ -52,6 +52,11 @@ NS_ASSUME_NONNULL_BEGIN
 -(instancetype)initWithParticle:( Particle * ) particle;
 
 - (Particle *)getCustomParticleWithFolderPath:(NSString *)folderPath;
+
+/** 层次，数值越大，越靠前，0 为最底层，默认为 0
+ */
+@property(nonatomic,assign) int level;
+
 @end
 
 NS_ASSUME_NONNULL_END
