@@ -119,6 +119,7 @@ typedef NS_ENUM(NSInteger, ThemeMediaType) {
 typedef NS_ENUM(NSInteger, SceneType) {
     SceneTypeNormal,    //默认
     SceneTypeEnd,       //片尾
+    SceneTypeHead,      //片头
 };
 
 @interface Scene : NSObject
