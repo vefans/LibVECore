@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface VECoreTemplateParticle : NSObject
 
+@property (nonatomic, assign)VEPIPType  pipType;
+
 /**资源分类ID
  *  导出模板用
  */

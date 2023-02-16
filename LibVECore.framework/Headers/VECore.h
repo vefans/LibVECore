@@ -1027,4 +1027,7 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
  */
 - (void)deleteMusic:(MusicInfo*)music;
 
+//是否启用层级调整 （ true为是 ）
++(void)setIsEnableAdjustmentHierarchical:(BOOL)enableAdjustmentHierarchical;
+
 @end

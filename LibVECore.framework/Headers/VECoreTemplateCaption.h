@@ -45,6 +45,10 @@
 
 @interface VECoreTemplateSubtitle : Caption
 
+/** 层次，数值越大，越靠前，0 为最底层，默认为 0
+ */
+@property(nonatomic,assign) int level;
+
 /** 在虚拟视频中的开始时间
  */
 @property (nonatomic, assign) float timelineFrom;
@@ -123,6 +127,8 @@
 
 - (CaptionEx *)getSubtitleExWithFolderPath:(NSString *)folderPath videoSize:(CGSize)videoSize;
 
+
+
 @end
 
 @interface VECoreTemplateWordItem : CaptionItem
@@ -185,6 +191,8 @@
 
 @interface VECoreTemplateSubtitleEx : CaptionEx
 
+@property (nonatomic, assign)VEPIPType  pipType;
+
 /** 在虚拟视频中的开始时间
  */
 @property (nonatomic, assign) float timelineFrom;
@@ -226,6 +234,8 @@
 
 @interface VECoreTemplateSubtitleTemplate : CaptionEx
 
+@property(nonatomic, assign)VEPIPType  pipType;
+
 /** 在虚拟视频中的开始时间
  */
 @property (nonatomic, assign) float timelineFrom;
@@ -259,6 +269,8 @@
 @end
 
 @interface VECoreTemplateSticker : CaptionEx
+
+@property(nonatomic, assign)VEPIPType   pipType;
 
 /** 在虚拟视频中的开始时间
  */

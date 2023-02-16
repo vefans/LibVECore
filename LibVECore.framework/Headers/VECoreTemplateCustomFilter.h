@@ -25,6 +25,8 @@
 
 @interface VECoreTemplateCustomFilter : CustomFilter
 
+@property(nonatomic, assign)VEPIPType   pipType;
+
 @property (nonatomic, assign) float tag;
 
 /** 在虚拟视频中的开始时间
@@ -58,6 +60,8 @@
 #pragma mark - 特效
 @interface VECoreTemplateSpecialEffect : CustomFilter
 
+@property (nonatomic, assign)VEPIPType  pipType;
+
 /** 特效覆盖类型
  */
 @property (nonatomic, assign) NSInteger nApplyRange;
@@ -86,6 +90,10 @@
 - (CustomFilter *)getCustomFilterWithFolderPath:(NSString *)folderPath;
 
 - (CustomMultipleFilter *)getCustomMultipleFilterWithFolderPath:(NSString *)folderPath;
+
+/** 层次，数值越大，越靠前，0 为最底层，默认为 0
+ */
+@property(nonatomic,assign) int level;
 
 @end
 

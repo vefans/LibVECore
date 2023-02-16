@@ -8,6 +8,7 @@
 
 #import <LibVECore/Scene.h>
 #import <LibVECore/VECoreTemplateCustomFilter.h>
+#import <LibVECore/VECoreTemplateCaption.h>
 #import <LibVECore/VECoreTemplateMask.h>
 
 @interface VECoreTemplateMediaAssetBlur : MediaAssetBlur
@@ -193,6 +194,10 @@
  */
 @property (nonatomic, strong) NSMutableArray <VECoreTemplateMediaAssetAnimate*>*animates;
 
+/**文字蒙版
+ */
+@property (nonatomic, strong)VECoreTemplateSubtitleEx * maskCaption;
+
 /**设置媒体自定义特效。
  */
 @property (nonatomic, strong) NSMutableArray <VECoreTemplateSpecialEffect*>* specialEffects;
@@ -209,13 +214,10 @@
  */
 @property (nonatomic, strong) VECoreTemplateMask *maskObject;
 
-
-
 /**智能抠像
  */
 @property (nonatomic, assign) BOOL autoSegment;
 @property (nonatomic, assign) kAutoSegmentType segmentType;
-
 
 - (instancetype)initWithMediaAsset:(MediaAsset *)asset;
 

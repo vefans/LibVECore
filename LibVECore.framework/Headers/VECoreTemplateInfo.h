@@ -143,6 +143,8 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 #pragma mark - 画中画
 @interface VECoreTemplateOverlay : NSObject
 
+@property(nonatomic, assign)VEPIPType   pipType;
+
 /** 标识符
  */
 @property (nonatomic,strong) NSString *identifier;
@@ -250,6 +252,8 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 
 @interface VECoreTemplateDoodleEx : NSObject
 
+@property(nonatomic, assign)VEPIPType   pipType;
+
 /** 在虚拟视频中的开始时间
  */
 @property (nonatomic, assign) float timelineFrom;
@@ -281,6 +285,10 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 - (instancetype)initWithDoodleEx:(DoodleEx *)doodleEx;
 
 - (DoodleEx *)getDoodleExWithFolderPath:(NSString *)folderPath;
+
+/** 层次，数值越大，越靠前，0 为最底层，默认为 0
+ */
+@property(nonatomic,assign) int level;
 
 @end
 
@@ -316,6 +324,10 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 
 #pragma mark - 调色
 @interface VECoreTemplateToningInfo : ToningInfo
+
+@property(nonatomic, assign)VEPIPType   pipType;
+
+@property(nonatomic, strong)VECoreTemplateCustomFilter *filter;
 
 /** 在虚拟视频中的开始时间
  */
@@ -573,6 +585,8 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 /** 粒子
 */
 @property (nonatomic, strong) NSMutableArray <VECoreTemplateParticle *>*particles;
+
+@property (nonatomic, strong) NSMutableArray    *pipList;
 
 /**
  Creates and returns a new instance of the receiver from a json.

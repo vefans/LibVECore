@@ -13,6 +13,21 @@
 #import <LibVECore/MaskObject.h>
 #import <LibVECore/Common.h>
 
+typedef NS_ENUM(NSInteger, VEPIPType){
+    VEPIPType_Collage = 0,//画中画
+    VEPIPType_Effect = 1,//特效
+    VEPIPType_Ton = 2,//调色
+    VEPIPType_Subtitle = 3,//字幕
+    VEPIPType_Sticker = 4,//贴纸
+    VEPIPType_Graffti = 5,//标记
+    VEPIPType_Doodle = 6,//涂鸦
+    VEPIPType_Filter    = 7,//滤镜
+    VEPIPType_Particles = 8,//粒子
+
+    VEPIPType_TEXT_SPEECH = 9,//文字(识别字幕)
+    VEPIPType_WordTemplate = 10,//文字模板
+};
+
 typedef NS_ENUM(NSInteger, VEAudioSampleBits) {
     VEAudioSampleBits_16i,       //16位 short
     VEAudioSampleBits_32i,      //32位 int
@@ -635,6 +650,10 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 
 @interface MediaAsset : NSObject<NSCopying, NSMutableCopying>
 
+@property(nonatomic, strong)NSMutableArray * addTexts;
+@property(nonatomic, strong)NSURL   * addTextOriginalImageUrl;
+@property(nonatomic, assign)CGRect  addTextCrop;
+ 
 /** 标识符
  */
 @property (nonatomic,strong) NSString*  identifier;
@@ -1425,6 +1444,8 @@ UIKIT_EXTERN API_DEPRECATED("Watermark is deprecated. Use Overlay instead", ios(
  */
 @property (nonatomic , assign)ThemeMediaType themeMaterialType;
 
+
+
 @end
 
 
@@ -1524,5 +1545,6 @@ UIKIT_EXTERN API_DEPRECATED("Watermark is deprecated. Use Overlay instead", ios(
 /** 视频的元信息
  */
 @property (nonatomic, strong) NSArray <AVMetadataItem*>*previewVideoMetadata;
+@property (nonatomic, assign) BOOL isPuzzle;
  
 @end
