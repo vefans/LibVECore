@@ -515,7 +515,7 @@ typedef NS_ENUM(NSInteger, BlendEquation)
  */
 @property (nonatomic, assign) float saturation;
 
-/** 暗角 ranges from 0.0  to 1.0 (max vignette), with 0.0 as the normal level
+/** 暗角 ranges from -1.0  to 1.0 (max vignette), with 0.0 as the normal level
  */
 @property (nonatomic, assign) float vignette;
 
@@ -650,10 +650,11 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 
 @interface MediaAsset : NSObject<NSCopying, NSMutableCopying>
 
-@property(nonatomic, strong)NSMutableArray * addTexts;
+@property(nonatomic, strong)NSMutableArray * addTextList;
 @property(nonatomic, strong)NSURL   * addTextOriginalImageUrl;
 @property(nonatomic, assign)CGRect  addTextCrop;
- 
+@property (nonatomic, assign) BOOL addTextReplaceType;
+
 /** 标识符
  */
 @property (nonatomic,strong) NSString*  identifier;

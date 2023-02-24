@@ -400,6 +400,10 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 #pragma mark - 媒体信息
 @interface VECoreTemplateMediaInfo : NSObject
 
+@property(nonatomic, strong)NSMutableArray * addTextList;
+@property(nonatomic, strong)NSURL   * addTextOriginalImageUrl;
+@property(nonatomic, assign)CGRect  addTextCrop;
+
 /** 组Id
  */
 @property (nonatomic, assign) int groupId;

@@ -8,6 +8,111 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
+@interface FaceRecognition : NSObject
+
+/**
+ 瘦脸大眼，面部轮廓左耳上方 (参考坐标点：0)
+ */
+@property (nonatomic,assign)CGPoint left0;
+/**
+ 瘦脸大眼，面部轮廓左耳下方 (参考坐标点：5)
+ */
+@property (nonatomic,assign)CGPoint left1;
+/**
+ 瘦脸大眼，面部轮廓嘴巴左边 (参考坐标点：8)
+ */
+@property (nonatomic,assign)CGPoint left2;
+/**
+ 瘦脸大眼，面部轮廓嘴巴左下侧 (参考坐标点：12)
+ */
+@property (nonatomic,assign)CGPoint left3;
+/**
+ 瘦脸大眼，面部轮廓下巴底部中间 (参考坐标点：16)
+ */
+@property (nonatomic,assign)CGPoint bottom;
+/**
+ 瘦脸大眼，面部轮廓右耳上方 (参考坐标点：32)
+ */
+@property (nonatomic,assign)CGPoint right0;
+/**
+ 瘦脸大眼，面部轮廓右耳下方 (参考坐标点：27)
+ */
+@property (nonatomic,assign)CGPoint right1;
+/**
+ 瘦脸大眼，面部轮廓嘴巴右边 (参考坐标点：23)
+ */
+@property (nonatomic,assign)CGPoint right2;
+/**
+ 瘦脸大眼，面部轮廓嘴巴右下侧 (参考坐标点：19)
+ */
+@property (nonatomic,assign)CGPoint right3;
+
+/**
+ 瘦脸大眼，面部轮廓鼻尖 (参考坐标点：46)
+ */
+@property(nonatomic,assign) CGPoint nose;
+
+/**
+ 瘦脸大眼，左瞳孔 (参考坐标点：74)
+ */
+@property(nonatomic,assign) CGPoint leftPupil;
+
+/**
+ 瘦脸大眼，右瞳孔 (参考坐标点：77)
+ */
+@property(nonatomic,assign) CGPoint rightPupil;
+
+/**
+ 五官美颜，左眼相关坐标点 (参考坐标点：55，54，53，52，57，56)，如果设置该参数，需要通过 FaceAttribute 控制效果
+ */
+@property (nonatomic,strong) NSMutableArray* eyeLeftPoints;
+
+/**
+ 五官美颜，右眼相关坐标点 (参考坐标点：58，59，60，61，62，63)，如果设置该参数，需要通过 FaceAttribute 控制效果
+ */
+@property (nonatomic,strong) NSMutableArray* eyeRightPoints;
+
+/**
+ 五官美颜，左脸相关坐标点 (参考坐标点：0，4，9，12)，如果设置该参数，需要通过 FaceAttribute 控制效果
+ */
+@property (nonatomic,strong) NSMutableArray* cheekLeftPoints;
+
+/**
+ 五官美颜，右脸相关坐标点 (参考坐标点：32，27，22，20)，如果设置该参数，需要通过 FaceAttribute 控制效果
+ */
+@property (nonatomic,strong) NSMutableArray* cheekRightPoints;
+
+/**
+ 五官美颜，下巴底部相关坐标点 (参考坐标点：16)，如果设置该参数，需要通过 FaceAttribute 控制效果
+ */
+@property (nonatomic,strong) NSMutableArray* chinLowerPoints;
+
+/**
+ 五官美颜，嘴唇外圈相关坐标点 (参考坐标点：84，86，88，90，92，94)，如果设置该参数，需要通过 FaceAttribute 控制效果
+ */
+@property (nonatomic,strong) NSMutableArray* lipOuterPoints;
+
+/**
+ 五官美颜，上唇下沿中间相关坐标点 (参考坐标点：98)，如果设置该参数，需要通过 FaceAttribute 控制效果
+ */
+@property (nonatomic,strong) NSMutableArray* lipUpperLowPoints;
+
+/**
+ 五官美颜，下唇上沿中间相关坐标点 (参考坐标点：102)，如果设置该参数，需要通过 FaceAttribute 控制效果
+ */
+@property (nonatomic,strong) NSMutableArray* lipLowerUppPoints;
+
+/**
+ 五官美颜，鼻子相关坐标点 (参考坐标点：47，51)，如果设置该参数，需要通过 FaceAttribute 控制效果
+ */
+@property (nonatomic,strong) NSMutableArray* nosePoints;
+
+/** 五官美颜  该脸的位置
+ */
+@property (nonatomic,assign) CGRect faceRect;
+
+@end
+
 @class CustomFilter;
 @class MusicInfo;
 typedef void(^LoadTracksFinishBlock)(float progress);
@@ -1126,7 +1231,7 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
  */
 @property (nonatomic, assign) float tint;
 
-/** 阴影 ranges from 0.0 to 1.0 , with 0.0 as the normal level
+/** 阴影 ranges from -1.0 to 1.0 , with 0.0 as the normal level
  *  设置媒体动画后，该属性无效，以动画中的shadows值为准
  */
 @property (nonatomic, assign) float shadows;
