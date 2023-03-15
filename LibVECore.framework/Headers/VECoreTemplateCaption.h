@@ -51,11 +51,11 @@
 
 /** 在虚拟视频中的开始时间
  */
-@property (nonatomic, assign) float timelineFrom;
+@property (nonatomic, assign) Float64 timelineFrom;
 
 /** 在虚拟视频中的结束时间
  */
-@property (nonatomic, assign) float timelineTo;
+@property (nonatomic, assign) Float64 timelineTo;
 
 /**字幕位置，默认为视频中心CGPointMake(0.5, 0.5)
  * 设置字幕动画组后，该属性无效，以动画中的rect值为准
@@ -195,11 +195,11 @@
 
 /** 在虚拟视频中的开始时间
  */
-@property (nonatomic, assign) float timelineFrom;
+@property (nonatomic, assign) Float64 timelineFrom;
 
 /** 在虚拟视频中的结束时间
  */
-@property (nonatomic, assign) float timelineTo;
+@property (nonatomic, assign) Float64 timelineTo;
 
 /** 显示区域
  */
@@ -238,11 +238,11 @@
 
 /** 在虚拟视频中的开始时间
  */
-@property (nonatomic, assign) float timelineFrom;
+@property (nonatomic, assign) Float64 timelineFrom;
 
 /** 在虚拟视频中的结束时间
  */
-@property (nonatomic, assign) float timelineTo;
+@property (nonatomic, assign) Float64 timelineTo;
 
 /** 显示区域
  */
@@ -274,11 +274,11 @@
 
 /** 在虚拟视频中的开始时间
  */
-@property (nonatomic, assign) float timelineFrom;
+@property (nonatomic, assign) Float64 timelineFrom;
 
 /** 在虚拟视频中的结束时间
  */
-@property (nonatomic, assign) float timelineTo;
+@property (nonatomic, assign) Float64 timelineTo;
 
 /**贴纸位置，默认为视频中心CGPointMake(0.5, 0.5)
  * 设置贴纸动画组后，该属性无效，以动画中的rect值为准
@@ -317,6 +317,11 @@
 /** 配乐音量关键帧
  */
 @property (nonatomic, strong) NSMutableArray <AudioVolumePosition *> *volumePointArray;
+
+/** 字幕类型
+ *  导出模板用。1表示 遮挡贴纸
+ */
+@property (nonatomic, assign) NSInteger stickerType;
 
 - (instancetype)initWithCaption:(Caption *)caption;
 

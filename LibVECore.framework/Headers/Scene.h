@@ -806,18 +806,18 @@ typedef NS_ENUM(NSInteger, BlendEquation)
  */
 @property (nonatomic, assign) float brightness;
 
-/** 对比度 ranges from 0.0 to 4.0 (max contrast), with 1.0 as the normal level
+/** 对比度 ranges from -1.0 to 1.0 (max contrast), with 0.0 as the normal level
  *  如果 adjustments 不为空，该属性无效；如果设置媒体动画后，该属性无效，以动画中的 contrast值 或者 adjustments为准
  */
 @property (readwrite, nonatomic) float contrast;
 
-/** 饱和度 ranges from 0.0 (fully desaturated) to 2.0 (max saturation), with 1.0 as the normal level
+/** 饱和度 ranges from -1.0 (fully desaturated) to 1.0 (max saturation), with 0.0 as the normal level
  *  如果 adjustments 不为空，该属性无效；如果设置媒体动画后，该属性无效，以动画中的 saturation值 或者 adjustments值为准
 */
 @property (nonatomic, assign) float saturation;
 
 
-/** 暗角 ranges from 0.0 to 1.0 , with 0.0 as the normal level
+/** 暗角 ranges from -1.0 to 1.0 , with 0.0 as the normal level
  *  如果 adjustments 不为空，该属性无效；如果设置媒体动画后，该属性无效，以动画中的 vignette值 或者 adjustments值为准
  */
 @property (nonatomic, assign) float vignette;
@@ -1546,6 +1546,12 @@ UIKIT_EXTERN API_DEPRECATED("Watermark is deprecated. Use Overlay instead", ios(
 /** 视频的元信息
  */
 @property (nonatomic, strong) NSArray <AVMetadataItem*>*previewVideoMetadata;
+@property (nonatomic, assign) BOOL isPuzzleSplitScreen;
 @property (nonatomic, assign) BOOL isPuzzle;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *desc;
+@property (nonatomic, strong) NSString *author;
+@property (nonatomic, assign) long createTime;
+@property (nonatomic, assign) long updateTime;
  
 @end

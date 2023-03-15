@@ -25,6 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithFilter:(CustomMultipleFilter *)filter;
 - (CustomMultipleFilter *)getFilterWithFolderPath:(NSString *)folderPath;
 
+- (instancetype)initWithCustomFilter:(CustomFilter *)filter;
+- (CustomFilter *)getCustomFilterWithFolderPath:(NSString *)folderPath;
+
 @end
 
 NS_ASSUME_NONNULL_END

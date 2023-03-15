@@ -108,11 +108,11 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 
 /** 在虚拟视频中的开始时间
  */
-@property (nonatomic, assign) float timelineFrom;
+@property (nonatomic, assign) Float64 timelineFrom;
 
 /** 在虚拟视频中的结束时间
  */
-@property (nonatomic, assign) float timelineTo;
+@property (nonatomic, assign) Float64 timelineTo;
 
 /** 设置模糊强度/马赛克大小0.0~1.0
  */
@@ -157,11 +157,11 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 
 /** 在虚拟视频中的开始时间
  */
-@property (nonatomic, assign) float timelineFrom;
+@property (nonatomic, assign) Float64 timelineFrom;
 
 /** 在虚拟视频中的结束时间
  */
-@property (nonatomic, assign) float timelineTo;
+@property (nonatomic, assign) Float64 timelineTo;
 
 /** 组Id
  */
@@ -256,11 +256,11 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 
 /** 在虚拟视频中的开始时间
  */
-@property (nonatomic, assign) float timelineFrom;
+@property (nonatomic, assign) Float64 timelineFrom;
 
 /** 在虚拟视频中的结束时间
  */
-@property (nonatomic, assign) float timelineTo;
+@property (nonatomic, assign) Float64 timelineTo;
 
 /** 涂鸦显示位置 ，(0, 0)为左上角 (1, 1)为右下角，默认为 （0，0，1，1），如果有设置关键帧动画 animation ，以关键帧动画参数为准
  *  @abstract   doodle rect, (0, 0) is the upper left corner (1, 1) is the lower right corner.default is (0, 0, 1, 1)
@@ -331,11 +331,11 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 
 /** 在虚拟视频中的开始时间
  */
-@property (nonatomic, assign) float timelineFrom;
+@property (nonatomic, assign) Float64 timelineFrom;
 
 /** 在虚拟视频中的结束时间
  */
-@property (nonatomic, assign) float timelineTo;
+@property (nonatomic, assign) Float64 timelineTo;
 
 /** 关键帧动画
  */
@@ -414,11 +414,11 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 
 /** 在虚拟视频中的开始时间
  */
-@property (nonatomic, assign) float timelineFrom;
+@property (nonatomic, assign) Float64 timelineFrom;
 
 /** 在虚拟视频中的结束时间
  */
-@property (nonatomic, assign) float timelineTo;
+@property (nonatomic, assign) Float64 timelineTo;
 
 /**  资源地址 图片  视频
  */
@@ -435,11 +435,11 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 
 /** 在虚拟视频中的开始时间
  */
-@property (nonatomic, assign) float timelineFrom;
+@property (nonatomic, assign) Float64 timelineFrom;
 
 /** 在虚拟视频中的结束时间
  */
-@property (nonatomic, assign) float timelineTo;
+@property (nonatomic, assign) Float64 timelineTo;
 
 @property (nonatomic, strong) NSString *coverPath;
 
@@ -479,7 +479,7 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 
 /** 时长
  */
-@property (nonatomic, assign) float duration;
+@property (nonatomic, assign) Float64 duration;
 
 /** 分辨率
  */

@@ -287,6 +287,9 @@
 */
 @property (nonatomic, strong) NSMutableArray <DoodleEx *>* maskDoodleArray;
 
+
+@property (nonatomic, assign) UIEdgeInsets  innerborder;
+
 @end
 
 

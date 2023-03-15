@@ -245,4 +245,5 @@ typedef NS_ENUM(NSInteger, VECoreTextAlignment){
  */
 @property (nonatomic ,assign) VECoreTextAlignment textAlignment;
 
+//@property (nonatomic,weak)id maskCaptionSubtitle;
 @end

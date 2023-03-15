@@ -16,12 +16,12 @@
 /** 设置模糊在虚拟视频中的开始时间
  *  设置媒体动画后，该属性无效，以动画中的atTime为准
  */
-@property (nonatomic, assign) float timelineFrom;
+@property (nonatomic, assign) Float64 timelineFrom;
 
 /** 设置模糊在虚拟视频中的结束时间
  *  设置媒体动画后，该属性无效，以动画中的atTime为准
  */
-@property (nonatomic, assign) float timelineTo;
+@property (nonatomic, assign) Float64 timelineTo;
 
 - (instancetype)initWithMediaBlur:(MediaAssetBlur *)blur;
 
@@ -50,7 +50,7 @@
  */
 @property (nonatomic, assign) float tint;
 
-/** 阴影 ranges from 0.0 to 1.0 , with 0.0 as the normal level
+/** 阴影 ranges from-1.0 to 1.0 , with 0.0 as the normal level
  *  设置媒体动画后，该属性无效，以动画中的shadows值为准
  */
 @property (nonatomic, assign) float shadows;
@@ -114,11 +114,11 @@
 
 /** 媒体截取开始时间
  */
-@property (nonatomic, assign) float trimTimeStart;
+@property (nonatomic, assign) Float64 trimTimeStart;
 
 /** 媒体截取结束时间
  */
-@property (nonatomic, assign) float trimTimeEnd;
+@property (nonatomic, assign) Float64 trimTimeEnd;
 
 /**视频(或图片)裁剪范围。默认为CGRectMake(0, 0, 1, 1)
  * 设置媒体动画后，该属性无效，以动画中的crop为准
@@ -160,7 +160,7 @@
  */
 @property (nonatomic, assign) float tint;
 
-/** 阴影 ranges from 0.0 to 1.0 , with 0.0 as the normal level
+/** 阴影 ranges from -1.0 to 1.0 , with 0.0 as the normal level
  *  设置媒体动画后，该属性无效，以动画中的shadows值为准
  */
 @property (nonatomic, assign) float shadows;

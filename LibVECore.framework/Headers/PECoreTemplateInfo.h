@@ -62,13 +62,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, strong) NSMutableArray <PECoreTemplateOverlay*>* doodles;
 /** 滤镜
-*/
+ */
 @property (nonatomic, strong) PECoreTemplateFilter* filter;
 /** 特效
-*/
+ */
 @property (nonatomic, strong) NSMutableArray <VECoreTemplateSpecialEffect*>* specialEffects;
 /** 调色
-*/
+ */
 @property (nonatomic, strong) VECoreTemplateToningInfo  *adjust;
 
 /** 涂鸦笔
@@ -95,7 +95,14 @@ NS_ASSUME_NONNULL_BEGIN
  the inner object to json object.
  */
 - (id)objectToJSONObject;
-
+@property (nonatomic, assign) BOOL isPuzzleSplitScreen;
+@property (nonatomic, assign) BOOL isPuzzle;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *desc;
+@property (nonatomic, strong) NSString *author;
+@property (nonatomic, assign) long createTime;
+@property (nonatomic, assign) long updateTime;
+@property (nonatomic, assign) float asp;
 @end
 
 NS_ASSUME_NONNULL_END

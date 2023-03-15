@@ -1009,11 +1009,15 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
     CaptionExTypeStickers,  //贴纸
     CaptionExTypeCoverTemplate, //封面模板
     CaptionExTypeCover,     //封面普通字幕
+    CaptionExTypeOcclusionStickers,  //遮挡贴纸
 };
 
 //(由0-1个底图+多个文字组成)
 
 @interface CaptionEx : NSObject<NSCopying, NSMutableCopying>
+
+@property(nonatomic, strong)NSURL *faceImageURL;
+
 /** 标识符
  *  记录最后操作的时间,用于二次build时排序依据 (最后操作的置顶)
  */
@@ -1200,18 +1204,18 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
  */
 @property (nonatomic, assign) float brightness;
 
-/** 对比度 ranges from 0.0 to 4.0 (max contrast), with 1.0 as the normal level
+/** 对比度 ranges from -1.0 to 1.0 (max contrast), with 0.0 as the normal level
  *  设置媒体动画后，该属性无效，以动画中的contrast值为准
  */
 @property (readwrite, nonatomic) float contrast;
 
-/** 饱和度 ranges from 0.0 (fully desaturated) to 2.0 (max saturation), with 1.0 as the normal level
+/** 饱和度 ranges from -1.0 (fully desaturated) to 1.0 (max saturation), with 0.0 as the normal level
  *  设置媒体动画后，该属性无效，以动画中的saturation值为准
 */
 @property (nonatomic, assign) float saturation;
 
 
-/** 暗角 ranges from 0.0 to 1.0 , with 0.0 as the normal level
+/** 暗角 ranges from -1.0 to 1.0 , with 0.0 as the normal level
  *  设置媒体动画后，该属性无效，以动画中的vignette值为准
  */
 @property (nonatomic, assign) float vignette;
@@ -1640,8 +1644,9 @@ typedef NS_ENUM(NSUInteger, FlowTrackType) {
 /** 流动效果持续时间
  */
 @property (nonatomic,assign) float  duration;
-
-
+/** 流动循环类型（0：混合，1：回力镖，2：圆形）
+ */
+@property (nonatomic,assign) NSInteger repeat ;
 /** 加载轨迹完成回调
  */
 @property (nonatomic, copy) LoadTracksFinishBlock loadTracksFinishBlock;

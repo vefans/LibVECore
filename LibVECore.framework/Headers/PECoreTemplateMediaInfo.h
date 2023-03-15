@@ -21,15 +21,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** 在虚拟视频中的开始时间
  */
-@property (nonatomic, assign) float timelineFrom;
+@property (nonatomic, assign) Float64 timelineFrom;
 
 /** 在虚拟视频中的结束时间
  */
-@property (nonatomic, assign) float timelineTo;
+@property (nonatomic, assign) Float64 timelineTo;
 
 /**  资源地址 图片  视频
  */
 @property (nonatomic, strong) NSString *path;
+@property(nonatomic, strong)NSMutableArray * addTextList;
+@property(nonatomic, strong)NSURL   * addTextOriginalImageUrl;
+@property(nonatomic, assign)CGRect  addTextCrop;
 @end
 
 NS_ASSUME_NONNULL_END

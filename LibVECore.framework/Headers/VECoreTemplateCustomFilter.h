@@ -31,11 +31,11 @@
 
 /** 在虚拟视频中的开始时间
  */
-@property (nonatomic, assign) float timelineFrom;
+@property (nonatomic, assign) Float64 timelineFrom;
 
 /** 在虚拟视频中的结束时间
  */
-@property (nonatomic, assign) float timelineTo;
+@property (nonatomic, assign) Float64 timelineTo;
 
 /** 内置滤镜素材
  */
@@ -68,11 +68,11 @@
 
 /** 在虚拟视频中的开始时间
  */
-@property (nonatomic, assign) float timelineFrom;
+@property (nonatomic, assign) Float64 timelineFrom;
 
 /** 在虚拟视频中的结束时间
  */
-@property (nonatomic, assign) float timelineTo;
+@property (nonatomic, assign) Float64 timelineTo;
 
 /** 特效脚本名称
  */

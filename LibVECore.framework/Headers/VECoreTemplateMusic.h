@@ -16,19 +16,19 @@
 
 /** 在虚拟视频中的开始时间
  */
-@property (nonatomic, assign) float timelineFrom;
+@property (nonatomic, assign) Float64 timelineFrom;
 
 /** 在虚拟视频中的结束时间
  */
-@property (nonatomic, assign) float timelineTo;
+@property (nonatomic, assign) Float64 timelineTo;
 
 /** 截取开始时间
  */
-@property (nonatomic, assign) float trimTimeStart;
+@property (nonatomic, assign) Float64 trimTimeStart;
 
 /** 截取结束时间
  */
-@property (nonatomic, assign) float trimTimeEnd;
+@property (nonatomic, assign) Float64 trimTimeEnd;
 
 /**配乐开头淡入淡出时长，默认为2.0秒
  */

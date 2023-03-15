@@ -697,6 +697,8 @@ typedef NS_ENUM(NSUInteger, VEExportVideoProfileLevelType) {
 */
 - (CGSize) getEditorVideoSize;
 
+- (int)getFps;
+
 /** 设置视频背景色，默认为黑色
  @abstract  Set the video background color, the default is black.
  *params: red        红色(0.0~1.0)

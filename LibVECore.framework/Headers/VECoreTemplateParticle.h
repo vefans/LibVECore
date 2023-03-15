@@ -28,11 +28,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *folderPath;
 /** 在虚拟视频中的开始时间
  */
-@property (nonatomic, assign) float timelineFrom;
+@property (nonatomic, assign) Float64 timelineFrom;
 
 /** 在虚拟视频中的结束时间
  */
-@property (nonatomic, assign) float timelineTo;
+@property (nonatomic, assign) Float64 timelineTo;
 /**粒子名字
  */
 @property (nonatomic, strong) NSString *name;
