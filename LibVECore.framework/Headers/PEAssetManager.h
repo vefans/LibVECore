@@ -272,7 +272,9 @@
 /**景深
  */
 @property (nonatomic, assign) BOOL isDOF;
-
+/**隐藏
+ */
+@property (nonatomic, assign) BOOL isHidden;
 
 @property (nonatomic, strong) NSURL * manualKeyPath;
 
@@ -314,6 +316,8 @@
 /** 媒体
  */
 @property (nonatomic,strong) PEImageAsset*  asset;
-
+/** 图片透明度占比
+ */
+@property (nonatomic,assign)float alphaPixelPercent;
 
 @end

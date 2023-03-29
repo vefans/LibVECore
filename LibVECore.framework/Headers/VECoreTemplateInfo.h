@@ -213,7 +213,10 @@ typedef NS_ENUM(NSInteger, MosaicType) {
  *   @abstract  hardness，default is 0.0
  */
 @property (nonatomic,assign)float hardness;
-
+@property (nonatomic,assign)float density;
+@property (nonatomic,assign)int   glowCenterColor;
+@property (nonatomic,assign)float diameter;
+@property (nonatomic,assign)float ratio;
 /** 画笔颜色 ，默认为白色
  *  @abstract   color, default white
  */
@@ -289,7 +292,6 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 /** 层次，数值越大，越靠前，0 为最底层，默认为 0
  */
 @property(nonatomic,assign) int level;
-
 @end
 
 #pragma mark - 水印

@@ -125,7 +125,6 @@ typedef NS_ENUM(NSInteger, CameraRecordType) {
  */
 - (void) movieFileTrimTime:(float)trimTime;
 
-- (void) refresFinsishState;
 @end
 
 typedef NS_ENUM(NSInteger,BeautifyState) {

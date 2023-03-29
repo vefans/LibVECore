@@ -1016,6 +1016,7 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
 
 @interface CaptionEx : NSObject<NSCopying, NSMutableCopying>
 
+@property(nonatomic, strong)id         faceRegModel;
 @property(nonatomic, strong)NSURL *faceImageURL;
 
 /** 标识符

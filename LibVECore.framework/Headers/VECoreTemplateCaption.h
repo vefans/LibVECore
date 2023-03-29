@@ -323,6 +323,8 @@
  */
 @property (nonatomic, assign) NSInteger stickerType;
 
+@property (nonatomic, strong) NSString * faceImagePath;
+
 - (instancetype)initWithCaption:(Caption *)caption;
 
 - (Caption *)getStickerWithFolderPath:(NSString *)folderPath;
