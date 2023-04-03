@@ -655,6 +655,8 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 @property(nonatomic, assign)CGRect  addTextCrop;
 @property (nonatomic, assign) BOOL addTextReplaceType;
 
+@property (nonatomic, strong)NSMutableArray *occlusionStickers;
+
 /** 标识符
  */
 @property (nonatomic,strong) NSString*  identifier;

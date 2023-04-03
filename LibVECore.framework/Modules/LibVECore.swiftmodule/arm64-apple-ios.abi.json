@@ -304,10 +304,311 @@
   "ConstValues": [
     {
       "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 490,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 756,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1451,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1465,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1574,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1614,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1858,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2216,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2426,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
       "kind": "BooleanLiteral",
       "offset": 2636,
       "length": 5,
       "value": "false"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2827,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "StringLiteral",
+      "offset": 3050,
+      "length": 8,
+      "value": "\"出错\""
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3403,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4381,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4417,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5398,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5547,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5587,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6046,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6604,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "StringLiteral",
+      "offset": 6641,
+      "length": 83,
+      "value": "\"VideoWriter reverseVideo: warning, could not get imageBuffer from SampleBuffer...\""
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "StringLiteral",
+      "offset": 6900,
+      "length": 68,
+      "value": "\"VideoWriter reverseVideo: warning, could not append imageBuffer...\""
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7243,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7312,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 21042,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 21249,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 21673,
+      "length": 2,
+      "value": "16"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 21717,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 21760,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 22363,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 23203,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 23239,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 23556,
+      "length": 5,
+      "value": "44100"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 23598,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 23633,
+      "length": 6,
+      "value": "128000"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 23990,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 24139,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 24179,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 24543,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 24670,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 24984,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 25410,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 25971,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/macosteam\/Documents\/Source\/Pod-UISource\/Pod版UISource\/Core_Lottie_Sources\/LibVECore\/LibVECore\/Class\/ReverAudioManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 26092,
+      "length": 4,
+      "value": "true"
     }
   ]
 }
