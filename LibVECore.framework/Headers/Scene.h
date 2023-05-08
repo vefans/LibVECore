@@ -650,6 +650,8 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 
 @interface MediaAsset : NSObject<NSCopying, NSMutableCopying>
 
+@property(nonatomic, strong)MusicInfo   *webmMusicinfo;
+
 @property(nonatomic, strong)NSMutableArray * addTextList;
 @property(nonatomic, strong)NSURL   * addTextOriginalImageUrl;
 @property(nonatomic, assign)CGRect  addTextCrop;
@@ -1549,6 +1551,7 @@ UIKIT_EXTERN API_DEPRECATED("Watermark is deprecated. Use Overlay instead", ios(
  */
 @property (nonatomic, strong) NSArray <AVMetadataItem*>*previewVideoMetadata;
 @property (nonatomic, assign) BOOL isPuzzleSplitScreen;
+@property (nonatomic, assign) BOOL isTemplate;
 @property (nonatomic, assign) BOOL isPuzzle;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *desc;

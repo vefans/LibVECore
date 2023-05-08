@@ -205,6 +205,12 @@
  */
 @property (nonatomic, assign) CGRect showRectF;
 
+/** 虚拟视频分辨率
+ */
+@property (nonatomic, assign) CGSize previewSize;
+
+@property (nonatomic, assign) Float64 fontSizeCorrect;
+
 /** 字幕图片文件夹路径
  *  多张图片的情况，与imageName、timeArray及frameArray配合使用
  */

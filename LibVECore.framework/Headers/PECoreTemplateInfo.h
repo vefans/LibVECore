@@ -96,6 +96,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (id)objectToJSONObject;
 @property (nonatomic, assign) BOOL isPuzzleSplitScreen;
+@property (nonatomic, assign) BOOL isTemplate;
 @property (nonatomic, assign) BOOL isPuzzle;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *desc;

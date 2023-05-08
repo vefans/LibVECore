@@ -42,7 +42,7 @@
 - (void)willOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer currentTime:(CMTime)currentTime type:(int)type;
 - (void)willOutputAudioBuffer:(CMSampleBufferRef)audioBuffer asset:(MediaAsset*)asset finish:(BOOL)finish;
 - (void)willOutputAudioData:(NSMutableData*)audioData ;
-
+- (void)willOutputAudioData:(NSMutableData*)audioData sampleRate:(int)sampleRate bitsPerChannel:(int)bitsPerChannel channels:(int)channels asset:(MediaAsset*)asset finish:(BOOL)finish;
 @end
 
 typedef NS_ENUM(NSInteger, ReverseAudioType) {
@@ -66,6 +66,12 @@ typedef NS_ENUM(NSUInteger, VEExportVideoProfileLevelType) {
     VEExportVideoProfileLevelTypeBaseline,  //基本
     VEExportVideoProfileLevelTypeMain,      //主流
     VEExportVideoProfileLevelTypeHigh,      //高级
+};
+
+typedef NS_ENUM(NSUInteger, VEExportVideoDynamicRangeType) {
+    VEExportVideoDynamicRangeType_SDR,
+    VEExportVideoDynamicRangeType_HDR10,
+    VEExportVideoDynamicRangeType_HLG  API_DEPRECATED_WITH_REPLACEMENT("VEExportVideoHDRType_HLG",ios(14.0, 14.0)),
 };
 
 /*!
@@ -139,6 +145,14 @@ typedef NS_ENUM(NSUInteger, VEExportVideoProfileLevelType) {
     Encoding type set for exported video. The default value is VEExportVideoCodecTypeH264.
  */
 @property (nonatomic, assign) VEExportVideoCodecType videoCodecType;
+
+/*!
+ @property dynamicRangeType
+ @abstract
+    动态范围类型，默认为VEExportVideoDynamicRangeType_SDR。
+    The default value is VEExportVideoDynamicRangeType_SDR.
+ */
+@property (nonatomic, assign) VEExportVideoDynamicRangeType dynamicRangeType;
 
 /*!
  @property videoProfileLevelType
@@ -1020,11 +1034,14 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
 #pragma mark- 虚拟直播间 音频处理
 - (void)willOutputAudioData:(NSMutableData*)audioData;
 - (void)willAudioBuffer:(CMSampleBufferRef)audioBuffer  asset:(MediaAsset*)asset  finish:(BOOL)finish;
+#pragma mark- 音频单独播放
+- (void)willOutputAudioData:(NSMutableData*)audioData sampleRate:(int)sampleRate bitsPerChannel:(int)bitsPerChannel channels:(int)channels asset:(MediaAsset*)asset finish:(BOOL)finish;
 
 /** 仅当 isAlwaysPlay 为YES时有效
  */
 - (void)deleteOverlay:(Overlay*)overlay;
 - (void)replaceOverlay:(Overlay *)overlay withNewOverlay:(Overlay *)newOverlay;
+- (void)deleteMediaAsset:(MediaAsset*)media;
 
 /** 仅当 isAlwaysPlay 为YES时有效
  */
@@ -1032,5 +1049,8 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
 
 //是否启用层级调整 （ true为是 ）
 +(void)setIsEnableAdjustmentHierarchical:(BOOL)enableAdjustmentHierarchical;
+
++(UIImage *)rotateImage:( UIImage * ) image atPitch:( float ) pitch atYaw:( float ) yaw atRoll:( float ) rolll  atCenter:( CGPoint ) center;
++(UIImage *)perspectiveTransform:( UIImage * ) image atArray:( NSMutableArray * ) array;
 
 @end

@@ -26,8 +26,8 @@ typedef NS_ENUM(NSInteger, CameraRecordType) {
     kCameraRecordTypeLivePush    = 1,
 };
 
-
 @protocol CameraManagerDelegate <NSObject>
+
 @optional
 
 /** 虚拟直播间,获取音频数据
@@ -61,49 +61,30 @@ typedef NS_ENUM(NSInteger, CameraRecordType) {
  */
 - (void)willOutputStickerSampleBuffer:(CMSampleBufferRef)sampleBuffer;
 
-/** 滑动切换到的当前滤镜Index
- */
-- (void) swipeCurrentFilter:(Filter *) filter;
-
 /** 聚焦时回调
  */
-- (void) tapTheScreenFocus;
+- (void)tapTheScreenFocus;
 
 /** 启用预览(startCamera)后回调。
  *  可用于收到此回调前，界面上录制相关按钮不可用。
  */
-- (void) cameraScreenDid;
+- (void)cameraScreenDid;
 
 /** 当前录制时间
  */
-- (void) currentTime:(float) time;
+- (void)currentTime:(float) time;
 
--(void)pinchZoom:( float ) videoZoomFactor;
-
-/** 滑动录制预览视图开始
- *  @params swipDirection 滑动方向
- */
-- (void) swipeScreenBegin:(CameraSwipeDirection)swipDirection;
-
-/** 滑动录制预览视图中
- *  @param percent  滑动动预览视图中的位置
- *  @param swipDirection 滑动方向
- */
-- (void) swipeScreenChanging:(float)percent swipDirection:(CameraSwipeDirection)swipDirection;
-
-/** 滑动录制预览视图结束
- *  @params swipDirection 滑动方向
- */
-- (void) swipeScreenChangeEnd:(CameraSwipeDirection)swipDirection;
+- (void)pinchZoom:( float ) videoZoomFactor;
 
 /** 相机水印回调，实时添加图片等
  *  @params view    在此view上添加
  *  @params time    当前录制总时间
  */
 - (void)waterMarkProcessingCompletionBlockWithView:(UIView *)view withTime:(float)time;
+
 /** 已经录制的时间
  */
-- (float ) recordTime;
+- (float)recordTime;
 
 /** 录制开始
  */
@@ -120,10 +101,6 @@ typedef NS_ENUM(NSInteger, CameraRecordType) {
 /** 录制失败
  */
 - (void) movieRecordFailed:(NSError *)error;
-
-/** 多格录制时，为处理多格音频同步问题，而截取掉的时长
- */
-- (void) movieFileTrimTime:(float)trimTime;
 
 @end
 
@@ -174,13 +151,16 @@ typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
  *  使用该功能时，须所有滤镜资源都在本地，不能是网络资源
  */
 @property (nonatomic, assign) BOOL swipeScreenIsChangeFilter;
+
 /** 白平衡
  */
 @property (nonatomic , assign) int whiteBalanceMode;
+
 /*
  *temperature 取值一般在1000k-30000k之间；tint表示色度值，取值范围-150-150，越低越偏蓝，越高越偏红
  */
 -(void)setWhiteBlanceUseTemperature:(CGFloat)temperature;
+
 /** 前后置摄像头
  */
 @property (nonatomic , assign) AVCaptureDevicePosition position;
@@ -245,6 +225,7 @@ typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
 /** VECore美颜  美白参数 0.0 - 1.0 默认 0.3
  */
 @property (nonatomic, assign) float brightness;
+
 /** VECore美颜  磨皮参数 0.0 - 1.0 默认0.6
  */
 @property (nonatomic, assign) float blur;
@@ -254,7 +235,7 @@ typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
 @property (nonatomic, assign) float beautyToneIntensity;
 
 /** VECore大眼  大眼参数0.0~1.0,默认为0.3
-    只支持iOS11.0以上 
+    只支持iOS11.0以上
  */
 @property (nonatomic, assign) float beautyBigEye;
 
@@ -267,7 +248,7 @@ typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
 /** VECore五官美颜  检测到的所有人脸都使用当前设置
     只支持iOS11.0以上
  */
-@property (nonatomic, strong)  FaceAttribute* faceAttribute;
+@property (nonatomic, strong) FaceAttribute* faceAttribute;
 
 /** 调色
 */
@@ -281,14 +262,6 @@ typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
 /** 摄像头方向，默认为kUP
  */
 @property (nonatomic , assign) CameraDirection cameraDirection;
-
-/** 用于处理多格子录制音频同步问题
- *  录制前音频播放器时间,播放器播放前设置
- */
-@property (nonatomic , assign) CMTime audioTime_beforePlay;
-/** 停止录制时音频播放器时间,调用stopRecording前设置
- */
-@property (nonatomic , assign) CMTime audioTime_stopPlay;
 
 /** 设置录制文件路径，默认为Documents/videos
  */
@@ -357,61 +330,7 @@ typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
                    captureAsYUV: (BOOL) isCaptureAsYUV
                disableTakePhoto: (BOOL) disableTakePhoto
           enableCameraWaterMark: (BOOL) enableCameraWaterMark
-                 enableVECoreBeauty: (BOOL) enableVECoreBeauty;
-
-/** 录制之前准备，用于设置录制相关参数。
- *  @param  frame           录制预览视图位置大小
- *  @param  superview       源视图控制器。如要设置Mask资源路径，则该view的背景色必须为透明色([UIColor clearColor])。
- *  @param  bitrate         录制码率
- *  @param  fps             录制帧率
- *  @param  mode            录制视频方式：YES:正方形   NO:全屏
- *  @param  cameraSize      视频预览分辨率
- *  @param  outputSize      录制视频输出分辨率
- *  @param  isFront         是否是前置摄像头录制
- *  @param  faceU           是否使用faceU   20190906 为了方便sdk的使用，将faceU移到sdk外
- *  @param  isCaptureAsYUV  输出图像格式。YES:kCVPixelFormatType_420YpCbCr8BiPlanarFullRange NO:kCVPixelFormatType_32BGRA
- *  @param  disableTakePhoto 是否禁用相机拍照功能
- *  特别提醒: cameraSize,outputSize 请传入相同的宽高比,cameraSize和outputSize的宽高比不一样会导致输出视频变形
- */
-- (void) prepareRecordWithFrame: (CGRect) frame
-                      superview: (UIView *) superview
-                        bitrate: (int) bitrate
-                            fps: (int) fps
-                           mode: (BOOL) mode
-                     cameraSize: (CGSize) cameraSize
-                     outputSize: (CGSize) outputSize
-                        isFront: (BOOL) isFront
-                          faceU: (BOOL) faceU
-                   captureAsYUV: (BOOL) isCaptureAsYUV
-               disableTakePhoto: (BOOL) disableTakePhoto DEPRECATED_MSG_ATTRIBUTE("Use prepareRecordWithFrame:superview:bitrate:fps:isSquareRecord:cameraSize:outputSize:isFront:captureAsYUV:disableTakePhoto:enableCameraWaterMark: instead.");
-
-/** 录制之前准备，用于设置录制相关参数。
- *  @param  frame           录制预览视图位置大小
- *  @param  superview       源视图控制器。如要设置Mask资源路径，则该view的背景色必须为透明色([UIColor clearColor])。
- *  @param  bitrate         录制码率
- *  @param  fps             录制帧率
- *  @param  mode            录制视频方式：YES:正方形   NO:全屏
- *  @param  cameraSize      视频预览分辨率
- *  @param  outputSize      录制视频输出分辨率
- *  @param  isFront         是否是前置摄像头录制
- *  @param  faceU           是否使用faceU   20190906 为了方便sdk的使用，将faceU移到sdk外
- *  @param  isCaptureAsYUV  输出图像格式。YES:kCVPixelFormatType_420YpCbCr8BiPlanarFullRange NO:kCVPixelFormatType_32BGRA
- *  @param  disableTakePhoto 是否禁用相机拍照功能
- *  @param  enableCameraWaterMark 是否启用相机水印功能
- *  特别提醒: cameraSize,outputSize 请传入相同的宽高比,cameraSize和outputSize的宽高比不一样会导致输出视频变形
- */
-- (void) prepareRecordWithFrame:(CGRect)frame
-                      superview:(UIView *)superview
-                        bitrate: (int) bitrate
-                            fps: (int) fps
-                           mode: (BOOL) mode
-                     cameraSize: (CGSize)cameraSize
-                     outputSize: (CGSize)outputSize
-                        isFront:(BOOL) isFront
-                          faceU:(BOOL) faceU
-                   captureAsYUV:(BOOL) isCaptureAsYUV
-               disableTakePhoto:(BOOL) disableTakePhoto
-              enableCameraWaterMark:(BOOL)enableCameraWaterMark DEPRECATED_MSG_ATTRIBUTE("Use prepareRecordWithFrame:superview:bitrate:fps:isSquareRecord:cameraSize:outputSize:isFront:captureAsYUV:disableTakePhoto:enableCameraWaterMark: instead.");;
+             enableVECoreBeauty: (BOOL) enableVECoreBeauty;
 
 /** 设置设备当前方向
  */
@@ -422,7 +341,7 @@ typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
  */
 - (void)setMusic:(NSURL *)musicUrl;
 
-/** 播放音乐  rate（极慢:1.0/3.0 慢:1.0/2.0 正常:1.0 快:2.0 极快:3.0） 
+/** 播放音乐  rate（极慢:1.0/3.0 慢:1.0/2.0 正常:1.0 快:2.0 极快:3.0）
  */
 - (void)playMusic:(float)rate;
 
@@ -488,6 +407,7 @@ typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
 /** 移除滤镜组
  */
 - (void) removeFilters;
+
 /** MV特效
  */
 - (void)setMVEffects:(NSMutableArray <MovieEffect *> *)mvEffects;
@@ -574,13 +494,8 @@ typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
                   Filter:(Filter *)obj
    withCompletionHandler:(void (^)(UIImage *processedImage))block;
 
--(void)setCameraScreenCornerRadius:( float )cornerRadius;
+- (CGRect)getCameraManagerFrame;
 
--(CGRect)getCameraManagerFrame;
-
--(void)addCameraScreenWithView:( UIView * ) view;
-
--(float)getZoomFactor;
+- (float)getZoomFactor;
 
 @end
-

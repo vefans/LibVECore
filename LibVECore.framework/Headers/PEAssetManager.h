@@ -52,6 +52,7 @@
 
 @interface PEImageAsset : NSObject<NSCopying, NSMutableCopying>
 
+@property (nonatomic , assign) MediaAssetType mediaType;
 /** 标识符
  */
 @property (nonatomic,strong) NSString*  identifier;
@@ -106,6 +107,9 @@
 /** 图片透明度(0.0〜1.0),默认为1.0
  */
 @property (nonatomic,assign) float alpha;
+
+
+@property (nonatomic,assign) double  fileScale;
 
 /** 调色
  */
@@ -191,6 +195,7 @@
                           leftBottom:(CGPoint)leftBottom;
 
 
+@property (nonatomic,assign) int  level;
 /**设置媒体自定义多滤镜数组，一个滤镜可以由多个滤镜组合而成。
  */
 @property (nonatomic, strong) NSMutableArray <CustomMultipleFilter*>* customMultipleFilterArray;
