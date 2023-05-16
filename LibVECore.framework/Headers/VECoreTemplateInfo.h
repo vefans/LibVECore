@@ -292,6 +292,7 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 /** 层次，数值越大，越靠前，0 为最底层，默认为 0
  */
 @property(nonatomic,assign) int level;
+@property(nonatomic,assign) float scale;
 @end
 
 #pragma mark - 水印
