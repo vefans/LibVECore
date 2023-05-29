@@ -46,39 +46,44 @@
 @property (nonatomic, assign) CGRect cropRect;
 
 /** 色调 ranges from -1.0 to 1.0 , with 0.0 as the normal level
- *  设置媒体动画后，该属性无效，以动画中的tint值为准
  */
 @property (nonatomic, assign) float tint;
 
 /** 阴影 ranges from-1.0 to 1.0 , with 0.0 as the normal level
- *  设置媒体动画后，该属性无效，以动画中的shadows值为准
  */
 @property (nonatomic, assign) float shadows;
 
 /** 颗粒 ranges from 0.0 to 1.0 , with 0.0 as the normal level
- *  设置媒体动画后，该属性无效，以动画中的graininess值为准
  */
 @property (nonatomic, assign) float graininess;
 
 /** 高光 ranges from -1.0 to 1.0 , with 0.0 as the normal level
- *  设置媒体动画后，该属性无效，以动画中的highlight值为准
  */
 @property (nonatomic, assign) float highlight;
 
 /** 光感 ranges from -1.0 to 1.0 , with 0.0 as the normal level
- *  设置媒体动画后，该属性无效，以动画中的lightSensation值为准
  */
 @property (nonatomic, assign) float lightSensation;
 
 /** 褪色 ranges from 0.0 to 1.0 (max fade) , with 0.0 as the normal level
- *  设置媒体动画后，该属性无效，以动画中的fade值为准
  */
 @property (nonatomic, assign) float fade;
 
 /** 曝光 ranges from -1.0 to 1.0 (max exposure) , with 0.0 as the normal level
- *  设置媒体动画后，该属性无效，以动画中的fade值为准
  */
 @property (nonatomic, assign) float exposure;
+
+/** hsl
+ */
+@property (nonatomic, strong) HSL*  hsl;
+
+/** highLight shadow
+ */
+@property (nonatomic, strong) HighLightShadow*  highLight_shadow;
+
+/** rgb曲线调节
+ */
+@property (nonatomic, strong) RGBCurve*  rgb;
 
 /** 设置模糊强度0.0~1.0，默认为0.0
  */
@@ -189,6 +194,21 @@
  *  设置媒体动画后，该属性无效，以动画中的fade值为准
  */
 @property (nonatomic, assign) float exposure;
+
+/** hsl
+ *  设置媒体动画后，该属性无效，以动画中的 hsl 值为准
+ */
+@property (nonatomic, strong) HSL*  hsl;
+
+/** highLight shadow
+ *  设置媒体动画后，该属性无效，以动画中的 highLight_shadow 值为准
+ */
+@property (nonatomic, strong) HighLightShadow*  highLight_shadow;
+
+/** rgb曲线调节
+ *  设置媒体动画后，该属性无效，以动画中的 rgb 值为准
+ */
+@property (nonatomic, strong) RGBCurve*  rgb;
 
 /** 媒体动画组
  */

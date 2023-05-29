@@ -111,6 +111,15 @@
  */
 @property (nonatomic,assign) CGRect faceRect;
 
+/// Yaw angle, left -, right +. See  https://github.com/alibaba/MNNKit/blob/master/doc/face_ypr.png
+@property (nonatomic, assign) CGFloat yaw;
+
+/// Pitch angle, up -, down +. See https://github.com/alibaba/MNNKit/blob/master/doc/face_ypr.png
+@property (nonatomic, assign) CGFloat pitch;
+
+/// Roll angle, left -, right +. See https://github.com/alibaba/MNNKit/blob/master/doc/face_ypr.png
+@property (nonatomic, assign) CGFloat roll;
+
 @end
 
 @class CustomFilter;
@@ -170,6 +179,7 @@ typedef NS_ENUM(NSInteger, OverlayType) {
     OverlayTypeFrame,    //边框
     OverlayTypeSuperposi, //叠加
     OverlayTypeBackground, //画中画背景
+    OverlayTypeWebm,    //webm
 };
 
 typedef NS_ENUM(NSInteger, kAutoSegmentType) {
@@ -1196,6 +1206,9 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
 
 
 @class KeyFrameAnimate;
+@class HSL;
+@class HighLightShadow;
+@class RGBCurve;
 
 /** 调色
 */
@@ -1264,9 +1277,24 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
 @property (nonatomic, assign) float fade;
 
 /** 曝光 ranges from -1.0 to 1.0 (max exposure) , with 0.0 as the normal level
- *  设置媒体动画后，该属性无效，以动画中的fade值为准
+ *  设置媒体动画后，该属性无效，以动画中的exposure值为准
  */
 @property (nonatomic, assign) float exposure;
+
+/** hsl
+ *  设置媒体动画后，该属性无效，以动画中的 hsl 值为准
+ */
+@property (nonatomic, strong) HSL*  hsl;
+
+/** highLight shadow
+ *  设置媒体动画后，该属性无效，以动画中的 highLight_shadow 值为准
+ */
+@property (nonatomic, strong) HighLightShadow*  highLight_shadow;
+
+/** rgb曲线调节
+ *  设置媒体动画后，该属性无效，以动画中的 rgb 值为准
+ */
+@property (nonatomic, strong) RGBCurve*  rgb;
 
 
 /** 关键帧动画
@@ -2623,5 +2651,152 @@ typedef NS_ENUM(NSInteger, DOODLEOP_PAINT_TYPE)
  */
 @property (nonatomic,assign) float aspectRatio;
 
+
+@end
+
+
+//视频轨道信息
+@interface WebmVideoTracks : NSObject
+
+@property (nonatomic, assign) int alphaMode;
+@property (nonatomic, assign) int width;
+@property (nonatomic, assign) int height;
+@property (nonatomic, strong) NSString *coderID;
+
+@end
+
+//音频轨道信息
+@interface WebmAudioTracks : NSObject
+
+@property (nonatomic, assign) int bitDepth;
+@property (nonatomic, assign) int samplingFrequency;
+@property (nonatomic, assign) int channels;
+@property (nonatomic, strong) NSString *coderID;
+
+@end
+
+//视频和音频信息
+@interface WebmMediaInfo : NSObject
+
+//时长（单位：毫秒）
+@property (nonatomic, assign) double duration;
+@property (nonatomic, strong) WebmVideoTracks *videoTrack;
+@property (nonatomic, strong) WebmAudioTracks *audioTrack;
+
+@end
+
+
+typedef NS_ENUM(NSInteger, WebmDecodeDataType) {
+    WebmDecodeDataTypeVideo,
+    WebmDecodeDataTypeAudio,
+};
+
+//webm解码后的视频和音频数据
+@interface WebmDecodeData : NSObject<NSCopying, NSMutableCopying>
+
+//解码后的数据类型
+@property (nonatomic, assign) WebmDecodeDataType type;
+
+//解码后的数据宽度，仅仅只有解码数据为视频帧时有效
+@property (nonatomic, assign) int width;
+
+//解码后的数据高度，仅仅只有解码数据为视频帧时有效
+@property (nonatomic, assign) int height;
+
+//解码后的数据
+@property (nonatomic, strong) NSData* data;
+
+//解码数据对应的时间（单位：毫秒）
+@property (nonatomic, assign) float time;
+
+@end
+
+@interface HSL : NSObject<NSCopying, NSMutableCopying>
+
+
+/** 调节色调/饱和度/亮度 ，-1.0～1.0，默认为（0.0，0.0，0.0）
+ *  @abstract   color, default 0.0，0.0，0.0
+ */
+@property (nonatomic ,strong) NSArray* hsl_red;
+
+/** 调节色调/饱和度/亮度 ，-1.0～1.0，默认为（0.0，0.0，0.0）
+ *  @abstract   color, default 0.0，0.0，0.0
+ */
+@property (nonatomic ,strong) NSArray* hsl_orange;
+
+/** 调节色调/饱和度/亮度 ，-1.0～1.0，默认为（0.0，0.0，0.0）
+ *  @abstract   color, default 0.0，0.0，0.0
+ */
+@property (nonatomic ,strong) NSArray* hsl_yellow;
+
+/** 调节色调/饱和度/亮度 ，-1.0～1.0，默认为（0.0，0.0，0.0）
+ *  @abstract   color, default 0.0，0.0，0.0
+ */
+@property (nonatomic ,strong) NSArray* hsl_green;
+
+/** 调节色调/饱和度/亮度 ，-1.0～1.0，默认为（0.0，0.0，0.0）
+ *  @abstract   color, default 0.0，0.0，0.0
+ */
+@property (nonatomic ,strong) NSArray* hsl_blue;
+
+/** 调节色调/饱和度/亮度 ，-1.0～1.0，默认为（0.0，0.0，0.0）
+ *  @abstract   color, default 0.0，0.0，0.0
+ */
+@property (nonatomic ,strong) NSArray* hsl_purple;
+
+/** 调节色调/饱和度/亮度 ，-1.0～1.0，默认为（0.0，0.0，0.0）
+ *  @abstract   color, default 0.0，0.0，0.0
+ */
+@property (nonatomic ,strong) NSArray* hsl_magenta;
+
+@end
+
+
+@interface HighLightShadow : NSObject<NSCopying, NSMutableCopying>
+
+/** 高光模式 ，默认为0
+ *  @abstract   light mode, default 0
+ */
+@property (nonatomic, assign) int light_mode;
+
+/** 高光值 ，默认为0
+ *  @abstract   light value, default 0
+ */
+@property (nonatomic, assign) float light_value;
+
+/** 阴影模式 ，默认为0
+ *  @abstract   shadow mode, default 0
+ */
+@property (nonatomic, assign) int shadow_mode;
+
+/** 阴影值 ，默认为0
+ *  @abstract   shadow value, default 0
+ */
+@property (nonatomic, assign) float shadow_value;
+
+@end
+
+
+@interface RGBCurve : NSObject<NSCopying, NSMutableCopying>
+
+/** 高光模式 ，默认为0
+ *  @abstract   light mode, default 0
+ */
+@property (nonatomic, strong) NSMutableArray* rgb_yellow;
+
+/** 高光值 ，默认为0
+ *  @abstract   light value, default 0
+ */
+@property (nonatomic, strong) NSMutableArray* rgb_red;
+
+/** 阴影模式 ，默认为0
+ *  @abstract   shadow mode, default 0
+ */
+@property (nonatomic, strong) NSMutableArray* rgb_green;
+
+/** 阴影值 ，默认为0
+ *  @abstract   shadow value, default 0
+ */
+@property (nonatomic, strong) NSMutableArray* rgb_blue;
 
 @end

@@ -83,7 +83,13 @@
  */
 @property (nonatomic, assign) float speed;
 
+/**  设置shader中 uniform sampler2D 类型参数（纹理参数）
+ */
 @property (nonatomic, strong) NSMutableArray *uniformParam;
+
+/** 指定特效重复次数 - 主要用于高斯模糊
+ */
+@property (nonatomic, strong) NSMutableArray *repeatArray;
 
 - (instancetype)initWithCustomFilter:(CustomFilter *)filter;
 

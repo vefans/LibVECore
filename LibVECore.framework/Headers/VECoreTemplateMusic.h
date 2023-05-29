@@ -8,6 +8,15 @@
 
 #import <LibVECore/Scene.h>
 
+@interface VECoreTempleCaptionExTTS : CaptionExTTS
+
+-(instancetype)initCaptionExTTS:( CaptionExTTS * ) captionExTTS;
+
+
+-(CaptionExTTS *)getCaptionExTTSWithFolderPath:( NSString * ) folderPath;
+
+@end
+
 @interface VECoreTemplateMusic : MusicInfo
 
 /** 地址
@@ -38,8 +47,13 @@
  */
 @property (nonatomic, assign) float fadeOutDuration;
 
+//@property (nonatomic, strong) VECoreTempleCaptionExTTS *captionTTS;
+
 - (instancetype)initWithMusic:(MusicInfo *)music;
 
 - (MusicInfo *)getMusicInfoWithFolderPath:(NSString *)folderPath;
 
 @end
+
+
+

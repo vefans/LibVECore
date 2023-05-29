@@ -22,27 +22,64 @@
 
 @optional
 
+/** 状态
+ */
 - (void)statusChanged:(VECore *)sender status:(VECoreStatus)status;
-
 - (void)statusChanged:(VECoreStatus)status;
 
+/** 当前时间
+ */
 - (void)progressCurrentTime:(CMTime)currentTime;
-
 - (void)progress:(VECore *)sender currentTime:(CMTime)currentTime;
-//可在customDrawLayer上实时添加layer，实现自绘
+
+/** 可在customDrawLayer上实时添加layer，实现自绘
+ */
 - (void)progressCurrentTime:(CMTime)currentTime customDrawLayer:(CALayer *)customDrawLayer;
 
+/** 播放结束
+ */
 - (void)playToEnd;
 
 - (void)tapPlayerView;
 
+/*
+ *  以下两个函数功能类似，如果两个同时存在，优先使用第二个，主要功能有两点：1.人像分割 2.人脸取点
+ *  @params pixelBuffer    视频帧
+ *  @params asset          媒体对象
+ *  @params currentTime    时间
+ */
 - (NSArray<FaceRecognition*>*)willOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer asset:(MediaAsset*)asset;
 - (NSArray<FaceRecognition*>*)willOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer asset:(MediaAsset*)asset currentTime:(CMTime)currentTime;
+
+/*
+ *  用于目标追踪等，根据时间线获取虚拟视频画面
+ *  @params pixelBuffer    视频帧
+ *  @params currentTime    时间
+ */
 - (void)willOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer currentTime:(CMTime)currentTime;
+
+/*
+ *  用于人脸贴纸（人脸贴纸遮挡），在遮挡人脸之前根据当前虚拟视频画面获取人脸位置信息
+ *  @params pixelBuffer    视频帧
+ *  @params currentTime    时间
+ *  @params type           类型，仅仅只有类型为 CaptionExTypeOcclusionStickers 时生效
+ */
 - (void)willOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer currentTime:(CMTime)currentTime type:(int)type;
+
+/*
+ *  用于虚拟直播间，返回媒体的音频数据，当 finish 为 YES 时，由外部进行混音后在播放
+ *  @params audioBuffer    媒体音频数据
+ *  @params asset          媒体对象
+ *  @params finish         是否为最后一个媒体，当 finish 为 YES 时，由外部进行混音后在播放
+ */
 - (void)willOutputAudioBuffer:(CMSampleBufferRef)audioBuffer asset:(MediaAsset*)asset finish:(BOOL)finish;
+
+/*
+ *  用于虚拟直播间，返回多个媒体混音的结果，可直接播放
+ *  @params audioData    多个媒体混音的结果
+ */
 - (void)willOutputAudioData:(NSMutableData*)audioData ;
-- (void)willOutputAudioData:(NSMutableData*)audioData sampleRate:(int)sampleRate bitsPerChannel:(int)bitsPerChannel channels:(int)channels asset:(MediaAsset*)asset finish:(BOOL)finish;
+
 @end
 
 typedef NS_ENUM(NSInteger, ReverseAudioType) {
@@ -1053,4 +1090,12 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
 +(UIImage *)rotateImage:( UIImage * ) image atPitch:( float ) pitch atYaw:( float ) yaw atRoll:( float ) rolll  atCenter:( CGPoint ) center;
 +(UIImage *)perspectiveTransform:( UIImage * ) image atArray:( NSMutableArray * ) array;
 
+//获取webm媒体信息
++(WebmMediaInfo*)getWebmInfo:(NSString*)webmFile;
+//提取webm音频数据编码为mp3文件
++(BOOL)getMP3FileFromWebmFilePath:(NSString*)webmFile outputMP3File:(NSString*)mp3File;
+//提取webm缩略图 (时间单位：秒)
++(UIImage*)getImageFromWebmFilePath:(NSString*)webmFile time:(float)time scale:(float)scale;
+//提取webm指定时间段数据 (时间单位：秒)
++(void)getWebmDataFromFilePath:(NSString*)webmFile timeRange:(CMTimeRange)timeRange completion:(void (^)(NSMutableArray<WebmDecodeData*>*))completion;
 @end

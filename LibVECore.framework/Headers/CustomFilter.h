@@ -217,7 +217,7 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
 @end
 
 
-
+@class RepeatCustomFilter;
 /** 同时支持多个特效
  */
 
@@ -255,7 +255,32 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
 /** 层次，数值越大，越靠前，0 为最底层，默认为 0
  */
 @property(nonatomic,assign) int level;
+
+/** 指定特效重复次数 - 主要用于高斯模糊
+ */
+@property (nonatomic, strong) NSMutableArray<RepeatCustomFilter*>* repeatArray;
 @end
 
+
+
+@interface RepeatCustomFilter: NSObject<NSCopying, NSMutableCopying>
+
+
+@property (nonatomic, strong) NSString *name;
+
+/** 重复的次数，默认0.5
+ */
+@property(nonatomic,assign)float num;
+
+/** 重复的次数，默认1.0
+ */
+@property(nonatomic,assign)float scale;
+
+
+/** 需要重复的 shader name,如果shaderArray.count 为0，默认全部重复绘制，如果不为0，根据指定的shader name 重复绘制 - 主要用于高斯模糊
+ */
+@property (nonatomic, strong) NSMutableArray<NSString*>* shaderArray;
+
+@end
 
 #endif /* Header_h */

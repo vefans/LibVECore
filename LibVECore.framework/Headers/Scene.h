@@ -216,6 +216,23 @@ typedef NS_ENUM(NSInteger, MusicType) {
 @property(nonatomic, assign)float gain;
 @end
 
+@interface CaptionExTTS : NSObject<NSCopying, NSMutableCopying>
+/** 音调
+ */
+@property(nonatomic, assign)float  pitch;
+
+@property(nonatomic, strong)NSString *locale;
+
+@property(nonatomic, strong)NSString *shortName;
+
+@property(nonatomic, strong)NSString *sortId;
+
+@property(nonatomic, assign)float        speed;
+
+@property(nonatomic, strong)NSString    *type;
+
+@end
+
 @interface MusicInfo : NSObject<NSCopying,NSMutableCopying>
 /** 标识符
  */
@@ -231,10 +248,16 @@ typedef NS_ENUM(NSInteger, MusicType) {
  */
 @property (nonatomic,strong) NSString *captionIdentifier;
 
+
+
 /** 标识符
  *  导出模板用
  */
 @property (nonatomic,strong) NSString *speechUserId;
+/** 文字转语音参数
+ */
+@property (nonatomic, strong) CaptionExTTS *captionTTS;
+
 /** 虚拟CV信息
  *  导出模板用
  */
