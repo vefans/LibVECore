@@ -423,7 +423,7 @@ typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
 
 /** 聚焦
  */
-- (void) focus:(UITapGestureRecognizer *)tap;
+- (void)setFocusPointOfInterest:(CGPoint)focusPointOfInterest;
 
 /**曝光(0.0~1.0)
  */
