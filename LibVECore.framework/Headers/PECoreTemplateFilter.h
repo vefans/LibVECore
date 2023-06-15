@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, strong)NSString *   filterNetworkResourceId;
 
+@property(nonatomic, assign)int             level;
+
 - (instancetype)initWithFilter:(CustomMultipleFilter *)filter;
 - (CustomMultipleFilter *)getFilterWithFolderPath:(NSString *)folderPath;
 

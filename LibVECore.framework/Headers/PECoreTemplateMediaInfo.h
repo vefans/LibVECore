@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PECoreTemplateMediaInfo : NSObject
 
+@property (nonatomic, assign) int       level;
 /** 组Id
  */
 @property (nonatomic, assign) int groupId;

@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign) float     angle;
 
+@property (nonatomic, assign) int       level;
 
 @end
 

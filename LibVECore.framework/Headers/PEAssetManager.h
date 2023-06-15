@@ -194,7 +194,8 @@
                          rightBottom:(CGPoint)rightBottom
                           leftBottom:(CGPoint)leftBottom;
 
-
+/** 层次，数值越大，越靠前，0 为最底层，默认为 0
+ */
 @property (nonatomic,assign) int  level;
 /**设置媒体自定义多滤镜数组，一个滤镜可以由多个滤镜组合而成。
  */
@@ -264,6 +265,7 @@
 
 /**智能抠像
  */
+@property (nonatomic, strong)NSURL  *autoSegmentImagePrimitiveURL;
 
 /**智能抠像(天空)
  */

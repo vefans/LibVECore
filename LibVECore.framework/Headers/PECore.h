@@ -277,6 +277,8 @@ typedef NS_ENUM(NSUInteger, PECoreViewFillMode) {
                        failedHandler:(void (^)(NSError *))failedHandler;
 
 + (int)getSDKVersion;
+-(void)tidyUpLevel:( NSMutableArray * ) array atHighestArray:( NSMutableArray * ) highestArray  atOverlayBackgrounds:( NSMutableArray * ) overlayBackgrounds;
++(void)setEnableAdjustmentHierarchical:( BOOL ) enableAdjustmentHierarchical;
 
 /**  获取HDR图片
  *  @abstract Get HDR pictures.
