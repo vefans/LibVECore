@@ -427,6 +427,10 @@ typedef NS_ENUM(NSInteger, MosaicType) {
  */
 @property (nonatomic, strong) NSString *path;
 
+/** YES：主媒体      NO：画中画
+ */
+@property (nonatomic, assign) BOOL isMainVideo;
+
 @end
 
 #pragma mark - 组片段信息
