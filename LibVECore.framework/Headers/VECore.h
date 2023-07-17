@@ -1011,6 +1011,8 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
 */
 +(void)audio_M4aToMP3:( NSString * ) m4aFilePath atMP3FilePath:( NSString * ) mp3FilePath atSampleRate:(float) sampleRate  FinishBlock:(void (^)(bool isFinish)) FinishBlock;
 
+//+(void)audioMP3_Intercept:( CMTimeRange ) timeRange atInputFilePath:( NSString * ) inputFilePath atOutputFilePath:( NSString * ) outputFilePath atSamplerate:( long ) samplerate;
+
 /** 获取消除后的图像 （消除笔）
  @abstract  Obtain the erased image (elimination pen)
  @param originalImage    原始图像
@@ -1098,4 +1100,6 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
 +(UIImage*)getImageFromWebmFilePath:(NSString*)webmFile time:(float)time scale:(float)scale;
 //提取webm指定时间段数据 (时间单位：秒)
 +(void)getWebmDataFromFilePath:(NSString*)webmFile timeRange:(CMTimeRange)timeRange completion:(void (^)(NSMutableArray<WebmDecodeData*>*))completion;
+
++(NSString *)getToken_AI:( NSString * ) appkey;
 @end
