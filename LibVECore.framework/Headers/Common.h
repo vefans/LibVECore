@@ -7,6 +7,13 @@
 //
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+@interface DirectoryManager : NSObject
+/**
+ */
+@property(strong, nonatomic) NSString *directory;
+
++ (instancetype)sharedManager;
+@end
 
 @interface FaceRecognition : NSObject
 
@@ -168,7 +175,7 @@ typedef NS_ENUM(NSInteger, FilterType) {
     kFilterType_DistortingMirror,   // 哈哈镜
     kFilterType_ACV,                // acv滤镜
     kFilterType_LookUp,             // lookup滤镜
-    kFilterType_Mosaic              // 马赛克像素化
+    kFilterType_Mosaic,             // 马赛克像素化
 };
 
 typedef NS_ENUM(NSInteger, OverlayType) {
