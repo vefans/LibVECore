@@ -1011,7 +1011,7 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
 */
 +(void)audio_M4aToMP3:( NSString * ) m4aFilePath atMP3FilePath:( NSString * ) mp3FilePath atSampleRate:(float) sampleRate  FinishBlock:(void (^)(bool isFinish)) FinishBlock;
 
-//+(void)audioMP3_Intercept:( CMTimeRange ) timeRange atInputFilePath:( NSString * ) inputFilePath atOutputFilePath:( NSString * ) outputFilePath atSamplerate:( long ) samplerate;
++(void)audioMP3_Intercept:( CMTimeRange ) timeRange atInputFilePath:( NSString * ) inputFilePath atOutputFilePath:( NSString * ) outputFilePath atSamplerate:( long ) samplerate;
 
 /** 获取消除后的图像 （消除笔）
  @abstract  Obtain the erased image (elimination pen)
@@ -1101,5 +1101,17 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
 //提取webm指定时间段数据 (时间单位：秒)
 +(void)getWebmDataFromFilePath:(NSString*)webmFile timeRange:(CMTimeRange)timeRange completion:(void (^)(NSMutableArray<WebmDecodeData*>*))completion;
 
+//获取 AI Token
 +(NSString *)getToken_AI:( NSString * ) appkey;
+/**  私有云TTS ( 文字转语音 )
+ *  @abstract Private Cloud TTS (text-to-Speech)
+ *
+ *  @param locale        语言
+ *  @param shortName     人物角色
+ *  @param synthesisText  文字
+ *  @param filePath  音频文件地址
+ *  @param isOnlyReturnAudioPath  是否只返回音频文件地址
+ *  获取mp3音频文件地址 或者 NSMutableArray
+ */
++(id)getTTSATWithLocale:( NSString * ) locale atShortName:( NSString * ) shortName atText:( NSString * ) synthesisText atFilePath:( NSString * ) filePath isOnlyReturnAudioPath:(BOOL)isOnlyReturnAudioPath;
 @end
