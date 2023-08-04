@@ -95,7 +95,7 @@ typedef NS_ENUM(NSUInteger, VECoreViewFillMode) {
 
 typedef NS_ENUM(NSUInteger, VEExportVideoCodecType) {
     VEExportVideoCodecTypeH264,
-    VEExportVideoCodecTypeHEVC  API_DEPRECATED_WITH_REPLACEMENT("VEExportVideoCodecTypeHEVC",ios(11.0, 11.0)),
+    VEExportVideoCodecTypeHEVC  API_AVAILABLE(ios(11.0)),
 };
 
 //画质级别
@@ -108,7 +108,7 @@ typedef NS_ENUM(NSUInteger, VEExportVideoProfileLevelType) {
 typedef NS_ENUM(NSUInteger, VEExportVideoDynamicRangeType) {
     VEExportVideoDynamicRangeType_SDR,
     VEExportVideoDynamicRangeType_HDR10,
-    VEExportVideoDynamicRangeType_HLG  API_DEPRECATED_WITH_REPLACEMENT("VEExportVideoHDRType_HLG",ios(14.0, 14.0)),
+    VEExportVideoDynamicRangeType_HLG  API_AVAILABLE(ios(14.0)),
 };
 
 /*!
@@ -993,8 +993,15 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
 @abstract   Cancel export template.
 */
 - (void)cancelExportTemplate:(void(^)(void))cancelHandler;
+/** 音频数据转mp3文件 （ 采样率为自定义 声道数为2, 任意一段音频数据都可以转为mp3 ）
+@abstract   audio data transfer MP3 file
+ @param data    音频数据
+ @param mp3FilePath    mp3保存路径
+ @param sampleRate     音频采样率 ( 声道数固定为2 )
+*/
++(void)audio_DataToMP3:( NSMutableData * ) data  atMP3FilePath:( NSString * ) mp3FilePath atSampleRate:(float) sampleRate;
 
-/** caf文件转mp3文件 （ 采样率为11025 省道数为2 ） 注意：MIC录制为caf文件转mp3专用
+/** caf文件转mp3文件 （ 采样率为11025 声道数为2 ） 注意：MIC录制为caf文件转mp3专用
 @abstract   CAF file transfer MP3 file
  @param cafFilePath    caf文件路径
  @param mp3FilePath    mp3保存路径
@@ -1010,8 +1017,6 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
  @param mp3FilePath    mp3保存路径
 */
 +(void)audio_M4aToMP3:( NSString * ) m4aFilePath atMP3FilePath:( NSString * ) mp3FilePath atSampleRate:(float) sampleRate  FinishBlock:(void (^)(bool isFinish)) FinishBlock;
-
-+(void)audioMP3_Intercept:( CMTimeRange ) timeRange atInputFilePath:( NSString * ) inputFilePath atOutputFilePath:( NSString * ) outputFilePath atSamplerate:( long ) samplerate;
 
 /** 获取消除后的图像 （消除笔）
  @abstract  Obtain the erased image (elimination pen)

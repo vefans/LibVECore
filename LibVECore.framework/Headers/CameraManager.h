@@ -389,11 +389,10 @@ typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
 /** 添加滤镜组
  */
 - (void) addFilters:(NSArray <Filter *> *) filters;
-- (NSArray *)getFilters;
+- (NSArray *)getFilters API_DEPRECATED("No longer supported. ", ios(9.0, 9.0));
 /** 设置滤镜
  */
 - (void) setFilterAtIndex:(NSInteger ) index;
-- (void)resetFilter:(Filter *)obj AtIndex:(NSInteger)index;
 
 /**设置当前滤镜强度
  *  @abstract   Set current filter strength.
