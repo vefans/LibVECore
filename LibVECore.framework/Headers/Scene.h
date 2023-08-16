@@ -48,7 +48,7 @@ typedef NS_ENUM(NSInteger, AudioFilterType) {
     AudioFilterTypeKTV,          // KTV
     AudioFilterTypeFactory,      // 厂房
     AudioFilterTypeArena,        // 竞技场
-    AudioFilterTypeElectri,      // 电音
+    AudioFilterTypeElectri,      // 电子
     AudioFilterTypeCustom,       // 自定义//调整媒体的pitch实现
 };
 
