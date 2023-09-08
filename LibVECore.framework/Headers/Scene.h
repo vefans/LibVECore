@@ -688,6 +688,7 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 /**  资源地址 图片  视频
  */
 @property (nonatomic,strong) NSURL*  url;
+@property (nonatomic,strong) NSURL*  coverOriginalUrl;
 @property (nonatomic,strong) NSString* localIdentifier;
 
 /** 视频帧回调，实现该回调后，url无效
@@ -1086,6 +1087,7 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 /**蒙版
  */
 @property (nonatomic, strong) MaskObject *mask;
+@property (nonatomic, assign)BOOL masked;//0 未使用蒙版 1 媒体已经是使用蒙版之后的图片
 
 /**智能抠像
  */
@@ -1127,6 +1129,7 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 /** 全景图
  */
 @property (nonatomic, strong) Panorama* panorama;
+@property (nonatomic, assign) BOOL  isGyroscope;
 
 
 /** 层次，数值越大，越靠前，0 为最底层，默认为 0

@@ -1010,7 +1010,7 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
  @param volume         音量0~100；50为正常音量
  @param sampleRate     音频采样率
 */
-+(void)audio_CafToMP3:( NSString * ) cafFilePath atMP3FilePath:( NSString * ) mp3FilePath atVoiceChanger:(NSInteger) voiceChanger atNoise:(NSInteger) noise atVolume:(NSInteger) volume  atSampleRate:(float) sampleRate;
++(void)audio_CafToMP3:( NSString * ) cafFilePath atMP3FilePath:( NSString * ) mp3FilePath atVoiceChanger:(NSInteger) voiceChanger atNoise:(NSInteger) noise atVolume:(NSInteger) volume  atSampleRate:(float) sampleRate DEPRECATED_MSG_ATTRIBUTE("Use audio_DataToMP3:atMP3FilePath:atSampleRate: instead.");
 /** m4a文件转mp3文件
 @abstract   CAF file transfer MP3 file
  @param m4aFilePath    m4a文件路径

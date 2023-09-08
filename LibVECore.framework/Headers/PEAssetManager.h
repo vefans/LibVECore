@@ -51,7 +51,9 @@
 
 
 @interface PEImageAsset : NSObject<NSCopying, NSMutableCopying>
-
+/**记录裁切方式
+ */
+@property (nonatomic, assign) int fileCropModeType;
 @property (nonatomic , assign) MediaAssetType mediaType;
 /** 标识符
  */
@@ -59,6 +61,15 @@
 /**  资源地址 图片  视频
  */
 @property (nonatomic,strong) NSURL*  url;
+
+/**  资源地址 图片  视频
+ */
+@property (nonatomic,strong) NSURL*  blurBackgroundOriginalUrl;
+/** 设置模糊效果
+ *  设置媒体动画后，该属性无效，以动画中的 blur 为准
+ */
+@property (nonatomic, strong) Blur *blurBackground;
+
 /** networkCategoryId
  */
 @property (nonatomic,strong) NSString*  networkCategoryId;
@@ -262,6 +273,7 @@
 /**蒙版
  */
 @property (nonatomic, strong) MaskObject *mask;
+@property (nonatomic, assign)BOOL masked;//0 未使用蒙版 1 媒体已经是使用蒙版之后的图片
 
 /**智能抠像
  */
@@ -298,7 +310,7 @@
 
 
 @property (nonatomic, assign) UIEdgeInsets  innerborder;
-
+- (MediaAsset *)media;
 @end
 
 
