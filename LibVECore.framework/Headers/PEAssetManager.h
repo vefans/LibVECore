@@ -301,6 +301,10 @@
  */
 @property (nonatomic, strong) HDR* hdr;
 
+/**去雾
+ */
+@property (nonatomic, strong) Dehaze* dehaze;
+
 /** 马赛克涂鸦
  *操作步骤：
  *  1.先将当前媒体设置为填充图片（optionType/fillImageURL）

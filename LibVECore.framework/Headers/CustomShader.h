@@ -82,18 +82,19 @@ typedef NS_ENUM(NSInteger, SHADER_UNIFORM_TYPE)
 //内置滤镜
 typedef NS_ENUM(NSInteger, BuiltInFilter_TYPE)
 {
-    BuiltInFilter_None,
-    BuiltInFilter_illusion,                     //幻觉
-    BuiltInFilter_pencilSketch,                 //铅笔素描
-    BuiltInFilter_pencilColor,                  //铅笔彩色
-    BuiltInFilter_pencilLightWater,             //铅笔+淡水彩
-    BuiltInFilter_pencilCharcoalSketches,       //炭笔素描
-    BuiltInFilter_pencilCrayon,                 //蜡笔画
-    BuiltInFilter_grayCrosspoint,               //黑白交叉
-    BuiltInFilter_colorCrosspoint,              //彩色交叉
-    BuiltInFilter_freezeFrame,                  //画面定格
-    BuiltInFilter_lookUp,                       //lookUp滤镜
-    BuiltInFilter_Mosaic,                       //mosaic滤镜
+    BuiltInFilter_None                      = 0,
+    BuiltInFilter_illusion                  = 1,    //幻觉
+    BuiltInFilter_pencilSketch              = 2,    //铅笔素描
+    BuiltInFilter_pencilColor               = 3,    //铅笔彩色
+    BuiltInFilter_pencilLightWater          = 4,    //铅笔+淡水彩
+    BuiltInFilter_pencilCharcoalSketches    = 5,    //炭笔素描
+    BuiltInFilter_pencilCrayon              = 6,    //蜡笔画
+    BuiltInFilter_grayCrosspoint            = 7,    //黑白交叉
+    BuiltInFilter_colorCrosspoint           = 8,    //彩色交叉
+    BuiltInFilter_freezeFrame               = 9,    //画面定格
+    BuiltInFilter_lookUp                    = 10,   //lookUp滤镜
+    BuiltInFilter_Mosaic                    = 11,   //mosaic滤镜
+    BuiltInFilter_3D_Lut_Cube               = 12,   //3D LUT CUDE 滤镜
 };
 
 

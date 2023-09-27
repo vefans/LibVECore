@@ -671,6 +671,21 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 
 @end
 
+
+// 去雾
+@interface Dehaze : NSObject<NSCopying, NSMutableCopying>
+
+/** 去雾之后的图像
+ */
+@property (nonatomic, strong) NSURL *filePath;
+
+/**  强度设置
+ */
+@property(nonatomic, assign) float  intensity;
+
+@end
+
+
 @interface MediaAsset : NSObject<NSCopying, NSMutableCopying>
 
 @property(nonatomic, strong)MusicInfo   *webmMusicinfo;
@@ -1094,6 +1109,7 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 @property (nonatomic, assign) kAutoSegmentType autoSegmentType;
 @property (nonatomic, strong) NSURL *autoSegmentImageUrl;
 @property (nonatomic, strong) UIImage *autoSegmentImage;
+@property (nonatomic, strong) UIImage *autoSegmentMaskImage;    //抠像黑白图
 @property (nonatomic, assign) BOOL isGIF;
 
 /**景深
@@ -1118,6 +1134,10 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 /**HDR
  */
 @property (nonatomic, strong) HDR* hdr;
+
+/**去雾
+ */
+@property (nonatomic, strong) Dehaze* dehaze;
 
 /** 马赛克涂鸦
  *操作步骤：

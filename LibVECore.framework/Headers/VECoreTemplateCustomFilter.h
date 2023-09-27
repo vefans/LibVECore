@@ -27,6 +27,8 @@
 
 @property(nonatomic, assign)VEPIPType   pipType;
 
+@property (nonatomic, assign) FilterType filterType;
+
 @property (nonatomic, assign) float tag;
 
 /** 在虚拟视频中的开始时间

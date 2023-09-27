@@ -262,6 +262,12 @@ typedef NS_ENUM(NSUInteger, PECoreViewFillMode) {
  */
 -(void)getImageWithDeLogoProcess:( UIImage * ) originalImage atGrayscaleImage:( UIImage * ) grayscaleImage  atFailBlock:(void(^)(UIImage * image))failBlock;
 
+/** 暗通道去雾   （去雾）
+ @abstract  Realizing Single Image Haze Removal Using Dark Channel Prior
+ @param originalImage    原始图像
+ */
+-(void)getImageWithDehazeProcess:( UIImage * ) originalImage atFailBlock:(void(^)(UIImage * image))failBlock;
+
 /** 导出模板
 @abstract   Export template.
  @param outputPath                  输出路径

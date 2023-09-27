@@ -176,6 +176,7 @@ typedef NS_ENUM(NSInteger, FilterType) {
     kFilterType_ACV,                // acv滤镜
     kFilterType_LookUp,             // lookup滤镜
     kFilterType_Mosaic,             // 马赛克像素化
+    kFilterType_3D_Lut_Cube         // 3D Lut Cube
 };
 
 typedef NS_ENUM(NSInteger, OverlayType) {
@@ -1163,6 +1164,7 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
 /** 字幕是否开启跟踪，默认为NO
  */
 @property (nonatomic, assign) BOOL isEnableTracking;
+@property (nonatomic, assign) CGRect trackRect;
 
 /**高级动画(脚本)
  *
@@ -1328,7 +1330,7 @@ typedef NS_ENUM(NSInteger, BlurType) {
 
 @interface Blur : NSObject<NSCopying, NSMutableCopying>
 
-/** 设置模糊强度0.0~1.0，默认为0.0
+/** 设置模糊类型
  */
 @property (nonatomic, assign)BlurType blurType;
 
@@ -1401,6 +1403,7 @@ typedef NS_ENUM(NSInteger, BlurType) {
 /** 高斯模糊是否开启跟踪，默认为NO
  */
 @property (nonatomic, assign) BOOL isEnableTracking;
+@property (nonatomic, assign) CGRect trackRect;
 
 /** 模糊遮罩图片（黑白图，白色区域模糊）
  */
@@ -1458,6 +1461,7 @@ typedef NS_ENUM(NSInteger, BlurType) {
 /** 马赛克是否开启跟踪，默认为NO
  */
 @property (nonatomic, assign) BOOL isEnableTracking;
+@property (nonatomic, assign) CGRect trackRect;
 
 /**在video中四个顶点的坐标，可设置非矩形，设置的值将赋给pointsArray属性。设置关键帧动画后，以关键帧动画值为准
  * (0, 0)为左上角 (1, 1)为右下角
@@ -1497,6 +1501,7 @@ typedef NS_ENUM(NSInteger, BlurType) {
 /** 去水印是否开启跟踪，默认为NO
  */
 @property (nonatomic, assign) BOOL isEnableTracking;
+@property (nonatomic, assign) CGRect trackRect;
 /** 关键帧动画
  */
 @property (nonatomic, strong) NSArray<KeyFrameAnimate*>*  animate;
@@ -1536,6 +1541,10 @@ typedef NS_ENUM(NSInteger, BlurType) {
 /**滤镜强度，kFilterType_LookUp时有效,默认为1.0
  */
 @property (nonatomic, assign)float intensity;
+
+/**滤镜条纹启用，kFilterType_Mosaic时有效,默认为YES
+ */
+@property (nonatomic, assign)BOOL isStrip;
 
 /**网络封面地址
  */

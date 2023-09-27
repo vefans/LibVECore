@@ -1035,6 +1035,14 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
  */
 -(void)getImageWithDeLogoProcess:( UIImage * ) originalImage atGrayscaleBuffer:( CVPixelBufferRef  ) grayscaleBuffer atFailBlock:(void(^)(UIImage * image))failBlock;
 
+
+/** 暗通道去雾   （去雾）
+ @abstract  Realizing Single Image Haze Removal Using Dark Channel Prior
+ @param originalImage    原始图像
+ */
+-(void)getImageWithDehazeProcess:( UIImage * ) originalImage atFailBlock:(void(^)(UIImage * image))failBlock;
+
+
 -(BOOL)getSdkDisabled;
 
 +(UIImage *)getImageFromPath:( NSURL * ) path;
@@ -1084,7 +1092,7 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
 /** 仅当 isAlwaysPlay 为YES时有效
  */
 - (void)deleteOverlay:(Overlay*)overlay;
-- (void)replaceOverlay:(Overlay *)overlay withNewOverlay:(Overlay *)newOverlay;
+- (void)replaceOverlay:(Overlay *)overlay withNewOverlay:(Overlay *)newOverlay API_DEPRECATED("No longer supported. ", ios(9.0, 9.0));
 - (void)deleteMediaAsset:(MediaAsset*)media;
 
 /** 仅当 isAlwaysPlay 为YES时有效

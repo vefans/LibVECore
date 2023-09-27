@@ -187,6 +187,9 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
  */
 @property (nonatomic, strong) NSMutableDictionary* configure;
 
+/**  检测是否存在纹理输入参数
+ */
+- (BOOL) hasInputTextureParams;
 
 /**  设置shader中 uniform sampler2D 类型参数（纹理参数）
  */
