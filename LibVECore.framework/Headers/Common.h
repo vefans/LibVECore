@@ -131,9 +131,10 @@
 
 @class CustomFilter;
 @class MusicInfo;
+@class DoodleOption;
 typedef void(^LoadTracksFinishBlock)(float progress);
 typedef NSData*(^GetParticleHistoryDataBlock)(void);
-
+typedef void(^updateStatuBlock)(DoodleOption* option,int status);
 
 typedef NS_ENUM(NSInteger, ImageMediaFillType) {
     ImageMediaFillTypeFull, // 全填充
@@ -2614,6 +2615,11 @@ typedef NS_ENUM(NSInteger, DOODLEOP_PAINT_TYPE)
 /** 层次，数值越大，越靠前，0 为最底层，默认为 0
  */
 @property(nonatomic,assign) int level;
+
+
+/** 更新状态回调，如果返回的status值为-1表示该节点无效，1表示正常（仅仅只有上色才会使用该回调函数）
+ */
+@property (nonatomic, copy) updateStatuBlock updateStatuBlock;
 
 @end
 
