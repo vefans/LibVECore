@@ -211,6 +211,8 @@ typedef NS_ENUM(NSUInteger, VEExportVideoDynamicRangeType) {
 
 @interface VECore : NSObject<NSCopying,NSMutableCopying>
 
+@property(nonatomic, copy)void(^build_Call)(void);
+
 -(void)setVirtualLiveAudio:( BOOL ) isSilence;
  /*!
  @property audioSampleRate
