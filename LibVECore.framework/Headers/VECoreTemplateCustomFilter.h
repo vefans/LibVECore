@@ -99,6 +99,8 @@
 
 - (CustomMultipleFilter *)getCustomMultipleFilterWithFolderPath:(NSString *)folderPath;
 
+@property (nonatomic, strong) NSMutableArray * animates;
+
 /** 层次，数值越大，越靠前，0 为最底层，默认为 0
  */
 @property(nonatomic,assign) int level;

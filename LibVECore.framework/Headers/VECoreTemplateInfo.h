@@ -366,6 +366,14 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 @property (nonatomic,assign) float intensity;
 
 @property (nonatomic, strong) VECoreTemplateToningInfo *  toningInfo;
+
+@property (nonatomic, strong) NSMutableArray *uniformParams;
+
+/**  设置滤镜特效周期时长（单位：秒）,默认为1.0
+     如果持续时间大于周期时间，自动循环设置特效
+ */
+@property (nonatomic,assign) float cycleDuration;
+
 @end
 
 
