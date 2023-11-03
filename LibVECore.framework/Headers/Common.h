@@ -1378,16 +1378,6 @@ typedef NS_ENUM(NSInteger, BlurType) {
  */
 @property (nonatomic, strong) ToningInfo* adjustments;
 
-/**  设置shader变量参数
- *
- *  @param params       设置参数，根据时间点设置不同参数
- *  @param isRepeat     参数是否重复使用
- *  @param uniform      shader中变量的名字
- */
-//- (void) setShaderUniformParams:(NSMutableArray *)params
-//                            isRepeat:(BOOL)isRepeat
-//                          forUniform:(NSString *)uniform;
-
 @property (nonatomic, strong) NSMutableArray *uniformParams;
 
 /**  设置滤镜特效周期时长（单位：秒）,默认为1.0
