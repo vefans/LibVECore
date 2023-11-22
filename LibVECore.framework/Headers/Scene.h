@@ -115,10 +115,11 @@ typedef NS_ENUM(NSInteger ,CurveSpeedType) {
 };
 
 typedef NS_ENUM(NSInteger, MediaReplaceableType) {
-    MediaReplaceableType_VideoOrPic,    //可替换视频或图片
+    MediaReplaceableType_VideoOrPic,    //不限制(优先图片)
     MediaReplaceableType_Picture,       //可替换图片
     MediaReplaceableType_Video,         //可替换视频
     MediaReplaceableType_Irreplaceable, //不可替换
+    MediaReplaceableType_PriorityVideo,//不限制(优先视频)
 };
 typedef NS_ENUM(NSInteger, ThemeMediaType) {
     ThemeMediaType_Loop,    //循环
@@ -1596,6 +1597,10 @@ UIKIT_EXTERN API_DEPRECATED("Watermark is deprecated. Use Overlay instead", ios(
 /** 视频的元信息
  */
 @property (nonatomic, strong) NSArray <AVMetadataItem*>*previewVideoMetadata;
+
+/** 素材默认来源  0相册; 1拍摄
+ */
+@property (nonatomic, assign) NSInteger mediaSource;
 @property (nonatomic, assign) BOOL isPuzzleSplitScreen;
 @property (nonatomic, assign) BOOL isTemplate;
 @property (nonatomic, assign) BOOL isPuzzle;

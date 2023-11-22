@@ -511,6 +511,10 @@ typedef NS_ENUM(NSInteger, MosaicType) {
  */
 @property (nonatomic, assign) float fileSize;
 
+/** 素材默认来源  0相册; 1拍摄
+ */
+@property (nonatomic, assign) NSInteger mediaSource;
+
 /** 媒体信息，仅包含可替换媒体
  */
 @property (nonatomic, strong) NSMutableArray<VECoreTemplateMediaInfo*> *mediaInfo;

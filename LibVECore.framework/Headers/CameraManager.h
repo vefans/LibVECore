@@ -288,6 +288,10 @@ typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
 @property (nonatomic , weak) id<CameraManagerDelegate> delegate;
 
 
+/**设置自定义多滤镜数组，一个滤镜可以由多个滤镜组合而成。
+ */
+@property (nonatomic, strong) NSMutableArray <CustomMultipleFilter*>* customMultipleFilterArray;
+
 /**  初始化对象
  *
  *  @param appkey          在官网中注册的应用Key。

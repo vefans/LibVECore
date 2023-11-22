@@ -624,6 +624,8 @@ typedef NS_ENUM(NSUInteger, VEExportVideoDynamicRangeType) {
  */
 - (void) play;
 
+- (void) reversePlay;
+
 /**停止播放，清空播放器，如需再次播放或导出，须调用prepare
  @abstract      Stop playing.
  @discussion    clear the player, if you want to play or export again, you must call prepare.

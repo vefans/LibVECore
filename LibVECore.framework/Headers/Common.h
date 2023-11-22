@@ -1048,6 +1048,11 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
  */
 @property (nonatomic,strong) NSString *identifier;
 
+/** 绑定场景标识符
+ *  Binding scene identifiers.
+ */
+@property (nonatomic,strong) NSString* identifierScene;
+
 /** 组Id
  *  导出模板用
  */
