@@ -232,6 +232,8 @@ typedef NS_ENUM(NSInteger, MusicType) {
 
 @property(nonatomic, strong)NSString    *type;
 
+@property(nonatomic, strong)NSString    *text;
+
 @end
 
 @interface MusicInfo : NSObject<NSCopying,NSMutableCopying>

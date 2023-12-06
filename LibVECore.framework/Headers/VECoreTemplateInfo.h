@@ -293,6 +293,8 @@ typedef NS_ENUM(NSInteger, MosaicType) {
  */
 @property(nonatomic,assign) int level;
 @property(nonatomic,assign) float scale;
+
+@property (nonatomic, assign)int shapeType;
 @end
 
 #pragma mark - 水印

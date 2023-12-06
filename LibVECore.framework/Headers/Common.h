@@ -2603,7 +2603,7 @@ typedef NS_ENUM(NSInteger, DOODLEOP_PAINT_TYPE)
 @property (nonatomic,assign) int angle;
 
 
-/** 涂鸦缩放，默认为 1.0，如果有设置关键帧动画 animation ，以关键帧动画参数为准
+/** 涂鸦缩放，默认为 1.0，如果有设置关键帧动画 animation ，以关键帧动画参数为准；如果设置为 0 ，以 scaleX / scaleY 为准
  *  @abstract   doodle scale.
  */
 @property (nonatomic,assign) float scale;
@@ -2632,6 +2632,8 @@ typedef NS_ENUM(NSInteger, DOODLEOP_PAINT_TYPE)
 /** 更新状态回调，如果返回的status值为-1表示该节点无效，1表示正常（仅仅只有上色才会使用该回调函数）
  */
 @property (nonatomic, copy) updateStatuBlock updateStatuBlock;
+
+@property (nonatomic, assign)int shapeType;
 
 @end
 
