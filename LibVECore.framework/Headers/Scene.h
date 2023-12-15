@@ -120,6 +120,7 @@ typedef NS_ENUM(NSInteger, MediaReplaceableType) {
     MediaReplaceableType_Video,         //可替换视频
     MediaReplaceableType_Irreplaceable, //不可替换
     MediaReplaceableType_PriorityVideo,//不限制(优先视频)
+    MediaReplaceableType_None,//不限制(无)
 };
 typedef NS_ENUM(NSInteger, ThemeMediaType) {
     ThemeMediaType_Loop,    //循环
