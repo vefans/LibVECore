@@ -158,6 +158,13 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
  */
 @property (nonatomic, assign)BuiltInFilter_TYPE builtInType;
 
+/**滤镜移动类型，默认为 MOVE_DIRECT_NONE（目前支持cube滤镜）
+ */
+@property (nonatomic,assign)MoveDirectionType moveDirect;
+
+/**滤镜移动位置，默认为1.0（0.0～1.0）（MoveDirectionType 不是 MOVE_DIRECT_NONE时，该参数才生效）
+ */
+@property (nonatomic, assign)float position;
 
 /** 内置滤镜素材
  */

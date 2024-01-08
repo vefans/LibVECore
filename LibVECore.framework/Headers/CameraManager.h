@@ -292,6 +292,10 @@ typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
  */
 @property (nonatomic, strong) NSMutableArray <CustomMultipleFilter*>* customMultipleFilterArray;
 
+/** 当前时间
+ */
+@property (nonatomic , assign) float currentTime;
+
 /**  初始化对象
  *
  *  @param appkey          在官网中注册的应用Key。
@@ -335,6 +339,9 @@ typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
                disableTakePhoto: (BOOL) disableTakePhoto
           enableCameraWaterMark: (BOOL) enableCameraWaterMark
              enableVECoreBeauty: (BOOL) enableVECoreBeauty;
+
+
+
 
 /** 设置设备当前方向
  */
@@ -402,6 +409,7 @@ typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
  *  @abstract   Set current filter strength.
  */
 - (void) setCurrentFilterIntensity:(float)intensity;
+
 
 /**滤镜条纹启用，kFilterType_Mosaic时有效,默认为YES
  */

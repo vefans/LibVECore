@@ -180,6 +180,15 @@ typedef NS_ENUM(NSInteger, FilterType) {
     kFilterType_3D_Lut_Cube         // 3D Lut Cube
 };
 
+typedef NS_ENUM(NSInteger,MoveDirectionType)
+{
+    MOVE_DIRECT_NONE = 0,           //不做移动处理
+    MOVE_DIRECT_LEFT_RIGHT,         //从左到右
+    MOVE_DIRECT_RIGHT_LEFT,         //从右到左
+    MOVE_DIRECT_TOP_BOTTOM,         //从上到下
+    MOVE_DIRECT_BOTTOM_TOP          //从下到上
+};
+
 typedef NS_ENUM(NSInteger, OverlayType) {
     OverlayTypeNormal,  //画中画
     OverlayTypeDoodle,  //涂鸦
@@ -264,7 +273,7 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
     CaptionAnimationTypeNone,               //无
     CaptionAnimationTypeMove,               //移动
     CaptionAnimationTypeScaleInOut,         //缩放入出
-    CaptionAnimationTypeScrollInOut,        //滚动入出
+    CaptionAnimationTypeScrollInOut,        //滚动入出(不支持)
     CaptionAnimationTypeFadeInOut,          //淡入淡出
 };
 
