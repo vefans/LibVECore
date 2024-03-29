@@ -26,6 +26,7 @@ typedef NS_ENUM(NSInteger, VEPIPType){
 
     VEPIPType_TEXT_SPEECH = 9,//文字(识别字幕)
     VEPIPType_WordTemplate = 10,//文字模板
+    VEPIPType_Effect_Magnifier = 11,//放大镜
 };
 
 typedef NS_ENUM(NSInteger, VEAudioSampleBits) {
@@ -607,6 +608,23 @@ typedef NS_ENUM(NSInteger, BlendEquation)
                      rightTop:(CGPoint)rightTop
                   rightBottom:(CGPoint)rightBottom
                    leftBottom:(CGPoint)leftBottom;
+
+/** 构图，水平矫正，-45 ～ 45.0 ，默认为 0
+ */
+@property (nonatomic , assign) float horizontalDegrees;
+
+/** 构图，垂直矫正，-45 ～ 45.0 ，默认为 0
+ */
+@property (nonatomic , assign) float verticalDegrees;
+
+
+/** 构图，显示位置，默认为CGRectMake(0, 0, 1, 1)
+ */
+@property (nonatomic, assign) CGRect rt;
+ 
+/** 构图，旋转角度
+ */
+@property (nonatomic, assign) float degrees;
                              
 @end
 
@@ -692,6 +710,8 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 
 @interface MediaAsset : NSObject<NSCopying, NSMutableCopying>
 
+@property(nonatomic, strong) MediaAsset *BlurCanvaAsset;
+
 @property(nonatomic, strong)MusicInfo   *webmMusicinfo;
 
 @property(nonatomic, strong)NSMutableArray * addTextList;
@@ -725,7 +745,7 @@ typedef NS_ENUM(NSInteger, BlendEquation)
  */
 @property (nonatomic, assign) MediaReplaceableType replaceType;
 
-/**  图片填充类型
+/**  图片填充类型，Default is ImageMediaFillTypeFitZoomIn.
  *   设置顶点坐标(pointsInVideoArray)时，需设置为ImageMediaFillTypeFull
  */
 @property (nonatomic,assign) ImageMediaFillType  fillType;
@@ -941,6 +961,11 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 /** 媒体动画组
  */
 @property (nonatomic, strong) NSArray<MediaAssetAnimatePosition*>*  animate;
+
+/** 媒体内部操作关键帧
+ */
+@property (nonatomic, strong) NSMutableArray<MediaAssetAnimatePosition*>*  compositionAnimate;
+
 
 /** 音乐滤镜
  */
@@ -1164,9 +1189,36 @@ typedef NS_ENUM(NSInteger, BlendEquation)
  */
 @property (nonatomic , assign) BOOL isMute;
 
+/** 构图，水平矫正，-45 ～ 45.0 ，默认为 0
+ */
+@property (nonatomic , assign) float horizontalDegrees;
+
+/** 构图，垂直矫正，-45 ～ 45.0 ，默认为 0
+ */
+@property (nonatomic , assign) float verticalDegrees;
+
+
+/** 构图，显示位置，默认为CGRectMake(0, 0, 1, 1)
+ */
+@property (nonatomic, assign) CGRect rt;
+ 
+/** 构图，旋转角度
+ */
+@property (nonatomic, assign) float degrees;
+
+
+
+/** 构图，保持目标大小不变
+ */
+@property (nonatomic, assign) BOOL isKeep;
+/** 构图，适应画布大小
+ */
+@property (nonatomic, assign) BOOL isAdapation;
+@property (nonatomic, assign) float compositionDegrees;
+@property (nonatomic, strong) NSMutableArray *shotTrackArray;
+@property (nonatomic, assign) CGRect trackingAreaRect;
+
 @end
-
-
 
 // Mask 用于异形
 @interface MaskAsset : NSObject
@@ -1456,6 +1508,8 @@ UIKIT_EXTERN API_DEPRECATED("Watermark is deprecated. Use Overlay instead", ios(
 /** 视频水印
  */
 @interface Overlay : NSObject<NSCopying, NSMutableCopying>
+
+@property (nonatomic, strong) Overlay *BlurCanvaOverlay;
 
 /** 标识符
  */

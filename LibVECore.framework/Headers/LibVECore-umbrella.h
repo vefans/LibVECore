@@ -34,6 +34,7 @@
 #import "NSObject+VECoreYYModel.h"
 #import "VECoreYYClassInfo.h"
 #import "VECoreYYModel.h"
+#import "ImageHelp.h"
 #import "VEAudioRecorder.h"
 #import "PECoreTemplateAssetManager.h"
 #import "PECoreTemplateAssetManagerBackground.h"

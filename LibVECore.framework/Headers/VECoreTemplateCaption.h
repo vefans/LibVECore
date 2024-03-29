@@ -133,10 +133,6 @@
 
 @interface VECoreTemplateWordItem : CaptionItem
 
-/** 花字类型
- */
-@property (nonatomic, strong) NSString *flowerCategoryId;
-
 /** 在VECoreTemplateSubtitleEx中的开始时间
  */
 @property (nonatomic, assign) float startTime;

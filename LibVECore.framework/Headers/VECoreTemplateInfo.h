@@ -547,7 +547,7 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 
 /** 字幕模板
  */
-@property (nonatomic, strong) NSMutableArray<VECoreTemplateSubtitleTemplate*>* subtitlesTemplate;
+@property (nonatomic, strong) NSMutableArray<VECoreTemplateSubtitleEx*>* subtitlesTemplate;
 
 /** 贴纸
  */

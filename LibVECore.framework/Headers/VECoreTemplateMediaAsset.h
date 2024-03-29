@@ -29,6 +29,8 @@
 
 @interface VECoreTemplateMediaAssetAnimate : MediaAssetAnimatePosition
 
+@property (nonatomic, assign) float time;
+
 /**在video中的位置大小，默认CGRectMake(0, 0, 1, 1)
  * (0, 0)为左上角 (1, 1)为右下角
  * showRectF与pointsF只有一个有效，以最后设置的为准
@@ -242,5 +244,11 @@
 - (instancetype)initWithMediaAsset:(MediaAsset *)asset;
 
 - (MediaAsset *)getMediaAssetWithFolderPath:(NSString *)folderPath;
+
+@property (nonatomic, assign) BOOL isBlurCavas;
+
+/** 媒体动画组
+ */
+@property (nonatomic, strong) NSMutableArray <VECoreTemplateMediaAssetAnimate*>*compositionAnimates;
 
 @end

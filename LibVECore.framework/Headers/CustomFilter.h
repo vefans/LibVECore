@@ -208,9 +208,7 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
  *  @param isRepeat     参数是否重复使用
  *  @param uniform      shader中变量的名字
  */
-- (NSError *) setShaderUniformParams:(NSMutableArray<ShaderParams*> *)params
-                            isRepeat:(BOOL)isRepeat
-                          forUniform:(NSString *)uniform;
+- (NSError *) setShaderUniformParams:(NSMutableArray<ShaderParams*> *)params isRepeat:(BOOL)isRepeat forUniform:(NSString *)uniform;
 
 @property (nonatomic, strong) NSMutableArray <ShaderParams *>*uniformParams;
 

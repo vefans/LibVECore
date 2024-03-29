@@ -369,6 +369,36 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
 
 @end
 
+#pragma mark - Caption CaptionEffectBackGroundTexture
+
+@interface CaptionEffectBackGroundTexture : NSObject<NSCopying, NSMutableCopying>
+
+/**
+ * 纹理图片路径
+ */
+@property (nonatomic, strong) NSString *textureFilePath;
+/**
+ * 缩放，默认1.0
+ */
+@property (nonatomic, assign) float scale;
+
+@end
+
+#pragma mark - Caption CaptionEffectTexture
+
+@interface CaptionEffectTexture : NSObject<NSCopying, NSMutableCopying>
+
+/**
+ * 纹理图片路径
+ */
+@property (nonatomic, strong) NSString *textureFilePath;
+/**
+ * 缩放，默认（1.0，1.0）
+ */
+@property (nonatomic, assign) CGSize scaleVector;
+
+@end
+
 #pragma mark - 文字颜色配置通用参数
 
 @interface CaptionEffectColorParam : NSObject<NSCopying, NSMutableCopying>
@@ -396,6 +426,14 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
  */
 @property (nonatomic, strong) NSMutableArray<CaptionEffectColor*>* colors;
 
+
+/**
+ * 纹理参数
+ */
+@property (nonatomic, strong) CaptionEffectTexture* texture;
+
+
+
 @end
 
 #pragma mark - Caption shadow
@@ -421,15 +459,15 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
  */
 @property (nonatomic, strong) NSMutableArray<CaptionEffectColorParam*>* shadowStrokes;
 
-/**文字阴影偏移量
+/**文字阴影偏移量：0～1
  */
 @property (nonatomic ,assign) float shadowDistance;
 
-/**文字阴影角度 （默认-45）范围(-180 ---> 180)
+/**文字阴影角度 （默认-45）范围(-360～360)
  */
 @property (nonatomic ,assign) float shadowAngle;
 
-/**文字阴影模糊度
+/**文字阴影模糊度：0～1
  */
 @property (nonatomic ,assign) float shadowBlur;
 
@@ -462,6 +500,12 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
  */
 @property (nonatomic, strong) NSMutableArray<CaptionShadow*>* shadows;
 
+
+/**
+ * 背景纹理参数
+ */
+@property (nonatomic, strong) CaptionEffectBackGroundTexture* bgTexture;
+
 @end
 
 
@@ -474,6 +518,14 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
  *  导出模板用
  */
 @property (nonatomic, assign) NSInteger flowerTextType;
+
+/**花字资源分类ID
+ */
+@property (nonatomic, strong) NSString *flowerCategoryId;
+
+/**花字资源ID
+ */
+@property (nonatomic, strong) NSString *flowerResourceId;
 
 /** 花字资源地址
  *  导出模板用
@@ -1125,8 +1177,7 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
  */
 @property (nonatomic ,assign) CGPoint position;
 
-/**字幕大小，相对于实际视频size的字幕大小(CGPointMake(0, 0)〜CGPointMake(1, 1))
- * 设置字幕动画组后，该属性无效，以动画中的rect值为准
+/**字幕大小，相对于实际视频size的字幕大小(CGSizeMake(0, 0)〜CGSizeMake(1, 1))
  */
 @property (nonatomic ,assign) CGSize originalSize;
 
