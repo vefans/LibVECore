@@ -1123,8 +1123,9 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 @property (nonatomic, assign) float cutoutAlphaUpper;
 
 /**抠图边缘修整
- *  cutoutEdgeSize == 1 时，cutoutAlphaUpper无效
- *  cutoutEdgeSize == 0 或者 2 时，cutoutAlphaUpper生效
+ *  cutoutEdgeSize == 0 时，cutoutAlphaUpper / cutoutAlphaLower 都生效
+ *  cutoutEdgeSize == 1 时，cutoutAlphaUpper 无效 ，cutoutAlphaLower 生效
+ *  cutoutEdgeSize == 2 时，cutoutAlphaUpper 生效 (绿幕抠像) ，cutoutAlphaLower 无效
  */
 @property (nonatomic, assign) float cutoutEdgeSize;
 
