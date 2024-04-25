@@ -1131,4 +1131,31 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
  *  获取mp3音频文件地址 或者 NSMutableArray
  */
 +(id)getTTSATWithLocale:( NSString * ) locale atShortName:( NSString * ) shortName atText:( NSString * ) synthesisText atFilePath:( NSString * ) filePath isOnlyReturnAudioPath:(BOOL)isOnlyReturnAudioPath;
+
+
+/**  设置需要被追踪区域
+ *  @abstract Set the area that needs to be tracked
+ *
+ *  @param pixel        需要被追踪区域的画面
+ *  @param trackRect     需要被追踪区域（左上角为（0，0），右下角为（1.0，1.0））
+ */
+-(bool)startTrackWithPixelBufferRef:(CVPixelBufferRef)pixel trackRect:(CGRect)trackRect;
+
+
+/**  追踪
+ *  @abstract tracking
+ *
+ *  @param pixel        输入画面
+ *
+ *  返回追踪结果（左上角为（0，0），右下角为（1.0，1.0）），追踪失败返回（0，0，0，0）
+ */
+-(CGRect)trackWithCVPixelBufferRef:(CVPixelBufferRef)pixel;
+
+
+/**  结束追踪，释放资源
+ *  @abstract End tracking and release resources
+ *
+ */
+-(bool)endTrack;
+
 @end

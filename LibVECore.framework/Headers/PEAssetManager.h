@@ -115,6 +115,23 @@
  */
 @property (nonatomic, assign) CGRect           rectInImage;
 
+/** 构图，水平矫正，-45 ～ 45.0 ，默认为 0
+ */
+@property (nonatomic , assign) float horizontalDegrees;
+
+/** 构图，垂直矫正，-45 ～ 45.0 ，默认为 0
+ */
+@property (nonatomic , assign) float verticalDegrees;
+
+
+/** 构图，显示位置，默认为CGRectMake(0, 0, 1, 1)
+ */
+@property (nonatomic, assign) CGRect rt;
+ 
+/** 构图，旋转角度
+ */
+@property (nonatomic, assign) float degrees;
+
 /** 图片透明度(0.0〜1.0),默认为1.0
  */
 @property (nonatomic,assign) float alpha;

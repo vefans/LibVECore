@@ -189,6 +189,8 @@
 
 @property (nonatomic, assign)VEPIPType  pipType;
 
+@property (nonatomic, assign) BOOL text_template;
+
 /** 在虚拟视频中的开始时间
  */
 @property (nonatomic, assign) Float64 timelineFrom;

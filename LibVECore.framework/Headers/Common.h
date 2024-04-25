@@ -1201,6 +1201,10 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
  */
 @property (nonatomic ,assign) float duration;
 
+/**是否只支持一行
+ */
+@property (nonatomic, assign) BOOL singleLine;
+
 /** 字幕是否需要拉伸
  */
 @property (nonatomic, assign) BOOL isStretch;

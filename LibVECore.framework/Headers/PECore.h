@@ -296,4 +296,6 @@ typedef NS_ENUM(NSUInteger, PECoreViewFillMode) {
  */
 - (BOOL)getHDRImageFromImage:(UIImage *)originalImage outPutFilePath:(NSString*)outPutFilePath;
 
++(NSInteger)getLevelNumber;
+
 @end

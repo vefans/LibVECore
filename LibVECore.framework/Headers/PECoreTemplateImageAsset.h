@@ -119,6 +119,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, strong) NSMutableArray <VECoreTemplateSpecialEffect*>* filterArray;
 
+/**设置媒体自定义特效。
+ */
+@property (nonatomic, strong) NSMutableArray <VECoreTemplateSpecialEffect*>* effects;
+
 /**蒙版
  */
 @property (nonatomic, strong) VECoreTemplateMask *maskObject;
