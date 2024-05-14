@@ -2,7 +2,7 @@
 //  ImageHelp.h
 //  SafeAlbum
 //
-//  Created by MAC_RD on 2024/2/6.
+//  Created by iOS VESDK Team on 2024/2/6.
 //
 
 #import <Foundation/Foundation.h>

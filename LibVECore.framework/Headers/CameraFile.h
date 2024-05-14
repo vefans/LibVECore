@@ -10,6 +10,8 @@
 #import <LibVECore/Scene.h>
 
 @interface CameraFile : NSObject
+@property (nonatomic, assign) bool isSaveAlbum;
+
 @property (nonatomic , copy) NSString  * fileName;
 @property (nonatomic , copy) NSURL  * url;
 @property (nonatomic , copy) NSURL  * fileReversUrl;

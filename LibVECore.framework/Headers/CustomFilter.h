@@ -170,7 +170,7 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
  */
 @property (nonatomic, copy) NSString*  path;
 
-/**滤镜强度，builtInType为BuiltInFilter_lookUp时有效,默认为1.0
+/**滤镜强度，builtInType为BuiltInFilter_lookUp、BuiltInFilter_3D_Lut_Cube时有效,默认为1.0
  * 如果有设置 filterAnimation 动画，以 filterAnimation 参数为准，该参数无效
  */
 @property (nonatomic, assign)float lookUpFilterIntensity;
