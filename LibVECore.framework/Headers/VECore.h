@@ -281,7 +281,7 @@ typedef NS_ENUM(NSUInteger, VEExportVideoDynamicRangeType) {
 
 /** 字幕
  */
-@property (nonatomic, strong) NSMutableArray<Caption*>* captions;
+@property (nonatomic, strong) NSMutableArray<Caption*>* captions  DEPRECATED_MSG_ATTRIBUTE("Use captionExs instead.");
 
 /** 字幕
  */
@@ -297,7 +297,7 @@ typedef NS_ENUM(NSUInteger, VEExportVideoDynamicRangeType) {
 
 /** 贴纸
  */
-@property (nonatomic, strong) NSMutableArray<Caption*>* stickers  DEPRECATED_MSG_ATTRIBUTE("Use mosaics instead.");
+@property (nonatomic, strong) NSMutableArray<Caption*>* stickers  DEPRECATED_MSG_ATTRIBUTE("Use captionExs instead.");
 
 /** 高斯模糊
 */

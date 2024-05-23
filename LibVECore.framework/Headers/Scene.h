@@ -1219,6 +1219,11 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 @property (nonatomic, strong) NSMutableArray *shotTrackArray;
 @property (nonatomic, assign) CGRect trackingAreaRect;
 
+
+/**超分缩放倍数，仅支持放大 2/3/4 倍，默认为1.0，不做超分处理
+ */
+@property (nonatomic, assign) int dnnSuperResScale;
+
 @end
 
 // Mask 用于异形
