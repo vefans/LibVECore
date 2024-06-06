@@ -133,7 +133,7 @@ typedef NS_ENUM(NSUInteger, VEExportVideoDynamicRangeType) {
     码率
     Bitrate set for exported video. The default value is 4.
  */
-@property (nonatomic, assign) NSInteger videoBitRate;
+@property (nonatomic, assign) float videoBitRate;
 
 /*!
  @property fps
@@ -893,6 +893,16 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
              callbackBlock:(void (^)(void))finishBlock
                       fail:(void (^)(NSError *error))failBlock
                     cancel:(BOOL *)cancel;
+
++ (void)extractFramesFromVideo:(NSURL *)url
+                     outputUrl:(NSURL *)outputUrl
+                     timeRange:(CMTimeRange)timeRange
+                 frameDuration:(CMTime)frameDuration
+                 progressBlock:(void (^)(float progress))progressBlock
+                 callbackBlock:(void (^)(void))finishBlock
+                          fail:(void (^)(NSError *error))failBlock
+                        cancel:(BOOL *)cancel;
+
 /** 从视频中提取音频
     @abstract   Extract audio from the video.
  *params: type                  输出音频类型，目前支持三种（AVFileTypeMPEGLayer3，AVFileTypeAppleM4A，AVFileTypeWAVE）
@@ -1004,6 +1014,7 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
  @param sampleRate     音频采样率 ( 声道数固定为2 )
 */
 +(void)audio_DataToMP3:( NSMutableData * ) data  atMP3FilePath:( NSString * ) mp3FilePath atSampleRate:(float) sampleRate;
++(void)audio_DataToMP3:( NSMutableData * ) data  atMP3FilePath:( NSString * ) mp3FilePath atSampleRate:(float) sampleRate atBrate:( NSInteger ) brate atChannels:( NSInteger ) channels;
 
 /** caf文件转mp3文件 （ 采样率为11025 声道数为2 ） 注意：MIC录制为caf文件转mp3专用
 @abstract   CAF file transfer MP3 file
