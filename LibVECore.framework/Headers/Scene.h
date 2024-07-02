@@ -1224,6 +1224,14 @@ typedef NS_ENUM(NSInteger, BlendEquation)
  */
 @property (nonatomic, assign) int dnnSuperResScale;
 
+/**视频抽帧地址
+ */
+@property (nonatomic, strong) NSURL *frameExtractionURL;
+
+/**视频补帧地址
+ */
+@property (nonatomic, strong) NSURL *motionflowURL;
+
 @end
 
 // Mask 用于异形

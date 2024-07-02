@@ -508,7 +508,37 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
 
 @end
 
+typedef NS_ENUM(NSInteger, CaptionExItemBackGroundType) {
+    CaptionExItemBackGroundTypeWhole,       //整体
+    CaptionExItemBackGroundTypeParagraph,   //段落
+};
+#pragma mark - 文字背景配置参数
+@interface CaptionExItemBackGroundParam: NSObject<NSCopying, NSMutableCopying>
 
+//背景布局
+@property (nonatomic, assign) CaptionExItemBackGroundType type;
+
+/**字幕背景色，默认无
+ *  Text background color, default is none.
+ */
+@property (nonatomic ,strong) UIColor *color;
+
+/**背景圆角程度(0.0~1.0)，默认0.4
+ *  Background corner radius (0.0~1.0), default is 0.4
+ */
+@property (nonatomic, assign) float roundFactor;
+
+/**背景高度/宽度(0.0~1.0)
+ *  Background height / width (0.0~1.0), default is 0
+ */
+@property (nonatomic ,assign) CGSize size;
+
+/**背景左右/上下偏移(-0.5~0.5)
+ *  Background Y-offset / X-offset (-0.5~0.5), default is 0
+ */
+@property (nonatomic ,assign) CGPoint offset;
+
+@end
 
 #pragma mark - 单个文字
 
@@ -645,7 +675,9 @@ typedef NS_ENUM(NSInteger, CaptionAnimationType) {
  */
 @property (nonatomic, strong) NSMutableArray<CustomFilter*> *otherAnimates;
 
-
+/**文字背景参数
+ */
+@property (nonatomic, strong) CaptionExItemBackGroundParam *backGroundParams;
 
 @end
 
@@ -1387,6 +1419,8 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
 /** 层次，数值越大，越靠前，0 为最底层，默认为 0
  */
 @property(nonatomic,assign) int level;
+
+
 
 @end
 

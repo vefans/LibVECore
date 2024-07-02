@@ -157,7 +157,7 @@ typedef NS_ENUM(NSUInteger, VEExportVideoDynamicRangeType) {
     音频码率(单位：Kbps 默认为128)
     Audio bit rate set for exported video. The default value is 128Kbps.
  */
-@property (nonatomic, assign) NSInteger audioBitRate;
+@property (nonatomic, assign) float audioBitRate;
 
 /*!
  @property audioChannelNumbers
