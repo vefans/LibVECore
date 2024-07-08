@@ -1003,6 +1003,13 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
                    completionHandler:(void (^)(NSString *exportPath, VECoreTemplateInfo *templateInfo))completionHandler
                        failedHandler:(void (^)(NSError *error))failedHandler;
 
+- (void)exportTemplateWithOutputPath:(NSString *)outputPath
+                        templateInfo:(VECoreTemplateInfo *)templateInfo
+                          exportInfo:(TemplateExportInfo *)exportInfo
+                     progressHandler:(void (^)(float))progressHandler
+                   completionHandler:(void (^)(NSString *exportPath, VECoreTemplateInfo *templateInfo))completionHandler
+                       failedHandler:(void (^)(NSError *))failedHandler;
+
 /** 取消导出模板
 @abstract   Cancel export template.
 */
