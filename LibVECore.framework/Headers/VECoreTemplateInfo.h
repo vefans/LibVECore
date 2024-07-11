@@ -167,6 +167,14 @@ typedef NS_ENUM(NSInteger, MosaicType) {
  */
 @property (nonatomic, assign) int groupId;
 
+/** 多轨界面显示层级坐标
+ */
+@property (nonatomic, assign) float fRailLevelY;
+
+/**主题的画中画使用改参数： 0:循环 1:片头 2:片尾
+ */
+@property (nonatomic, assign) ThemeMediaType themeMaterialType;
+
 /** 媒体
  */
 @property (nonatomic, strong) VECoreTemplateMediaAsset *media;
@@ -174,14 +182,6 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 - (instancetype)initWithOverlay:(Overlay *)overlay;
 
 - (Overlay *)getOverlayWithFolderPath:(NSString *)folderPath;
-
-/** 多轨界面显示层级坐标
- */
-@property(nonatomic,assign)float          fRailLevelY;
-
-/**主题的画中画使用改参数： 0:循环 1:片头 2:片尾
- */
-@property (nonatomic , assign)ThemeMediaType themeMaterialType;
 @end
 
 #pragma mark - 涂鸦笔
