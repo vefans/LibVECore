@@ -1176,4 +1176,7 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
  */
 -(bool)endTrack;
 
+//草稿进入时 不需要
++(void)RecountLevel;
+
 @end

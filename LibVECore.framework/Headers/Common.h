@@ -523,8 +523,8 @@ typedef NS_ENUM(NSInteger, CaptionExItemBackGroundType) {
  */
 @property (nonatomic ,strong) UIColor *color;
 
-/**背景圆角程度(0.0~1.0)，默认0
- *  Background corner radius (0.0~1.0), default is 0
+/**背景圆角程度(0.0~1.0)，默认0.4
+ *  Background corner radius (0.0~1.0), default is 0.4
  */
 @property (nonatomic, assign) float roundFactor;
 
