@@ -159,6 +159,36 @@
 
 @end
 
+@interface VECoreTemplateWordItemLabelStyle : CaptionLabelStyle
+
+/**文字阴影颜色【纯色】
+ */
+@property (nonatomic ,strong) UIColor* shadowColor;
+
+/**文字阴影偏移量
+ */
+@property (nonatomic ,assign) float shadowDistance;
+
+/**文字阴影角度 （默认-45）范围(-180 ---> 180)
+ */
+@property (nonatomic ,assign) float shadowAngle;
+
+/**文字阴影模糊度
+ */
+@property (nonatomic ,assign) float shadowBlur;
+
+/**文字描边颜色，默认黑色blackColor
+ */
+@property (nonatomic ,strong) UIColor *strokeColor;
+
+/**文字描边宽度,默认为0.0
+ */
+@property (nonatomic ,assign) float strokeWidth;
+
+- initWithLabelStyle:(CaptionLabelStyle *)labelStyle rootPath:(NSString *)rootPath isExportResources:(BOOL)isExportResources;
+
+@end
+
 @interface VECoreTemplateWordItem : CaptionItem
 
 /** 在VECoreTemplateSubtitleEx中的开始时间
@@ -210,6 +240,8 @@
 /**文字背景参数
  */
 @property (nonatomic, strong) VECoreTemplateWordItemBackgroundParam *background;
+
+@property (nonatomic, strong) NSMutableArray<VECoreTemplateWordItemLabelStyle *>*labelStyleList;
 
 - (instancetype)initWithCaptionItem:(CaptionItem *)captionItem;
 

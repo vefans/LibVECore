@@ -299,6 +299,7 @@
 /**智能抠像(天空)
  */
 @property (nonatomic, assign) kAutoSegmentType autoSegmentType;
+@property (nonatomic, assign) NSInteger autoSegmentImageType;
 @property (nonatomic, strong)UIImage *autoSegmentImage;
 
 /** 可替换类型，默认为MediaReplaceableType_Picture

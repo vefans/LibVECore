@@ -54,6 +54,10 @@ typedef NS_ENUM(NSInteger, BackgroundType) {
 #pragma mark - 场景
 @interface VECoreTemplateScene : NSObject
 
+/**主题画使用该参数： 0:循环 1:片头 2:片尾
+ */
+@property (nonatomic , assign)ThemeMediaType themeMaterialType;
+
 /** 标识符
  */
 @property (nonatomic,strong) NSString *identifier;

@@ -540,6 +540,71 @@ typedef NS_ENUM(NSInteger, CaptionExItemBackGroundType) {
 
 @end
 
+@interface CaptionLabelStyle : NSObject<NSCopying, NSMutableCopying>
+
+/**文字开始位置
+ */
+@property (nonatomic ,assign) float start;
+
+/**文字结束位置
+ */
+@property (nonatomic ,assign) float end;
+
+/** 文字透明度(0.0〜1.0),默认为1.0
+ */
+@property (nonatomic ,assign) float opacity;
+
+/**文字颜色，默认为whiteColor
+ */
+@property (nonatomic ,strong) UIColor * textColor;
+
+/**文字字体路径
+ */
+@property (nonatomic ,copy) NSString * fontPath;
+
+/**文字字体大小
+ */
+@property (nonatomic ,assign) float fontSize;
+
+/**文字字体加粗，默认为NO
+ */
+@property (nonatomic ,assign) BOOL isBold;
+
+/**文字字体斜体，默认为NO
+ */
+@property (nonatomic ,assign) BOOL isItalic;
+
+/** 文字下划线，默认为NO
+ */
+@property (nonatomic ,assign) BOOL isUnderline;
+
+/**花字资源分类ID
+ */
+@property (nonatomic, strong) NSString *flowerCategoryId;
+
+/**花字资源ID
+ */
+@property (nonatomic, strong) NSString *flowerResourceId;
+
+/** 花字资源地址
+ *  导出模板用
+ */
+@property (nonatomic, strong) NSString *flowerPath;
+
+/**文字阴影
+ */
+@property (nonatomic ,strong) CaptionShadow *shadow;
+
+/**文字描边
+ */
+@property (nonatomic ,strong) CaptionEffectColorParam *stroke;
+
+/**文字花字
+ */
+@property (nonatomic ,strong) CaptionEffectCfg *effectCfg;
+
+@end
+
 #pragma mark - 单个文字
 
 @interface CaptionItem : NSObject<NSCopying, NSMutableCopying>
@@ -678,6 +743,8 @@ typedef NS_ENUM(NSInteger, CaptionExItemBackGroundType) {
 /**文字背景参数
  */
 @property (nonatomic, strong) CaptionExItemBackGroundParam *backGroundParams;
+
+@property (nonatomic, strong) NSMutableArray <CaptionLabelStyle *>*labelStyles;
 
 @end
 

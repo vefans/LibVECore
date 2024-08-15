@@ -152,6 +152,10 @@ typedef NS_ENUM(NSInteger, SceneType) {
  */
 @property (nonatomic, assign) SceneType type;
 
+/**主题画使用该参数： 0:循环 1:片头 2:片尾
+ */
+@property (nonatomic , assign)ThemeMediaType themeMaterialType;
+
 /** 组Id
  *  导出模板用
  */
@@ -1110,22 +1114,23 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 */
 @property (nonatomic, assign) FilterBlendType blendType;
 
-/**抠图精度，0.0~1.0,默认为0.5
+/**抠图精度，0.0~1.0,默认为0.5（仅仅只有只有cutoutEdgeSize == 3有效）
  */
-@property (nonatomic, assign) float factor DEPRECATED_ATTRIBUTE;
+@property (nonatomic, assign) float factor;
 
 /**抠图透明度低阀值，0.0~1.0,默认为0.1
  */
 @property (nonatomic, assign) float cutoutAlphaLower;
 
-/**抠图透明度高阀值，0.0~2.0,默认为0.5
+/**抠图透明度高阀值，0.0~1.0,默认为0.5
  */
 @property (nonatomic, assign) float cutoutAlphaUpper;
 
 /**抠图边缘修整
  *  cutoutEdgeSize == 0 时，cutoutAlphaUpper / cutoutAlphaLower 都生效
  *  cutoutEdgeSize == 1 时，cutoutAlphaUpper 无效 ，cutoutAlphaLower 生效
- *  cutoutEdgeSize == 2 时，cutoutAlphaUpper 生效 (绿幕抠像) ，cutoutAlphaLower 无效
+ *  cutoutEdgeSize == 2 时，cutoutAlphaUpper 生效 (绿幕抠像)
+ *  cutoutEdgeSize == 3 时，新版绿幕抠像（cutoutAlphaUpper 代表强度，cutoutAlphaLower 代表平滑度，factor 代表阀值）
  */
 @property (nonatomic, assign) float cutoutEdgeSize;
 
@@ -1563,7 +1568,7 @@ UIKIT_EXTERN API_DEPRECATED("Watermark is deprecated. Use Overlay instead", ios(
  */
 @property (nonatomic,assign) BOOL isTemplateTheme;
 
-/**主题的画中画使用改参数： 0:循环 1:片头 2:片尾
+/**主题的画中画使用该参数： 0:循环 1:片头 2:片尾
  */
 @property (nonatomic , assign)ThemeMediaType themeMaterialType;
 

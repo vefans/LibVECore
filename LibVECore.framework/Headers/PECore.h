@@ -33,6 +33,8 @@ typedef NS_ENUM(NSInteger, PECoreStatus) {
 
 - (NSArray<FaceRecognition*>*)willOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer asset:(PEImageAsset*)asset;
 
+- (void)willOutputPixelBuffer:(CVPixelBufferRef)pixelBuffer currentTime:(CMTime)currentTime;
+
 @end
 
 
@@ -297,5 +299,22 @@ typedef NS_ENUM(NSUInteger, PECoreViewFillMode) {
 - (BOOL)getHDRImageFromImage:(UIImage *)originalImage outPutFilePath:(NSString*)outPutFilePath;
 
 +(NSInteger)getLevelNumber;
+
+/*@abstract  分割图像  Segmenting an image.
+ @param imageData                  图像数据
+ @param view                            需要依附的控件 ( 必须传 )
+ @param segmentationCompletionHandler  返回参数  （  message == @"SegmentationImage" 表示messageBody 为 分割后的图像数据  ）
+ */
+-(void)segmentation_ImageWithImageData:( NSMutableData * ) imageData atView:( UIView * ) view   atCancelBtn:( UIButton * ) cancelBtn atIsDebug:( BOOL ) isDebug atCompletionHandler:( void(^)( NSString * message, id messageBody ) )  segmentationCompletionHandler;
+
+/*@abstract  去水印  de-watermarking.
+ @param imageData                  图像数据
+ @param grayScaleImageData    灰度图数据
+ @param view                            需要依附的控件 ( 必须传 )
+ @param segmentationCompletionHandler  返回参数  （  message == @"DeWatermarkImage" 表示messageBody 为 去水印后的图像数据  ）
+ */
+-(void)deWatermark_ImageWithImageData:( NSMutableData * ) imageData atGrayScaleImageData:( NSMutableData * ) grayScaleImageData atView:( UIView * ) view atCancelBtn:( UIButton * ) cancelBtn  atIsDebug:( BOOL ) isDebug atCompletionHandler:( void(^)( NSString * message, id messageBody ) ) deWatermarkCompletionHandler;
+
+-(void)superResolution_ImageWithImageData:( NSMutableData * ) imageData atView:( UIView * ) view atCancelBtn:( UIButton * ) cancelBtn  atIsDebug:( BOOL ) isDebug    atCompletionHandler:( void(^)( NSString * message, id messageBody ) ) superResolutionCompletionHandler;
 
 @end

@@ -1179,4 +1179,15 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
 //草稿进入时 不需要
 +(void)RecountLevel;
 
+-(void)segmentation_ImageWithImageData:( NSMutableData * ) imageData atView:( UIView * ) view   atCancelBtn:( UIButton * ) cancelBtn atIsDebug:( BOOL ) isDebug  atCompletionHandler:( void(^)( NSString * message, id messageBody ) )  segmentationCompletionHandler;
+
+/*@abstract  去水印  de-watermarking.
+ @param imageData                  图像数据
+ @param grayScaleImageData    灰度图数据
+ @param view                            需要依附的控件 ( 必须传 )
+ @param segmentationCompletionHandler  返回参数  （  message == @"DeWatermarkImage" 表示messageBody 为 去水印后的图像数据  ）
+ */
+-(void)deWatermark_ImageWithImageData:( NSMutableData * ) imageData atGrayScaleImageData:( NSMutableData * ) grayScaleImageData atView:( UIView * ) view  atCancelBtn:( UIButton * ) cancelBtn  atIsDebug:( BOOL ) isDebug  atCompletionHandler:( void(^)( NSString * message, id messageBody ) ) deWatermarkCompletionHandler;
+
+-(void)superResolution_ImageWithImageData:( NSMutableData * ) imageData atView:( UIView * ) view atCancelBtn:( UIButton * ) cancelBtn   atIsDebug:( BOOL ) isDebug  atCompletionHandler:( void(^)( NSString * message, id messageBody ) ) superResolutionCompletionHandler;
 @end
