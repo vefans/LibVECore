@@ -540,15 +540,49 @@ typedef NS_ENUM(NSInteger, CaptionExItemBackGroundType) {
 
 @end
 
-@interface CaptionLabelStyle : NSObject<NSCopying, NSMutableCopying>
+typedef NS_ENUM(NSInteger, CaptionTextEncodeType) {
+    CaptionTextEncodeUTF8,    //UTF8
+    CaptionTextEncodeUTF16,   //UTF16
+    CaptionTextEncodeUTF32,   //UTF32
+};
+
+
+@interface CaptionSelectText : NSObject<NSCopying, NSMutableCopying>
+
+/**文字编码类型，默认CaptionTextEncodeUTF8
+ */
+@property (nonatomic ,assign) CaptionTextEncodeType encodingType;
 
 /**文字开始位置
  */
-@property (nonatomic ,assign) float start;
+@property (nonatomic ,assign) NSInteger start;
 
 /**文字结束位置
  */
-@property (nonatomic ,assign) float end;
+@property (nonatomic ,assign) NSInteger end;
+
+
+/**文字颜色，默认为whiteColor
+ */
+@property (nonatomic ,strong) UIColor * textColor;
+
+@end
+
+
+@interface CaptionLabelStyle : NSObject<NSCopying, NSMutableCopying>
+
+
+/**文字编码类型，默认CaptionTextEncodeUTF8
+ */
+@property (nonatomic ,assign) CaptionTextEncodeType encodingType;
+
+/**文字开始位置
+ */
+@property (nonatomic ,assign) NSInteger start;
+
+/**文字结束位置
+ */
+@property (nonatomic ,assign) NSInteger end;
 
 /** 文字透明度(0.0〜1.0),默认为1.0
  */
@@ -557,6 +591,10 @@ typedef NS_ENUM(NSInteger, CaptionExItemBackGroundType) {
 /**文字颜色，默认为whiteColor
  */
 @property (nonatomic ,strong) UIColor * textColor;
+
+/**文字字体路径
+ */
+@property (nonatomic ,copy) NSString * fontName;
 
 /**文字字体路径
  */
@@ -602,6 +640,8 @@ typedef NS_ENUM(NSInteger, CaptionExItemBackGroundType) {
 /**文字花字
  */
 @property (nonatomic ,strong) CaptionEffectCfg *effectCfg;
+
+
 
 @end
 
@@ -744,7 +784,14 @@ typedef NS_ENUM(NSInteger, CaptionExItemBackGroundType) {
  */
 @property (nonatomic, strong) CaptionExItemBackGroundParam *backGroundParams;
 
+/*文字富文本
+ */
 @property (nonatomic, strong) NSMutableArray <CaptionLabelStyle *>*labelStyles;
+
+
+/*选中文字
+ */
+@property (nonatomic ,strong) CaptionSelectText *selectText;
 
 @end
 
@@ -2934,6 +2981,11 @@ typedef NS_ENUM(NSInteger, WebmDecodeDataType) {
  *  @abstract   color, default 0.0，0.0，0.0
  */
 @property (nonatomic ,strong) NSArray* hsl_green;
+
+/** 调节色调/饱和度/亮度 ，-1.0～1.0，默认为（0.0，0.0，0.0）
+ *  @abstract   color, default 0.0，0.0，0.0
+ */
+@property (nonatomic ,strong) NSArray* hsl_cyan;
 
 /** 调节色调/饱和度/亮度 ，-1.0～1.0，默认为（0.0，0.0，0.0）
  *  @abstract   color, default 0.0，0.0，0.0

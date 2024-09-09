@@ -924,6 +924,15 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
                  samplerate:(int )samplerate
                  completion:(void(^)(BOOL result,NSString*outputFilePath))completionHandle;
 
++ (void)video2audiowithtype:(AVFileType)type
+                   videoUrl:(NSURL*)videoUrl
+                  trimStart:(float)start
+                   duration:(float)duration
+           outputFolderPath:(NSString*)outputFolder
+                 samplerate:(int )samplerate
+            progressHandler:(void (^)(float progress))progressHandler
+          completionHandler:(void(^)(BOOL result,NSString*outputFilePath))completionHandler;
+
 /** 判断图片是否是Gif,并返回图片时长
  *  返回0:则非Gif
  @abstract  Determine if the image is Gif.
@@ -1020,8 +1029,20 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
  @param mp3FilePath    mp3保存路径
  @param sampleRate     音频采样率 ( 声道数固定为2 )
 */
-+(void)audio_DataToMP3:( NSMutableData * ) data  atMP3FilePath:( NSString * ) mp3FilePath atSampleRate:(float) sampleRate;
-+(void)audio_DataToMP3:( NSMutableData * ) data  atMP3FilePath:( NSString * ) mp3FilePath atSampleRate:(float) sampleRate atBrate:( NSInteger ) brate atChannels:( NSInteger ) channels;
++(void)audio_DataToMP3:( NSMutableData * ) data
+         atMP3FilePath:( NSString * ) mp3FilePath
+          atSampleRate:(float) sampleRate;
+
++(void)audio_DataToMP3:( NSMutableData * ) data
+         atMP3FilePath:( NSString * ) mp3FilePath
+          atSampleRate:(float) sampleRate
+       progressHandler:(void (^)(float progress))progressHandler;
+
++(void)audio_DataToMP3:( NSMutableData * ) data
+         atMP3FilePath:( NSString * ) mp3FilePath
+          atSampleRate:(float) sampleRate
+               atBrate:( NSInteger ) brate
+            atChannels:( NSInteger ) channels;
 
 /** caf文件转mp3文件 （ 采样率为11025 声道数为2 ） 注意：MIC录制为caf文件转mp3专用
 @abstract   CAF file transfer MP3 file
@@ -1039,6 +1060,12 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
  @param mp3FilePath    mp3保存路径
 */
 +(void)audio_M4aToMP3:( NSString * ) m4aFilePath atMP3FilePath:( NSString * ) mp3FilePath atSampleRate:(float) sampleRate  FinishBlock:(void (^)(bool isFinish)) FinishBlock;
+
++(void)audio_M4aToMP3:( NSString * ) m4aFilePath
+        atMP3FilePath:( NSString * ) mp3FilePath
+         atSampleRate:(float) sampleRate
+      progressHandler:(void (^)(float progress))progressHandler
+    completionHandler:(void (^)(bool isFinished)) completionHandler;
 
 /** 获取消除后的图像 （消除笔）
  @abstract  Obtain the erased image (elimination pen)

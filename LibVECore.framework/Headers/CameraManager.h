@@ -147,11 +147,6 @@ typedef NS_ENUM(NSUInteger, CameraSegmentMode) {
  */
 @property (nonatomic , assign) CameraFillMode fillMode;
 
-/** 左右滑动录制预览视图时，是否切换滤镜。默认为YES(可切换)
- *  使用该功能时，须所有滤镜资源都在本地，不能是网络资源
- */
-@property (nonatomic, assign) BOOL swipeScreenIsChangeFilter;
-
 /** 白平衡
  */
 @property (nonatomic , assign) int whiteBalanceMode;
