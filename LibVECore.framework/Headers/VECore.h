@@ -932,7 +932,15 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
                  samplerate:(int )samplerate
             progressHandler:(void (^)(float progress))progressHandler
           completionHandler:(void(^)(BOOL result,NSString*outputFilePath))completionHandler;
-
++ (void)video2audiowithtype:(AVFileType)type
+                   videoUrl:(NSURL *)videoUrl
+                  trimStart:(float)start
+                   duration:(float)duration
+           outputFolderPath:(NSString *)outputFolder
+                 samplerate:(int)samplerate
+               bitrate_kbps:(int)bitrate_kbps
+            progressHandler:(void (^)(float progress))progressHandler
+          completionHandler:(void (^)(BOOL, NSString *))completionHandler;
 /** 判断图片是否是Gif,并返回图片时长
  *  返回0:则非Gif
  @abstract  Determine if the image is Gif.

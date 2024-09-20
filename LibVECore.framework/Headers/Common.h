@@ -1326,6 +1326,9 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
 /**字幕大小，相对于实际视频size的字幕大小(CGSizeMake(0, 0)〜CGSizeMake(1, 1))
  */
 @property (nonatomic ,assign) CGSize originalSize;
+/** 智能挡脸图片的原始大小（ 计算贴纸显示大小的时候使用 ）
+ */
+@property (nonatomic, assign) CGSize ImageOcclusionSize;
 
 /**拉伸缩放后字幕大小(isStretch 为 YES 时，拉伸之后的真实大小 )
  */
