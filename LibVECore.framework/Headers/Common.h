@@ -772,6 +772,10 @@ typedef NS_ENUM(NSInteger, CaptionTextEncodeType) {
  */
 @property (nonatomic, strong) CustomFilter *animate;
 
+/**循环动画
+ */
+@property (nonatomic, strong) CustomFilter *animateLoop;
+
 /**出场动画
  */
 @property (nonatomic, strong) CustomFilter *animateOut;
@@ -1213,6 +1217,10 @@ UIKIT_EXTERN API_DEPRECATED("Caption is deprecated. Use CaptionEx instead", ios(
  */
 @property (nonatomic, strong) CustomFilter *animate;
 
+/**循环动画
+ */
+@property (nonatomic, strong) CustomFilter *animateLoop;
+
 /**出场动画
  */
 @property (nonatomic, strong) CustomFilter *animateOut;
@@ -1389,6 +1397,7 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
  *
  */
 @property (nonatomic, strong) CustomFilter *animate;
+
 
 /**高级动画(脚本)
  *

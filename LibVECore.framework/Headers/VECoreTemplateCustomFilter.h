@@ -114,6 +114,10 @@
  */
 @property (nonatomic, assign) CustomAnimationType type;
 
+/** 开始时间
+ */
+@property (nonatomic, assign) float startTime;
+
 /** 动画时长
  */
 @property (nonatomic, assign) float duration;
@@ -130,6 +134,10 @@
 /**  json资源地址
  */
 @property (nonatomic,strong) NSString *path;
+
+/** 开始时间
+ */
+@property (nonatomic, assign) float startTime;
 
 /** 动画时长
  */

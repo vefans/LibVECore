@@ -1059,6 +1059,10 @@ typedef NS_ENUM(NSInteger, BlendEquation)
  */
 @property (nonatomic, strong) CustomFilter* customAnimate;
 
+/**设置媒体自定义组合动画。
+ */
+@property (nonatomic, strong) CustomFilter* customComboAnimate;
+
 /**设置媒体自定义出场动画
  */
 @property (nonatomic, strong) CustomFilter* customOutAnimate;

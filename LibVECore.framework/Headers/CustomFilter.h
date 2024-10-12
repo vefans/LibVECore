@@ -255,8 +255,6 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
 
 /** 特效数组
  */
-- (instancetype)initWithFilterArray:(NSMutableArray<CustomFilter*>*)filterArray;
-
 @property (nonatomic, strong) NSMutableArray<CustomFilter*>* filterArray;
 @property (nonatomic, assign) BOOL isTemplateTheme;
 
@@ -267,6 +265,11 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
 /** 指定特效重复次数 - 主要用于高斯模糊
  */
 @property (nonatomic, strong) NSMutableArray<RepeatCustomFilter*>* repeatArray;
+
+/** 特效数组
+ */
+- (instancetype)initWithFilterArray:(NSMutableArray<CustomFilter*>*)filterArray;
+
 @end
 
 

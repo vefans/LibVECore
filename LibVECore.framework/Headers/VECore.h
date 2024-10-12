@@ -293,7 +293,7 @@ typedef NS_ENUM(NSUInteger, VEExportVideoDynamicRangeType) {
 
 /** 非矩形字幕
  */
-@property (nonatomic, strong) NSMutableArray<CaptionLight*>* nonRectangleCaptions;
+@property (nonatomic, strong) NSMutableArray<CaptionLight*>* nonRectangleCaptions DEPRECATED_ATTRIBUTE;
 
 /** 贴纸
  */
