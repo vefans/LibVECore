@@ -414,6 +414,8 @@ typedef NS_ENUM(NSUInteger, VEExportVideoDynamicRangeType) {
 - (int)getSDKVersion;
 + (int)getSDKVersion;
 
+- (void)removeViewTapGestureRecognizer;
+
 /**添加场景
  *  @abstract   Add scenes.
  */
@@ -1225,4 +1227,6 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
 -(void)deWatermark_ImageWithImageData:( NSMutableData * ) imageData atGrayScaleImageData:( NSMutableData * ) grayScaleImageData atView:( UIView * ) view  atCancelBtn:( UIButton * ) cancelBtn  atIsDebug:( BOOL ) isDebug  atCompletionHandler:( void(^)( NSString * message, id messageBody ) ) deWatermarkCompletionHandler;
 
 -(void)superResolution_ImageWithImageData:( NSMutableData * ) imageData atView:( UIView * ) view atCancelBtn:( UIButton * ) cancelBtn   atIsDebug:( BOOL ) isDebug  atCompletionHandler:( void(^)( NSString * message, id messageBody ) ) superResolutionCompletionHandler;
+
++(void)setIsEnablecoreVideoSize:( BOOL ) isCoreVideoSize;
 @end

@@ -219,7 +219,7 @@ typedef NS_ENUM(NSInteger, MusicType) {
 
 //MARK: 均衡器数值
 @interface EqObject : NSObject<NSCopying,NSMutableCopying>
-@property(nonatomic, assign)int frequecy;
+@property(nonatomic, assign)int frequency;
 @property(nonatomic, assign)float gain;
 @end
 

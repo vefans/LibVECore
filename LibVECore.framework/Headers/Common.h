@@ -699,6 +699,8 @@ typedef NS_ENUM(NSInteger, CaptionTextEncodeType) {
 /**文字字体大小
  */
 @property (nonatomic ,assign) float fontSize;
+-(float)getFontSize;
+- (void)setItemFontSize:(float)fontSize;
 
 /** 文字行间距(-1.0〜1.0),默认为0.0
  */
