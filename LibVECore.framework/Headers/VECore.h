@@ -414,6 +414,9 @@ typedef NS_ENUM(NSUInteger, VEExportVideoDynamicRangeType) {
 - (int)getSDKVersion;
 + (int)getSDKVersion;
 
+/** 移除点击播放器view 的手势
+ *  @abstract   Remove the gesture of clicking on the player view.
+ */
 - (void)removeViewTapGestureRecognizer;
 
 /**添加场景

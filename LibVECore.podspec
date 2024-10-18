@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "LibVECore"
-  spec.version      = "6.3.6"
+  spec.version      = "6.3.7"
   spec.summary      = "LibVECore is a video editing SDK without UI and highly abstract API."
   spec.homepage     = "https://github.com/vefans/VECore"
   spec.platform     = :ios, '9.0'
