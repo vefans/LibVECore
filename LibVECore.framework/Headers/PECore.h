@@ -298,6 +298,7 @@ typedef NS_ENUM(NSUInteger, PECoreViewFillMode) {
  */
 - (BOOL)getHDRImageFromImage:(UIImage *)originalImage outPutFilePath:(NSString*)outPutFilePath;
 
++(void)setLevelCounti:( NSInteger ) level;
 +(NSInteger)getLevelNumber;
 
 /*@abstract  分割图像  Segmenting an image.
