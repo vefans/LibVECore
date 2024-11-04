@@ -27,6 +27,9 @@
 - (void)statusChanged:(VECore *)sender status:(VECoreStatus)status;
 - (void)statusChanged:(VECoreStatus)status;
 
+/** 播放状态
+ */
+- (void)playStatusChanged:(VECore *)sender status:(VECorePlayStatus)status;
 /** 当前时间
  */
 - (void)progressCurrentTime:(CMTime)currentTime;
@@ -274,6 +277,10 @@ typedef NS_ENUM(NSUInteger, VEExportVideoDynamicRangeType) {
 /** 是否正在播放
  */
 @property (nonatomic,readonly) BOOL isPlaying;
+
+/** 播放状态
+ */
+@property (nonatomic, readonly) VECorePlayStatus playStatus;
 
 /** 预览或者导出支持的最大分辨率
  */

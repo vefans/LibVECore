@@ -97,6 +97,12 @@ typedef NS_ENUM(NSInteger, VECoreStatus) {
     kVECoreStatusFailed
 };
 
+typedef NS_ENUM(NSInteger, VECorePlayStatus) {
+    kVECorePlayStatusPaused,
+    kVECorePlayStatusWaitingToPlay,
+    kVECorePlayStatusPlaying,
+};
+
 typedef NS_ENUM(NSInteger, JsonAnimationMediaType) {
     JsonAnimationMediaType_Irreplaceable,           //不可替换
     JsonAnimationMediaType_ReplaceableText,         //可替换文字
