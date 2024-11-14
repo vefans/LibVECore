@@ -603,6 +603,8 @@ typedef NS_ENUM(NSInteger, CaptionTextEncodeType) {
 /**文字字体大小
  */
 @property (nonatomic ,assign) float fontSize;
+- (void)setLabelFontSize:(float)fontSize;
+- (float)getFontSize;
 
 /**文字字体加粗，默认为NO
  */
@@ -641,7 +643,9 @@ typedef NS_ENUM(NSInteger, CaptionTextEncodeType) {
  */
 @property (nonatomic ,strong) CaptionEffectCfg *effectCfg;
 
-
+/** 启用中心点模式, Default is NO
+ */
+@property (nonatomic, assign) BOOL isEnableCenterPosition;
 
 @end
 
@@ -672,6 +676,10 @@ typedef NS_ENUM(NSInteger, CaptionTextEncodeType) {
  */
 @property (nonatomic ,assign) CMTimeRange timeRange;
 
+/** 启用中心点模式, Default is NO
+ */
+@property (nonatomic, assign) BOOL isEnableCenterPosition;
+
 /**字幕背景色，默认无
  */
 @property (nonatomic ,strong) UIColor *  backgroundColor;
@@ -699,8 +707,8 @@ typedef NS_ENUM(NSInteger, CaptionTextEncodeType) {
 /**文字字体大小
  */
 @property (nonatomic ,assign) float fontSize;
--(float)getFontSize;
 - (void)setItemFontSize:(float)fontSize;
+- (float)getFontSize;
 
 /** 文字行间距(-1.0〜1.0),默认为0.0
  */
@@ -1246,15 +1254,12 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
     CaptionExTypeCoverTemplate, //封面模板
     CaptionExTypeCover,     //封面普通字幕
     CaptionExTypeOcclusionStickers,  //遮挡贴纸
+    CaptionExTypeWatermark,  //水印
 };
 
 //(由0-1个底图+多个文字组成)
 
 @interface CaptionEx : NSObject<NSCopying, NSMutableCopying>
-
-@property(nonatomic, weak)id         faceRegPasterTextView;
-@property(nonatomic, strong)id         faceRegModel;
-@property(nonatomic, strong)NSURL *faceImageURL;
 
 /** 标识符
  *  记录最后操作的时间,用于二次build时排序依据 (最后操作的置顶)
@@ -1289,6 +1294,10 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
  *  导出模板用
  */
 @property (nonatomic, assign) CaptionExType type;
+
+/** 启用中心点模式, Default is NO
+ */
+@property (nonatomic, assign) BOOL isEnableCenterPosition;
 
 /**字幕时间范围（ PECore 默认与虚拟视频一致，不需设置）
  */
@@ -1440,6 +1449,10 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
 /** 层次，数值越大，越靠前，0 为最底层，默认为 0
  */
 @property(nonatomic,assign) int level;
+
+@property(nonatomic, weak) id faceRegPasterTextView;
+@property(nonatomic, strong) id faceRegModel;
+@property(nonatomic, strong) NSURL *faceImageURL;
 
 @end
 

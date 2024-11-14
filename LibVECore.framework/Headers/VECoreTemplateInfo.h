@@ -593,6 +593,10 @@ typedef NS_ENUM(NSInteger, MosaicType) {
  */
 @property (nonatomic, strong) VECoreTemplateLogo *logoOverlay;
 
+/** 文字水印
+ */
+@property (nonatomic, strong) NSMutableArray<VECoreTemplateSubtitleEx*>*watermark;
+
 /** 封面
  */
 @property (nonatomic, strong) NSString *coverPath;

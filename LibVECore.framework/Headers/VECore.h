@@ -1238,5 +1238,4 @@ exportVideoProfileLevelType:(VEExportVideoProfileLevelType)exportVideoProfileLev
 
 -(void)superResolution_ImageWithImageData:( NSMutableData * ) imageData atView:( UIView * ) view atCancelBtn:( UIButton * ) cancelBtn   atIsDebug:( BOOL ) isDebug  atCompletionHandler:( void(^)( NSString * message, id messageBody ) ) superResolutionCompletionHandler;
 
-+(void)setIsEnablecoreVideoSize:( BOOL ) isCoreVideoSize;
 @end
