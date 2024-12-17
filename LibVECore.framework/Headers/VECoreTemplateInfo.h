@@ -599,7 +599,7 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 
 /** 封面
  */
-@property (nonatomic, strong) NSString *coverPath;
+//@property (nonatomic, strong) NSString *coverPath;
 /** 封面 原始图像
  */
 @property (nonatomic, strong) NSURL *coverOriginalPath;

@@ -1246,6 +1246,13 @@ UIKIT_EXTERN API_DEPRECATED("Caption is deprecated. Use CaptionEx instead", ios(
 
 @end
 
+
+typedef NS_ENUM(NSInteger, WatermarkType) {
+    WatermarkTypeNormal,        //未启用
+    WatermarkTypeSingleLine,    //单行
+    WatermarkTypeFull,          //全屏
+};
+
 typedef NS_ENUM(NSInteger, CaptionExType) {
     CaptionExTypeNormal,    //普通字幕
     CaptionExTypeTemplate,  //文字模板
@@ -1256,6 +1263,47 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
     CaptionExTypeOcclusionStickers,  //遮挡贴纸
     CaptionExTypeWatermark,  //水印
 };
+
+
+
+@interface Watermark : NSObject<NSCopying, NSMutableCopying>
+
+/**
+ * 平铺配置模式
+ */
+@property (nonatomic, assign) WatermarkType type;
+
+/**
+ *  位置，默认（0.5，0.5），范围：0.0～1.0
+ */
+@property (nonatomic ,assign) CGPoint position;
+
+/**
+ * 大小缩放，默认1.0
+ */
+@property (nonatomic, assign) float scale;
+
+/**
+ * 旋转，默认0.0，范围：-360.0～360.0
+ */
+@property (nonatomic, assign) float angle;
+
+/**
+ * 旋转锚点，默认（0.5，0.5），范围：0.0～1.0
+ */
+@property (nonatomic ,assign) CGPoint anchorPoint;
+
+/**
+ * 平铺间距，默认0.0，范围：0.0～1.0
+ */
+@property (nonatomic, assign) float spacing;
+
+/**
+ * 错位，默认0.0，范围：0.0～1.0
+ */
+@property (nonatomic, assign) float misalign;
+
+@end
 
 //(由0-1个底图+多个文字组成)
 
@@ -1453,6 +1501,11 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
 @property(nonatomic, weak) id faceRegPasterTextView;
 @property(nonatomic, strong) id faceRegModel;
 @property(nonatomic, strong) NSURL *faceImageURL;
+
+
+/**  全屏水印，只有字幕类型  type 为 CaptionExTypeWatermark 生效
+ */
+@property (nonatomic ,strong) Watermark * watermark;
 
 @end
 

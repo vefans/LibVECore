@@ -1514,24 +1514,6 @@ typedef NS_ENUM(NSInteger, BlendEquation)
 
 
 
-UIKIT_EXTERN API_DEPRECATED("Watermark is deprecated. Use Overlay instead", ios(2.0, 9.0))
-/** 视频水印
- */
-@interface Watermark : NSObject
-
-/** 持续时间范围
- */
-@property (nonatomic ,assign) CMTimeRange timeRange;
-
-/** 媒体
- */
-@property (nonatomic,strong) MediaAsset*  media;
-
-/**是否循环播放，默认为YES
- */
-@property (nonatomic, assign) BOOL isRepeat;
-
-@end
 
 
 /** 视频水印
