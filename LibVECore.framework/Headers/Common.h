@@ -569,7 +569,7 @@ typedef NS_ENUM(NSInteger, CaptionTextEncodeType) {
 @end
 
 
-@interface CaptionLabelStyle : NSObject<NSCopying, NSMutableCopying>
+@interface CaptionTextStyle : NSObject<NSCopying, NSMutableCopying>
 
 
 /**文字编码类型，默认CaptionTextEncodeUTF8
@@ -603,7 +603,7 @@ typedef NS_ENUM(NSInteger, CaptionTextEncodeType) {
 /**文字字体大小
  */
 @property (nonatomic ,assign) float fontSize;
-- (void)setLabelFontSize:(float)fontSize;
+- (void)setTextFontSize:(float)fontSize;
 - (float)getFontSize;
 
 /**文字字体加粗，默认为NO
@@ -800,8 +800,7 @@ typedef NS_ENUM(NSInteger, CaptionTextEncodeType) {
 
 /*文字富文本
  */
-@property (nonatomic, strong) NSMutableArray <CaptionLabelStyle *>*labelStyles;
-
+@property (nonatomic, strong) NSMutableArray <CaptionTextStyle *>*textStyleLists;
 
 /*选中文字
  */

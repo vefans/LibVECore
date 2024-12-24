@@ -159,7 +159,7 @@
 
 @end
 
-@interface VECoreTemplateWordItemLabelStyle : CaptionLabelStyle
+@interface VECoreTemplateWordItemStyle : CaptionTextStyle
 
 /**文字阴影颜色【纯色】
  */
@@ -185,7 +185,7 @@
  */
 @property (nonatomic ,assign) float strokeWidth;
 
-- initWithLabelStyle:(CaptionLabelStyle *)labelStyle rootPath:(NSString *)rootPath isExportResources:(BOOL)isExportResources;
+- initWithTextStyle:(CaptionTextStyle *)textStyle rootPath:(NSString *)rootPath isExportResources:(BOOL)isExportResources;
 
 @end
 
@@ -241,7 +241,7 @@
  */
 @property (nonatomic, strong) VECoreTemplateWordItemBackgroundParam *background;
 
-@property (nonatomic, strong) NSMutableArray<VECoreTemplateWordItemLabelStyle *>*labelStyleList;
+@property (nonatomic, strong) NSMutableArray<VECoreTemplateWordItemStyle *>*textStyles;
 
 - (instancetype)initWithCaptionItem:(CaptionItem *)captionItem;
 
