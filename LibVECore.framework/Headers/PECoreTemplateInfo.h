@@ -98,6 +98,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL isPuzzleSplitScreen;
 @property (nonatomic, assign) BOOL isTemplate;
 @property (nonatomic, assign) BOOL isPuzzle;
+@property (nonatomic, assign) BOOL isDIYCollage;//图片自由拼图
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *desc;
 @property (nonatomic, strong) NSString *author;

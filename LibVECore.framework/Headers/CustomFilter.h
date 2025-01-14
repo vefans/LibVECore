@@ -194,6 +194,10 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
  */
 @property (nonatomic, strong) NSMutableDictionary* configure;
 
+/** 配置信息(json ver版本 >= 10 )
+ */
+@property (nonatomic, strong) NSMutableDictionary* scriptConfig;
+
 /**  检测是否存在纹理输入参数
  */
 - (BOOL) hasInputTextureParams;
