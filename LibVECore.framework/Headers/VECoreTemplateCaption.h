@@ -185,7 +185,7 @@
  */
 @property (nonatomic ,assign) float strokeWidth;
 
-- initWithTextStyle:(CaptionTextStyle *)textStyle rootPath:(NSString *)rootPath isExportResources:(BOOL)isExportResources;
+- (instancetype)initWithTextStyle:(CaptionTextStyle *)textStyle rootPath:(NSString *)rootPath isExportResources:(BOOL)isExportResources;
 
 @end
 
