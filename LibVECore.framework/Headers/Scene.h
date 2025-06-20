@@ -27,6 +27,9 @@ typedef NS_ENUM(NSInteger, VEPIPType){
     VEPIPType_TEXT_SPEECH = 9,//文字(识别字幕)
     VEPIPType_WordTemplate = 10,//文字模板
     VEPIPType_Effect_Magnifier = 11,//放大镜
+    VEPIPType_Caption = 12,//字幕
+    VEPIPType_WordTemplatePag = 13,//Pag文字模板
+    VEPIPType_Mosaic = 14,//马赛克|去水印|高斯模糊
 };
 
 typedef NS_ENUM(NSInteger, VEAudioSampleBits) {

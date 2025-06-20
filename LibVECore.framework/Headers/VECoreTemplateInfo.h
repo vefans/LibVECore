@@ -106,6 +106,12 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 
 @interface VECoreTemplateMosaic : NSObject
 
+@property(nonatomic, assign) VEPIPType pipType;
+
+/** 层次，数值越大，越靠前，0 为最底层，默认为 0
+ */
+@property(nonatomic, assign) int level;
+
 /**马赛克类型
  */
 @property (nonatomic, assign) MosaicType type;
@@ -279,6 +285,13 @@ typedef NS_ENUM(NSInteger, MosaicType) {
  */
 @property (nonatomic,assign) int angle;
 
+/** 层次，数值越大，越靠前，0 为最底层，默认为 0
+ */
+@property(nonatomic,assign) int level;
+@property(nonatomic,assign) float scale;
+
+@property (nonatomic, assign)int shapeType;
+
 /** 涂鸦关键帧动画
  *  @abstract   doodle animations.
  */
@@ -293,12 +306,6 @@ typedef NS_ENUM(NSInteger, MosaicType) {
 
 - (DoodleEx *)getDoodleExWithFolderPath:(NSString *)folderPath;
 
-/** 层次，数值越大，越靠前，0 为最底层，默认为 0
- */
-@property(nonatomic,assign) int level;
-@property(nonatomic,assign) float scale;
-
-@property (nonatomic, assign)int shapeType;
 @end
 
 #pragma mark - 水印
