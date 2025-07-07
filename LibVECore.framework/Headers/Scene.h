@@ -338,8 +338,8 @@ typedef NS_ENUM(NSInteger, MusicType) {
  */
 @property (nonatomic,assign) float speed;
 
-/**  是否音调校正，设置曲线变速后无效，Default is NO。
- *   Tone correction, invalid after setting curve speed change.
+/**  变速时保持音调不变，默认YES；设置曲线变速后无效
+ *   Hold pitch when speed changes. Default is YES.
  */
 @property (nonatomic,assign) BOOL speedHoldPitch;
 
@@ -804,8 +804,8 @@ typedef NS_ENUM(NSInteger, BlendEquation)
  */
 @property (nonatomic,assign) float            speed;
 
-/**  是否音调校正，设置曲线变速后无效，Default is NO。
- *   Tone correction, invalid after setting curve speed change.
+/**  变速时保持音调不变，默认YES；设置曲线变速后无效
+ *   Hold pitch when speed changes. Default is YES.
  */
 @property (nonatomic,assign) BOOL speedHoldPitch;
 

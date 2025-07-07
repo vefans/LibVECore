@@ -204,10 +204,6 @@
  */
 @property (nonatomic, assign) CGRect showRectF;
 
-/** 文字透明度(0.0〜1.0),默认为1.0
- */
-@property (nonatomic ,assign) float opacity;
-
 /**文字阴影颜色【纯色】
  */
 @property (nonatomic ,strong) UIColor* shadowColor;
@@ -250,6 +246,10 @@
 @end
 
 @interface VECoreTemplateSubtitleEx : CaptionEx
+
+/** 透明度(0.0〜1.0),默认为1.0
+ */
+@property (nonatomic ,assign) float alpha;
 
 @property (nonatomic, assign)VEPIPType  pipType;
 
@@ -337,6 +337,10 @@
 @end
 
 @interface VECoreTemplateSticker : CaptionEx
+
+/** 透明度(0.0〜1.0),默认为1.0
+ */
+@property (nonatomic ,assign) float alpha;
 
 @property(nonatomic, assign)VEPIPType   pipType;
 

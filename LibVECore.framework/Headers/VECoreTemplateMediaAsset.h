@@ -43,6 +43,10 @@
  */
 @property (nonatomic, strong) NSArray *pointsF;
 
+/** 透明度(0.0〜1.0),默认为1.0
+ */
+@property (nonatomic ,assign) float alpha;
+
 /**视频(或图片)裁剪范围。默认为CGRectMake(0, 0, 1, 1)
  */
 @property (nonatomic, assign) CGRect cropRect;
