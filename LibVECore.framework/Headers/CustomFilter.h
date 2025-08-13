@@ -234,7 +234,9 @@ typedef NS_ENUM(NSInteger, CustomAnimationType) {
  */
 
 @interface CustomMultipleFilter : NSObject<NSCopying, NSMutableCopying>
-
+/** 标识符
+ */
+@property (nonatomic,strong) NSString*  identifier;
 @property (nonatomic, assign) NSInteger tag;
 @property (nonatomic, strong) NSString *name;
 /**资源文件夹地址

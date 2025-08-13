@@ -246,7 +246,7 @@
 @end
 
 @interface VECoreTemplateSubtitleEx : CaptionEx
-
+@property (nonatomic ,assign) float speechRate;
 /** 透明度(0.0〜1.0),默认为1.0
  */
 @property (nonatomic ,assign) float alpha;

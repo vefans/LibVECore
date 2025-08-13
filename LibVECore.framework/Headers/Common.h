@@ -1307,7 +1307,10 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
 //(由0-1个底图+多个文字组成)
 
 @interface CaptionEx : NSObject<NSCopying, NSMutableCopying>
-
+/** 标识符
+ *  导出模板用
+ */
+@property (nonatomic,strong) NSString *trackId;
 /** 标识符
  *  记录最后操作的时间,用于二次build时排序依据 (最后操作的置顶)
  */
@@ -1517,6 +1520,9 @@ typedef NS_ENUM(NSInteger, CaptionExType) {
 /** 调色
 */
 @interface ToningInfo : NSObject<NSCopying, NSMutableCopying>
+/** 标识符
+ */
+@property (nonatomic,strong) NSString*  identifier;
 @property (nonatomic, assign) NSInteger tag;
 /** 亮度 ranges from -1.0 to 1.0, with 0.0 as the normal level
  *  设置媒体动画后，该属性无效，以动画中的brightness值为准
@@ -1685,6 +1691,9 @@ typedef NS_ENUM(NSInteger, BlurType) {
 
 @interface MediaAssetBlur : NSObject<NSCopying, NSMutableCopying>
 
+/** 标识符
+ */
+@property (nonatomic , strong) NSString  *identifier;
 /** 设置模糊类型，现只支持BlurTypeGauss
  */
 @property (nonatomic, assign)BlurType type   DEPRECATED_ATTRIBUTE;
@@ -1748,6 +1757,9 @@ typedef NS_ENUM(NSInteger, BlurType) {
  */
 @interface Mosaic : NSObject<NSCopying, NSMutableCopying>
 
+/** 标识符
+ */
+@property (nonatomic , strong) NSString  *identifier;
 /** 时间范围（ PECore 默认与虚拟视频一致，不需设置）,设置关键帧动画后，以关键帧动画值为准
  */
 @property (nonatomic ,assign) CMTimeRange timeRange;
@@ -1794,6 +1806,9 @@ typedef NS_ENUM(NSInteger, BlurType) {
  */
 @interface Dewatermark : NSObject
 
+/** 标识符
+ */
+@property (nonatomic , strong) NSString  *identifier;
 /** 去水印时间范围（ PECore 默认与虚拟视频一致，不需设置）,设置关键帧动画后，以关键帧动画值为准
  */
 @property (nonatomic ,assign) CMTimeRange timeRange;
@@ -2856,7 +2871,9 @@ typedef NS_ENUM(NSInteger, DOODLEOP_PAINT_TYPE)
 
 #pragma mark - doodleEx 涂鸦
 @interface DoodleEx  : NSObject<NSCopying, NSMutableCopying>
-
+/** 标识符
+ */
+@property (nonatomic,strong) NSString*  identifier;
 /** 时间范围
  *  @abstract   timeRange.
  */
