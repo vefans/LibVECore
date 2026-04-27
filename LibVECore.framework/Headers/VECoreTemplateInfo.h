@@ -646,15 +646,7 @@ typedef NS_ENUM(NSInteger, MosaicType) {
  @return A new instance created from the json, or nil if an error occurs.
  */
 - (instancetype)initWithJSON:(id)json;
-/**
- Creates and returns a new instance of the receiver from a json.
- This method is thread-safe.
- 
- @param jsonPath  
- 
- @return A new instance created from the json, or nil if an error occurs.
- */
-- (instancetype)initWithJSONPath:(NSString *)jsonPath;
+- (instancetype)initWithJSONPath:(NSString *)path;
 /**
  Generate a json object from the receiver's properties.
  
